@@ -17,7 +17,7 @@ public class CustomerList {
 
     // đọc file
     public void readFile(){
-        String fileName="PERSON\\danhsachkhachhang.txt";
+        String fileName="C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
         try(BufferedReader reader=new BufferedReader(new FileReader(fileName)))
         {String line;
             boolean fileIsEmpty=true;
@@ -44,7 +44,7 @@ public class CustomerList {
                     Customers.add(Customer);  
                     }
                     if (fileIsEmpty) {
-                        this.initializeCustomers();
+                        this.defaultCustomers();
                     }
             
         }catch(IOException e)
@@ -72,32 +72,45 @@ public class CustomerList {
         Customer customer3 = new Customer("3","03/03/2003","0123456789","3@gmail.com","Nam",address3,"CUS003","gold",200);
         Customers.add(customer3);
         Address address4 = new Address("4", "Duong 4", "Quan 4", "TP HCM");
-        Customer customer4 = new Customer();
+        Customer customer4 = new Customer("3","03/03/2003","0123456789","3@gmail.com","Nam",address3,"CUS003","gold",200);
         Customers.add(customer4);
         Address address5 = new Address("5", "Duong 5", "Quan 5", "TP HCM");
-        Customer customer5 = new ());
+        Customer customer5 = new Customer("3","03/03/2003","0123456789","3@gmail.com","Nam",address3,"CUS003","gold",200);
         Customers.add(customer5);
     }
 
     public void writeFile() {
-        String fileName = "E:\\workspace\\LTHDT\\QuanLiCuaHangVanPhongPham\\Person\\fileghikhachhang.txt";
+        String fileName = "project_lthdt\\src\\PERSON\\fileghiKH.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            // Ghi header của bảng
+            String header = String.format(
+                    "%-20s %-12s %-15s %-25s %-10s %-30s %-10s %-15s %-15s",
+                    "Fullname", "Birthday", "Phone", "Email", "Gender", "Address", "Customer ID", "Membership", "Loyal Points"
+            );
+            writer.write(header);
+            writer.newLine();
+    
+            // Ghi dữ liệu khách hàng
             for (Customer customer : Customers) {
-                writer.write(
-                        customer.getFullname() + "," + customer.getBirthday() + "," + customer.getPhonenumber() + "," +
-                                customer.getEmail() + "," + customer.getGender() + "," + customer.getAddress() + ","
-                                + customer.Customerid + "," +
-                                customer.getMembership() + "," + customer.getLoyalpoint());
+                String line = String.format(
+                        "%-20s %-12s %-15s %-25s %-10s %-30s %-10s %-15s %-15d",
+                        customer.getFullname(), customer.getBirthday(), customer.getPhonenumber(), customer.getEmail(),
+                        customer.getGender(), customer.getAddress(), customer.Customerid, customer.getMembership(),
+                        customer.getLoyalpoint()
+                );
+                writer.write(line);
                 writer.newLine();
             }
-
+            writer.newLine();  // Dòng trống giữa các bảng
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
+    
 
     public ArrayList<Customer> getListCustomer() {
-        return customers;
+        return Customers;
     }
 
 }

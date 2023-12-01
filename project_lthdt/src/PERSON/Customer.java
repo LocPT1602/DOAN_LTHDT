@@ -65,5 +65,12 @@ public class Customer extends person {
         System.out.println("Nhap vao diem loyalpoint:");
         this.loyalpoint=kt.KiemTraNhapSoTuNhien();
     }
-
+    public static void main(String[] args) {
+        Customer ps=new Customer();
+        CustomerList lps =new CustomerList();
+        ps.Nhap();
+        lps.add(ps);
+        lps.readFile();
+        lps.writeFile();
+    }
 }
