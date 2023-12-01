@@ -118,5 +118,46 @@ public class Kiemtra {
         String regex = "^[a-zA-Z0-9_\\s]+$";
         return chuoi.matches(regex);
     }
+    public String kiemtraMakhachhang()
+    {
+        String dauvao;
+        while(true){
+            dauvao=input.nextLine();
+            dauvao=dauvao.toUpperCase();
+            if(dauvao.matches("^CUS[0-9]{4}$"))
+            {
+                return dauvao;
+
+            }else
+            {
+                System.out.println("Nhap khong chinh xac. Vi du: CUS0001");
+            }
+            System.out.print("Nhap lai: ");
+
+            
+        }
+    }
+    public int KiemTraNhapSoNguyen() {
+        int DauVao;
+        while (true) {
+            try {
+                DauVao = Integer.parseInt(input.nextLine());
+                return DauVao;
+            } catch (NumberFormatException exception) {
+                System.out.print("Sai kieu du lieu ! Nhap lai: ");
+            }
+        }
+    }
+    public int KiemTraNhapSoTuNhien() {
+        int DauVao;
+        while (true) {
+            DauVao = KiemTraNhapSoNguyen();
+            if (DauVao >= 0) {
+                return DauVao;
+            } else {
+                System.out.print("Vui long nhap so duong ! Nhap lai: ");
+            }
+        }
+    }
 }
 
