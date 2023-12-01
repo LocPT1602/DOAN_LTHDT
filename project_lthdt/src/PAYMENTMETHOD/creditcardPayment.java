@@ -1,3 +1,5 @@
+package PAYMENTMETHOD;
+
 public class creditcardPayment extends payment {
 		private String sothe, tenthe;
 
