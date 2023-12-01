@@ -1,6 +1,4 @@
 
-
-
 public class Account {
     public String password;
     public String username;
@@ -43,6 +41,8 @@ public class Account {
     }
 
     public static void main(String[] args) {
-
     }
 }
+    
+ 
+

@@ -4,12 +4,12 @@ public class Customer extends person {
     public String Customerid;
     public String membership;
     public int loyalpoint;
-    public Customer(String fullname, String birthday, String phonenumber, String email, String gender, Address address,
-            String customerid, String membership, int loyalpoint) {
-        super(fullname, birthday, phonenumber, email, gender, address);
+    public Customer(String fullname, String birthday, String string, String email, String gender, Address address1,
+            String customerid, String membership, int i) {
+        super(fullname, birthday, string, email, gender, address1);
         Customerid = customerid;
         this.membership = membership;
-        this.loyalpoint = loyalpoint;
+        this.loyalpoint = i;
     }
     public Customer(String customerid, String membership, int loyalpoint) {
         Customerid = customerid;
