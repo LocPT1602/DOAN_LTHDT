@@ -1,4 +1,4 @@
-package daoop;
+package PRODUCTS;
 
 import java.util.Scanner;
 
