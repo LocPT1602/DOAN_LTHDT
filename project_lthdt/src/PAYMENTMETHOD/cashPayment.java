@@ -1,3 +1,5 @@
+package PAYMENTMETHOD;
+
 public class cashPayment extends payment{
 		private String tenthungan;
 		private int sotien;
