@@ -1,4 +1,6 @@
-package project_lthdt.PERSON;
+package PERSON;
+
+import MAIN.Kiemtra;
 
 public class person {
     protected String fullname;
@@ -7,6 +9,7 @@ public class person {
     protected String email;
     protected String gender;
     protected Address address =new Address();
+    Kiemtra kt =new Kiemtra();
 
 
 public person(String fullname, String birthday, String phonenumber, String email, String gender, Address address) {
@@ -69,17 +72,33 @@ public  int getAge(){
 }
 public void Nhap() {
     System.out.println("Nhap ten:");
-    setFullname(fullname);
+    this.fullname=kt.KiemTraNhapTen();
     System.out.println("Nhap ngay sinhdang d/m/y:");
-    setBirthday(birthday);
+    this.birthday=kt.nhapNgay();
     System.out.println("Nhap sdt:");
-    setPhonenumber(phonenumber);
+    this.phonenumber=kt.kiemtraNhapsdt();
     System.out.println("Nhap email:");
-    setEmail(email);
+    this.email=kt.nhapEmail();
     System.out.println("Nhap gioi tinh:");
-    setGender(gender);
-    
+    this.gender=kt.ktNhapGioiTinh();
+    address.Nhap();
     
 }
-
+public void Xuat() {
+    System.out.println("Ten:"+this.fullname);
+    System.out.println("Ngay sinh :"+this.birthday);
+    System.out.println("Sdt:"+this.phonenumber);
+    System.out.println("Email:"+this.email);
+    System.out.println("Gioi tinh: "+this.gender);
+    System.out.println("Dia chi: "+this.address.toString());
+}
+@Override
+public String toString() {
+    return "person [fullname=" + fullname + ", birthday=" + birthday + ", phonenumber=" + phonenumber + ", email="
+            + email + ", gender=" + gender + ", address=" + address + "]";
+}
+public static void main(String[] args) {
+    person ps = new person();
+    ps.Nhap();
+}
 }
