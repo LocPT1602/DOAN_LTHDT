@@ -1,5 +1,4 @@
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,11 +20,12 @@ class ListAccount implements Iterable<Account> {
 
     public void readAccount() throws IOException {
         // Thay đổi đường dẫn tới file thực tế trên hệ thống của bạn
-        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListProduct.txt";
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 // Xử lý dòng đọc từ file và tạo đối tượng Account
                 // Thêm tài khoản vào danh sách
                 // ...
@@ -53,12 +53,13 @@ class ListAccount implements Iterable<Account> {
     }
 
     public void writeAccount() throws IOException {
-        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListProduct.txt";
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Account account : accounts) {
                 writer.write(account.getUsername() + " " + account.getPassword());
                 writer.newLine();
+                System.out.println("Đã ghi vào file thành công");
             }
         }
     }
