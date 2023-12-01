@@ -159,5 +159,41 @@ public class Kiemtra {
             }
         }
     }
+    public String kiemtraManhanvien()
+    {
+        String dauvao;
+        while(true){
+            dauvao=input.nextLine();
+            dauvao=dauvao.toUpperCase();
+            if(dauvao.matches("^EMP[0-9]{3}$"))
+            {
+                return dauvao;
+
+            }else
+            {
+                System.out.println("Nhap khong chinh xac. Vi du: EMP001");
+            }
+            System.out.print("Nhap lai: ");
+
+            
+        }
+    }
+    public double nhapDoubleDuong() {
+        double soDouble;
+        while (true) {
+  
+            try {
+                soDouble = Double.parseDouble(input.nextLine());
+
+                if (soDouble > 0) {
+                    return soDouble;
+                } else {
+                    System.out.println("khong phai so duong! Nhap lai.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("khong phai kieu double! Nhap lai.");
+            }
+        }
+    }
 }
 
