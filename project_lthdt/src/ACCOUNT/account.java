@@ -1,4 +1,8 @@
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> eda5e290fb9823c2b833bf5b6a4befb52683b711
 public class Account {
     public String password;
     public String username;

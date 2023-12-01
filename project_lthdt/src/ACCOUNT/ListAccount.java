@@ -1,8 +1,8 @@
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import MAIN.Kiemtra;
 
 class ListAccount implements Iterable<Account> {
     private ArrayList<Account> accounts;
@@ -18,10 +18,14 @@ class ListAccount implements Iterable<Account> {
         n++;
     }
 
-    public void readAccount(String filePath) throws IOException {
+    public void readAccount() throws IOException {
+        // Thay đổi đường dẫn tới file thực tế trên hệ thống của bạn
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 // Xử lý dòng đọc từ file và tạo đối tượng Account
                 // Thêm tài khoản vào danh sách
                 // ...
@@ -48,11 +52,14 @@ class ListAccount implements Iterable<Account> {
         }
     }
 
-    public void writeAccount(String filePath) throws IOException {
+    public void writeAccount() throws IOException {
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Account account : accounts) {
-                // Ghi thông tin tài khoản vào file
-                // ...
+                writer.write(account.getUsername() + " " + account.getPassword());
+                writer.newLine();
+                System.out.println("Đã ghi vào file thành công");
             }
         }
     }
@@ -68,7 +75,7 @@ class ListAccount implements Iterable<Account> {
 
         try {
             // Đọc danh sách tài khoản từ file
-            listAccount.readAccount("path/to/accounts.txt");
+            listAccount.readAccount();
 
             // In danh sách tài khoản ra màn hình
             listAccount.printAcc();
@@ -77,7 +84,7 @@ class ListAccount implements Iterable<Account> {
             listAccount.deleteAccount("usernameToDelete");
 
             // Ghi danh sách tài khoản vào file
-            listAccount.writeAccount("path/to/accounts_updated.txt");
+            listAccount.writeAccount();
         } catch (IOException e) {
             e.printStackTrace();
         }

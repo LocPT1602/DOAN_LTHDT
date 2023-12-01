@@ -1,5 +1,4 @@
 
-
 import java.util.Scanner;
 
 public class Admin extends Account {
@@ -11,6 +10,14 @@ public class Admin extends Account {
     }
 
     public Admin(String password, String username, String confirm) {
+        super();
+    }
+
+    public void AddEmplAccount() {
+
+    }
+
+    public void DeleteEmplAccount() {
 
     }
 
@@ -53,6 +60,8 @@ public class Admin extends Account {
             System.out.println("5 : Thông tin khách hàng");
             System.out.println("6 : Hóa đơn");
             System.out.println("7 : Thêm nhà cung cấp");
+            System.out.println("8 : Thêm tài khoản nhân viên");
+            System.out.println("9 : Xóa tài khoản nhân viên");
             System.out.println("0 : Thoát");
             System.out.println("----------------------------------");
             System.out.print("Nhập lựa chọn : ");
@@ -77,6 +86,12 @@ public class Admin extends Account {
 
                     break;
                 case 7:
+
+                    break;
+                case 8:
+
+                    break;
+                case 9:
 
                     break;
                 case 0:
