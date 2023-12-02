@@ -38,7 +38,8 @@ public class order {
         this.orderConfirmed = orderConfirmed;
         this.status = status;
     }
- Scanner scanner = new Scanner(System.in);
+
+    Scanner scanner = new Scanner(System.in);
 
     // Getter và Setter cho các thuộc tính
     public String getorderCode() {
@@ -49,13 +50,14 @@ public class order {
         this.orderCode = scanner.nextLine();
     }
 
-    public String getStatus(){
+    public String getStatus() {
         return status;
     }
 
     public void setstatus(String status) {
         this.status = status;
     }
+
     public String getCustomerCode() {
         return customerCode;
     }
@@ -77,7 +79,8 @@ public class order {
     }
 
     public void setorderDate(String orderDate) {
-        this.orderDate = scanner.nextLine();    }
+        this.orderDate = scanner.nextLine();
+    }
 
     public List<SanPham> getSanPhamList() {
         return SanPhamList;
@@ -92,7 +95,8 @@ public class order {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = scanner.nextInt();    }
+        this.quantity = scanner.nextInt();
+    }
 
     public double getTotalValue() {
         return totalValue;
@@ -149,14 +153,14 @@ public class order {
         setEmployeeCode(employeeCode);
         System.out.println("Ngay dat hang: ");
         setorderDate(orderDate);
-        //...
+        // ...
     }
 
     // Phương thức xuất thông tin đơn hàng
     public void displayorderInfo() {
         // Hiển thị thông tin đơn hàng ra màn hình
         System.out.println("Mã đơn hàng: " + orderCode);
-        //...
+        // ...
     }
 
     // Ghi đè phương thức toString()
@@ -179,6 +183,6 @@ public class order {
 
     public static void main(String[] args) {
         order order = new order();
-       
+
     }
 }

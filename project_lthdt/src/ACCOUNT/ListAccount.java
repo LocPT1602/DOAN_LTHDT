@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-
 import MAIN.Kiemtra;
 
 class ListAccount implements Iterable<account> {
@@ -38,10 +37,15 @@ class ListAccount implements Iterable<account> {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                // Xử lý dòng đọc từ file và tạo đối tượng Account
-                // Thêm tài khoản vào danh sách
-                // ...
+                String[] parts = line.split(" ");
+                if (parts.length >= 2) {
+                    String username = parts[1];
+                    String password = parts[0];
+                    account account = new account(username, password, "");
+                    addAccount(account);
+                } else {
+                    // Xử lý trường hợp dòng không hợp lệ, nếu cần thiết
+                }
             }
         }
     }
@@ -73,7 +77,6 @@ class ListAccount implements Iterable<account> {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
             for (account account : accounts) {
-                writer.newLine();
                 writer.write(account.getUsername() + " " + account.getPassword());
                 writer.newLine();
             }
