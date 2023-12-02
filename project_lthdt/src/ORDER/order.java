@@ -183,6 +183,8 @@ public class order {
 
     public static void main(String[] args) {
         order order = new order();
+        order.inputorderInfo();
+        order.toString();
 
     }
 }

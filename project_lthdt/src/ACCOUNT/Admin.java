@@ -2,6 +2,9 @@
 import java.io.IOException;
 import java.util.Scanner;
 import PERSON.CustomerList;
+import PERSON.Employeelist;
+import ORDER.billdetailList;
+
 import MAIN.Kiemtra;
 
 public class Admin extends account {
@@ -9,6 +12,8 @@ public class Admin extends account {
     int choose;
     ListAccount list = new ListAccount();
     CustomerList cusList = new CustomerList();
+    Employeelist empList = new Employeelist();
+    billdetailList billList = new billdetailList();
     Kiemtra kt = new Kiemtra();
 
     public Admin() {
@@ -82,16 +87,76 @@ public class Admin extends account {
     }
 
     public void InforEmployee() {
+        // try {
+        // empList.readEmployeeFile();
+        // } catch (Exception e) {
+        // // Xử lý ngoại lệ chung hoặc hiển thị thông báo
+        // System.err.println("Lỗi đọc thông tin khách hàng: " + e.getMessage());
+        // }
+        int exit;
+        do {
+            System.out.println("-----------------------------+");
+            System.out.println("1 : Xem thong tin ca nhan    |");
+            System.out.println("2 : xoa thong tin            |");
+            System.out.println("3 : Them thong tin           |");
+            System.out.println("0 : Thoat                    |");
+            System.out.println("-----------------------------+");
+            int chon = sc.nextInt();
+            System.out.println();
+            switch (chon) {
+                case 1:
+                    empList.displayInfo();
+                    break;
+                case 2:
+                    empList.Xoa();
+                    break;
+                case 3:
+                    empList.Nhap();
+                    break;
+                case 0:
 
+                    break;
+
+                default:
+                    break;
+            }
+            System.out.println("Press : 0 to exit || 1 to continue");
+            exit = sc.nextInt();
+        } while (exit != 0 || exit == 1);
     }
 
     public void InforCustomers() {
-        try {
-            cusList.readFile();
-        } catch (Exception e) {
-            // Xử lý ngoại lệ chung hoặc hiển thị thông báo
-            System.err.println("Lỗi đọc thông tin khách hàng: " + e.getMessage());
-        }
+        int exit;
+        do {
+            System.out.println("-----------------------------+");
+            System.out.println("1 : Xem thong tin Customers  |");
+            System.out.println("2 : xoa thong tin            |");
+            System.out.println("3 : Them thong tin           |");
+            System.out.println("0 : Thoat                    |");
+            System.out.println("-----------------------------+");
+            int chon = sc.nextInt();
+            System.out.println();
+            switch (chon) {
+                case 1:
+                    cusList.readFile();
+                    cusList.getListCustomer();
+                    break;
+                // case 2:
+                // cusList.Xoa();
+                // break;
+                // case 3:
+                // cusList.Nhap();
+                // break;
+                case 0:
+
+                    break;
+
+                default:
+                    break;
+            }
+            System.out.println("Press : 0 to exit || 1 to continue");
+            exit = sc.nextInt();
+        } while (exit != 0 || exit == 1);
     }
 
     public void AddSupplier() {
@@ -99,7 +164,7 @@ public class Admin extends account {
     }
 
     public void Bill() {
-
+        billList.displayBillDetails();
     }
 
     public void AdminManeger() {
@@ -135,7 +200,7 @@ public class Admin extends account {
 
                     break;
                 case 4:
-
+                    InforEmployee();
                     break;
                 case 5:
                     InforCustomers();
