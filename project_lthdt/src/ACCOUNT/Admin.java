@@ -87,12 +87,6 @@ public class Admin extends Account {
     }
 
     public void InforEmployee() {
-        // try {
-        // empList.readEmployeeFile();
-        // } catch (Exception e) {
-        // // Xử lý ngoại lệ chung hoặc hiển thị thông báo
-        // System.err.println("Lỗi đọc thông tin khách hàng: " + e.getMessage());
-        // }
         int exit;
         do {
             System.out.println("-----------------------------+");
