@@ -38,6 +38,21 @@ public class order {
         this.orderConfirmed = orderConfirmed;
         this.status = status;
     }
+    public order()
+    {
+        this.orderCode="";
+        this.customerCode="";
+        this.employeeCode="";
+        this.orderDate="";
+        this.SanPhamList=null;
+        this.quantity=0;
+        this.totalValue=0;
+        this.paymentConfirmed=false;
+        this.orderConfirmed=false;
+        this.status="";
+
+
+    }
 
     Scanner scanner = new Scanner(System.in);
 
