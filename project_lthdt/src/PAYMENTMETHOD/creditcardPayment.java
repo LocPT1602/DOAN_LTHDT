@@ -2,7 +2,7 @@ package PAYMENTMETHOD;
 
 import java.util.Scanner;
 
-public class creditcardPayment extends payment {
+public class creditcardPayment extends Payment {
 		private String sothe, tenthe;
 				Scanner sc = new Scanner(System.in);
 

@@ -5,6 +5,7 @@ public class Payment {
     private int sotien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
+
 	Scanner sc = new Scanner (System.in);
 	
 	public Payment() {
