@@ -6,10 +6,17 @@ public class Payment {
 	private int sotien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
+<<<<<<< HEAD
 	Scanner sc = new Scanner(System.in);
 
 	public Payment()
 	{
+=======
+
+	
+	
+	public Payment() {
+>>>>>>> 5319589781a6e31c65c1ebd241dc8fa068cca63a
 		this.sotien = 0;
 		this.phuongthuc = null;
 		this.trangthai = "Pending";

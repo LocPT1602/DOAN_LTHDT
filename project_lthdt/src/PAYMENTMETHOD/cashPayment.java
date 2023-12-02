@@ -2,10 +2,17 @@ package PAYMENTMETHOD;
 
 import java.util.Scanner;
 
+<<<<<<< HEAD
 public class cashPayment extends Payment {
 	private String tenthungan;
 	private int sotien;
 	private int tienthua;
+=======
+public class cashPayment extends Payment{
+		private String tenthungan;
+		private int sotien;
+		private int tienthua;
+>>>>>>> 5319589781a6e31c65c1ebd241dc8fa068cca63a
 
 	Scanner sc = new Scanner(System.in);
 
