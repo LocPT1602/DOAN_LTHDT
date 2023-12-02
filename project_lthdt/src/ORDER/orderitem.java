@@ -1,12 +1,13 @@
 package ORDER;
-
+import java.util.Scanner;
 public class orderitem {
         private String product; // Tên sản phẩm
         private int quantity; // Số lượng sản phẩm
-    
+    Scanner sc = new Scanner(System.in);
         // Phương thức setter cho thuộc tính product
         public void setProduct(String product) {
-            this.product = product;
+            System.out.println("Nhap san pham: ");
+            this.product = sc.nextLine();
         }
     
         // Phương thức getter cho thuộc tính product
@@ -16,7 +17,8 @@ public class orderitem {
     
         // Phương thức setter cho thuộc tính quantity
         public void setQuantity(int quantity) {
-            this.quantity = quantity;
+            System.out.println("Nhap so luon: ");
+            this.quantity = sc.nextInt();
         }
     
         // Phương thức getter cho thuộc tính quantity
@@ -30,16 +32,7 @@ public class orderitem {
         }
     
         public static void main(String[] args) {
-            // orderitem orderItem = new orderitem();
-            // orderItem.setProduct("Áo thun");
-            // orderItem.setQuantity(3);
-    
-            // double pricePerUnit = 10.99;
-            // double totalValue = orderItem.calculateTotalValue(pricePerUnit);
-    
-            // System.out.println("Sản phẩm: " + orderItem.getProduct());
-            // System.out.println("Số lượng: " + orderItem.getQuantity());
-            // System.out.println("Tổng giá trị sản phẩm: $" + totalValue);
+           
         }
     }   
 

@@ -34,6 +34,7 @@ public class order {
         this.paymentConfirmed = paymentConfirmed;
         this.orderConfirmed = orderConfirmed;
     }
+ Scanner scanner = new Scanner(System.in);
 
     // Getter và Setter cho các thuộc tính
     public String getorderCode() {
@@ -41,16 +42,21 @@ public class order {
     }
 
     public void setorderCode(String orderCode) {
-         Scanner scanner = new Scanner(System.in);
         this.orderCode = scanner.nextLine();
     }
 
+    public String getStatus(){
+        return status;
+    }
+
+    public void setstatus(String status) {
+        this.status = status;
+    }
     public String getCustomerCode() {
         return customerCode;
     }
 
     public void setCustomerCode(String customerCode) {
-         Scanner scanner = new Scanner(System.in);
         this.customerCode = scanner.nextLine();
     }
 
@@ -59,7 +65,6 @@ public class order {
     }
 
     public void setEmployeeCode(String employeeCode) {
-         Scanner scanner = new Scanner(System.in);
         this.employeeCode = scanner.nextLine();
     }
 
@@ -68,7 +73,6 @@ public class order {
     }
 
     public void setorderDate(String orderDate) {
- Scanner scanner = new Scanner(System.in);
         this.orderDate = scanner.nextLine();    }
 
     public List<SanPham> getSanPhamList() {
@@ -84,14 +88,14 @@ public class order {
     }
 
     public void setQuantity(int quantity) {
- Scanner scanner = new Scanner(System.in);
-        this.quantity = scanner.nextLine();    }
+        this.quantity = scanner.nextInt();    }
 
     public double getTotalValue() {
         return totalValue;
     }
 
     public void setTotalValue(double totalValue) {
+        calculateTotalValue();
         this.totalValue = totalValue;
     }
 
@@ -133,10 +137,20 @@ public class order {
     // Phương thức nhập thông tin đơn hàng
     public void inputorderInfo() {
         // Nhập thôgetBillDetailCode
+        System.out.println("Nhap ma don hang: ");
         setorderCode(orderCode);
+        System.out.println("Nhap ma khach hang: ");
         setCustomerCode(customerCode);
-        setCustomerCode(customerCode);
+        System.out.println("Nhap ma nhan vien: ");
+        setEmployeeCode(employeeCode);
+        System.out.println("Ngay dat hang: ");
         setorderDate(orderDate);
+        System.out.println("danh sach san pham: ");
+        setSanPhamList(SanPhamList);
+        System.out.println("Nhap so luong: ");
+        setQuantity(quantity);
+        System.out.println("Tong gia tri don hang: ");
+        setTotalValue(totalValue);
         //...
     }
 
@@ -144,38 +158,34 @@ public class order {
     public void displayorderInfo() {
         // Hiển thị thông tin đơn hàng ra màn hình
         System.out.println("Mã đơn hàng: " + orderCode);
+        System.out.println("Ma khach hang: "+customerCode);
+        System.out.println("Ma nhan vien: " +employeeCode);
+        System.out.println("Ngay dat hang: "+ orderDate);
+        System.out.println("Danh sach san pham da dat: " + SanPhamList);
+        System.out.println("Tong gia tri don hang: 0"+totalValue);
         //...
     }
 
     // Ghi đè phương thức toString()
     @Override
     public String toString() {
-        return "order{" +
-                "orderCode='" + orderCode + '\'' +
-                ", customerCode='" + customerCode + '\'' +
-                ", employeeCode='" + employeeCode + '\'' +
-                ", orderDate='" + orderDate + '\'' +
-                ", SanPhamList=" + SanPhamList +
-                ", quantity=" + quantity +
-                ", totalValue=" + totalValue +
-                ", paymentConfirmed=" + paymentConfirmed +
-                ", orderConfirmed=" + orderConfirmed +
+        return "Don hang{" +
+                "Ma don hang : '" + orderCode + '\'' +
+                ", Ma khach hang: '" + customerCode + '\'' +
+                ", Ma nhan vien: '" + employeeCode + '\'' +
+                ", Ngay dat hang: '" + orderDate + '\'' +
+                ", Danh sach san pham: " + SanPhamList +
+                ", So luong: " + quantity +
+                ", Tong gia tri: " + totalValue +
+                ", Xac nhan thanh toan: " + paymentConfirmed +
+                ", Xac nhan don hang: =" + orderConfirmed +
+                ", Tinh trang don hang: =" + status +
+
                 '}';
     }
 
     public static void main(String[] args) {
         order order = new order();
-        order.setorderCode("DH001");
-        order.setCustomerCode("KH001");
-        order.setEmployeeCode("NV001");
-
-        List<SanPham> SanPham1 = new ArrayList<>();
-        SanPham1.add(new SanPham("SP001", "Sản phẩm 1", 10.0));
-        SanPham1.add(new SanPham("SP002", "Sản phẩm 2", 20.0));
-        order.setSanPhamList(SanPham1);
-
-        order.calculateTotalValue();
-
-        System.out.println(order);
+       
     }
 }

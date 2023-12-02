@@ -10,6 +10,12 @@ public class Bill {
     private double totalAmount; //Tổng cộng
 
     public Bill() {
+        this.billCode = " ";
+        this.productCode = 0;
+        this.productName = "";
+        this.productPrice =0;
+        this.quantity =0;
+        this.totalAmount =0;
     }
 
     public Bill(String billCode, int productCode, String productName, double productPrice, int quantity, double totalAmount) {
@@ -20,15 +26,16 @@ public class Bill {
         this.quantity = quantity;
         this.totalAmount = totalAmount;
     }
+Scanner sc = new Scanner(System.in);
 
     //Get và Set
     public String getBillCode() {
-        Scanner sc = new Scanner();
         return billCode;
     }
 
     public void setBillCode(String billCode) {
-        this.billCode = billCode;
+        System.out.println("Nhap ma hoa don: ");
+        billCode=sc.nextLine();
     }
 
     public int getProductCode() {
@@ -36,7 +43,8 @@ public class Bill {
     }
 
     public void setProductCode(int productCode) {
-        this.productCode = productCode;
+        System.out.println("Nhap ma san pham: ");
+        productCode=sc.nextInt();
     }
 
     public String getProductName() {
@@ -44,7 +52,8 @@ public class Bill {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName;
+        System.out.println("Nhap ten san pham: ");
+        productName=sc.nextLine();
     }
 
     public double getProductPrice() {
@@ -52,7 +61,8 @@ public class Bill {
     }
 
     public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+        System.out.println("Nhap gia san pham: ");
+        productPrice=sc.nextDouble();
     }
 
     public int getQuantity() {
@@ -60,7 +70,8 @@ public class Bill {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        System.out.println("so luong: ");
+        quantity=sc.nextInt();
     }
 
     public double getTotalAmount() {
@@ -68,6 +79,5 @@ public class Bill {
     }
 
     public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
+    this.totalAmount=totalAmount;    }
 }

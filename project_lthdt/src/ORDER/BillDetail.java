@@ -3,7 +3,7 @@ package ORDER;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-
+import java.util.Scanner;
 public class BillDetail  {
     private int billDetailCode; // Mã chi tiết hóa đơn
     private int customerCode; // Mã khách hàng
@@ -12,8 +12,14 @@ public class BillDetail  {
     private String paymentMethod; // Phương thức thanh toán
     private int quantity; // Số lượng
     private LocalDate billDate; // Ngày trên hóa đơn
-
+Scanner sc=new Scanner(System.in);
     public BillDetail() {
+        this.billDetailCode=0;
+        this.customerCode=0;
+        this.employeeCode=0;
+        this.paymentMethod=" ";
+        this.quantity=0;
+        this.billDate=null;
     }
 
     public BillDetail(int billDetailCode, int customerCode, int employeeCode, Bill bill, String paymentMethod, int quantity, LocalDate billDate) {
@@ -32,7 +38,7 @@ public class BillDetail  {
     }
 
     public void setBillDetailCode(int billDetailCode) {
-        this.billDetailCode = billDetailCode;
+        billDetailCode=sc.nextInt();
     }
 
     public int getCustomerCode() {
@@ -40,7 +46,7 @@ public class BillDetail  {
     }
 
     public void setCustomerCode(int customerCode) {
-        this.customerCode = customerCode;
+        this.customerCode = sc.nextInt();
     }
 
     public int getEmployeeCode() {
@@ -48,7 +54,7 @@ public class BillDetail  {
     }
 
     public void setEmployeeCode(int employeeCode) {
-        this.employeeCode = employeeCode;
+        this.employeeCode = sc.nextInt();
     }
 
     public Bill getBill() {
@@ -64,7 +70,7 @@ public class BillDetail  {
     }
 
     public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+        this.paymentMethod = sc.nextLine();
     }
 
     public int getQuantity() {
@@ -72,7 +78,7 @@ public class BillDetail  {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        this.quantity = sc.nextInt();
     }
 
     public LocalDate getBillDate() {
@@ -80,7 +86,7 @@ public class BillDetail  {
     }
 
     public void setBillDate(LocalDate billDate) {
-        this.billDate = billDate;
+        this.billDate = LocalDate.now();
     }
 
     // Phương thức tính tổng giá trị hóa đơn
@@ -104,10 +110,10 @@ public class BillDetail  {
     }
 
     // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
-    public void writeToFile(String fileName) {
+    public void writeToFile(String fileName, String billDetail) {
         try {
             FileWriter writer = new FileWriter(fileName);
-            writer.write(getBillDetail());
+            writer.write(billDetail);
             writer.close();
             System.out.println("Thông tin hóa đơn đã được ghi vào tập tin: " + fileName);
         } catch (IOException e) {
@@ -115,22 +121,22 @@ public class BillDetail  {
             e.printStackTrace();
         }
     }
- public static void main(String[] args) {
-        BillDetail billDetail = new BillDetail();
-        billDetail.setBillDetailCode(1);
-        billDetail.setCustomerCode(123);
-        billDetail.setEmployeeCode(456);
-
-        // Tạo đối tượng Bill và gán vào biến bill
-        Bill bill = new Bill();
-        bill.setBillCode("ABC123");
-        bill.setProductPrice(10.0);
-
-        billDetail.setBill(bill);
-        billDetail.setPaymentMethod("Credit Card");
-        billDetail.setQuantity(5);
-        billDetail.setBillDate(LocalDate.now());
-
-        billDetail.writeToFile("billdetail.txt");
+        public static void main(String[] args) {
+            BillDetail billDetail = new BillDetail();
+            billDetail.setBillDetailCode(1);
+            billDetail.setCustomerCode(123);
+            billDetail.setEmployeeCode(456);
+    
+            // Tạo đối tượng Bill và gán vào biến bill
+            Bill bill = new Bill();
+            bill.setBillCode("ABC123");
+            bill.setProductPrice(10.0);
+            String fileName="billdetail.txt";
+            billDetail.setBill(bill);
+            billDetail.setPaymentMethod("Credit Card");
+            billDetail.setQuantity(5);
+            billDetail.setBillDate(LocalDate.now());
+    
+            billDetail.writeToFile("billdetail.txt", billDetail.toString());
+        }
     }
-}
