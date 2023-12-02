@@ -1,6 +1,6 @@
 package PAYMENTMETHOD;
 
-public class paymentMenu{
+public class paymentMenu {
   private Payment[] mangtt;
-  
+
 }

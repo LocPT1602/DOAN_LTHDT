@@ -46,6 +46,23 @@ class ListAccount implements Iterable<Account> {
         }
     }
 
+    public void loadDataFromFile() throws IOException {
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Xử lý dòng và tạo đối tượng Account
+                // Thêm đối tượng Account vào ArrayList
+                // Ví dụ:
+                String[] parts = line.split(" ");
+                String username = parts[0];
+                String password = parts[1];
+                Account account = new Account(username, password, "");
+                addAccount(account);
+            }
+        }
+    }
+
     public void printAcc() {
         for (Account account : accounts) {
             System.out.println("tai khoan la : " + account.username);
@@ -63,7 +80,6 @@ class ListAccount implements Iterable<Account> {
                 break; // Break once the account is found and removed
             }
         }
-
         writeAccount();
         System.out.println("Đã xóa tài khoản thành công.");
     }
@@ -91,17 +107,13 @@ class ListAccount implements Iterable<Account> {
 
         try {
             // Đọc danh sách tài khoản từ file
-            // listAccount.readAccount();
-            listAccount.printAcc();
+            listAccount.readAccount();
 
             // // In danh sách tài khoản ra màn hình
             // listAccount.printAcc();
 
-            // // Xóa một tài khoản
-            // listAccount.deleteAccount("usernameToDelete");
-
             // Ghi danh sách tài khoản vào file
-            listAccount.writeAccount();
+            // listAccount.writeAccount();
         } catch (IOException e) {
             e.printStackTrace();
         }

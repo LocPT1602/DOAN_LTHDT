@@ -7,23 +7,27 @@ import PRODUCTS.SanPham;
 import ORDER.BillDetail;
 
 public class order {
-    private String orderCode;            // Mã đơn hàng
-    private String customerCode;         // Mã khách hàng
-    private String employeeCode;         // Mã nhân viên
-    private String orderDate;            // Ngày đặt hàng
-    private List<SanPham> SanPhamList;   // Danh sách sản phẩm
-    private int quantity;                // Số lượng sản phẩm
-    private double totalValue;           // Tổng giá trị đơn hàng
-    private boolean paymentConfirmed;    // Xác nhận thanh toán
-    private boolean orderConfirmed;      // Xác nhận đơn hàng
-    private String status;               //Trạng thái đơn hàng
-        BillDetail billdetail = new BillDetail();
+    private String orderCode; // Mã đơn hàng
+    private String customerCode; // Mã khách hàng
+    private String employeeCode; // Mã nhân viên
+    private String orderDate; // Ngày đặt hàng
+    private List<SanPham> SanPhamList; // Danh sách sản phẩm
+    private int quantity; // Số lượng sản phẩm
+    private double totalValue; // Tổng giá trị đơn hàng
+    private boolean paymentConfirmed; // Xác nhận thanh toán
+    private boolean orderConfirmed; // Xác nhận đơn hàng
+    private String status; // Trạng thái đơn hàng
+    BillDetail billdetail = new BillDetail();
+    Scanner scanner = new Scanner(System.in);
 
     public order() {
         SanPhamList = new ArrayList<>();
         this.status = "Chưa xác nhận";
     }
-    public order(String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed) {
+
+    public order(String orderCode, String customerCode, String employeeCode, String orderDate,
+            List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed,
+            boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
         this.customerCode = customerCode;
         this.employeeCode = employeeCode;
@@ -33,6 +37,7 @@ public class order {
         this.totalValue = totalValue;
         this.paymentConfirmed = paymentConfirmed;
         this.orderConfirmed = orderConfirmed;
+        this.status = status;
     }
 
     // Getter và Setter cho các thuộc tính
@@ -41,7 +46,6 @@ public class order {
     }
 
     public void setorderCode(String orderCode) {
-         Scanner scanner = new Scanner(System.in);
         this.orderCode = scanner.nextLine();
     }
 
@@ -50,7 +54,6 @@ public class order {
     }
 
     public void setCustomerCode(String customerCode) {
-         Scanner scanner = new Scanner(System.in);
         this.customerCode = scanner.nextLine();
     }
 
@@ -59,7 +62,6 @@ public class order {
     }
 
     public void setEmployeeCode(String employeeCode) {
-         Scanner scanner = new Scanner(System.in);
         this.employeeCode = scanner.nextLine();
     }
 
@@ -68,8 +70,8 @@ public class order {
     }
 
     public void setorderDate(String orderDate) {
- Scanner scanner = new Scanner(System.in);
-        this.orderDate = scanner.nextLine();    }
+        this.orderDate = scanner.nextLine();
+    }
 
     public List<SanPham> getSanPhamList() {
         return SanPhamList;
@@ -84,8 +86,8 @@ public class order {
     }
 
     public void setQuantity(int quantity) {
- Scanner scanner = new Scanner(System.in);
-        this.quantity = scanner.nextLine();    }
+        this.quantity = scanner.nextInt();
+    }
 
     public double getTotalValue() {
         return totalValue;
@@ -137,14 +139,14 @@ public class order {
         setCustomerCode(customerCode);
         setCustomerCode(customerCode);
         setorderDate(orderDate);
-        //...
+        // ...
     }
 
     // Phương thức xuất thông tin đơn hàng
     public void displayorderInfo() {
         // Hiển thị thông tin đơn hàng ra màn hình
         System.out.println("Mã đơn hàng: " + orderCode);
-        //...
+        // ...
     }
 
     // Ghi đè phương thức toString()
