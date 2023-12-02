@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
+    ListAccount list = new ListAccount();
 
     public Admin() {
         super();
@@ -15,33 +16,44 @@ public class Admin extends Account {
     }
 
     public void AddEmplAccount() {
-        ListAccount list = new ListAccount();
         System.out.print("Nhập tên tài khoản: ");
-        String username = sc.nextLine();
+        setUsername();
         System.out.print("Nhập mật khẩu: ");
-        String password = sc.nextLine();
+        setPassword();
         Account newAccount = new Account(password, username, "");
-        list.addAccount(newAccount);
-        list.printAcc();
-        try {
-            list.writeAccount();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Xử lý ngoại lệ tại đây nếu cần thiết
+
+        if (list.containsAccount(username) != true) {
+            try {
+                list.addAccount(newAccount);
+                list.printAcc();
+                list.writeAccount();
+                System.out.println("Đã ghi vào file thành công");
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Xử lý ngoại lệ tại đây nếu cần thiết
+            }
+        } else {
+            System.out.println("Ten tai khoan da ton tai !");
         }
+
     }
 
     public void DeleteEmplAccount() {
-        ListAccount list = new ListAccount();
-        System.out.print("Nhập tên tài khoản cần xóa: ");
-        String username = sc.nextLine().trim();
-        try {
-            // list.loadAccounts();
-            list.deleteAccount(username);
-            // list.saveAccounts(null);
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Xử lý ngoại lệ tại đây nếu cần thiết
+        sc.nextLine();
+        System.out.print("Nhap ten tai khoan can xoa: ");
+        String usernameToDelete = sc.nextLine().trim();
+
+        // Kiểm tra tên tài khoản có tồn tại hay không
+        if (list.containsAccount(usernameToDelete)) {
+            try {
+                list.deleteAccount(usernameToDelete);
+                list.printAcc();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Xử lý ngoại lệ tại đây nếu cần thiết
+            }
+        } else {
+            System.out.println("Tài khoản không tồn tại. Vui lòng kiểm tra lại.");
         }
     }
 
@@ -90,6 +102,11 @@ public class Admin extends Account {
             System.out.println("----------------------------------");
             System.out.print("Nhập lựa chọn : ");
             choose = sc.nextInt();
+
+            if (choose < 0 || choose > 9) {
+                System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+            }
+
             switch (choose) {
                 case 1:
 
