@@ -6,7 +6,7 @@ public class Employee extends person {
     public double salary;
     public String date;
     public Employee(String fullname, String birthday, String phonenumber, String email, String gender, Address address,
-            String employeeid, String position, int salary, String date) {
+            String employeeid, String position, double salary, String date) {
         super(fullname, birthday, phonenumber, email, gender, address);
         this.employeeid = employeeid;
         this.position = position;
@@ -79,5 +79,13 @@ public class Employee extends person {
         int namvao=Integer.parseInt(date.substring(0,4));
         int namhientai=java.time.Year.now().getValue();
         return namhientai-namvao;
+    }
+    public static void main(String[] args) {
+        Employeelist empl =new Employeelist();
+        Employee emp= new Employee();
+        emp.Nhap();
+        empl.add(emp);
+        empl.readEmployeeFile();
+        empl.writeEmployeeFile();
     }
 }

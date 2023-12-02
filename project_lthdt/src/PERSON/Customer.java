@@ -1,5 +1,4 @@
 package PERSON;
-
 public class Customer extends person {
     public String Customerid;
     public String membership;

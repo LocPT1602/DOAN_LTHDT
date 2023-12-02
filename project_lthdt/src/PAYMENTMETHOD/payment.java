@@ -6,7 +6,7 @@ public class Payment {
 	private String phuongthuc;
 	private String trangthai = "Pending";
 
-	Scanner sc = new Scanner (System.in);
+	
 	
 	public Payment() {
 		this.sotien = 0;
