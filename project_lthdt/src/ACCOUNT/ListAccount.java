@@ -38,25 +38,9 @@ class ListAccount implements Iterable<Account> {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                // Xử lý dòng đọc từ file và tạo đối tượng Account
-                // Thêm tài khoản vào danh sách
-                // ...
-            }
-        }
-    }
-
-    public void loadDataFromFile() throws IOException {
-        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Xử lý dòng và tạo đối tượng Account
-                // Thêm đối tượng Account vào ArrayList
-                // Ví dụ:
                 String[] parts = line.split(" ");
-                String username = parts[0];
-                String password = parts[1];
+                String username = parts[1];
+                String password = parts[0];
                 Account account = new Account(username, password, "");
                 addAccount(account);
             }
@@ -89,7 +73,6 @@ class ListAccount implements Iterable<Account> {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
             for (Account account : accounts) {
-                writer.newLine();
                 writer.write(account.getUsername() + " " + account.getPassword());
                 writer.newLine();
             }

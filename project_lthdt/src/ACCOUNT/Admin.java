@@ -24,9 +24,10 @@ public class Admin extends Account {
 
         if (list.containsAccount(username) != true) {
             try {
-                list.loadDataFromFile();
+                // list.readAccount();
+
                 list.addAccount(newAccount);
-                list.printAcc();
+                // list.printAcc();
                 list.writeAccount();
                 System.out.println("Da ghi vao file thanh cong");
             } catch (IOException e) {
@@ -47,7 +48,7 @@ public class Admin extends Account {
         // Kiểm tra tên tài khoản có tồn tại hay không
         if (list.containsAccount(usernameToDelete)) {
             try {
-                list.loadDataFromFile();
+                // list.readAccount();
                 list.deleteAccount(usernameToDelete);
                 list.printAcc();
             } catch (IOException e) {
@@ -147,8 +148,18 @@ public class Admin extends Account {
         } while (exit != 0);
     }
 
+    public void docFile() {
+        try {
+            list.readAccount();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
+
         Admin ad = new Admin();
+        ad.docFile();
         ad.AdminManeger();
     }
 
