@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class Employee extends Account {
+public class Employee extends account {
     Scanner sc = new Scanner(System.in);
 
     public Employee() {
@@ -32,14 +32,14 @@ public class Employee extends Account {
         int exit, choose;
         do {
             System.out.println("------------------------------");
-            System.out.println("1 : Tao hoa don              |");
-            System.out.println("2 : Tim san pham             |");
-            System.out.println("3 : Thong tin khach hang     |");
-            System.out.println("4 : Hoa don                  |");
-            System.out.println("5 : Them nha cung cap        |");
-            System.out.println("0 : Thoat                    |");
+            System.out.println("1 : Tạo hóa đơn              |");
+            System.out.println("2 : Tìm sản phẩm             |");
+            System.out.println("3 : Thông tin khách hàng     |");
+            System.out.println("4 : Hóa đơn                  |");
+            System.out.println("5 : Thêm nhà cung cấp        |");
+            System.out.println("0 : Thoát                    |");
             System.out.println("------------------------------");
-            System.out.print("Nhap lua chon : ");
+            System.out.print("Nhập lựa chọn : ");
             choose = sc.nextInt();
             switch (choose) {
                 case 1:

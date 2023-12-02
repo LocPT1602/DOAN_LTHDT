@@ -2,7 +2,7 @@ package PAYMENTMETHOD;
 
 import java.util.Scanner;
 
-public class cashPayment extends Payment {
+public class cashPayment extends payment {
 	private String tenthungan;
 	private int sotien;
 	private int tienthua;

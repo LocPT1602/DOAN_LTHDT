@@ -1,21 +1,17 @@
 package PAYMENTMETHOD;
 
-import java.util.Scanner;
-
-public class Payment {
+public class payment {
 	private int sotien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
-	Scanner sc = new Scanner(System.in);
 
-	public Payment()
-	{
+	public payment() {
 		this.sotien = 0;
 		this.phuongthuc = null;
 		this.trangthai = "Pending";
 	}
 
-	public Payment(int sotien, String phuongthuc, String trangthai) {
+	public payment(int sotien, String phuongthuc, String trangthai) {
 		this.sotien = sotien;
 		this.phuongthuc = phuongthuc;
 		this.trangthai = trangthai;

@@ -2,7 +2,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Admin extends Account {
+public class Admin extends account {
     Scanner sc = new Scanner(System.in);
     int choose;
     ListAccount list = new ListAccount();
@@ -16,20 +16,18 @@ public class Admin extends Account {
     }
 
     public void AddEmplAccount() {
-        System.out.print("Nhap ten tai khoan : ");
+        System.out.print("Nhập tên tài khoản: ");
         setUsername();
-        System.out.print("Nhap mat khau : ");
+        System.out.print("Nhập mật khẩu: ");
         setPassword();
-        Account newAccount = new Account(password, username, "");
+        account newAccount = new account(password, username, "");
 
         if (list.containsAccount(username) != true) {
             try {
-                // list.readAccount();
-
                 list.addAccount(newAccount);
-                // list.printAcc();
+                list.printAcc();
                 list.writeAccount();
-                System.out.println("Da ghi vao file thanh cong");
+                System.out.println("Đã ghi vào file thành công");
             } catch (IOException e) {
                 e.printStackTrace();
                 // Xử lý ngoại lệ tại đây nếu cần thiết
@@ -48,7 +46,6 @@ public class Admin extends Account {
         // Kiểm tra tên tài khoản có tồn tại hay không
         if (list.containsAccount(usernameToDelete)) {
             try {
-                // list.readAccount();
                 list.deleteAccount(usernameToDelete);
                 list.printAcc();
             } catch (IOException e) {
@@ -56,7 +53,7 @@ public class Admin extends Account {
                 // Xử lý ngoại lệ tại đây nếu cần thiết
             }
         } else {
-            System.out.println("Tai khoan khong ton tai. Vui long kiem tra lai.");
+            System.out.println("Tài khoản không tồn tại. Vui lòng kiểm tra lại.");
         }
     }
 
@@ -91,23 +88,23 @@ public class Admin extends Account {
     public void AdminManeger() {
         int exit;
         do {
-            System.out.println("---------------------------------+");
-            System.out.println("1 : Xoa san pham                 |");
-            System.out.println("2 : Them san pham                |");
-            System.out.println("3 : Tao hoa don                  |");
-            System.out.println("4 : Thong tin nhan vien          |");
-            System.out.println("5 : Thong tin khach hang         |");
-            System.out.println("6 : Hoa don                      |");
-            System.out.println("7 : Them nha cung cap            |");
-            System.out.println("8 : Them tai khoan nhan vien     |");
-            System.out.println("9 : Xoa tai khoan nhan vien      |");
-            System.out.println("0 : Thoat                        |");
-            System.out.println("---------------------------------+");
-            System.out.print("Nhap lua chon : ");
+            System.out.println();
+            System.out.println("1 : Xóa sản Phẩm ");
+            System.out.println("2 : Thêm sản phẩm ");
+            System.out.println("3 : Tạo hóa đơn");
+            System.out.println("4 : Thông tin nhân viên");
+            System.out.println("5 : Thông tin khách hàng");
+            System.out.println("6 : Hóa đơn");
+            System.out.println("7 : Thêm nhà cung cấp");
+            System.out.println("8 : Thêm tài khoản nhân viên");
+            System.out.println("9 : Xóa tài khoản nhân viên");
+            System.out.println("0 : Thoát");
+            System.out.println("----------------------------------");
+            System.out.print("Nhập lựa chọn : ");
             choose = sc.nextInt();
 
             if (choose < 0 || choose > 9) {
-                System.out.println("Lua chon khong hop le. Vui long chon lai.");
+                System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
             }
 
             switch (choose) {
@@ -143,23 +140,13 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Nhan 0 de ket thuc !");
+            System.out.println("Nhấn 0 để thoát khỏi hoàn toàn !");
             exit = sc.nextInt();
         } while (exit != 0);
     }
 
-    public void docFile() {
-        try {
-            list.readAccount();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
-
         Admin ad = new Admin();
-        ad.docFile();
         ad.AdminManeger();
     }
 
