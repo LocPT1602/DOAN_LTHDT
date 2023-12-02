@@ -1,18 +1,21 @@
 package ORDER;
 
 import java.util.Scanner;
+
 public class Bill {
-    private String billCode; //Mã hóa đơn
-    private int productCode; //Mã sản phẩm
-    private String productName; //Tên sản phẩm
-    private double productPrice; //Giá sản phẩm
-    private int quantity; //Số lượng
-    private double totalAmount; //Tổng cộng
+    private String billCode; // Mã hóa đơn
+    private int productCode; // Mã sản phẩm
+    private String productName; // Tên sản phẩm
+    private double productPrice; // Giá sản phẩm
+    private int quantity; // Số lượng
+    private double totalAmount; // Tổng cộng
+    Scanner sc = new Scanner(System.in);
 
     public Bill() {
     }
 
-    public Bill(String billCode, int productCode, String productName, double productPrice, int quantity, double totalAmount) {
+    public Bill(String billCode, int productCode, String productName, double productPrice, int quantity,
+            double totalAmount) {
         this.billCode = billCode;
         this.productCode = productCode;
         this.productName = productName;
@@ -21,9 +24,8 @@ public class Bill {
         this.totalAmount = totalAmount;
     }
 
-    //Get và Set
+    // Get và Set
     public String getBillCode() {
-        Scanner sc = new Scanner();
         return billCode;
     }
 
