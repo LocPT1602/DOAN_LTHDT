@@ -7,7 +7,7 @@ import ORDER.billdetailList;
 
 import MAIN.Kiemtra;
 
-public class Admin extends account {
+public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
     ListAccount list = new ListAccount();
@@ -37,7 +37,7 @@ public class Admin extends account {
             System.out.println("Mat khau khong duoc chua khoang trang");
             setPassword();
         }
-        account newAccount = new account(password, username, "");
+        Account newAccount = new Account(password, username, "");
 
         if (list.containsAccount(username) != true) {
             try {
@@ -87,12 +87,6 @@ public class Admin extends account {
     }
 
     public void InforEmployee() {
-        // try {
-        // empList.readEmployeeFile();
-        // } catch (Exception e) {
-        // // Xử lý ngoại lệ chung hoặc hiển thị thông báo
-        // System.err.println("Lỗi đọc thông tin khách hàng: " + e.getMessage());
-        // }
         int exit;
         do {
             System.out.println("-----------------------------+");
