@@ -1,17 +1,17 @@
 package PAYMENTMETHOD;
 
-public class payment {
+public class Payment {
 	private int sotien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
 
-	public payment() {
+	public Payment() {
 		this.sotien = 0;
 		this.phuongthuc = null;
 		this.trangthai = "Pending";
 	}
 
-	public payment(int sotien, String phuongthuc, String trangthai) {
+	public Payment(int sotien, String phuongthuc, String trangthai) {
 		this.sotien = sotien;
 		this.phuongthuc = phuongthuc;
 		this.trangthai = trangthai;
@@ -41,14 +41,14 @@ public class payment {
 		this.trangthai = trangthai;
 	}
 
-	@Override
+	
 	public void Nhap() {
 		System.out.println(getTrangthai() + "...");
 	}
 
 	@Override
 	public String toString() {
-		returnb"\nPhuong thuc: " + phuongthuc ;
+		return"\nPhuong thuc: " + phuongthuc ;
 				
 	}
 }

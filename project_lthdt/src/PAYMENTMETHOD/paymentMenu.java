@@ -1,13 +1,15 @@
 package PAYMENTMETHOD;
 
+import java.util.Scanner;
+
 public class PaymentMenu {
-  private payment[] mangtt;
-Scanner sc = new Scanner(System.in);
-	public Paymentmenu() {
+  private Payment[] mangtt;
+	Scanner sc = new Scanner(System.in);
+	public PaymentMenu() {
 		this.mangtt = null;
 	}
 
-	public Paymentmenu(int size) {
+	public PaymentMenu(int size) {
 		this.mangtt = new Payment[size];
 	}
 	public void Menu(int c) {
@@ -53,7 +55,7 @@ Scanner sc = new Scanner(System.in);
 		}
 	}
 	public static void main(String[] args) {
-		Paymentmenu pmm = new Paymentmenu(2);
+		PaymentMenu pmm = new PaymentMenu(2);
 		pmm.selectPaymentmethod();
 	}
 }
