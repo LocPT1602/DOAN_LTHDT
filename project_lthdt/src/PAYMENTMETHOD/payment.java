@@ -43,14 +43,12 @@ public class payment {
 
 	@Override
 	public void Nhap() {
-		super.Nhap();
-		System.out.println("Cap nhat gia tri thanh toan: ");
+		System.out.println(getTrangthai() + "...");
 	}
 
 	@Override
 	public String toString() {
-		return "So tien=" + sotien +
-				"\nPhuong thuc=" + phuongthuc +
-				"\nTrang thai=" + trangthai;
+		returnb"\nPhuong thuc: " + phuongthuc ;
+				
 	}
 }
