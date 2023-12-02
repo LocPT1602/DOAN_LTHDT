@@ -1,9 +1,10 @@
-
+import java.util.Scanner;
 
 public class Account {
     public String password;
     public String username;
     public String confirm;
+    Scanner sc = new Scanner(System.in);
 
     public Account() {
         password = "";
@@ -29,16 +30,16 @@ public class Account {
         return confirm;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword() {
+        password = sc.nextLine();
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername() {
+        username = sc.nextLine();
     }
 
-    public void setConfirm(String confirm) {
-        this.confirm = confirm;
+    public void setConfirm() {
+        confirm = sc.nextLine();
     }
 
     public static void main(String[] args) {

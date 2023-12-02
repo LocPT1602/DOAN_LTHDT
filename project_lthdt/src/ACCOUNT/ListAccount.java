@@ -2,6 +2,8 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import MAIN.Kiemtra;
 
 class ListAccount implements Iterable<Account> {
@@ -35,27 +37,57 @@ class ListAccount implements Iterable<Account> {
 
     public void printAcc() {
         for (Account account : accounts) {
-            // In thông tin tài khoản ra màn hình
-            // ...
+            System.out.println("tai khoan la : " + account.username);
+            System.out.println("mau khau la : " + account.password);
         }
     }
 
-    public void deleteAccount(String username) {
+    public List<Account> loadAccounts() throws IOException {
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+        List<Account> accounts = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(" ");
+            if (parts.length == 2) {
+                String username = parts[0];
+                String password = parts[1];
+                // boolean confirm = Boolean.parseBoolean(parts[2]);
+                Account account = new Account(username, password, "");
+                accounts.add(account);
+            }
+        }
+        reader.close();
+        return accounts;
+    }
+
+    public void saveAccounts(List<Account> accounts) throws IOException {
+        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
+        for (Account account : accounts) {
+            writer.write(account.getUsername() + " " + account.getPassword());
+            writer.newLine();
+        }
+        writer.close();
+    }
+
+    public void deleteAccount(String username) throws IOException {
+        List<Account> accounts = loadAccounts();
         Iterator<Account> iterator = accounts.iterator();
         while (iterator.hasNext()) {
             Account account = iterator.next();
             if (account.getUsername().equals(username)) {
                 iterator.remove();
-                n--;
                 break;
             }
         }
+        saveAccounts(accounts);
     }
 
     public void writeAccount() throws IOException {
         String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             for (Account account : accounts) {
                 writer.write(account.getUsername() + " " + account.getPassword());
                 writer.newLine();
@@ -75,13 +107,14 @@ class ListAccount implements Iterable<Account> {
 
         try {
             // Đọc danh sách tài khoản từ file
-            listAccount.readAccount();
-
-            // In danh sách tài khoản ra màn hình
+            // listAccount.readAccount();
             listAccount.printAcc();
 
-            // Xóa một tài khoản
-            listAccount.deleteAccount("usernameToDelete");
+            // // In danh sách tài khoản ra màn hình
+            // listAccount.printAcc();
+
+            // // Xóa một tài khoản
+            // listAccount.deleteAccount("usernameToDelete");
 
             // Ghi danh sách tài khoản vào file
             listAccount.writeAccount();

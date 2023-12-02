@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Admin extends Account {
@@ -10,15 +11,38 @@ public class Admin extends Account {
     }
 
     public Admin(String password, String username, String confirm) {
-        super();
+        super(password, username, confirm);
     }
 
     public void AddEmplAccount() {
-
+        ListAccount list = new ListAccount();
+        System.out.print("Nhập tên tài khoản: ");
+        String username = sc.nextLine();
+        System.out.print("Nhập mật khẩu: ");
+        String password = sc.nextLine();
+        Account newAccount = new Account(password, username, "");
+        list.addAccount(newAccount);
+        list.printAcc();
+        try {
+            list.writeAccount();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Xử lý ngoại lệ tại đây nếu cần thiết
+        }
     }
 
     public void DeleteEmplAccount() {
-
+        ListAccount list = new ListAccount();
+        System.out.print("Nhập tên tài khoản cần xóa: ");
+        String username = sc.nextLine().trim();
+        try {
+            // list.loadAccounts();
+            list.deleteAccount(username);
+            // list.saveAccounts(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Xử lý ngoại lệ tại đây nếu cần thiết
+        }
     }
 
     public void DeteteProduct() {
@@ -89,10 +113,10 @@ public class Admin extends Account {
 
                     break;
                 case 8:
-
+                    AddEmplAccount();
                     break;
                 case 9:
-
+                    DeleteEmplAccount();
                     break;
                 case 0:
                     break;
@@ -101,10 +125,12 @@ public class Admin extends Account {
             }
             System.out.println("Nhấn 0 để thoát khỏi hoàn toàn !");
             exit = sc.nextInt();
-        } while (exit == 0);
+        } while (exit != 0);
     }
 
     public static void main(String[] args) {
+        Admin ad = new Admin();
+        ad.AdminManeger();
     }
 
 }
