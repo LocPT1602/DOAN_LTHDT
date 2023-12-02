@@ -1,8 +1,7 @@
 
-
 import java.util.Scanner;
 
-public class Employee extends Account {
+public class Employee extends account {
     Scanner sc = new Scanner(System.in);
 
     public Employee() {

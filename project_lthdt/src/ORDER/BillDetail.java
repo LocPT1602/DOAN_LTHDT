@@ -4,25 +4,28 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
-public class BillDetail  {
+
+public class BillDetail {
     private int billDetailCode; // Mã chi tiết hóa đơn
     private int customerCode; // Mã khách hàng
     private int employeeCode; // Mã nhân viên
-    private Bill bill; // Hóa đơn
+    private bill bill; // Hóa đơn
     private String paymentMethod; // Phương thức thanh toán
     private int quantity; // Số lượng
     private LocalDate billDate; // Ngày trên hóa đơn
-Scanner sc=new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+
     public BillDetail() {
-        this.billDetailCode=0;
-        this.customerCode=0;
-        this.employeeCode=0;
-        this.paymentMethod=" ";
-        this.quantity=0;
-        this.billDate=null;
+        this.billDetailCode = 0;
+        this.customerCode = 0;
+        this.employeeCode = 0;
+        this.paymentMethod = " ";
+        this.quantity = 0;
+        this.billDate = null;
     }
 
-    public BillDetail(int billDetailCode, int customerCode, int employeeCode, Bill bill, String paymentMethod, int quantity, LocalDate billDate) {
+    public BillDetail(int billDetailCode, int customerCode, int employeeCode, bill bill, String paymentMethod,
+            int quantity, LocalDate billDate) {
         this.billDetailCode = billDetailCode;
         this.customerCode = customerCode;
         this.employeeCode = employeeCode;
@@ -32,13 +35,13 @@ Scanner sc=new Scanner(System.in);
         this.billDate = billDate;
     }
 
-     //Get và Set
+    // Get và Set
     public int getBillDetailCode() {
         return billDetailCode;
     }
 
     public void setBillDetailCode(int billDetailCode) {
-        billDetailCode=sc.nextInt();
+        billDetailCode = sc.nextInt();
     }
 
     public int getCustomerCode() {
@@ -57,11 +60,11 @@ Scanner sc=new Scanner(System.in);
         this.employeeCode = sc.nextInt();
     }
 
-    public Bill getBill() {
+    public bill getBill() {
         return bill;
     }
 
-    public void setBill(Bill bill) {
+    public void setBill(bill bill) {
         this.bill = bill;
     }
 
@@ -121,22 +124,23 @@ Scanner sc=new Scanner(System.in);
             e.printStackTrace();
         }
     }
-        public static void main(String[] args) {
-            BillDetail billDetail = new BillDetail();
-            billDetail.setBillDetailCode(1);
-            billDetail.setCustomerCode(123);
-            billDetail.setEmployeeCode(456);
-    
-            // Tạo đối tượng Bill và gán vào biến bill
-            Bill bill = new Bill();
-            bill.setBillCode("ABC123");
-            bill.setProductPrice(10.0);
-            String fileName="billdetail.txt";
-            billDetail.setBill(bill);
-            billDetail.setPaymentMethod("Credit Card");
-            billDetail.setQuantity(5);
-            billDetail.setBillDate(LocalDate.now());
-    
-            billDetail.writeToFile("billdetail.txt", billDetail.toString());
-        }
+
+    public static void main(String[] args) {
+        BillDetail billDetail = new BillDetail();
+        billDetail.setBillDetailCode(1);
+        billDetail.setCustomerCode(123);
+        billDetail.setEmployeeCode(456);
+
+        // Tạo đối tượng Bill và gán vào biến bill
+        bill bill = new bill();
+        bill.setBillCode("ABC123");
+        bill.setProductPrice(10.0);
+        String fileName = "billdetail.txt";
+        billDetail.setBill(bill);
+        billDetail.setPaymentMethod("Credit Card");
+        billDetail.setQuantity(5);
+        billDetail.setBillDate(LocalDate.now());
+
+        billDetail.writeToFile("billdetail.txt", billDetail.toString());
     }
+}

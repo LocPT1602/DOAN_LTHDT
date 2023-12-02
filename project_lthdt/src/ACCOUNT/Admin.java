@@ -2,7 +2,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Admin extends Account {
+public class Admin extends account {
     Scanner sc = new Scanner(System.in);
     int choose;
     ListAccount list = new ListAccount();
@@ -20,7 +20,7 @@ public class Admin extends Account {
         setUsername();
         System.out.print("Nhập mật khẩu: ");
         setPassword();
-        Account newAccount = new Account(password, username, "");
+        account newAccount = new account(password, username, "");
 
         if (list.containsAccount(username) != true) {
             try {
