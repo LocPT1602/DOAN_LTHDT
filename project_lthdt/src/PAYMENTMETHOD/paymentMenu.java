@@ -1,6 +1,6 @@
 package PAYMENTMETHOD;
 
-public class paymentMenu {
+public class PaymentMenu {
   private payment[] mangtt;
 Scanner sc = new Scanner(System.in);
 	public Paymentmenu() {

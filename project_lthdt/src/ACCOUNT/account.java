@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
-public class account {
+public class Account {
     public String password;
     public String username;
     public String confirm;
     Scanner sc = new Scanner(System.in);
 
-    public account() {
+    public Account() {
         password = "";
         username = "";
         confirm = "";
     }
 
-    public account(String password, String username, String confirm) {
+    public Account(String password, String username, String confirm) {
         this.password = password;
         this.username = username;
         this.confirm = confirm;

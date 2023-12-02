@@ -7,7 +7,7 @@ import ORDER.billdetailList;
 
 import MAIN.Kiemtra;
 
-public class Admin extends account {
+public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
     ListAccount list = new ListAccount();
@@ -37,7 +37,7 @@ public class Admin extends account {
             System.out.println("Mat khau khong duoc chua khoang trang");
             setPassword();
         }
-        account newAccount = new account(password, username, "");
+        Account newAccount = new Account(password, username, "");
 
         if (list.containsAccount(username) != true) {
             try {
