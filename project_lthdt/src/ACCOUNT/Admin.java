@@ -1,11 +1,20 @@
 
 import java.io.IOException;
 import java.util.Scanner;
+import PERSON.CustomerList;
+import PERSON.Employeelist;
+import ORDER.billdetailList;
 
-public class Admin extends Account {
+import MAIN.Kiemtra;
+
+public class Admin extends account {
     Scanner sc = new Scanner(System.in);
     int choose;
     ListAccount list = new ListAccount();
+    CustomerList cusList = new CustomerList();
+    Employeelist empList = new Employeelist();
+    billdetailList billList = new billdetailList();
+    Kiemtra kt = new Kiemtra();
 
     public Admin() {
         super();
@@ -18,17 +27,24 @@ public class Admin extends Account {
     public void AddEmplAccount() {
         System.out.print("Nhap ten tai khoan : ");
         setUsername();
+        while (kt.ktraSpace(username)) {
+            System.out.println("ten tai khoan khong duoc chua khoang trang");
+            setUsername();
+        }
         System.out.print("Nhap mat khau : ");
         setPassword();
-        Account newAccount = new Account(password, username, "");
+        while (kt.ktraSpace(password)) {
+            System.out.println("Mat khau khong duoc chua khoang trang");
+            setPassword();
+        }
+        account newAccount = new account(password, username, "");
 
         if (list.containsAccount(username) != true) {
             try {
-                list.loadDataFromFile();
                 list.addAccount(newAccount);
                 list.printAcc();
                 list.writeAccount();
-                System.out.println("Da ghi vao file thanh cong");
+                System.out.println("Da ghi vao file thanh cong !");
             } catch (IOException e) {
                 e.printStackTrace();
                 // Xử lý ngoại lệ tại đây nếu cần thiết
@@ -47,7 +63,6 @@ public class Admin extends Account {
         // Kiểm tra tên tài khoản có tồn tại hay không
         if (list.containsAccount(usernameToDelete)) {
             try {
-                list.loadDataFromFile();
                 list.deleteAccount(usernameToDelete);
                 list.printAcc();
             } catch (IOException e) {
@@ -55,7 +70,7 @@ public class Admin extends Account {
                 // Xử lý ngoại lệ tại đây nếu cần thiết
             }
         } else {
-            System.out.println("Tai khoan khong ton tai. Vui long kiem tra lai.");
+            System.out.println("Tài khoản không tồn tại. Vui lòng kiểm tra lại.");
         }
     }
 
@@ -72,11 +87,76 @@ public class Admin extends Account {
     }
 
     public void InforEmployee() {
+        // try {
+        // empList.readEmployeeFile();
+        // } catch (Exception e) {
+        // // Xử lý ngoại lệ chung hoặc hiển thị thông báo
+        // System.err.println("Lỗi đọc thông tin khách hàng: " + e.getMessage());
+        // }
+        int exit;
+        do {
+            System.out.println("-----------------------------+");
+            System.out.println("1 : Xem thong tin ca nhan    |");
+            System.out.println("2 : xoa thong tin            |");
+            System.out.println("3 : Them thong tin           |");
+            System.out.println("0 : Thoat                    |");
+            System.out.println("-----------------------------+");
+            int chon = sc.nextInt();
+            System.out.println();
+            switch (chon) {
+                case 1:
+                    empList.displayInfo();
+                    break;
+                case 2:
+                    empList.Xoa();
+                    break;
+                case 3:
+                    empList.Nhap();
+                    break;
+                case 0:
 
+                    break;
+
+                default:
+                    break;
+            }
+            System.out.println("Press : 0 to exit || 1 to continue");
+            exit = sc.nextInt();
+        } while (exit != 0 || exit == 1);
     }
 
     public void InforCustomers() {
+        int exit;
+        do {
+            System.out.println("-----------------------------+");
+            System.out.println("1 : Xem thong tin Customers  |");
+            System.out.println("2 : xoa thong tin            |");
+            System.out.println("3 : Them thong tin           |");
+            System.out.println("0 : Thoat                    |");
+            System.out.println("-----------------------------+");
+            int chon = sc.nextInt();
+            System.out.println();
+            switch (chon) {
+                case 1:
+                    cusList.readFile();
+                    cusList.getListCustomer();
+                    break;
+                // case 2:
+                // cusList.Xoa();
+                // break;
+                // case 3:
+                // cusList.Nhap();
+                // break;
+                case 0:
 
+                    break;
+
+                default:
+                    break;
+            }
+            System.out.println("Press : 0 to exit || 1 to continue");
+            exit = sc.nextInt();
+        } while (exit != 0 || exit == 1);
     }
 
     public void AddSupplier() {
@@ -84,14 +164,14 @@ public class Admin extends Account {
     }
 
     public void Bill() {
-
+        billList.displayBillDetails();
     }
 
     public void AdminManeger() {
         int exit;
         do {
             System.out.println("---------------------------------+");
-            System.out.println("1 : Xoa san pham                 |");
+            System.out.println("1 : Xoa san Pham                 |");
             System.out.println("2 : Them san pham                |");
             System.out.println("3 : Tao hoa don                  |");
             System.out.println("4 : Thong tin nhan vien          |");
@@ -102,7 +182,7 @@ public class Admin extends Account {
             System.out.println("9 : Xoa tai khoan nhan vien      |");
             System.out.println("0 : Thoat                        |");
             System.out.println("---------------------------------+");
-            System.out.print("Nhap lua chon : ");
+            System.out.print("Nhap lua chon: ");
             choose = sc.nextInt();
 
             if (choose < 0 || choose > 9) {
@@ -120,10 +200,10 @@ public class Admin extends Account {
 
                     break;
                 case 4:
-
+                    InforEmployee();
                     break;
                 case 5:
-
+                    InforCustomers();
                     break;
                 case 6:
 
@@ -142,13 +222,22 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Nhan 0 de ket thuc !");
+            System.out.println("Nhan 0 de thoat !");
             exit = sc.nextInt();
         } while (exit != 0);
     }
 
+    public void readFile() {
+        try {
+            list.readAccount();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         Admin ad = new Admin();
+        ad.readFile();
         ad.AdminManeger();
     }
 

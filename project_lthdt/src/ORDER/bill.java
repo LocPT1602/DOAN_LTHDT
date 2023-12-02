@@ -2,19 +2,24 @@ package ORDER;
 
 import java.util.Scanner;
 
-public class Bill {
+public class bill {
     private String billCode; // Mã hóa đơn
     private int productCode; // Mã sản phẩm
     private String productName; // Tên sản phẩm
     private double productPrice; // Giá sản phẩm
     private int quantity; // Số lượng
     private double totalAmount; // Tổng cộng
-    Scanner sc = new Scanner(System.in);
 
-    public Bill() {
+    public bill() {
+        this.billCode = " ";
+        this.productCode = 0;
+        this.productName = "";
+        this.productPrice = 0;
+        this.quantity = 0;
+        this.totalAmount = 0;
     }
 
-    public Bill(String billCode, int productCode, String productName, double productPrice, int quantity,
+    public bill(String billCode, int productCode, String productName, double productPrice, int quantity,
             double totalAmount) {
         this.billCode = billCode;
         this.productCode = productCode;
@@ -24,13 +29,16 @@ public class Bill {
         this.totalAmount = totalAmount;
     }
 
+    Scanner sc = new Scanner(System.in);
+
     // Get và Set
     public String getBillCode() {
         return billCode;
     }
 
     public void setBillCode(String billCode) {
-        this.billCode = billCode;
+        System.out.println("Nhap ma hoa don: ");
+        billCode = sc.nextLine();
     }
 
     public int getProductCode() {
@@ -38,7 +46,8 @@ public class Bill {
     }
 
     public void setProductCode(int productCode) {
-        this.productCode = productCode;
+        System.out.println("Nhap ma san pham: ");
+        productCode = sc.nextInt();
     }
 
     public String getProductName() {
@@ -46,7 +55,8 @@ public class Bill {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName;
+        System.out.println("Nhap ten san pham: ");
+        productName = sc.nextLine();
     }
 
     public double getProductPrice() {
@@ -54,7 +64,8 @@ public class Bill {
     }
 
     public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+        System.out.println("Nhap gia san pham: ");
+        productPrice = sc.nextDouble();
     }
 
     public int getQuantity() {
@@ -62,7 +73,8 @@ public class Bill {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        System.out.println("so luong: ");
+        quantity = sc.nextInt();
     }
 
     public double getTotalAmount() {

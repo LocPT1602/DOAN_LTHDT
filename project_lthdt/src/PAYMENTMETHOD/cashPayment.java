@@ -2,17 +2,10 @@ package PAYMENTMETHOD;
 
 import java.util.Scanner;
 
-<<<<<<< HEAD
-public class cashPayment extends Payment {
+public class cashPayment extends payment {
 	private String tenthungan;
 	private int sotien;
 	private int tienthua;
-=======
-public class cashPayment extends Payment{
-		private String tenthungan;
-		private int sotien;
-		private int tienthua;
->>>>>>> 5319589781a6e31c65c1ebd241dc8fa068cca63a
 
 	Scanner sc = new Scanner(System.in);
 
@@ -42,14 +35,21 @@ public class cashPayment extends Payment{
 
 	@Override
 	public void Nhap() {
+		super.Nhap();
+		System.out.println("Nhap ten thu ngan: ");
+		this.tenthungan = sc.nextLine();
 		System.out.println("Nhap so tien thanh toan bang tien mat: ");
 		this.sotien = sc.nextInt();
+		System.out.println("Nhap so tien thua: ");
+		this.tienthua = sc.nextInt();
 	}
 
 	@Override
 	public String toString() {
-		return "tenthungan=" + tenthungan +
-				"\n sotien=" + sotien +
-				"\ntienthua=" + tienthua;
+		setTrangthai("Completed");
+		return "Ten thu ngan: " + getTenthungan() + 
+				"\nSo tien: " + getSotien() + 
+				"\nTien thua: " + getTienthua() +
+				"\nTrang thai: " + getTrangthai();
 	}
 }

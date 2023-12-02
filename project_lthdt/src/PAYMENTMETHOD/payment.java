@@ -1,28 +1,17 @@
 package PAYMENTMETHOD;
 
-import java.util.Scanner;
-
-public class Payment {
+public class payment {
 	private int sotien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
-<<<<<<< HEAD
-	Scanner sc = new Scanner(System.in);
 
-	public Payment()
-	{
-=======
-
-	
-	
-	public Payment() {
->>>>>>> 5319589781a6e31c65c1ebd241dc8fa068cca63a
+	public payment() {
 		this.sotien = 0;
 		this.phuongthuc = null;
 		this.trangthai = "Pending";
 	}
 
-	public Payment(int sotien, String phuongthuc, String trangthai) {
+	public payment(int sotien, String phuongthuc, String trangthai) {
 		this.sotien = sotien;
 		this.phuongthuc = phuongthuc;
 		this.trangthai = trangthai;
@@ -54,14 +43,12 @@ public class Payment {
 
 	@Override
 	public void Nhap() {
-		super.Nhap();
-		System.out.println("Cap nhat gia tri thanh toan: ");
+		System.out.println(getTrangthai() + "...");
 	}
 
 	@Override
 	public String toString() {
-		return "So tien=" + sotien +
-				"\nPhuong thuc=" + phuongthuc +
-				"\nTrang thai=" + trangthai;
+		returnb"\nPhuong thuc: " + phuongthuc ;
+				
 	}
 }

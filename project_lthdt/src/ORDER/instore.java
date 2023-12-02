@@ -2,14 +2,14 @@ package ORDER;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
 import PRODUCTS.SanPham;
 
 public class instore extends order {
     private double tienmat;
-
-    public instore(String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> SanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, double tienmat) {
-        super(orderCode, customerCode, employeeCode, orderDate, SanPhamList, quantity, totalValue, paymentConfirmed, orderConfirmed);
+Scanner sc = new Scanner(System.in);
+    public instore(String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> SanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, double tienmat, String status) {
+        super(orderCode, customerCode, employeeCode, orderDate, SanPhamList, quantity, totalValue, paymentConfirmed, orderConfirmed, status);
         this.tienmat = tienmat;
     }
     public instore(){
@@ -20,7 +20,7 @@ public class instore extends order {
     }
 
     public void settienmat(double tienmat) {
-        this.tienmat = tienmat;
+        this.tienmat = sc.nextDouble();
     }
 
     @Override
@@ -35,18 +35,6 @@ public class instore extends order {
 
     public static void main(String[] args) {
         instore order = new instore();
-        order.setorderCode("DH001");
-        order.setCustomerCode("KH001");
-        order.setEmployeeCode("NV001");
-
-        List<SanPham> SanPhamList = new ArrayList<>();
-        SanPhamList.add(new SanPham("SP001", "Sản phẩm 1", 10.0));
-        SanPhamList.add(new SanPham("SP002", "Sản phẩm 2", 20.0));
-        order.setSanPhamList(SanPhamList);
-
-        order.calculateTotalValue();
-        order.settienmat(200.0);
-
-        order.displayorderInfo();
-    }
+       
+}
 }
