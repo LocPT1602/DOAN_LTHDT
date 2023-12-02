@@ -20,7 +20,7 @@ public class order {
     BillDetail billdetail = new BillDetail();
     Scanner scanner = new Scanner(System.in);
 
-    public order() {
+    public order(String orderCode2, String customerCode2, String employeeCode2, String orderDate2, List<SanPham> sanPhamList2, int quantity2, double totalValue2, boolean paymentConfirmed2, boolean orderConfirmed2) {
         SanPhamList = new ArrayList<>();
         this.status = "Chưa xác nhận";
     }

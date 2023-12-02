@@ -53,13 +53,13 @@ public class Employee extends person {
     @Override
     public void Nhap() {
         super.Nhap();
-        System.out.println("Nhap vao employeeid:");
+        System.out.println("Nhap employeeid:");
         this.employeeid=kt.kiemtraManhanvien();
-        System.out.println("Nhap vao  chuc vu :");
+        System.out.println("Nhap chuc vu :");
         this.position=kt.nhapChuoi();
-        System.out.println("Nhap vao luong");
+        System.out.println("Nhap luong");
         this.salary=kt.nhapDoubleDuong();
-        System.out.println("Nhap vao ngay vao lam (d/m/y): ");
+        System.out.println("Nhap ngay vao lam (d/m/y): ");
         this.date=kt.nhapNgay();
     }
     public String getInfor()
