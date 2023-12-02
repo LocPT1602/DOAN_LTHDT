@@ -35,14 +35,21 @@ public class cashPayment extends payment {
 
 	@Override
 	public void Nhap() {
+		super.Nhap();
+		System.out.println("Nhap ten thu ngan: ");
+		this.tenthungan = sc.nextLine();
 		System.out.println("Nhap so tien thanh toan bang tien mat: ");
 		this.sotien = sc.nextInt();
+		System.out.println("Nhap so tien thua: ");
+		this.tienthua = sc.nextInt();
 	}
 
 	@Override
 	public String toString() {
-		return "tenthungan=" + tenthungan +
-				"\n sotien=" + sotien +
-				"\ntienthua=" + tienthua;
+		setTrangthai("Completed");
+		return "Ten thu ngan: " + getTenthungan() + 
+				"\nSo tien: " + getSotien() + 
+				"\nTien thua: " + getTienthua() +
+				"\nTrang thai: " + getTrangthai();
 	}
 }
