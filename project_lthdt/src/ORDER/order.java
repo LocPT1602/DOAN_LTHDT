@@ -19,7 +19,7 @@ public class order {
     private String status; // Trạng thái đơn hàng
     BillDetail billdetail = new BillDetail();
 
-    public order() {
+    public order(String orderCode2, String customerCode2, String employeeCode2, String orderDate2, List<SanPham> sanPhamList2, int quantity2, double totalValue2, boolean paymentConfirmed2, boolean orderConfirmed2) {
         SanPhamList = new ArrayList<>();
         this.status = "Chưa xác nhận";
     }
@@ -37,6 +37,21 @@ public class order {
         this.paymentConfirmed = paymentConfirmed;
         this.orderConfirmed = orderConfirmed;
         this.status = status;
+    }
+    public order()
+    {
+        this.orderCode="";
+        this.customerCode="";
+        this.employeeCode="";
+        this.orderDate="";
+        this.SanPhamList=null;
+        this.quantity=0;
+        this.totalValue=0;
+        this.paymentConfirmed=false;
+        this.orderConfirmed=false;
+        this.status="";
+
+
     }
 
     Scanner scanner = new Scanner(System.in);

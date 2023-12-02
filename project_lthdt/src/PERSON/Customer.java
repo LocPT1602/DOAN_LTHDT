@@ -57,11 +57,11 @@ public class Customer extends person {
     public void Nhap()
     {
         super.Nhap();
-        System.out.println("Nhap vao ma khach hang:");
+        System.out.println("Nhap ma khach hang:");
         this.Customerid=kt.kiemtraMakhachhang(); 
-        System.out.println("Nhap vao Membership:");
+        System.out.println("Nhap Membership:");
         this.membership=kt.nhapChuoi();
-        System.out.println("Nhap vao diem loyalpoint:");
+        System.out.println("Nhap diem loyalpoint:");
         this.loyalpoint=kt.KiemTraNhapSoTuNhien();
     }
     public static void main(String[] args) {
