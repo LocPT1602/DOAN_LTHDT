@@ -17,7 +17,7 @@ public class CustomerList {
 
     // đọc file C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\
     public void readFile() {
-        String fileName = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
+        String fileName = "project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             boolean fileIsEmpty = true;
@@ -57,6 +57,23 @@ public class CustomerList {
     public void add(Customer customer) {
         Customers.add(customer);
     }
+    public void removeCustomerById(String customerId) {
+        Customer customerToRemove = null;
+        for (Customer customer : Customers) {
+            if (customer.getCustomerid().equals(customerId)) {
+                customerToRemove = customer;
+                break;
+            }
+        }
+        
+        if (customerToRemove != null) {
+            Customers.remove(customerToRemove);
+            writeFile(); // Cập nhật file sau khi xóa khách hàng
+        } else {
+            System.out.println("Không tìm thấy khách hàng với ID: " + customerId);
+        }
+    }
+    
 
     private void defaultCustomers() {
 

@@ -48,13 +48,13 @@ public void setThanhpho(String thanhpho) {
 }
 public void Nhap()
     {
-        System.out.println("Nhap so nha");
+        System.out.print("Nhap so nha:");
         this.so=kt.nhapChuoi();
-        System.out.println("Nhap duong");
+        System.out.print("Nhap duong:");
         this.duong=kt.nhapChuoi();
-        System.out.println("Nhap quan");
+        System.out.print("Nhap quan:");
         this.quan=kt.nhapChuoi();
-        System.out.println("Nhap thanh pho");
+        System.out.print("Nhap thanh pho:");
         this.thanhpho=kt.nhapChuoi();
         
     }

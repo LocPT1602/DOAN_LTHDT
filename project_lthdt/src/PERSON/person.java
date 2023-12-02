@@ -73,7 +73,7 @@ public  int getAge(){
 public void Nhap() {
     System.out.println("Nhap ten:");
     this.fullname=kt.KiemTraNhapTen();
-    System.out.println("Nhap ngay sinhdang d/m/y:");
+    System.out.println("Nhap ngay sinhdang dd/mm/yyyy:");
     this.birthday=kt.nhapNgay();
     System.out.println("Nhap sdt:");
     this.phonenumber=kt.kiemtraNhapsdt();
