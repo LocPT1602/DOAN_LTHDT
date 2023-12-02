@@ -57,7 +57,7 @@ class ListAccount implements Iterable<Account> {
         Iterator<Account> iterator = accounts.iterator();
 
         while (iterator.hasNext()) {
-            Account account = iterator.next();  
+            Account account = iterator.next();
             if (account.getUsername().equals(username)) {
                 iterator.remove();
                 break; // Break once the account is found and removed
