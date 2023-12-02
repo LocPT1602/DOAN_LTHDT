@@ -1,7 +1,11 @@
 package PAYMENTMETHOD;
 
+import java.util.Scanner;
+
 public class creditcardPayment extends payment {
 		private String sothe, tenthe;
+				Scanner sc = new Scanner(System.in);
+
 
 		public String getSothe() {
 			return sothe;
@@ -32,3 +36,4 @@ public class creditcardPayment extends payment {
 			return "sothe=" + sothe + 
 					"\ntenthe=" + tenthe;
 		}
+	}

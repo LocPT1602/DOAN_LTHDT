@@ -1,9 +1,13 @@
 package PAYMENTMETHOD;
 
+import java.util.Scanner;
+
 public class cashPayment extends payment{
 		private String tenthungan;
 		private int sotien;
 		private int tienthua;
+
+		Scanner sc = new Scanner(System.in);
 		
 		public String getTenthungan() {
 			return tenthungan;
@@ -34,3 +38,4 @@ public class cashPayment extends payment{
 					"\n sotien=" + sotien + 
 					"\ntienthua=" + tienthua;
 		}
+	}

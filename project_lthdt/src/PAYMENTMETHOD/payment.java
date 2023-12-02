@@ -1,7 +1,7 @@
 package PAYMENTMETHOD;
 
 
-public class payment {
+public class Payment {
     private int sotien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
