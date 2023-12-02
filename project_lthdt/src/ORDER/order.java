@@ -7,23 +7,26 @@ import PRODUCTS.SanPham;
 import ORDER.BillDetail;
 
 public class order {
-    private String orderCode;            // Mã đơn hàng
-    private String customerCode;         // Mã khách hàng
-    private String employeeCode;         // Mã nhân viên
-    private String orderDate;            // Ngày đặt hàng
-    private List<SanPham> SanPhamList;   // Danh sách sản phẩm
-    private int quantity;                // Số lượng sản phẩm
-    private double totalValue;           // Tổng giá trị đơn hàng
-    private boolean paymentConfirmed;    // Xác nhận thanh toán
-    private boolean orderConfirmed;      // Xác nhận đơn hàng
-    private String status;               //Trạng thái đơn hàng
-        BillDetail billdetail = new BillDetail();
+    private String orderCode; // Mã đơn hàng
+    private String customerCode; // Mã khách hàng
+    private String employeeCode; // Mã nhân viên
+    private String orderDate; // Ngày đặt hàng
+    private List<SanPham> SanPhamList; // Danh sách sản phẩm
+    private int quantity; // Số lượng sản phẩm
+    private double totalValue; // Tổng giá trị đơn hàng
+    private boolean paymentConfirmed; // Xác nhận thanh toán
+    private boolean orderConfirmed; // Xác nhận đơn hàng
+    private String status; // Trạng thái đơn hàng
+    BillDetail billdetail = new BillDetail();
 
     public order() {
         SanPhamList = new ArrayList<>();
         this.status = "Chưa xác nhận";
     }
-    public order(String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed) {
+
+    public order(String orderCode, String customerCode, String employeeCode, String orderDate,
+            List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed,
+            boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
         this.customerCode = customerCode;
         this.employeeCode = employeeCode;
@@ -33,6 +36,7 @@ public class order {
         this.totalValue = totalValue;
         this.paymentConfirmed = paymentConfirmed;
         this.orderConfirmed = orderConfirmed;
+        this.status = status;
     }
  Scanner scanner = new Scanner(System.in);
 
@@ -145,12 +149,6 @@ public class order {
         setEmployeeCode(employeeCode);
         System.out.println("Ngay dat hang: ");
         setorderDate(orderDate);
-        System.out.println("danh sach san pham: ");
-        setSanPhamList(SanPhamList);
-        System.out.println("Nhap so luong: ");
-        setQuantity(quantity);
-        System.out.println("Tong gia tri don hang: ");
-        setTotalValue(totalValue);
         //...
     }
 
@@ -158,11 +156,6 @@ public class order {
     public void displayorderInfo() {
         // Hiển thị thông tin đơn hàng ra màn hình
         System.out.println("Mã đơn hàng: " + orderCode);
-        System.out.println("Ma khach hang: "+customerCode);
-        System.out.println("Ma nhan vien: " +employeeCode);
-        System.out.println("Ngay dat hang: "+ orderDate);
-        System.out.println("Danh sach san pham da dat: " + SanPhamList);
-        System.out.println("Tong gia tri don hang: 0"+totalValue);
         //...
     }
 

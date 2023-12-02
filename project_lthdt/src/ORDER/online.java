@@ -13,24 +13,21 @@ public class online extends order {
     order order = new order();
     Scanner sc = new Scanner(System.in);
 
-    public online(String diachigiaohang, String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> SanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
-        super(orderCode, customerCode, employeeCode, orderDate, SanPhamList, quantity, totalValue, paymentConfirmed, orderConfirmed);
-        this.diachigiaohang = diachigiaohang;
-    }
+public online(String diachigiaohang, String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> SanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
+    super(orderCode, customerCode, employeeCode, orderDate, SanPhamList, quantity, totalValue, paymentConfirmed, orderConfirmed,status);
+    this.diachigiaohang = diachigiaohang;
+}
+public online(){
+    super();
+    this.diachigiaohang =" ";
 
-    public online() {
-        super();
-        this.diachigiaohang = " ";
-    }
-
-    public String getdiachigiaohang() {
+}
+public String getdiachigiaohang() {
         return diachigiaohang;
     }
-
-    public void setdiachigiaohang(String diachigiaohang) {
-        this.diachigiaohang = sc.nextLine();
+public void setdiachigiaohang(String diachigiaohang) {
+        this.diachigiaohang = diachigiaohang;
     }
-
     public void xacnhandonhangonline(order order) {
         if (order.getStatus().equals("Chưa xác nhận")) {
             // Thực hiện xác nhận đơn hàng
@@ -77,4 +74,6 @@ public class online extends order {
             System.out.println("Đơn hàng đã được hủy trước đó.");
         }
     }
+
 }
+
