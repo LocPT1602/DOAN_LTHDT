@@ -8,3 +8,10 @@ John Doe             1990-05-15   123456789       johndoe@email.com         Male
 Alice Smith          1985-12-10   987654321       alice.smith@email.com     Female     PERSON.Address@27973e9b        CUS002     Silver          800            
 Bob Johnson          1988-08-25   777111333       bobjohnson@email.com      Male       PERSON.Address@312b1dae        CUS003     Bronze          300            
 
+Fullname             Birthday     Phone           Email                     Gender     Address                        Customer ID Membership      Loyal Points   
+
+Fullname             Birthday     Phone           Email                     Gender     Address                        Customer ID Membership      Loyal Points   
+John Doe             1990-05-15   123456789       johndoe@email.com         Male       PERSON.Address@4783da3f        CUS001     Gold            1500           
+Alice Smith          1985-12-10   987654321       alice.smith@email.com     Female     PERSON.Address@378fd1ac        CUS002     Silver          800            
+Bob Johnson          1988-08-25   777111333       bobjohnson@email.com      Male       PERSON.Address@49097b5d        CUS003     Bronze          300            
+
