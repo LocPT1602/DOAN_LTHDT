@@ -154,9 +154,9 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Press : 0 to exit || 1 to continue");
+            System.out.println("Press : 1 to continue");
             exit = sc.nextInt();
-        } while (exit != 0 || exit == 1);
+        } while (exit == 1);
     }
 
     public void AddSupplier() {
@@ -222,9 +222,9 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Nhan 0 de thoat !");
+            System.out.println("Press : 1 to continue ");
             exit = sc.nextInt();
-        } while (exit != 0);
+        } while (exit == 1);
     }
 
     public void readFile() {
