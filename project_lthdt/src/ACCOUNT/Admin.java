@@ -4,16 +4,20 @@ import java.util.Scanner;
 import PERSON.CustomerList;
 import PERSON.Employeelist;
 import ORDER.billdetailList;
-
+import PRODUCTS.MainSanPham;
+import PRODUCTS.Kho;
 import MAIN.Kiemtra;
 
 public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
+    String idToDelete;
     ListAccount list = new ListAccount();
     CustomerList cusList = new CustomerList();
     Employeelist empList = new Employeelist();
     billdetailList billList = new billdetailList();
+    MainSanPham mainSP = new MainSanPham();
+    Kho khoHang = new Kho();
     Kiemtra kt = new Kiemtra();
 
     public Admin() {
@@ -124,7 +128,7 @@ public class Admin extends Account {
         do {
             System.out.println("-----------------------------+");
             System.out.println("1 : Xem thong tin Customers  |");
-            System.out.println("2 : xoa thong tin            |");
+            System.out.println("2 : xoa thong tin Customers  |");
             System.out.println("3 : Them thong tin           |");
             System.out.println("0 : Thoat                    |");
             System.out.println("-----------------------------+");
@@ -135,9 +139,11 @@ public class Admin extends Account {
                     cusList.readFile();
                     cusList.getListCustomer();
                     break;
-                // case 2:
-                // cusList.Xoa();
-                // break;
+                case 2:
+                    System.out.print("Nhap Id can xoa : ");
+                    idToDelete = sc.nextLine();
+                    cusList.removeCustomerById(idToDelete);
+                    break;
                 // case 3:
                 // cusList.Nhap();
                 // break;
@@ -154,7 +160,7 @@ public class Admin extends Account {
     }
 
     public void AddSupplier() {
-
+        mainSP.menuProduct();
     }
 
     public void Bill() {
@@ -203,7 +209,7 @@ public class Admin extends Account {
 
                     break;
                 case 7:
-
+                    AddSupplier();
                     break;
                 case 8:
                     AddEmplAccount();
@@ -224,6 +230,7 @@ public class Admin extends Account {
     public void readFile() {
         try {
             list.readAccount();
+            cusList.defaultCustomers();
         } catch (IOException e) {
             e.printStackTrace();
         }
