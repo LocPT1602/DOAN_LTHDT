@@ -7,7 +7,7 @@ import ORDER.billdetailList;
 import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
 import MAIN.Kiemtra;
-
+import ORDER.BillDetail;
 public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
