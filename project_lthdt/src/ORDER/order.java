@@ -6,7 +6,8 @@ import java.util.Scanner;
 import PRODUCTS.SanPham;
 import MAIN.Kiemtra;
 import java.time.LocalDate;
-
+import java.io.FileWriter;
+import java.io.IOException;
 public class Order{
     private String orderCode;
     private String customerCode;
@@ -95,7 +96,7 @@ public class Order{
         return totalValue;
     }
     public void setTotalValue(double totalValue) {
-        this.totalValue = totalValue
+        this.totalValue = totalValue;
     }
     public boolean isPaymentConfirmed() {
         return paymentConfirmed;
@@ -138,17 +139,53 @@ public class Order{
 
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
+        List<String[]> orderInfoList = new ArrayList<>();
 
-        System.out.println("Nhập mã đơn hàng: ");
+        // Nhập thông tin đơn hàng
+        System.out.print("Nhập mã đơn hàng: ");
         this.orderCode = scanner.nextLine();
-        System.out.println("Nhập mã khách hàng: ");
+
+        System.out.print("Nhập mã sản phẩm: ");
+        String productCode = scanner.nextLine();
+
+        System.out.print("Nhập mã khách hàng: ");
         this.customerCode = kt.kiemtraMakhachhang();
-        System.out.println("Nhập mã nhân viên: ");
+
+        System.out.print("Nhập mã nhân viên: ");
         this.employeeCode = kt.kiemtraManhanvien();
-        this.orderDate = LocalDate.now();
-        System.out.println("Nhập số lượng: ");
-        this.quantity = kt.KiemTraNhapSoTuNhien();
-        // ...
+
+        System.out.print("Nhập ngày đặt hàng (yyyy-MM-dd): ");
+        String orderDateStr = kt.nhapNgay();
+        LocalDate orderDate = LocalDate.parse(orderDateStr);
+
+        // Lưu thông tin đơn hàng vào danh sách
+        String[] orderInfo = {orderCode, productCode, employeeCode, orderDateStr};
+        orderInfoList.add(orderInfo);
+
+        // Thêm thông tin đơn hàng vào tệp tin "Ds đơn hàng"
+        try {
+            FileWriter writer = new FileWriter("project_lthdt\\src\\ORDER\\Ds đơn hàng.txt", true);
+            writer.write("Mã đơn hàng: " + orderCode + "\n");
+            writer.write("Mã sản phẩm: " + productCode + "\n");
+            writer.write("Mã nhân viên: " + employeeCode + "\n");
+            writer.write("Ngày đặt hàng: " + orderDateStr + "\n");
+            writer.write("\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi tệp tin.");
+        }
+
+        // Thêm thông tin đơn hàng vào tệp tin "Ds sản phẩm đơn hàng"
+        try {
+            FileWriter writer = new FileWriter("project_lthdt\\src\\ORDER\\Ds sản phẩm đơn hàng.txt", true);
+            writer.write("Mã đơn hàng: " + orderCode + "\n");
+            writer.write("Mã sản phẩm: " + productCode + "\n");
+            // Ghi thông tin khác về sản phẩm đơn hàng tại đây
+            writer.write("\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi tệp tin.");
+        }
     }
 
     public void displayOrderInfo() {
