@@ -129,7 +129,7 @@ public class Admin extends Account {
             System.out.println("-----------------------------+");
             System.out.println("1 : Xem thong tin Customers  |");
             System.out.println("2 : xoa thong tin Customers  |");
-            System.out.println("3 : Them thong tin           |");
+            System.out.println("3 : Them thong tin Customers |");
             System.out.println("0 : Thoat                    |");
             System.out.println("-----------------------------+");
             int chon = sc.nextInt();
