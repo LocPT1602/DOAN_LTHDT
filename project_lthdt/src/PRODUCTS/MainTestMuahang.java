@@ -32,10 +32,8 @@ public class MainTestMuahang {
                 choice2();
             }
             else if(choice == 3){
-                System.out.println("Nhap vao ma san pham: ");
-                String maSP = sc.nextLine();
-                
-                gioHang.themVaoGio(maSP);
+            	
+                gioHang.themVaoGion();
             }
             else if(choice == 4){
                 gioHang.inGioHang();

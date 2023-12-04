@@ -1,6 +1,7 @@
 package PRODUCTS;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class GioHang{
@@ -8,6 +9,8 @@ public class GioHang{
     private String maGH;
     private Kho kho = new Kho();
 
+    Scanner sc = new Scanner(System.in);
+    
     public GioHang(){
         this.gioHang = new ArrayList<>();
         this.maGH = "GH";
@@ -27,37 +30,36 @@ public class GioHang{
     public void setDanhSachSP(ArrayList<SanPham> gioHang) {
         this.gioHang = gioHang;
     }
-    
-    public void themVaoGio(SanPham sp){
-    kho.laySPtheoMa(sp.maSP);
-    if(kho.laySPtheoMa(sp.maSP)==null)
-    {
-    	return;
-    }
-    this.gioHang.add(sp);
-    }
     public void themVaoGio(String maSP){
-        this.gioHang.add(kho.laySPtheoMa(maSP));
+    	while (true) {
+    		System.out.println("Nhap vao ma san pham: ");
+            maSP = sc.nextLine();
+        	for(SanPham sanPham : kho.khoHang) {
+            if (maSP.matches(sanPham.maSP)) {
+            	this.gioHang.add(kho.laySPtheoMa(maSP));
+            	return;
+            } else {
+                System.out.println("Nhap sai vui long nhap lai Ma SP!!");
+            }}
+        }
+    }
+    public void themVaoGion(){
+    	while (true) {
+    		System.out.println("Nhap vao ma san pham: ");
+            String maSP = sc.nextLine();
+        	for(SanPham sanPham : kho.khoHang) {
+            if (maSP.matches(sanPham.maSP)) {
+            	this.gioHang.add(kho.laySPtheoMa(maSP));
+            	return;
+            } else {
+                System.out.println("Nhap sai vui long nhap lai Ma SP!!");
+            }}
+        }
     }
    
-    public void inGioHang(){
-        System.out.println("========== GIO HANG =========="+" "+this.maGH);
-        if(this.gioHang.isEmpty())
-        {
-        	System.out.println("Gio hang dang trong!");
-        	return;
-        }
-        
-        for (SanPham sanPham : this.gioHang) {
-        	if(kho.laySPtheoMa(sanPham.getMaSP()) == null)
-        	return;
-            sanPham.xuat();
-        }
-        System.out.println("==============================");
-    }
+   
     public void inTenSPvaDonGia(){
         for (SanPham sanPham : gioHang) {
-        	
             System.out.println(sanPham.getTenSP()+ "    |   "+ sanPham.getDonGia());
         
     }
@@ -104,6 +106,19 @@ public class GioHang{
             allMaSP += ", "+ sanPham.getMaSP();
         }
         return allMaSP;
+    }
+    public void inGioHang(){
+        System.out.println("========== GIO HANG =========="+" "+this.maGH);
+        if(this.gioHang.isEmpty())
+        {
+        	System.out.println("Gio hang dang trong!");
+        	return;
+        }
+        
+        for (SanPham sanPham : this.gioHang) {
+            sanPham.xuat();
+        }
+        System.out.println("==============================");
     }
 
     @Override
