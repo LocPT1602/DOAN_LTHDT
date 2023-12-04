@@ -3,5 +3,6 @@
         "orderitem",
         "phẩm"
     ],
-    "redhat.telemetry.enabled": true
+    "redhat.telemetry.enabled": true,
+    "java.debug.settings.onBuildFailureProceed": true
 }
