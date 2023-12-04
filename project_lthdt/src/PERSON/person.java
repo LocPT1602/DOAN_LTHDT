@@ -71,15 +71,15 @@ public  int getAge(){
     return currentyear-birthyear;
 }
 public void Nhap() {
-    System.out.println("Nhap ten:");
+    System.out.print("Nhap ten:");
     this.fullname=kt.KiemTraNhapTen();
-    System.out.println("Nhap ngay sinhdang dd/mm/yyyy:");
+    System.out.print("Nhap ngay sinhdang dd/mm/yyyy:");
     this.birthday=kt.nhapNgay();
-    System.out.println("Nhap sdt:");
+    System.out.print("Nhap sdt:");
     this.phonenumber=kt.kiemtraNhapsdt();
-    System.out.println("Nhap email:");
+    System.out.print("Nhap email:");
     this.email=kt.nhapEmail();
-    System.out.println("Nhap gioi tinh:");
+    System.out.print("Nhap gioi tinh:");
     this.gender=kt.ktNhapGioiTinh();
     address.Nhap();
     
