@@ -1,27 +1,27 @@
 package ORDER;
 import MAIN.*;
 import java.util.Scanner;
-import PRODUCTS.SanPham;
-public class bill {
+// import PRODUCTS.SanPham;
+public class Bill {
     protected String billCode; // Mã hóa đơn
-    protected SanPham maSP; // Mã sản phẩm
-    protected SanPham tenSP; // Tên sản phẩm
-    protected SanPham donGia; // Giá sản phẩm
+    protected String maSP; // Mã sản phẩm
+    protected String tenSP; // Tên sản phẩm
+    protected double donGia; // Giá sản phẩm
     private int quantity; // Số lượng
     private double totalAmount; // Tổng giá
     Kiemtra kt = new Kiemtra();
     // SanPham sp = new SanPham();
 
-    public bill() {
-        // this.billCode = "";
-        // this.maSP = "";
-        // this.tenSP = "";
-        // this.donGia = 0;
-        // this.quantity = 0;
-        // this.totalAmount = 0;
+    public Bill() {
+        this.billCode = "";
+        this.maSP = "";
+        this.tenSP = "";
+        this.donGia = 0;
+        this.quantity = 0;
+        this.totalAmount = 0;
     }
     
-    public bill(String billCode, SanPham maSP, SanPham tenSP, SanPham donGia, int quantity,
+    public Bill(String billCode, String maSP, String tenSP, double donGia, int quantity,
             double totalAmount) {
         this.billCode = billCode;
         this.maSP = maSP;
@@ -42,27 +42,27 @@ public class bill {
         this.billCode = billCode;
     }
 
-    public SanPham getmaSP() {
+    public String getmaSP() {
         return maSP;
     }
 
-    public void setmaSP(SanPham maSP) {
+    public void setmaSP(String maSP) {
         this.maSP = maSP;
     }
 
-    public SanPham gettenSP() {
+    public String gettenSP() {
         return tenSP;
     }
 
-    public void settenSP(SanPham tenSP) {
+    public void settenSP(String tenSP) {
         this.tenSP = tenSP;
     }
 
-    public SanPham getdonGia() {
+    public double getdonGia() {
         return donGia;
     }
 
-    public void setdonGia(SanPham donGia) {
+    public void setdonGia(double donGia) {
         this.donGia = donGia;
     }
 

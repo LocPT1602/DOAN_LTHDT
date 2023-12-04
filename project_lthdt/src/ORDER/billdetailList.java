@@ -49,7 +49,7 @@ public class billdetailList {
         }
     }
 
-    public void addBillDetailFromOrder(order order) {
+    public void addBillDetailFromOrder(Order order) {
         order.setOrderCode(order.getOrderCode());
         order.setCustomerCode(order.getCustomerCode());
         order.setEmployeeCode(order.getEmployeeCode());
