@@ -1,19 +1,13 @@
 
 import java.util.Scanner;
-<<<<<<< HEAD
 import PERSON.CustomerList;
 import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
-=======
->>>>>>> parent of ca08ecf (m)
 
-public class Employee extends account {
+public class Employee extends Account {
     Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
-=======
->>>>>>> parent of ca08ecf (m)
 
     public Employee() {
         super();
@@ -28,7 +22,37 @@ public class Employee extends account {
     }
 
     public void InforCustomers() {
+        int exit;
+        do {
+            System.out.println("-----------------------------+");
+            System.out.println("1 : Xem thong tin Customers  |");
+            System.out.println("2 : xoa thong tin            |");
+            System.out.println("3 : Them thong tin           |");
+            System.out.println("0 : Thoat                    |");
+            System.out.println("-----------------------------+");
+            int chon = sc.nextInt();
+            System.out.println();
+            switch (chon) {
+                case 1:
+                    cusList.readFile();
+                    cusList.getListCustomer();
+                    break;
+                // case 2:
+                // cusList.Xoa();
+                // break;
+                // case 3:
+                // cusList.Nhap();
+                // break;
+                case 0:
 
+                    break;
+
+                default:
+                    break;
+            }
+            System.out.println("Press : 0 to exit || 1 to continue");
+            exit = sc.nextInt();
+        } while (exit != 0 || exit == 1);
     }
 
     public void FindProduct() {
@@ -60,7 +84,7 @@ public class Employee extends account {
                     FindProduct();
                     break;
                 case 3:
-
+                    InforCustomers();
                     break;
                 case 4:
 
