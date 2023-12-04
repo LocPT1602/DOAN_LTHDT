@@ -143,7 +143,6 @@ public class Kho implements iReaderWriter{
                 }
             }
         }
-        System.out.println("San pham ko ton tai");
         return null;
     }
     // Ghi dữ liệu lên file

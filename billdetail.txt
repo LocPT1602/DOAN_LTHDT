@@ -1,9 +1,0 @@
-Chi tiết hóa đơn:
-Mã chi tiết hóa đơn: 1
-Mã khách hàng: 123
-Mã nhân viên: 456
-Mã hóa đơn: ABC123
-Phương thức thanh toán: Credit Card
-Số lượng: 90
-Ngày hóa đơn: 2023-12-03
-Tổng giá trị: 900.0

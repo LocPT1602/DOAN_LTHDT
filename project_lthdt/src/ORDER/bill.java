@@ -1,6 +1,7 @@
 package ORDER;
-import MAIN.*;
+
 import java.util.Scanner;
+<<<<<<< HEAD
 import PRODUCTS.*;
 public class bill {
     private String billCode; // Mã hóa đơn
@@ -13,16 +14,37 @@ public class bill {
     public bill() {
         this.billCode = "";
         this.maSP = "";
+=======
+
+public class bill {
+    private String billCode; // Mã hóa đơn
+    private int productCode; // Mã sản phẩm
+    private String productName; // Tên sản phẩm
+    private double productPrice; // Giá sản phẩm
+    private int quantity; // Số lượng
+    private double totalAmount; // Tổng cộng
+
+    public bill() {
+        this.billCode = " ";
+        this.productCode = 0;
+>>>>>>> parent of 34d247d (mdsgajs)
         this.productName = "";
         this.productPrice = 0;
         this.quantity = 0;
         this.totalAmount = 0;
     }
 
+<<<<<<< HEAD
     public bill(String billCode, String maSP, String productName, double productPrice, int quantity,
             double totalAmount) {
         this.billCode = billCode;
         this.maSP = maSP;
+=======
+    public bill(String billCode, int productCode, String productName, double productPrice, int quantity,
+            double totalAmount) {
+        this.billCode = billCode;
+        this.productCode = productCode;
+>>>>>>> parent of 34d247d (mdsgajs)
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
@@ -31,21 +53,32 @@ public class bill {
 
     Scanner sc = new Scanner(System.in);
 
-    // Getter và Setter cho thuộc tính
+    // Get và Set
     public String getBillCode() {
         return billCode;
     }
 
     public void setBillCode(String billCode) {
-        this.billCode = billCode;
+        System.out.println("Nhap ma hoa don: ");
+        billCode = sc.nextLine();
     }
 
+<<<<<<< HEAD
     public String getmaSP() {
         return maSP;
     }
 
     public void setmaSP(String maSP) {
         this.maSP = maSP;
+=======
+    public int getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(int productCode) {
+        System.out.println("Nhap ma san pham: ");
+        productCode = sc.nextInt();
+>>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public String getProductName() {
@@ -53,7 +86,12 @@ public class bill {
     }
 
     public void setProductName(String productName) {
+<<<<<<< HEAD
         this.productName = productName;
+=======
+        System.out.println("Nhap ten san pham: ");
+        productName = sc.nextLine();
+>>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public double getProductPrice() {
@@ -61,7 +99,12 @@ public class bill {
     }
 
     public void setProductPrice(double productPrice) {
+<<<<<<< HEAD
         this.productPrice = productPrice;
+=======
+        System.out.println("Nhap gia san pham: ");
+        productPrice = sc.nextDouble();
+>>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public int getQuantity() {
@@ -69,7 +112,8 @@ public class bill {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        System.out.println("so luong: ");
+        quantity = sc.nextInt();
     }
 
     public double getTotalAmount() {
@@ -79,6 +123,4 @@ public class bill {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
-    
-    
 }

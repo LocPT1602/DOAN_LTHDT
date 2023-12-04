@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import PRODUCTS.SanPham;
+<<<<<<< HEAD
 import MAIN.Kiemtra;
 import PERSON.*;
+=======
+import ORDER.BillDetail;
+
+>>>>>>> parent of 34d247d (mdsgajs)
 public class order {
     private String orderCode; // Mã đơn hàng
     private String customerCode; // Mã khách hàng
@@ -18,7 +23,11 @@ public class order {
     private boolean orderConfirmed; // Xác nhận đơn hàng
     private String status; // Trạng thái đơn hàng
     BillDetail billdetail = new BillDetail();
+<<<<<<< HEAD
     Kiemtra kt = new Kiemtra();
+=======
+
+>>>>>>> parent of 34d247d (mdsgajs)
     public order(String orderCode2, String customerCode2, String employeeCode2, String orderDate2, List<SanPham> sanPhamList2, int quantity2, double totalValue2, boolean paymentConfirmed2, boolean orderConfirmed2) {
         SanPhamList = new ArrayList<>();
         this.status = "Chưa xác nhận";
@@ -62,7 +71,11 @@ public class order {
     }
 
     public void setorderCode(String orderCode) {
+<<<<<<< HEAD
         this.orderCode = orderCode;
+=======
+        this.orderCode = scanner.nextLine();
+>>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public String getStatus() {
@@ -78,7 +91,7 @@ public class order {
     }
 
     public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
+        this.customerCode = scanner.nextLine();
     }
 
     public String getEmployeeCode() {
@@ -86,7 +99,7 @@ public class order {
     }
 
     public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+        this.employeeCode = scanner.nextLine();
     }
 
     public String getorderDate() {
@@ -94,7 +107,11 @@ public class order {
     }
 
     public void setorderDate(String orderDate) {
+<<<<<<< HEAD
         this.orderDate = orderDate;
+=======
+        this.orderDate = scanner.nextLine();
+>>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public List<SanPham> getSanPhamList() {
@@ -110,7 +127,7 @@ public class order {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        this.quantity = scanner.nextInt();
     }
 
     public double getTotalValue() {
@@ -161,30 +178,29 @@ public class order {
     public void inputorderInfo() {
         // Nhập thôgetBillDetailCode
         System.out.println("Nhap ma don hang: ");
-        this.orderCode= scanner.nextLine();
+        setorderCode(orderCode);
         System.out.println("Nhap ma khach hang: ");
-        this.customerCode= kt.kiemtraMakhachhang();
+        setCustomerCode(customerCode);
         System.out.println("Nhap ma nhan vien: ");
-        this.employeeCode= kt.kiemtraManhanvien();
+        setEmployeeCode(employeeCode);
         System.out.println("Ngay dat hang: ");
-        this.orderDate= kt.nhapNgay();
-        System.out.println("Nhap  so luong: ");
-        this.quantity= kt.KiemTraNhapSoTuNhien();
+        setorderDate(orderDate);
         // ...
     }
 
     // Phương thức xuất thông tin đơn hàng
     public void displayorderInfo() {
         // Hiển thị thông tin đơn hàng ra màn hình
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("----------------THONG TIN DON HANG-----------------------------");
         System.out.println("Mã đơn hàng: " + orderCode);
+<<<<<<< HEAD
         System.out.println("Mã khách hàng: "+ customerCode);
         System.out.println("mã nhân viên: "+ employeeCode);
         System.out.println("Ngày đặt hàng: "+ orderDate);
         System.out.println("Danh sách sản phẩm đã đặt: "+ SanPhamList);
         System.out.println("Số lượng sản phẩm: "+ quantity);
         System.out.println("Tổng giá trị đơn hàng: " +totalValue);
+=======
+>>>>>>> parent of 34d247d (mdsgajs)
         // ...
     }
 
@@ -210,7 +226,6 @@ public class order {
         order order = new order();
         order.inputorderInfo();
         order.toString();
-        order.displayorderInfo();
 
     }
 }

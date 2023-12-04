@@ -31,7 +31,7 @@ class ListAccount implements Iterable<Account> {
     }
 
     public void readAccount() throws IOException {
-
+        // Thay đổi đường dẫn tới file thực tế trên hệ thống của bạn
         String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -88,18 +88,22 @@ class ListAccount implements Iterable<Account> {
         return accounts.iterator();
     }
 
+    // Đoạn mã kiểm thử trong hàm main
     public static void main(String[] args) {
         ListAccount listAccount = new ListAccount();
 
         try {
-
+            // Đọc danh sách tài khoản từ file
             // listAccount.readAccount();
             listAccount.printAcc();
 
+            // // In danh sách tài khoản ra màn hình
             // listAccount.printAcc();
 
+            // // Xóa một tài khoản
             // listAccount.deleteAccount("usernameToDelete");
 
+            // Ghi danh sách tài khoản vào file
             listAccount.writeAccount();
         } catch (IOException e) {
             e.printStackTrace();
