@@ -7,8 +7,13 @@ import ORDER.billdetailList;
 import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
 import MAIN.Kiemtra;
+<<<<<<< HEAD
 import ORDER.BillDetail;
 public class Admin extends Account {
+=======
+
+public class Admin extends account {
+>>>>>>> parent of ca08ecf (m)
     Scanner sc = new Scanner(System.in);
     int choose;
     String idToDelete;
@@ -41,7 +46,7 @@ public class Admin extends Account {
             System.out.println("Mat khau khong duoc chua khoang trang");
             setPassword();
         }
-        Account newAccount = new Account(password, username, "");
+        account newAccount = new account(password, username, "");
 
         if (list.containsAccount(username) != true) {
             try {
@@ -91,6 +96,12 @@ public class Admin extends Account {
     }
 
     public void InforEmployee() {
+        // try {
+        // empList.readEmployeeFile();
+        // } catch (Exception e) {
+        // // Xử lý ngoại lệ chung hoặc hiển thị thông báo
+        // System.err.println("Lỗi đọc thông tin khách hàng: " + e.getMessage());
+        // }
         int exit;
         do {
             System.out.println("-----------------------------+");

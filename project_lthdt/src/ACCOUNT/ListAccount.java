@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.Scanner;
 import MAIN.Kiemtra;
 
-class ListAccount implements Iterable<Account> {
-    private ArrayList<Account> accounts;
+class ListAccount implements Iterable<account> {
+    private ArrayList<account> accounts;
     private int n;
     Scanner sc = new Scanner(System.in);
 
@@ -15,14 +15,14 @@ class ListAccount implements Iterable<Account> {
         n = 0;
     }
 
-    public void addAccount(Account account) {
+    public void addAccount(account account) {
         accounts.add(account);
         n++;
     }
 
     // Thêm phương thức kiểm tra xem một tài khoản có tồn tại trong danh sách không
     public boolean containsAccount(String username) {
-        for (Account account : accounts) {
+        for (account account : accounts) {
             if (account.getUsername().equals(username)) {
                 return true;
             }
@@ -41,7 +41,7 @@ class ListAccount implements Iterable<Account> {
                 if (parts.length >= 2) {
                     String username = parts[1];
                     String password = parts[0];
-                    Account account = new Account(username, password, "");
+                    account account = new account(username, password, "");
                     addAccount(account);
                 } else {
                     // Xử lý trường hợp dòng không hợp lệ, nếu cần thiết
@@ -51,17 +51,17 @@ class ListAccount implements Iterable<Account> {
     }
 
     public void printAcc() {
-        for (Account account : accounts) {
+        for (account account : accounts) {
             System.out.println("tai khoan la : " + account.username);
             System.out.println("mau khau la : " + account.password);
         }
     }
 
     public void deleteAccount(String username) throws IOException {
-        Iterator<Account> iterator = accounts.iterator();
+        Iterator<account> iterator = accounts.iterator();
 
         while (iterator.hasNext()) {
-            Account account = iterator.next();
+            account account = iterator.next();
             if (account.getUsername().equals(username)) {
                 iterator.remove();
                 break; // Break once the account is found and removed
@@ -76,7 +76,7 @@ class ListAccount implements Iterable<Account> {
         String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
-            for (Account account : accounts) {
+            for (account account : accounts) {
                 writer.write(account.getUsername() + " " + account.getPassword());
                 writer.newLine();
             }
@@ -84,7 +84,7 @@ class ListAccount implements Iterable<Account> {
     }
 
     @Override
-    public Iterator<Account> iterator() {
+    public Iterator<account> iterator() {
         return accounts.iterator();
     }
 
