@@ -3,10 +3,6 @@ package ORDER;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-<<<<<<< HEAD
-=======
-import java.util.Scanner;
->>>>>>> parent of 34d247d (mdsgajs)
 
 public class BillDetail {
     private int billDetailCode; // Mã chi tiết hóa đơn
@@ -16,25 +12,12 @@ public class BillDetail {
     private String paymentMethod; // Phương thức thanh toán
     private int quantity; // Số lượng
     private LocalDate billDate; // Ngày trên hóa đơn
-    Scanner sc = new Scanner(System.in);
 
+    // Constructors
     public BillDetail() {
-<<<<<<< HEAD
     }
 
     public BillDetail(int billDetailCode, int customerCode, int employeeCode, bill bill, String paymentMethod, int quantity, LocalDate billDate) {
-=======
-        this.billDetailCode = 0;
-        this.customerCode = 0;
-        this.employeeCode = 0;
-        this.paymentMethod = " ";
-        this.quantity = 0;
-        this.billDate = null;
-    }
-
-    public BillDetail(int billDetailCode, int customerCode, int employeeCode, bill bill, String paymentMethod,
-            int quantity, LocalDate billDate) {
->>>>>>> parent of 34d247d (mdsgajs)
         this.billDetailCode = billDetailCode;
         this.customerCode = customerCode;
         this.employeeCode = employeeCode;
@@ -44,21 +27,13 @@ public class BillDetail {
         this.billDate = billDate;
     }
 
-<<<<<<< HEAD
     // Getters and Setters
-=======
-    // Get và Set
->>>>>>> parent of 34d247d (mdsgajs)
     public int getBillDetailCode() {
         return billDetailCode;
     }
 
     public void setBillDetailCode(int billDetailCode) {
-<<<<<<< HEAD
         this.billDetailCode = billDetailCode;
-=======
-        billDetailCode = sc.nextInt();
->>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public int getCustomerCode() {
@@ -66,11 +41,7 @@ public class BillDetail {
     }
 
     public void setCustomerCode(int customerCode) {
-<<<<<<< HEAD
         this.customerCode = customerCode;
-=======
-        this.customerCode = sc.nextInt();
->>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public int getEmployeeCode() {
@@ -78,11 +49,7 @@ public class BillDetail {
     }
 
     public void setEmployeeCode(int employeeCode) {
-<<<<<<< HEAD
         this.employeeCode = employeeCode;
-=======
-        this.employeeCode = sc.nextInt();
->>>>>>> parent of 34d247d (mdsgajs)
     }
 
     public bill getBill() {
@@ -98,7 +65,7 @@ public class BillDetail {
     }
 
     public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = sc.nextLine();
+        this.paymentMethod = paymentMethod;
     }
 
     public int getQuantity() {
@@ -106,7 +73,7 @@ public class BillDetail {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = sc.nextInt();
+        this.quantity = quantity;
     }
 
     public LocalDate getBillDate() {
@@ -114,7 +81,7 @@ public class BillDetail {
     }
 
     public void setBillDate(LocalDate billDate) {
-        this.billDate = LocalDate.now();
+        this.billDate = billDate;
     }
 
     // Phương thức tính tổng giá trị hóa đơn
@@ -134,15 +101,13 @@ public class BillDetail {
                 "Số lượng: " + quantity + "\n" +
                 "Ngày hóa đơn: " + billDate + "\n" +
                 "Tổng giá trị: " + calculateTotalAmount();
+        System.out.println(billDetail);
         return billDetail;
     }
-
     // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
-    public void writeToFile(String fileName, String billDetail) {
-        try {
-            FileWriter writer = new FileWriter(fileName);
-            writer.write(billDetail);
-            writer.close();
+    public void writeToFile(String fileName) {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(getBillDetail());
             System.out.println("Thông tin hóa đơn đã được ghi vào tập tin: " + fileName);
         } catch (IOException e) {
             System.out.println("Đã xảy ra lỗi khi ghi vào tập tin: " + fileName);
@@ -150,7 +115,6 @@ public class BillDetail {
         }
     }
 
-<<<<<<< HEAD
    // Phương thức lấy thông tin đơn hàng và gán vào mảng bill
 public void getInfo(bill[] bills) {
     // Lấy thông tin đơn hàng từ nguồn dữ liệu hoặc các tham số truyền vào
@@ -177,10 +141,6 @@ public void getInfo(bill[] bills) {
     public static void main(String[] args) {
         BillDetail billDetail = new BillDetail();
         String fileName = "project_lthdt\\src\\ORDER\\billdetail.txt";
-=======
-    public static void main(String[] args) {
-        BillDetail billDetail = new BillDetail();
->>>>>>> parent of 34d247d (mdsgajs)
         billDetail.setBillDetailCode(1);
         billDetail.setCustomerCode(123);
         billDetail.setEmployeeCode(456);
@@ -189,16 +149,12 @@ public void getInfo(bill[] bills) {
         bill bill = new bill();
         bill.setBillCode("ABC123");
         bill.setProductPrice(10.0);
-<<<<<<< HEAD
 
-=======
-        String fileName = "billdetail.txt";
->>>>>>> parent of 34d247d (mdsgajs)
         billDetail.setBill(bill);
         billDetail.setPaymentMethod("Credit Card");
-        billDetail.setQuantity(5);
+        billDetail.setQuantity(90);
         billDetail.setBillDate(LocalDate.now());
-
-        billDetail.writeToFile("billdetail.txt", billDetail.toString());
+        billDetail.getBillDetail();
+        billDetail.writeToFile(fileName);
     }
 }

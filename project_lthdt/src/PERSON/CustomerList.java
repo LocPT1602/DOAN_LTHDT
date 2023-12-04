@@ -57,6 +57,7 @@ public class CustomerList {
     public void add(Customer customer) {
         Customers.add(customer);
     }
+
     public void removeCustomerById(String customerId) {
         Customer customerToRemove = null;
         for (Customer customer : Customers) {
@@ -65,17 +66,16 @@ public class CustomerList {
                 break;
             }
         }
-        
+
         if (customerToRemove != null) {
             Customers.remove(customerToRemove);
             writeFile(); // Cập nhật file sau khi xóa khách hàng
         } else {
-            System.out.println("Không tìm thấy khách hàng với ID: " + customerId);
+            System.out.println("Khong tim thay khach hang voi ID : " + customerId);
         }
     }
-    
 
-    private void defaultCustomers() {
+    public void defaultCustomers() {
 
         Address address1 = new Address("1", "Duong 1", "Quan 1", "TP HCM");
         Customer customer1 = new Customer("Nguyen Van An", "01/01/1990", "1234567890", "cusA@example.com", "Nam",
