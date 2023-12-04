@@ -1,13 +1,23 @@
 package PAYMENTMETHOD;
 
+<<<<<<< HEAD:project_lthdt/src/PAYMENTMETHOD/PaymentMenu.java
+import java.util.Scanner;
+
+public class PaymentMenu {
+	private Payment[] mangtt;
+	Scanner sc = new Scanner(System.in);
+
+	public PaymentMenu() {
+=======
 public class paymentMenu {
   private payment[] mangtt;
 Scanner sc = new Scanner(System.in);
 	public Paymentmenu() {
+>>>>>>> parent of ca08ecf (m):project_lthdt/src/PAYMENTMETHOD/paymentMenu.java
 		this.mangtt = null;
 	}
 
-	public Paymentmenu(int size) {
+	public PaymentMenu(int size) {
 		this.mangtt = new Payment[size];
 	}
 	public void Menu(int c) {
@@ -53,7 +63,7 @@ Scanner sc = new Scanner(System.in);
 		}
 	}
 	public static void main(String[] args) {
-		Paymentmenu pmm = new Paymentmenu(2);
+		PaymentMenu pmm = new PaymentMenu(2);
 		pmm.selectPaymentmethod();
 	}
 }

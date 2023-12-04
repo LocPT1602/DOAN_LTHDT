@@ -1,7 +1,6 @@
 
 import java.util.Scanner;
 <<<<<<< HEAD
-<<<<<<< HEAD
 import PERSON.CustomerList;
 import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
@@ -14,11 +13,6 @@ public class Employee extends account {
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
 =======
->>>>>>> parent of ca08ecf (m)
-=======
-
-public class Employee extends account {
-    Scanner sc = new Scanner(System.in);
 >>>>>>> parent of ca08ecf (m)
 
     public Employee() {

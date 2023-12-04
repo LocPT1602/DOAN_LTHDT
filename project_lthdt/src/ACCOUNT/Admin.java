@@ -8,13 +8,8 @@ import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
 import MAIN.Kiemtra;
 <<<<<<< HEAD
-<<<<<<< HEAD
 import ORDER.BillDetail;
 public class Admin extends Account {
-=======
-
-public class Admin extends account {
->>>>>>> parent of ca08ecf (m)
 =======
 
 public class Admin extends account {
