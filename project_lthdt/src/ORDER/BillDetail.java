@@ -4,28 +4,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import PRODUCTS.SanPham;
-
 public class BillDetail {
-    private String billDetailCode; // Mã chi tiết hóa đơn
-    private String customerCode; // Mã khách hàng
-    private String employeeCode; // Mã nhân viên
+    private int billDetailCode; // Mã chi tiết hóa đơn
+    private int customerCode; // Mã khách hàng
+    private int employeeCode; // Mã nhân viên
     private bill bill; // Hóa đơn
-    protected SanPham donGia;
     private String paymentMethod; // Phương thức thanh toán
     private int quantity; // Số lượng
     private LocalDate billDate; // Ngày trên hóa đơn
 
     // Constructors
     public BillDetail() {
-        this.billDetailCode="";
-        this.customerCode="";
-        this.employeeCode="";
-        this.paymentMethod="";
-        
     }
 
-    public BillDetail(String billDetailCode, String customerCode, String employeeCode, bill bill, String paymentMethod, int quantity, LocalDate billDate, SanPham donGia) {
+    public BillDetail(int billDetailCode, int customerCode, int employeeCode, bill bill, String paymentMethod, int quantity, LocalDate billDate) {
         this.billDetailCode = billDetailCode;
         this.customerCode = customerCode;
         this.employeeCode = employeeCode;
@@ -33,31 +25,30 @@ public class BillDetail {
         this.paymentMethod = paymentMethod;
         this.quantity = quantity;
         this.billDate = billDate;
-        this.donGia=donGia;
     }
 
     // Getters and Setters
-    public String getBillDetailCode() {
+    public int getBillDetailCode() {
         return billDetailCode;
     }
 
-    public void setBillDetailCode(String billDetailCode) {
+    public void setBillDetailCode(int billDetailCode) {
         this.billDetailCode = billDetailCode;
     }
 
-    public String getCustomerCode() {
+    public int getCustomerCode() {
         return customerCode;
     }
 
-    public void setCustomerCode(String customerCode) {
+    public void setCustomerCode(int customerCode) {
         this.customerCode = customerCode;
     }
 
-    public String getEmployeeCode() {
+    public int getEmployeeCode() {
         return employeeCode;
     }
 
-    public void setEmployeeCode(String employeeCode) {
+    public void setEmployeeCode(int employeeCode) {
         this.employeeCode = employeeCode;
     }
 
@@ -93,15 +84,9 @@ public class BillDetail {
         this.billDate = billDate;
     }
 
-    public SanPham getDonGia(){
-        return this.donGia;
-    }
-    public void setDonGia(SanPham donGia) {
-        this.donGia = donGia;
-    }
     // Phương thức tính tổng giá trị hóa đơn
     public double calculateTotalAmount() {
-        double totalAmount = SanPham.getDonGia() * quantity;
+        double totalAmount = bill.getProductPrice() * quantity;
         return totalAmount;
     }
 
@@ -136,15 +121,15 @@ public void getInfo(bill[] bills) {
     // Ví dụ: giả sử có danh sách mã hóa đơn và giá sản phẩm
     
     int[] billCodes = {1, 2, 3};
-    double[] donGia = {10.0, 20.0, 30.0};
+    double[] productPrices = {10.0, 20.0, 30.0};
     
     // Kiểm tra số lượng đơn hàng và mảng bills có cùng kích thước hay không
-    if (billCodes.length == donGia.length && billCodes.length == bills.length) {
+    if (billCodes.length == productPrices.length && billCodes.length == bills.length) {
         // Lấy thông tin từng đơn hàng và gán vào mảng bills
         for (int i = 0; i < bills.length; i++) {
             bill bill = new bill();
             bill.setBillCode("BILL-" + billCodes[i]);
-            bill.setdonGia( donGia[i]);
+            bill.setProductPrice(productPrices[i]);
             
             bills[i] = bill;
         }
@@ -156,14 +141,14 @@ public void getInfo(bill[] bills) {
     public static void main(String[] args) {
         BillDetail billDetail = new BillDetail();
         String fileName = "project_lthdt\\src\\ORDER\\billdetail.txt";
-        billDetail.setBillDetailCode(null);
-        billDetail.setCustomerCode(null);
-        billDetail.setEmployeeCode(null);
+        billDetail.setBillDetailCode(1);
+        billDetail.setCustomerCode(123);
+        billDetail.setEmployeeCode(456);
 
         // Tạo đối tượng Bill và gán vào biến bill
         bill bill = new bill();
         bill.setBillCode("ABC123");
-        bill.setdonGia(10);
+        bill.setProductPrice(10.0);
 
         billDetail.setBill(bill);
         billDetail.setPaymentMethod("Credit Card");

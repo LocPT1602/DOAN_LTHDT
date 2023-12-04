@@ -20,7 +20,7 @@ public class orderitem {
 
     // Phương thức setter cho thuộc tính quantity
     public void setQuantity(int quantity) {
-        System.out.println("Nhap so luong: ");
+        System.out.println("Nhap so luon: ");
         this.quantity = sc.nextInt();
     }
 

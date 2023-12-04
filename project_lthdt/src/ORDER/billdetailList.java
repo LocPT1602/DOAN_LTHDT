@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import PERSON.Customer;
-import ORDER.*;
+import ORDER.order;
+
 public class billdetailList {
     private List<BillDetail> billDetails; // Danh sách các chi tiết hóa đơn
     private int maxSize; // Kích thước tối đa
+    order order = new order();
 
     public billdetailList() {
-        this.billDetails = new ArrayList<>();
+        billDetails = new ArrayList<>();
         maxSize = 100;
     }
 
@@ -49,17 +50,17 @@ public class billdetailList {
         }
     }
 
-    public void addBillDetailFromOrder(order order) {
-        order.setOrderCode(order.getOrderCode());
-        order.setCustomerCode(order.getCustomerCode());
-        order.setEmployeeCode(order.getEmployeeCode());
-        order.setOrderDate(order.getOrderDate());
-        order.setSanPhamList(order.getSanPhamList());
-        order.setQuantity(order.getQuantity());
-        order.setTotalValue(order.getTotalValue());
+    public void addBillDetailFromOrder(order  orderObj) {
+        order.setorderCode(orderObj.getorderCode());
+        order.setCustomerCode(orderObj.getCustomerCode());
+        order.setEmployeeCode(orderObj.getEmployeeCode());
+        order.setorderDate(orderObj.getorderDate());
+        order.setSanPhamList(orderObj.getSanPhamList());
+        order.setQuantity(orderObj.getQuantity());
+        order.setTotalValue(orderObj.getTotalValue());
     }
     
-    public BillDetail findBillDetailByCode(String billDetailCode) {
+    public BillDetail findBillDetailByCode(int billDetailCode) {
         for (BillDetail billDetail : billDetails) {
             if (billDetail.getBillDetailCode() == billDetailCode) {
                 return billDetail;
@@ -68,15 +69,8 @@ public class billdetailList {
         return null; // Trả về null nếu không tìm thấy chi tiết hóa đơn phù hợp
     }
 
-    public void removeBillDetailByCode(String billDetailCode) {
+    public void removeBillDetailByCode(int billDetailCode) {
         BillDetail billDetailToRemove = findBillDetailByCode(billDetailCode);
-        
-        // for (BillDetail BillDetail: billDetails) {
-        //     if (billDetails.getBillDetailCode().equals(billDetailCode)) {
-        //         billDetailToRemove = this.BillDetail;
-        //         break;
-        //     }
-        // }
         if (billDetailToRemove != null) {
             billDetails.remove(billDetailToRemove);
             System.out.println("Đã xóa chi tiết hóa đơn có ID " + billDetailCode + ".");

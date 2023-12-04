@@ -31,14 +31,14 @@ public void setdiachigiaohang(String diachigiaohang) {
     public void xacnhandonhangonline(order order) {
         if (order.getStatus().equals("Chưa xác nhận")) {
             // Thực hiện xác nhận đơn hàng
-            order.setStatus("Đã xác nhận");
+            order.setstatus("Đã xác nhận");
             System.out.println("Đơn hàng đã được xác nhận.");
 
             // Ghi thông tin đơn hàng đã xác nhận vào tệp tin
             try {
                 FileWriter writer = new FileWriter("online.txt", true);
                 writer.write("Đơn hàng đã được xác nhận:\n");
-                writer.write("Mã đơn hàng: " + order.getOrderCode() + "\n");
+                writer.write("Mã đơn hàng: " + order.getorderCode() + "\n");
                 // Ghi thông tin khác về đơn hàng tại đây
                 writer.write("\n");
                 writer.close();
@@ -54,14 +54,14 @@ public void setdiachigiaohang(String diachigiaohang) {
         // Kiểm tra trạng thái đơn hàng trước khi hủy
         if (order.getStatus().equals("Chưa xác nhận")) {
             // Thực hiện hủy đơn hàng
-            order.setStatus("Đã hủy");
+            order.setstatus("Đã hủy");
             System.out.println("Đơn hàng đã được hủy.");
 
             // Ghi thông tin đơn hàng đã hủy vào tệp tin
             try {
                 FileWriter writer = new FileWriter("online.txt", true);
                 writer.write("Đơn hàng đã được hủy:\n");
-                writer.write("Mã đơn hàng: " + order.getOrderCode() + "\n");
+                writer.write("Mã đơn hàng: " + order.getorderCode() + "\n");
                 // Ghi thông tin khác về đơn hàng tại đây
                 writer.write("\n");
                 writer.close();
