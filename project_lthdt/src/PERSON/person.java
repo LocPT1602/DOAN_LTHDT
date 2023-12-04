@@ -8,24 +8,24 @@ public class person {
     protected String phonenumber;
     protected String email;
     protected String gender;
-    protected Address address =new Address();
-    Kiemtra kt =new Kiemtra();
+    protected Address address = new Address();
+    Kiemtra kt = new Kiemtra();
 
+    public person(String fullname, String birthday, String phonenumber, String email, String gender, Address address) {
+        this.fullname = fullname;
+        this.birthday = birthday;
+        this.phonenumber = phonenumber;
+        this.email = email;
+        this.gender = gender;
+        this.address = address;
+    }
 
-public person(String fullname, String birthday, String phonenumber, String email, String gender, Address address) {
-    this.fullname = fullname;
-    this.birthday = birthday;
-    this.phonenumber = phonenumber;
-    this.email = email;
-    this.gender = gender;
-    this.address = address;
-}
-public person(){
-    this.fullname="";
-    this.birthday="";
-    this.phonenumber="";
-    this.email="";
-    this.gender="";
+    public person() {
+        this.fullname = "";
+        this.birthday = "";
+        this.phonenumber = "";
+        this.email = "";
+        this.gender = "";
 
 }
 public String getFullname() {
@@ -71,15 +71,15 @@ public  int getAge(){
     return currentyear-birthyear;
 }
 public void Nhap() {
-    System.out.print("Nhap ten:");
+    System.out.println("Nhap ten:");
     this.fullname=kt.KiemTraNhapTen();
-    System.out.print("Nhap ngay sinhdang dd/mm/yyyy:");
+    System.out.println("Nhap ngay sinhdang dd/mm/yyyy:");
     this.birthday=kt.nhapNgay();
-    System.out.print("Nhap sdt:");
+    System.out.println("Nhap sdt:");
     this.phonenumber=kt.kiemtraNhapsdt();
-    System.out.print("Nhap email:");
+    System.out.println("Nhap email:");
     this.email=kt.nhapEmail();
-    System.out.print("Nhap gioi tinh:");
+    System.out.println("Nhap gioi tinh:");
     this.gender=kt.ktNhapGioiTinh();
     address.Nhap();
     

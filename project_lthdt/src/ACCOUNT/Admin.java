@@ -4,16 +4,20 @@ import java.util.Scanner;
 import PERSON.CustomerList;
 import PERSON.Employeelist;
 import ORDER.billdetailList;
-
+import PRODUCTS.MainSanPham;
+import PRODUCTS.Kho;
 import MAIN.Kiemtra;
-
+import ORDER.BillDetail;
 public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
+    String idToDelete;
     ListAccount list = new ListAccount();
     CustomerList cusList = new CustomerList();
     Employeelist empList = new Employeelist();
     billdetailList billList = new billdetailList();
+    MainSanPham mainSP = new MainSanPham();
+    Kho khoHang = new Kho();
     Kiemtra kt = new Kiemtra();
 
     public Admin() {
@@ -90,9 +94,9 @@ public class Admin extends Account {
         int exit;
         do {
             System.out.println("-----------------------------+");
-            System.out.println("1 : Xem thong tin ca nhan    |");
-            System.out.println("2 : xoa thong tin            |");
-            System.out.println("3 : Them thong tin           |");
+            System.out.println("1 : Xem thong tin Employee   |");
+            System.out.println("2 : xoa thong tin Employee   |");
+            System.out.println("3 : Them thong tin Employe   |");
             System.out.println("0 : Thoat                    |");
             System.out.println("-----------------------------+");
             int chon = sc.nextInt();
@@ -114,7 +118,7 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Press : 0 to exit || 1 to continue");
+            System.out.println("Press : 0 to exit || 1 to continue (empl_Infor) ");
             exit = sc.nextInt();
         } while (exit != 0 || exit == 1);
     }
@@ -124,8 +128,8 @@ public class Admin extends Account {
         do {
             System.out.println("-----------------------------+");
             System.out.println("1 : Xem thong tin Customers  |");
-            System.out.println("2 : xoa thong tin            |");
-            System.out.println("3 : Them thong tin           |");
+            System.out.println("2 : xoa thong tin Customers  |");
+            System.out.println("3 : Them thong tin Customers |");
             System.out.println("0 : Thoat                    |");
             System.out.println("-----------------------------+");
             int chon = sc.nextInt();
@@ -135,9 +139,11 @@ public class Admin extends Account {
                     cusList.readFile();
                     cusList.getListCustomer();
                     break;
-                // case 2:
-                // cusList.Xoa();
-                // break;
+                case 2:
+                    System.out.print("Nhap Id can xoa : ");
+                    idToDelete = sc.nextLine();
+                    cusList.removeCustomerById(idToDelete);
+                    break;
                 // case 3:
                 // cusList.Nhap();
                 // break;
@@ -148,13 +154,13 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Press : 0 to exit || 1 to continue");
+            System.out.println("Press : 0 to exit || 1 to continue  (cus_Infor) ");
             exit = sc.nextInt();
-        } while (exit != 0 || exit == 1);
+        } while (exit == 1);
     }
 
     public void AddSupplier() {
-
+        mainSP.menuProduct();
     }
 
     public void Bill() {
@@ -164,14 +170,14 @@ public class Admin extends Account {
     public void AdminManeger() {
         int exit;
         do {
-            System.out.println("---------------------------------+");
+            System.out.println("---------------ADMIN-------------+");
             System.out.println("1 : Xoa san Pham                 |");
             System.out.println("2 : Them san pham                |");
             System.out.println("3 : Tao hoa don                  |");
             System.out.println("4 : Thong tin nhan vien          |");
             System.out.println("5 : Thong tin khach hang         |");
             System.out.println("6 : Hoa don                      |");
-            System.out.println("7 : Them nha cung cap            |");
+            System.out.println("7 : Kho - storage                |");
             System.out.println("8 : Them tai khoan nhan vien     |");
             System.out.println("9 : Xoa tai khoan nhan vien      |");
             System.out.println("0 : Thoat                        |");
@@ -203,7 +209,7 @@ public class Admin extends Account {
 
                     break;
                 case 7:
-
+                    AddSupplier();
                     break;
                 case 8:
                     AddEmplAccount();
@@ -216,14 +222,16 @@ public class Admin extends Account {
                 default:
                     break;
             }
-            System.out.println("Nhan 0 de thoat !");
+            System.out.println("Press : 0 to exit || 1 to continue (ADMIN) ");
             exit = sc.nextInt();
-        } while (exit != 0);
+        } while (exit == 1);
     }
 
     public void readFile() {
         try {
             list.readAccount();
+            empList.readEmployeeFile();
+            cusList.defaultCustomers();
         } catch (IOException e) {
             e.printStackTrace();
         }
