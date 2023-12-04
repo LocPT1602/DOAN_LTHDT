@@ -1,30 +1,32 @@
 package ORDER;
 import MAIN.*;
 import java.util.Scanner;
-import PRODUCTS.*;
+import PRODUCTS.SanPham;
 public class bill {
-    private String billCode; // Mã hóa đơn
-    protected String maSP; // Mã sản phẩm
-    private String productName; // Tên sản phẩm
-    private double productPrice; // Giá sản phẩm
+    protected String billCode; // Mã hóa đơn
+    protected SanPham maSP; // Mã sản phẩm
+    protected SanPham tenSP; // Tên sản phẩm
+    protected SanPham donGia; // Giá sản phẩm
     private int quantity; // Số lượng
     private double totalAmount; // Tổng giá
     Kiemtra kt = new Kiemtra();
-    public bill() {
-        this.billCode = "";
-        this.maSP = "";
-        this.productName = "";
-        this.productPrice = 0;
-        this.quantity = 0;
-        this.totalAmount = 0;
-    }
+    // SanPham sp = new SanPham();
 
-    public bill(String billCode, String maSP, String productName, double productPrice, int quantity,
+    public bill() {
+        // this.billCode = "";
+        // this.maSP = "";
+        // this.tenSP = "";
+        // this.donGia = 0;
+        // this.quantity = 0;
+        // this.totalAmount = 0;
+    }
+    
+    public bill(String billCode, SanPham maSP, SanPham tenSP, SanPham donGia, int quantity,
             double totalAmount) {
         this.billCode = billCode;
         this.maSP = maSP;
-        this.productName = productName;
-        this.productPrice = productPrice;
+        this.tenSP = tenSP;
+        this.donGia = donGia;
         this.quantity = quantity;
         this.totalAmount = totalAmount;
     }
@@ -40,28 +42,28 @@ public class bill {
         this.billCode = billCode;
     }
 
-    public String getmaSP() {
+    public SanPham getmaSP() {
         return maSP;
     }
 
-    public void setmaSP(String maSP) {
+    public void setmaSP(SanPham maSP) {
         this.maSP = maSP;
     }
 
-    public String getProductName() {
-        return productName;
+    public SanPham gettenSP() {
+        return tenSP;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void settenSP(SanPham tenSP) {
+        this.tenSP = tenSP;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public SanPham getdonGia() {
+        return donGia;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public void setdonGia(SanPham donGia) {
+        this.donGia = donGia;
     }
 
     public int getQuantity() {
