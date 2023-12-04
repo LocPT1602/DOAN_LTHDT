@@ -32,8 +32,6 @@ public class GioHang{
     }
     public void themVaoGio(String maSP){
     	while (true) {
-    		System.out.println("Nhap vao ma san pham: ");
-            maSP = sc.nextLine();
         	for(SanPham sanPham : kho.khoHang) {
             if (maSP.matches(sanPham.maSP)) {
             	this.gioHang.add(kho.laySPtheoMa(maSP));

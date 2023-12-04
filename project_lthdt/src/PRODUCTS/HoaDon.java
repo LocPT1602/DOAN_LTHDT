@@ -46,14 +46,8 @@ public class HoaDon{
     public static int apDungUuDai(int tong, double giaTriKM){
         return (int) (tong - tong*giaTriKM);
     }
-
+    
     public void xuat(){
-    	
-    	
-    	Employeelist el = new Employeelist();
-    	el.initializeEmployees();
-    	
-    	
     	System.out.println("----Hoa don----");
         System.out.println("Ma hoa don: "+ this.maHD);
         System.out.println("Thoi gian: "+ df.format(this.d));
@@ -61,9 +55,9 @@ public class HoaDon{
         gioHang.inTenSPvaDonGia();
         System.out.println("===========================================");
         System.out.println("Tong tien : "+ gioHang.tinhTien());
-        System.out.println("Chiu trach nhiem hoa don: ");
+        //System.out.println("Chiu trach nhiem hoa don: ");
         System.out.println();
-        System.out.println("Cam on quy khach "+ this.khachHang.getCustomerid()+ " da mua san pham cua chung toi.\n");
+        //System.out.println("Cam on quy khach "+ this.khachHang.getCustomerid()+ " da mua san pham cua chung toi.\n");
         
     }
     public void nhap() {

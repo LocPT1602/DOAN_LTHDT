@@ -14,7 +14,7 @@ public class MainHoaDon {
             System.out.println(
                     "1. In danh sach don hang.\n"
                 +   "2. Them don hang.\n"
-                +   "3. Xoa gio hang.\n"
+                +   "3. Xoa don hang.\n"
                 +   "4. Doc du lieu tu file.\n"
                 +   "5. Ghi du lieu xuong file.\n"
             );
@@ -32,8 +32,8 @@ public class MainHoaDon {
         }
         case 3:
         {
-        	System.out.println("nhap ma hoa don ban muon xoa: ");
-;        	dsHD.xoaKhoiDanhSach(sc.nextInt());
+        	
+;        	dsHD.xoaKhoiDanhSachn();
         	break;
         }
         case 4:
