@@ -146,16 +146,16 @@ public class Employeelist implements Iterable<Employee> {
 
     public void displayInfo() {
         for (Employee employee : employees) {
-            System.out.println("Employee ID: " + employee.getEmployeeid());
-            System.out.println("Name: " + employee.getFullname());
-            System.out.println("Birthdate: " + employee.getBirthday());
-            System.out.println("Phone number: " + employee.getPhonenumber());
-            System.out.println("Email: " + employee.getEmail());
-            System.out.println("Gender: " + employee.getGender());
-            System.out.println("Address: " + employee.getAddress().toString());
-            System.out.println("Position: " + employee.getPosition());
-            System.out.println("Salary: " + employee.getSalary());
-            System.out.println("---------------------------------");
+            System.out.print("Employee ID: " + employee.getEmployeeid());
+            System.out.print("Name: " + employee.getFullname());
+            System.out.print("Birthdate: " + employee.getBirthday());
+            System.out.print("Phone number: " + employee.getPhonenumber());
+            System.out.print("Email: " + employee.getEmail());
+            System.out.print("Gender: " + employee.getGender());
+            System.out.print("Address: " + employee.getAddress().toString());
+            System.out.print("Position: " + employee.getPosition());
+            System.out.print("Salary: " + employee.getSalary());
+            System.out.print("---------------------------------");
         }
     }
 }
