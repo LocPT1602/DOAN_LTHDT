@@ -8,37 +8,40 @@ import MAIN.Kiemtra;
 import java.time.LocalDate;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 public class Order{
     private String orderCode;
     private String customerCode;
     private String employeeCode;
-    private LocalDate orderDate;
+    private String orderDate;
     private List<SanPham> sanPhamList;
     private int quantity;
     private double totalValue;
     private boolean paymentConfirmed;
     private boolean orderConfirmed;
     private String status;
-
+    public String orderDateStr;
     Kiemtra kt = new Kiemtra();
 
-    public Order(String orderCode,String customerCode, String employeeCode, LocalDate orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
+    public Order(String orderDateStr ,String orderCode,String customerCode, String employeeCode, String orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
         this.customerCode = customerCode;
         this.employeeCode = employeeCode;
-        this.orderDate = LocalDate.now();
+        this.orderDate = orderDate;
         this.sanPhamList = sanPhamList;
         this.quantity = quantity;
         this.paymentConfirmed = paymentConfirmed;
         this.orderConfirmed = orderConfirmed;
         this.status = status;
+        this.orderDateStr= orderDateStr;
     }
 
     public Order() {
         this.orderCode = "";
         this.customerCode = "";
         this.employeeCode = "";
-        this.orderDate = LocalDate.now();
+        this.orderDate ="";
         this.sanPhamList = new ArrayList<>();
         this.quantity = 0;
         this.paymentConfirmed = false;
@@ -70,11 +73,17 @@ public class Order{
         this.employeeCode = employeeCode;
     }
 
-    public LocalDate getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDateStr;
+    }
+    public String getOrderDateStr(){
+        return orderDateStr;
+    }
+    public void setOrderDateStr(String orderDateStr) {
+        this.orderDateStr = orderDateStr;
     }
     public List<SanPham> getSanPhamList() {
         return sanPhamList;
@@ -154,17 +163,23 @@ public class Order{
         System.out.print("Nhập mã nhân viên: ");
         this.employeeCode = kt.kiemtraManhanvien();
 
-        System.out.print("Nhập ngày đặt hàng (yyyy-MM-dd): ");
-        String orderDateStr = kt.nhapNgay();
-        LocalDate orderDate = LocalDate.parse(orderDateStr);
+        System.out.print("Nhập ngày đặt hàng (dd/MM/yyyy): ");
+        this.orderDateStr = scanner.nextLine();
+        this.orderDate = orderDateStr;
 
+        try {
+            LocalDate orderDate = LocalDate.parse(orderDateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            System.out.println("Ngày đặt hàng: " + orderDate);
+        } catch (DateTimeParseException e) {
+            System.out.println("Ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+        }
         // Lưu thông tin đơn hàng vào danh sách
         String[] orderInfo = {orderCode, productCode, employeeCode, orderDateStr};
         orderInfoList.add(orderInfo);
 
         // Thêm thông tin đơn hàng vào tệp tin "Ds đơn hàng"
         try {
-            FileWriter writer = new FileWriter("project_lthdt\\src\\ORDER\\Ds đơn hàng.txt", true);
+            FileWriter writer = new FileWriter("project_lthdt\\src\\ORDER\\Dsdonhang.txt", true);
             writer.write("Mã đơn hàng: " + orderCode + "\n");
             writer.write("Mã sản phẩm: " + productCode + "\n");
             writer.write("Mã nhân viên: " + employeeCode + "\n");
@@ -177,9 +192,10 @@ public class Order{
 
         // Thêm thông tin đơn hàng vào tệp tin "Ds sản phẩm đơn hàng"
         try {
-            FileWriter writer = new FileWriter("project_lthdt\\src\\ORDER\\Ds sản phẩm đơn hàng.txt", true);
+            FileWriter writer = new FileWriter("project_lthdt\\src\\ORDER\\Dsspdonhang.txt", true);
             writer.write("Mã đơn hàng: " + orderCode + "\n");
             writer.write("Mã sản phẩm: " + productCode + "\n");
+            writer.write("Số lượng: " + quantity + "\n");
             // Ghi thông tin khác về sản phẩm đơn hàng tại đây
             writer.write("\n");
             writer.close();
@@ -224,11 +240,12 @@ public class Order{
     }
     public static void main(String[] args) {
         Order order = new Order();
-        // SanPham sp = new SanPham();
+        SanPham sp = new SanPham();
         order.inputOrderInfo();
         order.toString();
-        // order.addSanPhamToOrder(sanPham);
+        order.addSanPhamToOrder(sp);
         order.displayOrderInfo();
+
         // ...
     }
 }
