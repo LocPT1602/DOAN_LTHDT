@@ -5,9 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Date;
 import java.util.Scanner;
-
-
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.text.ParseException;
@@ -68,7 +65,7 @@ public class DanhSachHoaDon implements iReaderWriter{
     }
     @Override
     public void docDataTuFile(){
-    	Kho kho = new Kho();
+        Kho kho = new Kho();
         kho.docDataTuFile();
         DanhSachGioHang dsGH = new DanhSachGioHang();
         dsGH.docDataTuFile();
@@ -78,14 +75,16 @@ public class DanhSachHoaDon implements iReaderWriter{
             String line;
             while((line = br.readLine()) != null){
                 String[] parts = line.split(",");
+                String maHD = parts[0].trim();
                 Date d = new SimpleDateFormat("yyyy-MM-dd H:m:s").parse(parts[1].trim());
                 String maGH = parts[2].trim();
-                int khachHangHash = Integer.parseInt(parts[3].trim());
-                String maKM = parts[4].trim();
-                String maNV = parts[5].trim();
+                //int khachHangHash = Integer.parseInt(parts[3].trim());
+                //String maKM = parts[4].trim();
+                //String maNV = parts[5].trim();
                 
                 GioHang gioHang = dsGH.layGHtheoMa(maGH);
                 
+
                 this.themVaoDanhSach(new HoaDon(gioHang));
             }
             br.close();

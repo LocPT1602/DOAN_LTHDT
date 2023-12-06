@@ -30,25 +30,21 @@ public class GioHang{
     public void setDanhSachSP(ArrayList<SanPham> gioHang) {
         this.gioHang = gioHang;
     }
-    public void themVaoGion(){
-    	int flag = 0;
-    	while (flag ==0) {
-    		System.out.println("Nhap vao ma san pham: ");
-            String maSP = sc.nextLine();
+    public void themVaoGio(String maSP){
+    	while (true) {
         	for(SanPham sanPham : kho.khoHang) {
             if (maSP.matches(sanPham.maSP)) {
             	this.gioHang.add(kho.laySPtheoMa(maSP));
-            	flag = 1;
             	return;
-            }}
+            } else {
                 System.out.println("Nhap sai vui long nhap lai Ma SP!!");
-                flag = 0;
-            }
-            }
-        
-    public void themVaoGio(String maSP){
+            }}
+        }
+    }
+    public void themVaoGion(){
     	while (true) {
-    		
+    		System.out.println("Nhap vao ma san pham: ");
+            String maSP = sc.nextLine();
         	for(SanPham sanPham : kho.khoHang) {
             if (maSP.matches(sanPham.maSP)) {
             	this.gioHang.add(kho.laySPtheoMa(maSP));
