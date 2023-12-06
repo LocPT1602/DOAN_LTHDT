@@ -3,77 +3,101 @@ package ORDER;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import PAYMENTMETHOD.*;
+import PERSON.*;
+import PRODUCTS.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillDetail {
-    private int billDetailCode; // Mã chi tiết hóa đơn
-    private int customerCode; // Mã khách hàng
-    private int employeeCode; // Mã nhân viên
-    private bill bill; // Hóa đơn
-    private String paymentMethod; // Phương thức thanh toán
-    private int quantity; // Số lượng
+    private String billDetailCode; // Mã chi tiết hóa đơn
+    private Customer customer; // Mã khách hàng
+    private Employee employee; // Mã nhân viên
+    private ArrayList<SanPham> billList;
+    private Payment paymentMethod; // Phương thức thanh toán
+    private int quantityBill; // Số lượng
     private LocalDate billDate; // Ngày trên hóa đơn
-
-    // Constructors
-    public BillDetail() {
+    HoaDon hoaDon = new HoaDon();
+    GioHang gh = new GioHang();
+    private String generateInvoiceDetailCode() {
+        // Định dạng mã chi tiết hóa đơn thành chuỗi có độ dài 4 chữ số
+        String billDetailCode = String.format("%04d", counter);
+        // Tăng giá trị của biến đếm lên 1 cho lần tạo mã tiếp theo
+        counter++;
+        // Trả về mã chi tiết hóa đơn đã được tạo
+        return billDetailCode;
     }
 
-    public BillDetail(int billDetailCode, int customerCode, int employeeCode, bill bill, String paymentMethod, int quantity, LocalDate billDate) {
+    // Constructors
+    private static int counter = 1;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+    String formattedDate = billDate.format(formatter);
+
+    public BillDetail() {
+        this.billDetailCode = generateInvoiceDetailCode();
+        this.billList = new ArrayList<>();
+    }
+
+    public BillDetail(String billDetailCode, Customer customer, Employee employee, Payment paymentMethod,
+            int quantityBill, LocalDate billDate) {
         this.billDetailCode = billDetailCode;
-        this.customerCode = customerCode;
-        this.employeeCode = employeeCode;
-        this.bill = bill;
+        this.customer = customer;
+        this.employee = employee;
+        this.billDate = billDate;
         this.paymentMethod = paymentMethod;
-        this.quantity = quantity;
+        this.quantityBill = billList.size();
         this.billDate = billDate;
     }
 
     // Getters and Setters
-    public int getBillDetailCode() {
+    public String getBillDetailCode() {
         return billDetailCode;
     }
 
-    public void setBillDetailCode(int billDetailCode) {
+    public void setBillDetailCode(String billDetailCode) {
         this.billDetailCode = billDetailCode;
     }
 
-    public int getCustomerCode() {
-        return customerCode;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerCode(int customerCode) {
-        this.customerCode = customerCode;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public int getEmployeeCode() {
-        return employeeCode;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeCode(int employeeCode) {
-        this.employeeCode = employeeCode;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public bill getBill() {
-        return bill;
+    public ArrayList<SanPham> getBillList() {
+        return billList;
     }
 
-    public void setBill(bill bill) {
-        this.bill = bill;
+    public void setBillList(ArrayList<SanPham> billList) {
+        this.billList = billList;
     }
 
-    public String getPaymentMethod() {
+    public Payment getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(Payment paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQuantityBill() {
+        return quantityBill;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantityBill(int quantityBill) {
+        this.quantityBill = quantityBill;
     }
 
     public LocalDate getBillDate() {
@@ -86,75 +110,62 @@ public class BillDetail {
 
     // Phương thức tính tổng giá trị hóa đơn
     public double calculateTotalAmount() {
-        double totalAmount = bill.getProductPrice() * quantity;
+        double totalAmount = 0;
+        for (SanPham sanPham : billList) {
+            totalAmount += sanPham.getDonGia();
+        }
         return totalAmount;
     }
 
     // Phương thức lấy thông tin hóa đơn chi tiết
-    public String getBillDetail() {
-        String billDetail = "Chi tiết hóa đơn:\n" +
-                "Mã chi tiết hóa đơn: " + billDetailCode + "\n" +
-                "Mã khách hàng: " + customerCode + "\n" +
-                "Mã nhân viên: " + employeeCode + "\n" +
-                "Mã hóa đơn: " + bill.getBillCode() + "\n" +
-                "Phương thức thanh toán: " + paymentMethod + "\n" +
-                "Số lượng: " + quantity + "\n" +
-                "Ngày hóa đơn: " + billDate + "\n" +
-                "Tổng giá trị: " + calculateTotalAmount();
-        System.out.println(billDetail);
-        return billDetail;
-    }
-    // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
-    public void writeToFile(String fileName) {
-        try (FileWriter writer = new FileWriter(fileName)) {
-            writer.write(getBillDetail());
-            System.out.println("Thông tin hóa đơn đã được ghi vào tập tin: " + fileName);
-        } catch (IOException e) {
-            System.out.println("Đã xảy ra lỗi khi ghi vào tập tin: " + fileName);
-            e.printStackTrace();
-        }
+    public void getBillDetail() {
+        System.out.println("----------Chi tiết hóa đơn:------------" );
+        System.out.println("Mã chi tiết hóa đơn: " + this.billDetailCode);
+        System.out.println("Mã khách hàng: " + customer.getCustomerid());
+        System.out.println("Mã nhân viên: " + employee.getEmployeeid());
+        System.out.println("Mã hóa đơn: " + hoaDon.getMaHD());
+        System.out.println("Danh sách Sản phẩm: " );
+        gh.inTenSPvaDonGia();
+        System.out.println("Phương thức thanh toán: " + paymentMethod.getPhuongthuc());
+        System.out.println("Ngày hóa đơn: " + formattedDate);
+        System.out.println("Tổng giá trị: " + calculateTotalAmount());
+        
     }
 
-   // Phương thức lấy thông tin đơn hàng và gán vào mảng bill
-public void getInfo(bill[] bills) {
-    // Lấy thông tin đơn hàng từ nguồn dữ liệu hoặc các tham số truyền vào
-    // Ví dụ: giả sử có danh sách mã hóa đơn và giá sản phẩm
-    
-    int[] billCodes = {1, 2, 3};
-    double[] productPrices = {10.0, 20.0, 30.0};
-    
-    // Kiểm tra số lượng đơn hàng và mảng bills có cùng kích thước hay không
-    if (billCodes.length == productPrices.length && billCodes.length == bills.length) {
-        // Lấy thông tin từng đơn hàng và gán vào mảng bills
-        for (int i = 0; i < bills.length; i++) {
-            bill bill = new bill();
-            bill.setBillCode("BILL-" + billCodes[i]);
-            bill.setProductPrice(productPrices[i]);
-            
-            bills[i] = bill;
+    // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
+    // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
+public void writeToFile() {
+    String fileName = "project_lthdt\\src\\ORDER\\Billdetail.txt";
+    try (FileWriter writer = new FileWriter(fileName)) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("----------Chi tiết hóa đơn:------------\n");
+        sb.append("Mã chi tiết hóa đơn: ").append(this.billDetailCode).append("\n");
+        sb.append("Mã khách hàng: ").append(customer.getCustomerid()).append("\n");
+        sb.append("Mã nhân viên: ").append(employee.getEmployeeid()).append("\n");
+        sb.append("Mã hóa đơn: ").append(hoaDon.getMaHD()).append("\n");
+        sb.append("Danh sách Sản phẩm: \n");
+        for (SanPham sanPham : billList) {
+            sb.append(sanPham.getTenSP()).append(" | ").append(sanPham.getDonGia()).append("\n");
         }
-    } else {
-        System.out.println("Số lượng đơn hàng không khớp với kích thước của mảng bills.");
+        sb.append("Phương thức thanh toán: ").append(paymentMethod.getPhuongthuc()).append("\n");
+        sb.append("Ngày hóa đơn: ").append(formattedDate).append("\n");
+        sb.append("Tổng giá trị: ").append(calculateTotalAmount()).append("\n");
+
+        writer.write(sb.toString());
+        System.out.println("Thông tin hóa đơn đã được ghi vào tập tin: " + fileName);
+    } catch (IOException e) {
+        System.out.println("Đã xảy ra lỗi khi ghi vào tập tin: " + fileName);
+        e.printStackTrace();
     }
 }
 
+    // public void getinformation() {
+
+    // }
+
     public static void main(String[] args) {
-        BillDetail billDetail = new BillDetail();
-        String fileName = "project_lthdt\\src\\ORDER\\billdetail.txt";
-        billDetail.setBillDetailCode(1);
-        billDetail.setCustomerCode(123);
-        billDetail.setEmployeeCode(456);
-
-        // Tạo đối tượng Bill và gán vào biến bill
-        bill bill = new bill();
-        bill.setBillCode("ABC123");
-        bill.setProductPrice(10.0);
-
-        billDetail.setBill(bill);
-        billDetail.setPaymentMethod("Credit Card");
-        billDetail.setQuantity(90);
-        billDetail.setBillDate(LocalDate.now());
-        billDetail.getBillDetail();
-        billDetail.writeToFile(fileName);
+        // BillDetail billDetail = new BillDetail();
+        // billDetail.getBillDetail();
+        // billDetail.writeToFile();
     }
 }

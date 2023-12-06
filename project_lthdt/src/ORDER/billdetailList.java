@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import ORDER.order;
+import ORDER.Order;
 
 public class billdetailList {
     private List<BillDetail> billDetails; // Danh sách các chi tiết hóa đơn
     private int maxSize; // Kích thước tối đa
-    order order = new order();
+    Order order = new Order();
 
     public billdetailList() {
         billDetails = new ArrayList<>();
@@ -50,11 +50,11 @@ public class billdetailList {
         }
     }
 
-    public void addBillDetailFromOrder(order  orderObj) {
-        order.setorderCode(orderObj.getorderCode());
-        order.setCustomerCode(orderObj.getCustomerCode());
-        order.setEmployeeCode(orderObj.getEmployeeCode());
-        order.setorderDate(orderObj.getorderDate());
+    public void addBillDetailFromOrder(Order  orderObj) {
+        order.setOrderCode(orderObj.getOrderCode());
+        order.setCustomer(orderObj.getCustomer());
+        order.setEmployee(orderObj.getEmployee());
+        order.setOrderDate(orderObj.getOrderDate());
         order.setSanPhamList(orderObj.getSanPhamList());
         order.setQuantity(orderObj.getQuantity());
         order.setTotalValue(orderObj.getTotalValue());
@@ -62,7 +62,7 @@ public class billdetailList {
     
     public BillDetail findBillDetailByCode(int billDetailCode) {
         for (BillDetail billDetail : billDetails) {
-            if (billDetail.getBillDetailCode() == billDetailCode) {
+            if (billDetails.getBillDetailCode() == billDetailCode) {
                 return billDetail;
             }
         }

@@ -11,10 +11,8 @@ public class HoaDon{
     private Date d;
     private int maHD;
     private GioHang gioHang;
-    
     private Customer khachHang;
     private Employee nhanVien;
-    
     private DateFormat df = new SimpleDateFormat("yyyy-MM-dd H:m:s");
     
     Scanner sc = new Scanner(System.in);
@@ -51,6 +49,8 @@ public class HoaDon{
     	System.out.println("----Hoa don----");
         System.out.println("Ma hoa don: "+ this.maHD);
         System.out.println("Thoi gian: "+ df.format(this.d));
+        System.out.println("Ma khach hang: "+ khachHang.getFullname());
+        System.out.println("Ma nhan vien chiu trach nhiem: "+ nhanVien.getEmployeeid());
         System.out.println("================= HOA DON =================");
         gioHang.inTenSPvaDonGia();
         System.out.println("===========================================");
