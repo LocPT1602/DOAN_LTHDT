@@ -1,17 +1,13 @@
 package ORDER;
 
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import ORDER.Order;
 
 public class billdetailList {
     private List<BillDetail> billDetails; // Danh sách các chi tiết hóa đơn
     private int maxSize; // Kích thước tối đa
-    Order order = new Order();
 
     public billdetailList() {
         billDetails = new ArrayList<>();
@@ -50,26 +46,16 @@ public class billdetailList {
         }
     }
 
-    public void addBillDetailFromOrder(Order  orderObj) {
-        order.setOrderCode(orderObj.getOrderCode());
-        order.setCustomer(orderObj.getCustomer());
-        order.setEmployee(orderObj.getEmployee());
-        order.setOrderDate(orderObj.getOrderDate());
-        order.setSanPhamList(orderObj.getSanPhamList());
-        order.setQuantity(orderObj.getQuantity());
-        order.setTotalValue(orderObj.getTotalValue());
-    }
-    
-    public BillDetail findBillDetailByCode(int billDetailCode) {
+    public BillDetail findBillDetailByCode(String billDetailCode) {
         for (BillDetail billDetail : billDetails) {
-            if (billDetails.getBillDetailCode() == billDetailCode) {
+            if (billDetail.getBillDetailCode() == billDetailCode) {
                 return billDetail;
             }
         }
         return null; // Trả về null nếu không tìm thấy chi tiết hóa đơn phù hợp
     }
 
-    public void removeBillDetailByCode(int billDetailCode) {
+    public void removeBillDetailByCode(String billDetailCode) {
         BillDetail billDetailToRemove = findBillDetailByCode(billDetailCode);
         if (billDetailToRemove != null) {
             billDetails.remove(billDetailToRemove);
@@ -79,7 +65,8 @@ public class billdetailList {
         }
     }
 
-    public void writeToFile(String fileName) {
+    public void writeToFile() {
+        String fileName = "project_lthdt\\src\\ORDER\\danhsachchitiethoadon.txt";
         try {
             FileWriter writer = new FileWriter(fileName);
             for (BillDetail billDetail : billDetails) {
@@ -95,7 +82,7 @@ public class billdetailList {
     }
 
     public static void main(String[] args) {
-        // Tạo một đối tượng order
-        
+        billdetailList billDetailList = new billdetailList();
+        // Thêm các chi tiết hóa đơn và thực hiện các thao tác khác...
     }
 }
