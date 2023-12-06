@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="ACCOUNT/" kind="src" path="project_lthdt/src"/>
-	<classpathentry kind="src" path="project_lthdt/src/ACCOUNT"/>
-	<classpathentry kind="output" path="project_lthdt/bin"/>
-</classpath>

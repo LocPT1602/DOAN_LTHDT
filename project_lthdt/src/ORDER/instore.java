@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import PRODUCTS.SanPham;
-
-public class instore extends order {
+import java.time.LocalDate;
+public class instore extends Order {
     private double tienmat;
 Scanner sc = new Scanner(System.in);
-    public instore(String orderCode, String customerCode, String employeeCode, String orderDate, List<SanPham> SanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, double tienmat, String status) {
-        super(orderCode, customerCode, employeeCode, orderDate, SanPhamList, quantity, totalValue, paymentConfirmed, orderConfirmed, status);
+    public instore(String orderDateStr ,String orderCode, String customerCode, String employeeCode, LocalDate orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, double tienmat, String status) {
+        super(orderDateStr ,orderCode, customerCode, employeeCode, orderDate, sanPhamList, quantity, totalValue, paymentConfirmed, orderConfirmed, status);
         this.tienmat = tienmat;
     }
     public instore(){
@@ -24,8 +24,8 @@ Scanner sc = new Scanner(System.in);
     }
 
     @Override
-    public void displayorderInfo() {
-        super.displayorderInfo();
+    public void displayOrderInfo() {
+        super.displayOrderInfo();
         double tienNhan = gettienmat();
         double tienThoi = tienNhan - getTotalValue();
 
@@ -34,7 +34,7 @@ Scanner sc = new Scanner(System.in);
     }
 
     public static void main(String[] args) {
-        instore order = new instore();
+        instore Order = new instore();
        
 }
 }
