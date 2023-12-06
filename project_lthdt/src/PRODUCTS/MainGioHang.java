@@ -13,13 +13,12 @@ public class MainGioHang {
                     "1. In danh sach gio hang.\n"
                 +   "2. In Gio hang theo ma.\n"
                 +   "3. Them gio hang.\n"
-                +   "4. Lay so gio hang .\n"
-                +   "5. Xoa gio hang.\n"
-                +   "6. Doc du lieu tu file.\n"
-                +   "7. Ghi du lieu xuong file.\n"
+                +   "4. Xoa gio hang.\n"
+                +   "5. Doc du lieu tu file.\n"
+                +   "6. Ghi du lieu xuong file.\n"
             );
         choice = sc.nextInt();
-        sc.nextLine();
+
         switch(choice) {
         case 1: 
         {
@@ -39,21 +38,16 @@ public class MainGioHang {
         }
         case 4:
         {
-            dsGioHang.laySize();
-            break;
-        }
-        case 5:
-        {
         	System.out.println("Nhap vi tri gio hang");
         	dsGioHang.xoaGH(sc.nextInt());
         	break;
         }
-        case 6:
+        case 5:
         {
             dsGioHang.docDataTuFile();
             break;
         }
-        case 7:
+        case 6:
         {
             dsGioHang.ghiDataXuongFile();
             break;

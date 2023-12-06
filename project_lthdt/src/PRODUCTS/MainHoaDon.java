@@ -19,7 +19,7 @@ public class MainHoaDon {
                 +   "5. Ghi du lieu xuong file.\n"
             );
         choice = sc.nextInt();
-        sc.nextLine();
+        
         switch(choice) {
         case 1: 
         {

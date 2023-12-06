@@ -43,10 +43,6 @@ public class HoaDon{
         return this.gioHang;
     }
 
-    public static int apDungUuDai(int tong, double giaTriKM){
-        return (int) (tong - tong*giaTriKM);
-    }
-    
     public void xuat(){
     	System.out.println("----Hoa don----");
         System.out.println("Ma hoa don: "+ this.maHD);
@@ -65,10 +61,6 @@ public class HoaDon{
     	System.out.println("nhap Ma hoa don: ");
     	this.setMaHD(sc.nextInt());
     	GioHang gh = new GioHang();
-    	Employee nv = new Employee();
-    	System.out.println("nhap id nhan vien phu trach : ");
-    	String stt = sc.nextLine();   
-    	nv.setEmployeeid(stt);
     	int coic;
     	System.out.println("nhap ma san pham vao hoa don: " +"\n chon 0 de ngung nhap ma \n");
     	do {
