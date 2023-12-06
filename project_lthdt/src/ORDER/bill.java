@@ -1,32 +1,30 @@
 package ORDER;
 import MAIN.*;
 import java.util.Scanner;
-// import PRODUCTS.SanPham;
-public class Bill {
-    protected String billCode; // Mã hóa đơn
+import PRODUCTS.*;
+public class bill {
+    private String billCode; // Mã hóa đơn
     protected String maSP; // Mã sản phẩm
-    protected String tenSP; // Tên sản phẩm
-    protected double donGia; // Giá sản phẩm
+    private String productName; // Tên sản phẩm
+    private double productPrice; // Giá sản phẩm
     private int quantity; // Số lượng
     private double totalAmount; // Tổng giá
     Kiemtra kt = new Kiemtra();
-    // SanPham sp = new SanPham();
-
-    public Bill() {
+    public bill() {
         this.billCode = "";
         this.maSP = "";
-        this.tenSP = "";
-        this.donGia = 0;
+        this.productName = "";
+        this.productPrice = 0;
         this.quantity = 0;
         this.totalAmount = 0;
     }
-    
-    public Bill(String billCode, String maSP, String tenSP, double donGia, int quantity,
+
+    public bill(String billCode, String maSP, String productName, double productPrice, int quantity,
             double totalAmount) {
         this.billCode = billCode;
         this.maSP = maSP;
-        this.tenSP = tenSP;
-        this.donGia = donGia;
+        this.productName = productName;
+        this.productPrice = productPrice;
         this.quantity = quantity;
         this.totalAmount = totalAmount;
     }
@@ -50,20 +48,20 @@ public class Bill {
         this.maSP = maSP;
     }
 
-    public String gettenSP() {
-        return tenSP;
+    public String getProductName() {
+        return productName;
     }
 
-    public void settenSP(String tenSP) {
-        this.tenSP = tenSP;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public double getdonGia() {
-        return donGia;
+    public double getProductPrice() {
+        return productPrice;
     }
 
-    public void setdonGia(double donGia) {
-        this.donGia = donGia;
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public int getQuantity() {
