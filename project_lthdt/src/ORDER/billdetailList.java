@@ -66,7 +66,7 @@ public class billdetailList {
     }
 
     public void writeToFile() {
-        String fileName = "project_lthdt\\src\\ORDER\\danhsachchitiethoadon.txt";
+        String fileName = "project_lthdt/src/ORDER/danhsachchitiethoadon.txt";
         try {
             FileWriter writer = new FileWriter(fileName);
             for (BillDetail billDetail : billDetails) {
@@ -83,6 +83,7 @@ public class billdetailList {
 
     public static void main(String[] args) {
         billdetailList billDetailList = new billdetailList();
+        billDetailList.writeToFile();
         // Thêm các chi tiết hóa đơn và thực hiện các thao tác khác...
     }
 }
