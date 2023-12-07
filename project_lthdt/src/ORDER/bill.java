@@ -2,29 +2,20 @@ package ORDER;
 import MAIN.*;
 import java.util.Scanner;
 import PRODUCTS.*;
-public class bill {
-    private String billCode; // Mã hóa đơn
-    protected String maSP; // Mã sản phẩm
-    private String productName; // Tên sản phẩm
-    private double productPrice; // Giá sản phẩm
-    private int quantity; // Số lượng
-    private double totalAmount; // Tổng giá
+public class Bill {
+    protected HoaDon maHD; // Mã hóa đơn
+    protected SanPham maSP; // Mã sản phẩm
+    protected SanPham tenSP; // Tên sản phẩm
+    protected SanPham donGia; // Giá sản phẩm
+    protected int quantity; // Số lượng
+    protected double totalAmount; // Tổng giá
     Kiemtra kt = new Kiemtra();
-    public bill() {
-        this.billCode = "";
-        this.maSP = "";
-        this.productName = "";
-        this.productPrice = 0;
+    public Bill() {
         this.quantity = 0;
         this.totalAmount = 0;
     }
 
-    public bill(String billCode, String maSP, String productName, double productPrice, int quantity,
-            double totalAmount) {
-        this.billCode = billCode;
-        this.maSP = maSP;
-        this.productName = productName;
-        this.productPrice = productPrice;
+    public Bill( int quantity, double totalAmount) {
         this.quantity = quantity;
         this.totalAmount = totalAmount;
     }
@@ -32,37 +23,36 @@ public class bill {
     Scanner sc = new Scanner(System.in);
 
     // Getter và Setter cho thuộc tính
-    public String getBillCode() {
-        return billCode;
-    }
-
-    public void setBillCode(String billCode) {
-        this.billCode = billCode;
-    }
-
-    public String getmaSP() {
+    public SanPham getMaSP() {
         return maSP;
     }
 
-    public void setmaSP(String maSP) {
+    public void setMaSP(SanPham maSP) {
         this.maSP = maSP;
     }
 
-    public String getProductName() {
-        return productName;
+    public HoaDon getmaHD() {
+        return maHD;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setmaHD(HoaDon maHD) {
+        this.maHD = maHD;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public SanPham getTenSP() {
+        return tenSP;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public void setTenSP(SanPham tenSP) {
+        this.tenSP = tenSP;
     }
+
+    public SanPham getDonGia() {
+        return donGia;
+    }
+
+    public void setDonGia(SanPham donGia) {
+        this.donGia = donGia;    }
 
     public int getQuantity() {
         return quantity;

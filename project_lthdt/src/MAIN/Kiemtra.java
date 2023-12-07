@@ -155,7 +155,7 @@ public class Kiemtra {
             if (DauVao >= 0) {
                 return DauVao;
             } else {
-                System.out.print("Vui long nhap so duong ! Nhap lai: ");
+                System.out.print("Vui long nhap so tu nhien ! Nhap lai: ");
             }
         }
     }

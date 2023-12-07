@@ -3,106 +3,104 @@ package ORDER;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import PRODUCTS.SanPham;
 import MAIN.Kiemtra;
-import PERSON.*;
-public class order {
+import java.nio.file.Files;
+import java.nio.file.Path;
+import PRODUCTS.GioHang;
+public class Order {
     private String orderCode; // Mã đơn hàng
-    private String customerCode; // Mã khách hàng
-    private String employeeCode; // Mã nhân viên
-    private String orderDate; // Ngày đặt hàng
-    private List<SanPham> SanPhamList; // Danh sách sản phẩm
+    private String customer; // Mã khách hàng
+    private String employee; // Mã nhân viên
+    private String productCode; // Mã sản phẩm
+    private LocalDate orderDate; // Ngày đặt hàng
+    private List<SanPham> sanPhamList; // Danh sách sản phẩm
     private int quantity; // Số lượng sản phẩm
     private double totalValue; // Tổng giá trị đơn hàng
     private boolean paymentConfirmed; // Xác nhận thanh toán
     private boolean orderConfirmed; // Xác nhận đơn hàng
-    private String status; // Trạng thái đơn hàng
-    BillDetail billdetail = new BillDetail();
+    private String status; // Trạng thái đơn hàng
     Kiemtra kt = new Kiemtra();
-    public order(String orderCode2, String customerCode2, String employeeCode2, String orderDate2, List<SanPham> sanPhamList2, int quantity2, double totalValue2, boolean paymentConfirmed2, boolean orderConfirmed2) {
-        SanPhamList = new ArrayList<>();
-        this.status = "Chưa xác nhận";
-    }
-
-    public order(String orderCode, String customerCode, String employeeCode, String orderDate,
-            List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed,
-            boolean orderConfirmed, String status) {
+    GioHang gh = new GioHang();
+    Scanner scanner = new Scanner(System.in);
+    public Order(String orderCode, String customer, String employee, LocalDate orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
-        this.customerCode = customerCode;
-        this.employeeCode = employeeCode;
-        this.orderDate = orderDate;
-        this.SanPhamList = sanPhamList;
+        this.customer = customer;
+        this.employee = employee;
+        this.orderDate = LocalDate.now();
+        this.sanPhamList = sanPhamList;
         this.quantity = quantity;
         this.totalValue = totalValue;
         this.paymentConfirmed = paymentConfirmed;
         this.orderConfirmed = orderConfirmed;
         this.status = status;
     }
-    public order()
-    {
-        this.orderCode="";
-        this.customerCode="";
-        this.employeeCode="";
-        this.orderDate="";
-        this.SanPhamList=null;
-        this.quantity=0;
-        this.totalValue=0;
-        this.paymentConfirmed=false;
-        this.orderConfirmed=false;
-        this.status="";
 
-
+    public Order() {
+        this.orderDate = LocalDate.now();
+        this.sanPhamList = new ArrayList<>();
+        this.quantity = 0;
+        this.totalValue = 0;
+        this.status = "";
     }
-
-    Scanner scanner = new Scanner(System.in);
-
     // Getter và Setter cho các thuộc tính
-    public String getorderCode() {
+    public String getOrderCode() {
         return orderCode;
     }
 
-    public void setorderCode(String orderCode) {
+    public void setOrderCode(String orderCode) {
         this.orderCode = orderCode;
     }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }   
 
     public String getStatus() {
         return status;
     }
 
-    public void setstatus(String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public String getCustomerCode() {
-        return customerCode;
+    public String getCustomer() {
+        return customer;
     }
 
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public String getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+    public void setEmployee(String employee) {
+        this.employee = employee;
     }
 
-    public String getorderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setorderDate(String orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
     public List<SanPham> getSanPhamList() {
-        return SanPhamList;
+        return sanPhamList;
     }
-
-    public void setSanPhamList(List<SanPham> SanPhamList) {
-        this.SanPhamList = SanPhamList;
+    public void setSanPhamList(List<SanPham> sanPhamList) {
+        this.sanPhamList = sanPhamList;
     }
 
     public int getQuantity() {
@@ -118,7 +116,6 @@ public class order {
     }
 
     public void setTotalValue(double totalValue) {
-        calculateTotalValue();
         this.totalValue = totalValue;
     }
 
@@ -130,87 +127,180 @@ public class order {
         this.paymentConfirmed = paymentConfirmed;
     }
 
-    public boolean isorderConfirmed() {
+    public boolean isOrderConfirmed() {
         return orderConfirmed;
     }
 
-    public void setorderConfirmed(boolean orderConfirmed) {
+    public void setOrderConfirmed(boolean orderConfirmed) {
         this.orderConfirmed = orderConfirmed;
     }
 
     // Phương thức tính tổng giá trị đơn hàng
     public void calculateTotalValue() {
         double total = 0;
-        for (SanPham SanPham : SanPhamList) {
-            total += SanPham.getDonGia();
+        for (SanPham sanPham : sanPhamList) {
+            total += sanPham.getDonGia();
         }
         this.totalValue = total;
     }
 
     // Phương thức thêm sản phẩm vào đơn hàng
-    public void addSanPhamToorder(SanPham SanPham) {
-        SanPhamList.add(SanPham);
+    public void addSanPhamToOrder(SanPham sanPham) {
+        sanPhamList.add(sanPham);
     }
 
     // Phương thức xóa sản phẩm khỏi đơn hàng
-    public void removeSanPhamFromorder(SanPham SanPham) {
-        SanPhamList.remove(SanPham);
+    public void removeSanPhamFromOrder(SanPham sanPham) {
+        sanPhamList.remove(sanPham);
     }
-
+    public void checkorderConfirmed() {
+        boolean validOrderConfirmed = false;
+        while (!validOrderConfirmed) {
+            String orderConfirmedInput = scanner.nextLine();
+            if (orderConfirmedInput.equalsIgnoreCase("true") || orderConfirmedInput.equalsIgnoreCase("false")) {
+                validOrderConfirmed = true;
+                orderConfirmed = Boolean.parseBoolean(orderConfirmedInput);
+            } else {
+                System.out.println("Giá trị không hợp lệ. Vui lòng nhập lại (true/false):");
+            }
+        }
+    }
+    
+    public void checkpaymentConfirmed() {
+        boolean validPaymentConfirmed = false;
+        while (!validPaymentConfirmed) {
+            String paymentConfirmedInput = scanner.nextLine();
+            if (paymentConfirmedInput.equalsIgnoreCase("true") || paymentConfirmedInput.equalsIgnoreCase("false")) {
+                validPaymentConfirmed = true;
+                paymentConfirmed = Boolean.parseBoolean(paymentConfirmedInput);
+            } else {
+                System.out.println("Giá trị không hợp lệ. Vui lòng nhập lại (true/false):");
+            }
+        }
+    }
+    
+    public void checkStatus() {
+        while (this.status.equals("Đã xác nhận")) {
+            if (this.orderConfirmed && this.paymentConfirmed) {
+                this.status = "Đã xác nhận";
+            } else if (this.orderConfirmed && !this.paymentConfirmed) {
+                this.status = "Chưa xác nhận";
+                System.out.println("Chọn lại xác nhận thanh toán (true/false)");
+                checkpaymentConfirmed();
+            } else if (!this.orderConfirmed && this.paymentConfirmed) {
+                this.status = "Chưa xác nhận";
+                System.out.println("Chọn lại xác nhận đơn hàng (true/false)");
+                checkorderConfirmed();
+            }
+        }
+    }
     // Phương thức nhập thông tin đơn hàng
-    public void inputorderInfo() {
-        // Nhập thôgetBillDetailCode
-        System.out.println("Nhap ma don hang: ");
-        this.orderCode= scanner.nextLine();
-        System.out.println("Nhap ma khach hang: ");
-        this.customerCode= kt.kiemtraMakhachhang();
-        System.out.println("Nhap ma nhan vien: ");
-        this.employeeCode= kt.kiemtraManhanvien();
-        System.out.println("Ngay dat hang: ");
-        this.orderDate= kt.nhapNgay();
-        System.out.println("Nhap  so luong: ");
-        this.quantity= kt.KiemTraNhapSoTuNhien();
-        // ...
+    public void inputOrderInfo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập mã đơn hàng: ");
+        this.orderCode = scanner.nextLine();
+    
+        System.out.println("Nhập mã sản phẩm: ");
+        this.productCode = scanner.nextLine();
+    
+        System.out.println("Nhập mã khách hàng: ");
+        this.customer = kt.kiemtraMakhachhang();
+    
+        System.out.println("Nhập mã nhân viên: ");
+        this.employee = kt.kiemtraManhanvien();
+    
+        System.out.println("Danh sách sản phẩm: ");
+        gh.inTenSPvaDonGia();
+        System.out.println("Nhập số lượng sản phẩm: ");
+        this.quantity = kt.KiemTraNhapSoTuNhien();
+    
+        System.out.println("Nhập tổng giá trị đơn hàng: ");
+        this.totalValue = kt.KiemTraNhapSoNguyen();
+    
+        System.out.println("Xác nhận thanh toán (true/false): ");
+        checkpaymentConfirmed();
+        System.out.println("Xác nhận đơn hàng (true/false): ");
+        checkorderConfirmed();
+        checkStatus();
     }
 
     // Phương thức xuất thông tin đơn hàng
-    public void displayorderInfo() {
-        // Hiển thị thông tin đơn hàng ra màn hình
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("----------------THONG TIN DON HANG-----------------------------");
-        System.out.println("Mã đơn hàng: " + orderCode);
-        System.out.println("Mã khách hàng: "+ customerCode);
-        System.out.println("mã nhân viên: "+ employeeCode);
-        System.out.println("Ngày đặt hàng: "+ orderDate);
-        System.out.println("Danh sách sản phẩm đã đặt: "+ SanPhamList);
-        System.out.println("Số lượng sản phẩm: "+ quantity);
-        System.out.println("Tổng giá trị đơn hàng: " +totalValue);
-        // ...
+    public void displayOrderInfo() {
+        LocalDate orderDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("--------------------THÔNG TIN ĐƠN HÀNG-------------------------");
+        System.out.println("Mã đơn hàng: " + orderCode);
+        System.out.println("Mã khách hàng: " + customer);
+        System.out.println("Mã nhân viên: " + employee);
+        System.out.println("Ngày đặt hàng: " + orderDate.format(formatter));        
+        System.out.println("Danh sách sản phẩm: ");
+        gh.inTenSPvaDonGia();
+        System.out.println("Số lượng sản phẩm: " + quantity);
+        System.out.println("Tổng giá trị đơn hàng: " + totalValue);
+        System.out.println("Xác nhận thanh toán: " + paymentConfirmed);
+        System.out.println("Xác nhận đơn hàng: " + orderConfirmed);
+        checkStatus();
+        System.out.println("Trạng thái đơn hàng: " + status);
     }
-
-    // Ghi đè phương thức toString()
+    public void addOrderInfoList(){
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+    String formattedDate=orderDate.format(formatter);
+    String[] orderInfo = {orderCode, employee, productCode, formattedDate};
+List<String[]> orderInfoList = new ArrayList<>();
+orderInfoList.add(orderInfo);
+    }
+        // Thêm thông tin đơn hàng vào tệp tin "Ds đơn hàng"
+        public void writefile1() {
+            String fileName = "project_lthdt/src/ORDER/dsdonhang.txt";
+            try {
+                Path filePath = Path.of(fileName);
+                FileWriter writer = new FileWriter(filePath.toString());
+                writer.write("Mã đơn hàng: " + orderCode + "\n");
+                writer.write("Mã nhân viên: " + employee + "\n");
+                writer.write("Ngày đặt hàng: " + orderDate + "\n");
+                writer.write("\n");
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Lỗi khi ghi tệp tin.");
+            }
+        }
+    
+        // Thêm thông tin đơn hàng vào tệp tin "Ds sản phẩm đơn hàng"
+        public void writefile2() {
+            try {
+                String fileName2 = "project_lthdt/src/ORDER/dssanphamdonhang.txt";
+                Path filePath2 = Path.of(fileName2);
+                FileWriter writer = new FileWriter(filePath2.toString());
+                writer.write("Mã đơn hàng: " + orderCode + "\n");
+                writer.write("Mã sản phẩm: " + productCode + "\n");
+            // Ghi thông tin khác về sản phẩm đơn hàng tại đây
+            writer.write("\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi tệp tin.");
+        }
+        }
+   
+    // Phương thức ghi đè toString()
     @Override
     public String toString() {
-        return "Don hang{" +
-                "Ma don hang : '" + orderCode + '\'' +
-                ", Ma khach hang: '" + customerCode + '\'' +
-                ", Ma nhan vien: '" + employeeCode + '\'' +
-                ", Ngay dat hang: '" + orderDate + '\'' +
-                ", Danh sach san pham: " + SanPhamList +
-                ", So luong: " + quantity +
-                ", Tong gia tri: " + totalValue +
-                ", Xac nhan thanh toan: " + paymentConfirmed +
-                ", Xac nhan don hang: =" + orderConfirmed +
-                ", Tinh trang don hang: =" + status +
-
+        return "Order{" +
+                "orderCode='" + orderCode + '\'' +
+                ", customer=" + customer +
+                ", employee=" + employee +
+                ", orderDate=" + orderDate +
+                ", sanPhamList=" + sanPhamList +
+                ", quantity=" + quantity +
+                ", totalValue=" + totalValue +
+                ", paymentConfirmed=" + paymentConfirmed +
+                ", orderConfirmed=" + orderConfirmed +
+                ", status='" + status + '\'' +
                 '}';
     }
-
-    public static void main(String[] args) {
-        order order = new order();
-        order.inputorderInfo();
-        order.toString();
-        order.displayorderInfo();
-
+    public static void main(String[] args){
+        Order order = new Order();
+        order.inputOrderInfo();
+        order.displayOrderInfo();
     }
 }
