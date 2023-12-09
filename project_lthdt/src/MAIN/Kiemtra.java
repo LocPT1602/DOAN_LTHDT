@@ -28,7 +28,19 @@ public class Kiemtra {
 
         }
     }
-
+    public String NhapTen(){
+        String ten;
+        while(true){
+            ten = input.nextLine();
+            if(ten.matches("^[A-Z][a-z]*([\\s][A-Z][a-z]*)*$")){
+                return ten;
+            }
+            else{
+                System.out.println("Ten nhap vao khong hop le vi du:Nguyen Van A. Nhap lai:");
+            }
+        }
+    }
+    
     public String kiemtraNhapsdt() {
         String dauvao;
         while (true) {

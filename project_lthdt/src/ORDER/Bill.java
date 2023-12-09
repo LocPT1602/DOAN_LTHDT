@@ -73,5 +73,11 @@ public class Bill {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
+<<<<<<< HEAD:project_lthdt/src/ORDER/bill.java
 
 }
+=======
+    
+    
+}
+>>>>>>> ad5c9942b265d9d1dc9a9acab3eb4ee180b8fa10:project_lthdt/src/ORDER/Bill.java
