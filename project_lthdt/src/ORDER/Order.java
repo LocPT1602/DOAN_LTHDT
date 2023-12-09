@@ -190,17 +190,27 @@ public class Order {
     }
 
     public void checkStatus() {
-        while (this.status.equals("Đã xác nhận")) {
-            if (this.orderConfirmed && this.paymentConfirmed) {
-                this.status = "Đã xác nhận";
-            } else if (this.orderConfirmed && !this.paymentConfirmed) {
-                this.status = "Chưa xác nhận";
-                System.out.println("Chọn lại xác nhận thanh toán (true/false)");
-                checkpaymentConfirmed();
-            } else if (!this.orderConfirmed && this.paymentConfirmed) {
-                this.status = "Chưa xác nhận";
-                System.out.println("Chọn lại xác nhận đơn hàng (true/false)");
-                checkorderConfirmed();
+        System.out.println("Xác nhận thanh toán (true/false): ");
+        checkpaymentConfirmed();
+        System.out.println("Xác nhận đơn hàng (true/false): ");
+        checkorderConfirmed();
+    
+        if (orderConfirmed && paymentConfirmed) {
+            status = "Đã xác nhận";
+        } else {
+            status = "Chưa xác nhận";
+            while (status.equals("Đã xác nhận")) {
+                if (!orderConfirmed) {
+                    System.out.println("Chọn lại xác nhận đơn hàng (true/false)");
+                    checkorderConfirmed();
+                }
+                if (!paymentConfirmed) {
+                    System.out.println("Chọn lại xác nhận thanh toán (true/false)");
+                    checkpaymentConfirmed();
+                }
+                if (orderConfirmed && paymentConfirmed) {
+                    status = "Đã xác nhận";
+                }
             }
         }
     }
@@ -289,11 +299,6 @@ public double tinhTongSoTien() {
 
         // System.out.println("Nhập tổng giá trị đơn hàng: ");
         // this.totalValue = kt.KiemTraNhapSoNguyen();
-
-        System.out.println("Xac nhan thanh toan (true/false): ");
-        checkpaymentConfirmed();
-        System.out.println("Xan nhan don hang (true/false): ");
-        checkorderConfirmed();
         checkStatus();
     }
 
