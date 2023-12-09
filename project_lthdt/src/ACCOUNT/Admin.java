@@ -145,7 +145,7 @@ public class Admin extends Account {
                 case 2:
                     System.out.print("Nhap Id can xoa : ");
                     idToDelete = sc.nextLine();
-                    cusList.removeCustomerById(idToDelete);
+                    // cusList.removeCustomerById(idToDelete);
                     break;
                 // case 3:
                 // cusList.Nhap();
