@@ -1,8 +1,0 @@
-----------Chi tiết hóa đơn:------------
-Mã chi tiết hóa đơn: 0001
-Mã khách hàng: null
-Mã nhân viên: null
-Mã hóa đơn: 0
-Danh sách Sản phẩm: 
-Ngày hóa đơn: 07/12/2023
-Tổng giá trị: 0.0

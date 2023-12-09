@@ -3,6 +3,8 @@ package PRODUCTS;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.io.FileWriter;
+import java.io.IOException;
 public class GioHang {
     public ArrayList<SanPham> gioHang;
     private String maGH;
@@ -60,12 +62,21 @@ public class GioHang {
         }
     }
 
-    public void inTenSPvaDonGia() {
+public void inTenSPvaDonGia() {
+    try {
+        FileWriter writer = new FileWriter("danhsachspdadat.txt");
         for (SanPham sanPham : this.gioHang) {
-            System.out.println(sanPham.getTenSP() + "    |   " + sanPham.getDonGia());
-
+            String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia();
+            System.out.println(line);
+            writer.write(line + "\n");
         }
+        writer.close();
+        System.out.println("Thông tin tên sản phẩm và đơn giá đã được ghi vào file danhsachspdadat.txt");
+    } catch (IOException e) {
+        System.out.println("Lỗi khi ghi thông tin vào file.");
+        e.printStackTrace();
     }
+}
 
     public void xoaKhoiGioHang(int vitri) {
         if (vitri >= 0 && vitri < gioHang.size()) {
@@ -121,6 +132,7 @@ public class GioHang {
 
         for (SanPham sanPham : this.gioHang) {
             sanPham.xuat();
+            
         }
         System.out.println("==============================");
     }

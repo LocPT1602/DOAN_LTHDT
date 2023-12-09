@@ -13,6 +13,9 @@ import MAIN.Kiemtra;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import PRODUCTS.GioHang;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Order {
     private String orderCode; // Mã đơn hàng
@@ -27,7 +30,7 @@ public class Order {
     private boolean orderConfirmed; // Xác nhận đơn hàng
     private String status; // Trạng thái đơn hàng
     Kiemtra kt = new Kiemtra();
-    GioHang gh = new GioHang();
+    GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
 
     public Order(String orderCode, String customer, String employee, LocalDate orderDate, List<SanPham> sanPhamList,
@@ -201,7 +204,64 @@ public class Order {
             }
         }
     }
+public void docFileDanhsachspdadat() {
+    try {
+        FileReader fileReader = new FileReader("danhsachspdadat.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            System.out.println(line);
+        }
+
+        bufferedReader.close();
+    } catch (IOException e) {
+        System.out.println("Lỗi khi đọc file.");
+        e.printStackTrace();
+    }
+}
+
+public int tinhSoLuongSanPham() {
+    quantity = 0;
+    try {
+        FileReader fileReader = new FileReader("danhsachspdadat.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        while (bufferedReader.readLine() != null) {
+            quantity++;
+        }
+
+        bufferedReader.close();
+    } catch (IOException e) {
+        System.out.println("Lỗi khi đọc file.");
+        e.printStackTrace();
+    }
+    
+    return quantity;
+}
+public double tinhTongSoTien() {
+    totalValue = 0;
+    try {
+        FileReader fileReader = new FileReader("danhsachspdadat.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] parts = line.split("\\|");
+            if (parts.length == 2) {
+                double donGia = Double.parseDouble(parts[1].trim());
+                totalValue += donGia;
+            }
+        }
+
+        bufferedReader.close();
+    } catch (IOException e) {
+        System.out.println("Lỗi khi đọc file.");
+        e.printStackTrace();
+    }
+    
+    return totalValue;
+}
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
@@ -248,8 +308,10 @@ public class Order {
         System.out.println("Ma nhan vien: " + employee);
         System.out.println("Ngay tao don hang: " + orderDate.format(formatter));
         System.out.println("Danh sach san pham: ");
-        gh.gioHangSize();
-        gh.inTenSPvaDonGia();
+        gioHang.gioHangSize();
+        docFileDanhsachspdadat();
+        tinhSoLuongSanPham();
+        tinhTongSoTien();
         System.out.println("So luong san pham: " + quantity);
         System.out.println("Tong gia tri don hang: " + totalValue);
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
