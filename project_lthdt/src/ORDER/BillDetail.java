@@ -5,14 +5,19 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import PAYMENTMETHOD.*;
-import PERSON.*;
+// import PERSON.*;
 import PRODUCTS.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 public class BillDetail {
+    Scanner scanner = new Scanner(System.in);
+
     private String billDetailCode; // Mã chi tiết hóa đơn
     private Order customer; // Mã khách hàng
     private Order employee; // Mã nhân viên
@@ -24,6 +29,7 @@ public class BillDetail {
     HoaDon hoaDon = new HoaDon();
     GioHang gh = new GioHang();
     Order order = new Order();
+
     private String generateInvoiceDetailCode() {
         // Định dạng mã chi tiết hóa đơn thành chuỗi có độ dài 4 chữ số
         String billDetailCode = String.format("%04d", counter);
@@ -34,7 +40,7 @@ public class BillDetail {
     }
 
     // Constructors
-    
+
     public BillDetail() {
         this.billDetailCode = generateInvoiceDetailCode();
         this.billList = new ArrayList<>();
@@ -116,22 +122,29 @@ public class BillDetail {
         }
         return totalAmount;
     }
-   
+
     // Phương thức lấy thông tin hóa đơn chi tiết
     public void getBillDetail() {
+        Random random = new Random();
+        int randomNumbers = random.nextInt(1000);
+        String formattedRandomNumbers = String.format("%03d", randomNumbers);
+        String billDetailCode = "MHD" + formattedRandomNumbers;
+
+        this.billDetailCode = billDetailCode;
         LocalDate billDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println("----------Chi tiết hóa đơn:------------" );
+        System.out.println("----------Chi tiết hóa đơn:------------");
         System.out.println("Mã chi tiết hóa đơn: " + this.billDetailCode);
-        System.out.println("Mã khách hàng: " + order.getCustomer());        
+        System.out.println("Mã khách hàng: " + order.getCustomer());
         System.out.println("Mã nhân viên: " + order.getEmployee());
         System.out.println("Mã hóa đơn: " + hoaDon.getMaHD());
-        System.out.println("Danh sách Sản phẩm: " );
+        System.out.println("Danh sách Sản phẩm: ");
         gh.inTenSPvaDonGia();
-        // System.out.println("Phương thức thanh toán: " + paymentMethod.getPhuongthuc());
+        // System.out.println("Phương thức thanh toán: " +
+        // paymentMethod.getPhuongthuc());
         System.out.println("Ngày hóa đơn: " + billDate.format(formatter));
         System.out.println("Tổng giá trị: " + calculateTotalAmount());
-        
+
     }
 
     // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
@@ -150,10 +163,11 @@ public class BillDetail {
             for (SanPham sanPham : billList) {
                 sb.append(sanPham.getTenSP()).append(" | ").append(sanPham.getDonGia()).append("\n");
             }
-            // sb.append("Phương thức thanh toán: ").append(paymentMethod.getPhuongthuc()).append("\n");
+            // sb.append("Phương thức thanh toán:
+            // ").append(paymentMethod.getPhuongthuc()).append("\n");
             sb.append("Ngày hóa đơn: ").append(billDate.format(formatter)).append("\n");
             sb.append("Tổng giá trị: ").append(calculateTotalAmount()).append("\n");
-    
+
             FileWriter writer = new FileWriter(fileName);
             writer.write(sb.toString());
             writer.close();
@@ -176,7 +190,7 @@ public class BillDetail {
                 String productName = data[3];
                 String productCode = data[1];
                 double price = Double.parseDouble(data[3]);
-                
+
                 // In thông tin sản phẩm
                 System.out.println("Tên sản phẩm: " + productName);
                 System.out.println("Mã sản phẩm: " + productCode);
@@ -188,6 +202,7 @@ public class BillDetail {
             e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         BillDetail billDetail = new BillDetail();
         Order order = new Order();

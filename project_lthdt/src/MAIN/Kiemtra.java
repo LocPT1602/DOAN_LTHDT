@@ -28,19 +28,19 @@ public class Kiemtra {
 
         }
     }
-    public String NhapTen(){
+
+    public String NhapTen() {
         String ten;
-        while(true){
+        while (true) {
             ten = input.nextLine();
-            if(ten.matches("^[A-Z][a-z]*([\\s][A-Z][a-z]*)*$")){
+            if (ten.matches("^[A-Z][a-z]*([\\s][A-Z][a-z]*)*$")) {
                 return ten;
-            }
-            else{
+            } else {
                 System.out.println("Ten nhap vao khong hop le vi du:Nguyen Van A. Nhap lai:");
             }
         }
     }
-    
+
     public String kiemtraNhapsdt() {
         String dauvao;
         while (true) {
@@ -184,7 +184,21 @@ public class Kiemtra {
                 System.out.println("Nhap khong chinh xac. Vi du: EMP001");
             }
             System.out.print("Nhap lai: ");
+        }
+    }
 
+    public String kiemtraMaSanpham() {
+        String dauvao;
+        while (true) {
+            dauvao = input.nextLine();
+            dauvao = dauvao.toUpperCase();
+            if (dauvao.matches("^SP[0-9]{3}$")) {
+                return dauvao;
+
+            } else {
+                System.out.println("Nhap khong chinh xac. Vi du: SPxxx");
+            }
+            System.out.print("Nhap lai: ");
         }
     }
 
