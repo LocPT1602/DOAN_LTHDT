@@ -8,6 +8,7 @@ import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
 import MAIN.Kiemtra;
 import ORDER.BillDetail;
+
 public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
     int choose;
@@ -16,6 +17,7 @@ public class Admin extends Account {
     CustomerList cusList = new CustomerList();
     Employeelist empList = new Employeelist();
     billdetailList billList = new billdetailList();
+    BillDetail billdetail = new BillDetail();
     MainSanPham mainSP = new MainSanPham();
     Kho khoHang = new Kho();
     Kiemtra kt = new Kiemtra();
@@ -87,7 +89,8 @@ public class Admin extends Account {
     }
 
     public void CreateBill() {
-
+        billdetail.getBillDetail();
+        billdetail.writeToFile();
     }
 
     public void InforEmployee() {
@@ -159,7 +162,7 @@ public class Admin extends Account {
         } while (exit == 1);
     }
 
-    public void AddSupplier() {
+    public void menuStorage() {
         mainSP.menuProduct();
     }
 
@@ -209,7 +212,7 @@ public class Admin extends Account {
 
                     break;
                 case 7:
-                    AddSupplier();
+                    menuStorage();
                     break;
                 case 8:
                     AddEmplAccount();

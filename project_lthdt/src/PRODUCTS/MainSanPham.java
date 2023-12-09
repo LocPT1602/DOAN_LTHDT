@@ -45,5 +45,7 @@ public class MainSanPham {
     }
 
     public static void main(String[] args) {
+        MainSanPham main = new MainSanPham();
+        main.menuProduct();
     }
 }

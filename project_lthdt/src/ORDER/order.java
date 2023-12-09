@@ -2,6 +2,7 @@ package ORDER;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import MAIN.Kiemtra;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import PRODUCTS.GioHang;
+
 public class Order {
     private String orderCode; // Mã đơn hàng
     private String customer; // Mã khách hàng
@@ -27,7 +29,9 @@ public class Order {
     Kiemtra kt = new Kiemtra();
     GioHang gh = new GioHang();
     Scanner scanner = new Scanner(System.in);
-    public Order(String orderCode, String customer, String employee, LocalDate orderDate, List<SanPham> sanPhamList, int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
+
+    public Order(String orderCode, String customer, String employee, LocalDate orderDate, List<SanPham> sanPhamList,
+            int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
         this.customer = customer;
         this.employee = employee;
@@ -47,6 +51,7 @@ public class Order {
         this.totalValue = 0;
         this.status = "";
     }
+
     // Getter và Setter cho các thuộc tính
     public String getOrderCode() {
         return orderCode;
@@ -62,7 +67,7 @@ public class Order {
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
-    }   
+    }
 
     public String getStatus() {
         return status;
@@ -99,6 +104,7 @@ public class Order {
     public List<SanPham> getSanPhamList() {
         return sanPhamList;
     }
+
     public void setSanPhamList(List<SanPham> sanPhamList) {
         this.sanPhamList = sanPhamList;
     }
@@ -153,6 +159,7 @@ public class Order {
     public void removeSanPhamFromOrder(SanPham sanPham) {
         sanPhamList.remove(sanPham);
     }
+
     public void checkorderConfirmed() {
         boolean validOrderConfirmed = false;
         while (!validOrderConfirmed) {
@@ -165,7 +172,7 @@ public class Order {
             }
         }
     }
-    
+
     public void checkpaymentConfirmed() {
         boolean validPaymentConfirmed = false;
         while (!validPaymentConfirmed) {
@@ -178,7 +185,7 @@ public class Order {
             }
         }
     }
-    
+
     public void checkStatus() {
         while (this.status.equals("Đã xác nhận")) {
             if (this.orderConfirmed && this.paymentConfirmed) {
@@ -194,32 +201,38 @@ public class Order {
             }
         }
     }
+
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập mã đơn hàng: ");
-        this.orderCode = scanner.nextLine();
-    
-        System.out.println("Nhập mã sản phẩm: ");
-        this.productCode = scanner.nextLine();
-    
-        System.out.println("Nhập mã khách hàng: ");
+        // System.out.print("Nhap ma don hang: ");
+        Random random = new Random();
+        int randomNumbers = random.nextInt(1000);
+        String formattedRandomNumbers = String.format("%03d", randomNumbers);
+        String orderCode = "MDH" + formattedRandomNumbers;
+
+        this.orderCode = orderCode;
+
+        // System.out.println("Nhập mã sản phẩm: ");
+        // this.productCode = scanner.nextLine();
+
+        System.out.print("Nhap ma khach hang: ");
         this.customer = kt.kiemtraMakhachhang();
-    
-        System.out.println("Nhập mã nhân viên: ");
+
+        System.out.print("Nhap ma nhan vien phu trach: ");
         this.employee = kt.kiemtraManhanvien();
-    
-        System.out.println("Danh sách sản phẩm: ");
-        gh.inTenSPvaDonGia();
-        System.out.println("Nhập số lượng sản phẩm: ");
-        this.quantity = kt.KiemTraNhapSoTuNhien();
-    
-        System.out.println("Nhập tổng giá trị đơn hàng: ");
-        this.totalValue = kt.KiemTraNhapSoNguyen();
-    
-        System.out.println("Xác nhận thanh toán (true/false): ");
+
+        // System.out.println("Danh sach san pham: ");
+        // gh.inTenSPvaDonGia();
+        // System.out.println("Nhập số lượng sản phẩm: ");
+        // this.quantity = kt.KiemTraNhapSoTuNhien();
+
+        // System.out.println("Nhập tổng giá trị đơn hàng: ");
+        // this.totalValue = kt.KiemTraNhapSoNguyen();
+
+        System.out.println("Xac nhan thanh toan (true/false): ");
         checkpaymentConfirmed();
-        System.out.println("Xác nhận đơn hàng (true/false): ");
+        System.out.println("Xan nhan don hang (true/false): ");
         checkorderConfirmed();
         checkStatus();
     }
@@ -230,58 +243,61 @@ public class Order {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println("--------------------------------------------------------------");
         System.out.println("--------------------THÔNG TIN ĐƠN HÀNG-------------------------");
-        System.out.println("Mã đơn hàng: " + orderCode);
-        System.out.println("Mã khách hàng: " + customer);
-        System.out.println("Mã nhân viên: " + employee);
-        System.out.println("Ngày đặt hàng: " + orderDate.format(formatter));        
-        System.out.println("Danh sách sản phẩm: ");
+        System.out.println("Ma don hang: " + orderCode);
+        System.out.println("Ma khach hang: " + customer);
+        System.out.println("Ma nhan vien: " + employee);
+        System.out.println("Ngay tao don hang: " + orderDate.format(formatter));
+        System.out.println("Danh sach san pham: ");
+        gh.gioHangSize();
         gh.inTenSPvaDonGia();
-        System.out.println("Số lượng sản phẩm: " + quantity);
-        System.out.println("Tổng giá trị đơn hàng: " + totalValue);
-        System.out.println("Xác nhận thanh toán: " + paymentConfirmed);
-        System.out.println("Xác nhận đơn hàng: " + orderConfirmed);
+        System.out.println("So luong san pham: " + quantity);
+        System.out.println("Tong gia tri don hang: " + totalValue);
+        System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
+        System.out.println("Xac nhan don hang: " + orderConfirmed);
         checkStatus();
-        System.out.println("Trạng thái đơn hàng: " + status);
+        System.out.println("Trang thai don hang: " + status);
     }
-    public void addOrderInfoList(){
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-    String formattedDate=orderDate.format(formatter);
-    String[] orderInfo = {orderCode, employee, productCode, formattedDate};
-List<String[]> orderInfoList = new ArrayList<>();
-orderInfoList.add(orderInfo);
+
+    public void addOrderInfoList() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        String formattedDate = orderDate.format(formatter);
+        String[] orderInfo = { orderCode, employee, productCode, formattedDate };
+        List<String[]> orderInfoList = new ArrayList<>();
+        orderInfoList.add(orderInfo);
     }
-        // Thêm thông tin đơn hàng vào tệp tin "Ds đơn hàng"
-        public void writefile1() {
-            String fileName = "project_lthdt/src/ORDER/dsdonhang.txt";
-            try {
-                Path filePath = Path.of(fileName);
-                FileWriter writer = new FileWriter(filePath.toString());
-                writer.write("Mã đơn hàng: " + orderCode + "\n");
-                writer.write("Mã nhân viên: " + employee + "\n");
-                writer.write("Ngày đặt hàng: " + orderDate + "\n");
-                writer.write("\n");
-                writer.close();
-            } catch (IOException e) {
-                System.out.println("Lỗi khi ghi tệp tin.");
-            }
+
+    // Thêm thông tin đơn hàng vào tệp tin "Ds đơn hàng"
+    public void writefile1() {
+        String fileName = "project_lthdt/src/ORDER/dsdonhang.txt";
+        try {
+            Path filePath = Path.of(fileName);
+            FileWriter writer = new FileWriter(filePath.toString());
+            writer.write("Mã đơn hàng: " + orderCode + "\n");
+            writer.write("Mã nhân viên: " + employee + "\n");
+            writer.write("Ngày đặt hàng: " + orderDate + "\n");
+            writer.write("\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi tệp tin.");
         }
-    
-        // Thêm thông tin đơn hàng vào tệp tin "Ds sản phẩm đơn hàng"
-        public void writefile2() {
-            try {
-                String fileName2 = "project_lthdt/src/ORDER/dssanphamdonhang.txt";
-                Path filePath2 = Path.of(fileName2);
-                FileWriter writer = new FileWriter(filePath2.toString());
-                writer.write("Mã đơn hàng: " + orderCode + "\n");
-                writer.write("Mã sản phẩm: " + productCode + "\n");
+    }
+
+    // Thêm thông tin đơn hàng vào tệp tin "Ds sản phẩm đơn hàng"
+    public void writefile2() {
+        try {
+            String fileName2 = "project_lthdt/src/ORDER/dssanphamdonhang.txt";
+            Path filePath2 = Path.of(fileName2);
+            FileWriter writer = new FileWriter(filePath2.toString());
+            writer.write("Mã đơn hàng: " + orderCode + "\n");
+            writer.write("Mã sản phẩm: " + productCode + "\n");
             // Ghi thông tin khác về sản phẩm đơn hàng tại đây
             writer.write("\n");
             writer.close();
         } catch (IOException e) {
             System.out.println("Lỗi khi ghi tệp tin.");
         }
-        }
-   
+    }
+
     // Phương thức ghi đè toString()
     @Override
     public String toString() {
@@ -298,7 +314,8 @@ orderInfoList.add(orderInfo);
                 ", status='" + status + '\'' +
                 '}';
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         Order order = new Order();
         order.inputOrderInfo();
         order.displayOrderInfo();

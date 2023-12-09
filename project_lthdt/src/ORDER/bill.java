@@ -1,7 +1,9 @@
 package ORDER;
+
 import MAIN.*;
 import java.util.Scanner;
 import PRODUCTS.*;
+
 public class Bill {
     protected HoaDon maHD; // Mã hóa đơn
     protected SanPham maSP; // Mã sản phẩm
@@ -10,12 +12,13 @@ public class Bill {
     protected int quantity; // Số lượng
     protected double totalAmount; // Tổng giá
     Kiemtra kt = new Kiemtra();
+
     public Bill() {
         this.quantity = 0;
         this.totalAmount = 0;
     }
 
-    public Bill( int quantity, double totalAmount) {
+    public Bill(int quantity, double totalAmount) {
         this.quantity = quantity;
         this.totalAmount = totalAmount;
     }
@@ -52,7 +55,8 @@ public class Bill {
     }
 
     public void setDonGia(SanPham donGia) {
-        this.donGia = donGia;    }
+        this.donGia = donGia;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -69,6 +73,5 @@ public class Bill {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
-    
-    
+
 }
