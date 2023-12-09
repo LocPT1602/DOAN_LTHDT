@@ -1,6 +1,7 @@
 package PERSON;
 import MAIN.Kiemtra;
 public class Employee extends person {
+    private static int employeeIDcount = 0;
     public String employeeid;
     public String position;
     public double salary;
@@ -26,6 +27,11 @@ public class Employee extends person {
         this.salary=0;
         this.date=null;
 
+    }
+    public static String createEmpID(){
+        employeeIDcount++;
+        String employeeNumber = String.format("%03d", employeeIDcount);
+        return "emp"+ employeeNumber;
     }
     public String getEmployeeid() {
         return employeeid;
@@ -54,8 +60,8 @@ public class Employee extends person {
     @Override
     public void Nhap() {
         super.Nhap();
-        System.out.print("Nhap employeeid: ");
-        this.employeeid=kt.kiemtraManhanvien();
+        System.out.print("employeeid: ");
+        this.employeeid=createEmpID();
         System.out.print("Nhap chuc vu: ");
         this.position=kt.nhapChuoi();
         System.out.print("Nhap luong: ");

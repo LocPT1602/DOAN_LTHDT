@@ -31,6 +31,7 @@ public class CustomerList implements Iterable<Customer> {
                 fileIsEmpty = false;
 
                 String[] customerData = line.split(" ");
+                if(customerData.length>=12){
                 String fullname = customerData[0];
                 String birthday = customerData[1];
                 String phone = customerData[2];
@@ -50,7 +51,7 @@ public class CustomerList implements Iterable<Customer> {
                         membership, loyalpoint);
                         
                 Customers.add(Customer);
-                        
+                }
             }
             if (fileIsEmpty) {
                 this.defaultCustomers();
