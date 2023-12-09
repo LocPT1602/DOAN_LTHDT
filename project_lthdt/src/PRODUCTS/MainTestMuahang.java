@@ -18,8 +18,8 @@ public class MainTestMuahang {
     public void menuMh() {
         layData();
 
-        System.out.println("Kinh chao quy khach den voi cua hang van phong pham.\n");
-        System.out.println("Chon phim bat ki de tiep tuc.\n");
+        System.out.println("Kinh chao quy khach den voi cua hang van phong pham.");
+        System.out.println("Chon phim bat ki de tiep tuc.");
         sc.nextLine();
         do {
             hienThiMenu();

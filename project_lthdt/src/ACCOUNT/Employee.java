@@ -63,8 +63,8 @@ public class Employee extends Account {
         } while (exit != 0 || exit == 1);
     }
 
-    public void FindProduct() {
-
+    public void menuStorage() {
+        mainSP.menuProduct();
     }
 
     public void AddSupplier() {
@@ -81,14 +81,14 @@ public class Employee extends Account {
     public void EmployeeManeger() {
         int exit, choose;
         do {
-            System.out.println("------------------------------");
+            System.out.println("+----------EMPLOYEE----------+");
             System.out.println("1 : Tao hoa don              |");
-            System.out.println("2 : Tim san pham             |");
+            System.out.println("2 : Kho - Storage            |");
             System.out.println("3 : Thong tin khach hang     |");
             System.out.println("4 : Tao don hang             |");
             System.out.println("5 : Them nha cung cap        |");
             System.out.println("0 : Thoat                    |");
-            System.out.println("------------------------------");
+            System.out.println("+----------------------------+");
             System.out.print("Nhap lua chon : ");
             choose = sc.nextInt();
             switch (choose) {
@@ -96,7 +96,7 @@ public class Employee extends Account {
 
                     break;
                 case 2:
-                    FindProduct();
+                    menuStorage();
                     break;
                 case 3:
                     InforCustomers();
@@ -112,7 +112,7 @@ public class Employee extends Account {
                 default:
                     break;
             }
-            System.out.println("Press : 1 to continue");
+            System.out.println("Press : 1 to continue || 0 to exit (EMPLOYEE)");
             exit = sc.nextInt();
         } while (exit == 1);
     }

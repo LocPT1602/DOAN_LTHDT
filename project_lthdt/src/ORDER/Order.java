@@ -175,6 +175,7 @@ public class Order {
             }
         }
     }
+
     public void checkorderConfirmedTrue() {
         boolean validOrderConfirmed = false;
         while (!validOrderConfirmed) {
@@ -187,6 +188,7 @@ public class Order {
             }
         }
     }
+
     public void checkpaymentConfirmed() {
         boolean validPaymentConfirmed = false;
         while (!validPaymentConfirmed) {
@@ -199,11 +201,12 @@ public class Order {
             }
         }
     }
+
     public void checkpaymentConfirmedTrue() {
         boolean validPaymentConfirmed = false;
         while (!validPaymentConfirmed) {
             String paymentConfirmedInput = scanner.nextLine();
-            if (paymentConfirmedInput.equalsIgnoreCase("true") ) {
+            if (paymentConfirmedInput.equalsIgnoreCase("true")) {
                 validPaymentConfirmed = true;
                 paymentConfirmed = Boolean.parseBoolean(paymentConfirmedInput);
             } else {
@@ -211,95 +214,96 @@ public class Order {
             }
         }
     }
+
     public void checkStatus() {
         System.out.println("Xác nhận thanh toán (true/false): ");
         checkpaymentConfirmed();
         System.out.println("Xác nhận đơn hàng (true/false): ");
         checkorderConfirmed();
-    
+
         if (orderConfirmed && paymentConfirmed) {
             status = "Đã xác nhận";
         } else {
-                if (!orderConfirmed && !paymentConfirmed) {
-                    System.out.println("Bạn chưa xác nhận đơn hàng! Chọn lại xác nhận đơn hàng (true)");
-                    checkorderConfirmedTrue();
-                    System.out.println("Bạn chưa xác nhận thanh toán! Chọn lại xác nhận thanh toán (true)");
-                    checkpaymentConfirmedTrue();
-                    status = "Đã xác nhận";
+            if (!orderConfirmed && !paymentConfirmed) {
+                System.out.println("Bạn chưa xác nhận đơn hàng! Chọn lại xác nhận đơn hàng (true)");
+                checkorderConfirmedTrue();
+                System.out.println("Bạn chưa xác nhận thanh toán! Chọn lại xác nhận thanh toán (true)");
+                checkpaymentConfirmedTrue();
+                status = "Đã xác nhận";
 
-                }
-                else if (!orderConfirmed) {
-                    System.out.println("Bạn chưa xác nhận đơn hàng! Chọn lại xác nhận đơn hàng (true)");
-                    checkorderConfirmedTrue();
-                    status = "Đã xác nhận";
+            } else if (!orderConfirmed) {
+                System.out.println("Bạn chưa xác nhận đơn hàng! Chọn lại xác nhận đơn hàng (true)");
+                checkorderConfirmedTrue();
+                status = "Đã xác nhận";
 
-                }
-                else if (!paymentConfirmed) {
-                    System.out.println("Bạn chưa xác nhận thanh toán! Chọn lại xác nhận thanh toán (true)");
-                    checkpaymentConfirmedTrue();
-                    status = "Đã xác nhận";
-                }
+            } else if (!paymentConfirmed) {
+                System.out.println("Bạn chưa xác nhận thanh toán! Chọn lại xác nhận thanh toán (true)");
+                checkpaymentConfirmedTrue();
+                status = "Đã xác nhận";
             }
         }
-    
-public void docFileDanhsachspdadat() {
-    try {
-        FileReader fileReader = new FileReader("danhsachspdadat.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            System.out.println(line);
-        }
-
-        bufferedReader.close();
-    } catch (IOException e) {
-        System.out.println("Lỗi khi đọc file.");
-        e.printStackTrace();
     }
-}
 
-public int tinhSoLuongSanPham() {
-    quantity = 0;
-    try {
-        FileReader fileReader = new FileReader("danhsachspdadat.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+    public void docFileDanhsachspdadat() {
+        try {
+            FileReader fileReader = new FileReader("danhsachspdadat.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        while (bufferedReader.readLine() != null) {
-            quantity++;
-        }
-
-        bufferedReader.close();
-    } catch (IOException e) {
-        System.out.println("Lỗi khi đọc file.");
-        e.printStackTrace();
-    }
-    
-    return quantity;
-}
-public double tinhTongSoTien() {
-    totalValue = 0;
-    try {
-        FileReader fileReader = new FileReader("danhsachspdadat.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            String[] parts = line.split("\\|");
-            if (parts.length == 2) {
-                double donGia = Double.parseDouble(parts[1].trim());
-                totalValue += donGia;
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
             }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file.");
+            e.printStackTrace();
+        }
+    }
+
+    public int tinhSoLuongSanPham() {
+        quantity = 0;
+        try {
+            FileReader fileReader = new FileReader("danhsachspdadat.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            while (bufferedReader.readLine() != null) {
+                quantity++;
+            }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file.");
+            e.printStackTrace();
         }
 
-        bufferedReader.close();
-    } catch (IOException e) {
-        System.out.println("Lỗi khi đọc file.");
-        e.printStackTrace();
+        return quantity;
     }
-    
-    return totalValue;
-}
+
+    public double tinhTongSoTien() {
+        totalValue = 0;
+        try {
+            FileReader fileReader = new FileReader("danhsachspdadat.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 2) {
+                    double donGia = Double.parseDouble(parts[1].trim());
+                    totalValue += donGia;
+                }
+            }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file.");
+            e.printStackTrace();
+        }
+
+        return totalValue;
+    }
+
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
@@ -334,8 +338,7 @@ public double tinhTongSoTien() {
     public void displayOrderInfo() {
         LocalDate orderDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("--------------------THÔNG TIN ĐƠN HÀNG-------------------------");
+        System.out.println("--------------------THONG TIN DON HANG------------------------");
         System.out.println("Ma don hang: " + orderCode);
         System.out.println("Ma khach hang: " + customer);
         System.out.println("Ma nhan vien: " + employee);
@@ -350,6 +353,7 @@ public double tinhTongSoTien() {
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
         System.out.println("Trang thai don hang: " + status);
+        System.out.println("--------------------------------------------------------------");
     }
 
     public void addOrderInfoList() {
@@ -384,6 +388,19 @@ public double tinhTongSoTien() {
             FileWriter writer = new FileWriter(filePath2.toString());
             writer.write("Mã đơn hàng: " + orderCode + "\n");
             writer.write("Mã sản phẩm: " + productCode + "\n");
+            try {
+                FileReader fileReader = new FileReader("danhsachspdadat.txt");
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    writer.write(line);
+                }
+                bufferedReader.close();
+            } catch (IOException e) {
+                System.out.println("Lỗi khi đọc file.");
+                e.printStackTrace();
+            }
             // Ghi thông tin khác về sản phẩm đơn hàng tại đây
             writer.write("\n");
             writer.close();

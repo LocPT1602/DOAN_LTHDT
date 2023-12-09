@@ -1,1 +1,3 @@
-Pen    |   4000
+A4 khong tham nuoc    |   5000
+A4 khong tham nuoc    |   5000
+Paper    |   1500

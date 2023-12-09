@@ -10,21 +10,24 @@ public class MainSanPham {
         int choice = 0;
         Scanner sc = new Scanner(System.in);
         File f = new File("dataSanPham.txt");
-
+        khoHang.docDataTuFile();
         do {
-            System.out.println("MENU-------------------------------");
-            System.out.println(
-                    "1. Them vao kho.\n"
-                            + "2. Xoa san pham khoi kho.\n"
-                            + "3. Tim kiem san pham theo maSP.\n"
-                            + "4. Don dep kho.\n"
-                            + "5. In toan bo kho.\n"
-                            + "6. Ghi du lieu xuong file.\n"
-                            + "7. Doc du lieu tu file.\n");
+            System.out.println("--------------Quan_Li_KHO------------+");
+            System.out.println("1. Them vao kho.                     |");
+            System.out.println("2. Xoa san pham khoi kho.            |");
+            System.out.println("3. Tim kiem san pham theo maSP.      |");
+            System.out.println("4. Don dep kho.                      |");
+            System.out.println("5. In toan bo kho.                   |");
+            System.out.println("6. Ghi du lieu xuong file.           |");
+            System.out.println("7. Doc du lieu tu file.              |");
+            System.out.println("0. Thoat                             |");
+            System.out.println("-------------------------------------+");
+            System.out.print("Nhap lua chon : ");
             choice = sc.nextInt();
             sc.nextLine();
             if (choice == 1) {
                 khoHang.themVaoKho();
+                khoHang.ghiDataXuongFile();
             } else if (choice == 2) {
                 System.out.println("Nhap vao vi tri muon xoa: ");
                 // String maSP = sc.nextLine();

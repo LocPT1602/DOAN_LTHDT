@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
 public class GioHang {
     public ArrayList<SanPham> gioHang;
     private String maGH;
@@ -49,7 +50,7 @@ public class GioHang {
 
     public void themVaoGion() {
         while (true) {
-            System.out.println("Nhap vao ma san pham: ");
+            System.out.print("Nhap vao ma san pham: ");
             String maSP = sc.nextLine();
             for (SanPham sanPham : kho.khoHang) {
                 if (maSP.matches(sanPham.maSP)) {
@@ -75,11 +76,12 @@ public class GioHang {
             e.printStackTrace();
         }
     }
+
     public void inTenSPvaDonGia() {
         for (SanPham sanPham : this.gioHang) {
-        System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia());
-            }
+            System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia());
         }
+    }
 
     public void xoaKhoiGioHang(int vitri) {
         if (vitri >= 0 && vitri < gioHang.size()) {
@@ -135,7 +137,7 @@ public class GioHang {
 
         for (SanPham sanPham : this.gioHang) {
             sanPham.xuat();
-            
+
         }
         System.out.println("==============================");
     }
