@@ -69,8 +69,8 @@ public class Customer extends person {
         CustomerList lps =new CustomerList();
         ps.Nhap();
         lps.add(ps);
-        lps.removeCustomerById(ps.Customerid);
-        lps.readFile();
+        // lps.removeCustomerById(ps.Customerid);
+        // lps.readFile();
         lps.writeFile();
     }
 }

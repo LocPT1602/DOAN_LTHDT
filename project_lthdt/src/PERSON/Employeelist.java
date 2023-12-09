@@ -47,7 +47,7 @@ public class Employeelist implements Iterable<Employee> {
     }
 
     public void readEmployeeFile() {
-        String fileName = "project_lthdt\\src\\PERSON\\danhsachNV.txt";
+        String fileName = "C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachNV.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             boolean fileIsEmpty = true;
@@ -84,9 +84,46 @@ public class Employeelist implements Iterable<Employee> {
             e.printStackTrace();
         }
     }
+    public void findEmployeeID(){
+        System.out.println("Nhap vao ma nhan vien:");
+        String manv = kt.kiemtraManhanvien();
+        for(Employee nv:employees){
+            if(nv.getEmployeeid().equals(manv)){
+                System.out.println("Employee ID: " + nv.getEmployeeid());
+                System.out.println("Name: " + nv.getFullname());
+                System.out.println("Birthdate: " + nv.getBirthday());
+                System.out.println("Phone number: " + nv.getPhonenumber());
+                System.out.println("Email: " + nv.getEmail());
+                System.out.println("Gender: " + nv.getGender());
+                System.out.println("Address: " + nv.getAddress().toString());
+                System.out.println("Position: " + nv.getPosition());
+                System.out.println("Salary: " + nv.getSalary());
+                System.out.println("---------------------------------");
+            }
+        }
+    }
+
+    public void findEmpplyeeName(){
+        System.out.println("Nhap vao ten nhan vien can tim: ");
+        String tennv = kt.NhapTen();
+        for(Employee nv:employees){
+            if(nv.getFullname().equals(tennv)){
+                System.out.println("Employee ID: " + nv.getEmployeeid());
+                System.out.println("Name: " + nv.getFullname());
+                System.out.println("Birthdate: " + nv.getBirthday());
+                System.out.println("Phone number: " + nv.getPhonenumber());
+                System.out.println("Email: " + nv.getEmail());
+                System.out.println("Gender: " + nv.getGender());
+                System.out.println("Address: " + nv.getAddress().toString());
+                System.out.println("Position: " + nv.getPosition());
+                System.out.println("Salary: " + nv.getSalary());
+                System.out.println("---------------------------------");
+            }
+        }
+    }
 
     public void writeEmployeeFile() {
-        String fileName = "project_lthdt\\src\\PERSON\\fileghiNV.txt";
+        String fileName = "C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachNV.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             for (Employee employee : employees) {
                 writer.write(employee.getFullname() + "," + employee.getBirthday() + "," + employee.getPhonenumber()
@@ -157,5 +194,10 @@ public class Employeelist implements Iterable<Employee> {
             System.out.print("Salary: " + employee.getSalary());
             System.out.print("---------------------------------");
         }
+    }
+    public static void main(String[] args) {
+        Employeelist le=new Employeelist();
+        le.readEmployeeFile();
+        le.writeEmployeeFile();
     }
 }

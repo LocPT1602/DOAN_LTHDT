@@ -1,3 +1,0 @@
-John Doe,1990-05-15,123456789,johndoe@email.com,Male,123, Main St, District 1, Ho Chi Minh City,CUS001,Gold,1500
-Alice Smith,1985-12-10,987654321,alice.smith@email.com,Female,456, Elm St, District 2, Hanoi,CUS002,Silver,800
-Bob Johnson,1988-08-25,777111333,bobjohnson@email.com,Male,789, Oak St, District 3, Da Nang,CUS003,Bronze,300

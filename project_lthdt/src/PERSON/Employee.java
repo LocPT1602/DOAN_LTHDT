@@ -20,6 +20,7 @@ public class Employee extends person {
         this.date = date;
     }
     public Employee(){
+        super();
         this.employeeid=null;
         this.position=null;
         this.salary=0;
