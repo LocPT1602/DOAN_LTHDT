@@ -175,7 +175,18 @@ public class Order {
             }
         }
     }
-
+    public void checkorderConfirmedTrue() {
+        boolean validOrderConfirmed = false;
+        while (!validOrderConfirmed) {
+            String orderConfirmedInput = scanner.nextLine();
+            if (orderConfirmedInput.equalsIgnoreCase("true")) {
+                validOrderConfirmed = true;
+                orderConfirmed = Boolean.parseBoolean(orderConfirmedInput);
+            } else {
+                System.out.println("Vui lòng nhập lại (true): để hoàn tất!");
+            }
+        }
+    }
     public void checkpaymentConfirmed() {
         boolean validPaymentConfirmed = false;
         while (!validPaymentConfirmed) {
@@ -188,7 +199,18 @@ public class Order {
             }
         }
     }
-
+    public void checkpaymentConfirmedTrue() {
+        boolean validPaymentConfirmed = false;
+        while (!validPaymentConfirmed) {
+            String paymentConfirmedInput = scanner.nextLine();
+            if (paymentConfirmedInput.equalsIgnoreCase("true") ) {
+                validPaymentConfirmed = true;
+                paymentConfirmed = Boolean.parseBoolean(paymentConfirmedInput);
+            } else {
+                System.out.println("Vui lòng nhập lại (true): để hoàn tất!");
+            }
+        }
+    }
     public void checkStatus() {
         System.out.println("Xác nhận thanh toán (true/false): ");
         checkpaymentConfirmed();
@@ -198,22 +220,28 @@ public class Order {
         if (orderConfirmed && paymentConfirmed) {
             status = "Đã xác nhận";
         } else {
-            status = "Chưa xác nhận";
-            while (status.equals("Đã xác nhận")) {
-                if (!orderConfirmed) {
-                    System.out.println("Chọn lại xác nhận đơn hàng (true/false)");
-                    checkorderConfirmed();
+                if (!orderConfirmed && !paymentConfirmed) {
+                    System.out.println("Bạn chưa xác nhận đơn hàng! Chọn lại xác nhận đơn hàng (true)");
+                    checkorderConfirmedTrue();
+                    System.out.println("Bạn chưa xác nhận thanh toán! Chọn lại xác nhận thanh toán (true)");
+                    checkpaymentConfirmedTrue();
+                    status = "Đã xác nhận";
+
                 }
-                if (!paymentConfirmed) {
-                    System.out.println("Chọn lại xác nhận thanh toán (true/false)");
-                    checkpaymentConfirmed();
+                else if (!orderConfirmed) {
+                    System.out.println("Bạn chưa xác nhận đơn hàng! Chọn lại xác nhận đơn hàng (true)");
+                    checkorderConfirmedTrue();
+                    status = "Đã xác nhận";
+
                 }
-                if (orderConfirmed && paymentConfirmed) {
+                else if (!paymentConfirmed) {
+                    System.out.println("Bạn chưa xác nhận thanh toán! Chọn lại xác nhận thanh toán (true)");
+                    checkpaymentConfirmedTrue();
                     status = "Đã xác nhận";
                 }
             }
         }
-    }
+    
 public void docFileDanhsachspdadat() {
     try {
         FileReader fileReader = new FileReader("danhsachspdadat.txt");
@@ -321,7 +349,6 @@ public double tinhTongSoTien() {
         System.out.println("Tong gia tri don hang: " + totalValue);
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
-        checkStatus();
         System.out.println("Trang thai don hang: " + status);
     }
 
