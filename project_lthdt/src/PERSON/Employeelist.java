@@ -54,6 +54,7 @@ public class Employeelist implements Iterable<Employee> {
             while ((line = reader.readLine()) != null) {
                 fileIsEmpty = false;
                 String[] employeeData = line.split(",");
+                if(employeeData.length>=13){
                 String fullname = employeeData[0];
                 String birthday = employeeData[1];
                 String phone = employeeData[2];
@@ -75,9 +76,10 @@ public class Employeelist implements Iterable<Employee> {
                 Employee employee = new Employee(fullname, birthday, phone, email, gender, address, employeeid,
                         position, salary, date);
                 employees.add(employee);
-
+                }
             }
             if (fileIsEmpty) {
+
                 this.initializeEmployees();
             }
         } catch (IOException e) {
@@ -147,16 +149,20 @@ public class Employeelist implements Iterable<Employee> {
                 address1, "EMP0001", "Quan ly", 1000, "02/02/2004");
         employees.add(employee1);
         Address address2 = new Address("2", "Duong 2", "Quan 2", "TP HCM");
-        Employee employee2 = new Employee();
+        Employee employee2 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
+                address2, "EMP0001", "Quan ly", 1000, "02/02/2004");
         employees.add(employee2);
         Address address3 = new Address("3", "Duong 3", "Quan 3", "TP HCM");
-        Employee employee3 = new Employee();
+        Employee employee3 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
+                address3, "EMP0001", "Quan ly", 1000, "02/02/2004");
         employees.add(employee3);
         Address address4 = new Address("4", "Duong 4", "Quan 4", "TP HCM");
-        Employee employee4 = new Employee();
+        Employee employee4 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
+                address4, "EMP0001", "Quan ly", 1000, "02/02/2004");
         employees.add(employee4);
         Address address5 = new Address("5", "Duong 5", "Quan 5", "TP HCM");
-        Employee employee5 = new Employee();
+        Employee employee5 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
+                address5, "EMP0001", "Quan ly", 1000, "02/02/2004");
         employees.add(employee5);
     }
 
