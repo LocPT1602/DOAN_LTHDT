@@ -62,21 +62,24 @@ public class GioHang {
         }
     }
 
-public void inTenSPvaDonGia() {
-    try {
-        FileWriter writer = new FileWriter("danhsachspdadat.txt");
-        for (SanPham sanPham : this.gioHang) {
-            String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia();
-            System.out.println(line);
-            writer.write(line + "\n");
+    public void ghiTenSPvaDonGiaVaoFile() {
+        try {
+            FileWriter writer = new FileWriter("danhsachspdadat.txt");
+            for (SanPham sanPham : this.gioHang) {
+                String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia();
+                writer.write(line + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi thông tin vào file.");
+            e.printStackTrace();
         }
-        writer.close();
-        System.out.println("Thông tin tên sản phẩm và đơn giá đã được ghi vào file danhsachspdadat.txt");
-    } catch (IOException e) {
-        System.out.println("Lỗi khi ghi thông tin vào file.");
-        e.printStackTrace();
     }
-}
+    public void inTenSPvaDonGia() {
+        for (SanPham sanPham : this.gioHang) {
+        System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia());
+            }
+        }
 
     public void xoaKhoiGioHang(int vitri) {
         if (vitri >= 0 && vitri < gioHang.size()) {

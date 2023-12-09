@@ -39,7 +39,7 @@ public class MainTestMuahang {
             } else if (choice == 5) {
                 choice5();
             } else if (choice == 6) {
-                gioHang.inTenSPvaDonGia();
+                gioHang.ghiTenSPvaDonGiaVaoFile();
                 order.inputOrderInfo();
                 order.displayOrderInfo();
                 // dsGH.themVaoDanhSachGH(gioHang);
