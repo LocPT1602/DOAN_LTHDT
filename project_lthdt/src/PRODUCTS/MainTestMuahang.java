@@ -32,9 +32,15 @@ public class MainTestMuahang {
             } else if (choice == 2) {
                 choice2();
             } else if (choice == 3) {
-
-                gioHang.themVaoGion();
-            } else if (choice == 4) {
+            	int sl;
+            	do
+            	{
+            		gioHang.themVaoGion();
+            		System.out.println("Ban co muon mua tiep? An so 1 de tiep tuc:");
+            		sl = sc.nextInt();
+            	}while(sl == 1);
+            } 
+            else if (choice == 4) {
                 gioHang.inGioHang();
             } else if (choice == 5) {
                 choice5();

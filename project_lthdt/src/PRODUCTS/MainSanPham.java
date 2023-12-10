@@ -10,7 +10,6 @@ public class MainSanPham {
         int choice = 0;
         Scanner sc = new Scanner(System.in);
         File f = new File("dataSanPham.txt");
-        khoHang.docDataTuFile();
         do {
             System.out.println("--------------Quan_Li_KHO------------+");
             System.out.println("1. Them vao kho.                     |");

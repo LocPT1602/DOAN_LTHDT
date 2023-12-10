@@ -1,11 +1,12 @@
 package PRODUCTS;
 
 import java.util.Scanner;
+
 import MAIN.Kiemtra;
 
 public class Supply extends SanPham {
-    Kiemtra kt = new Kiemtra();
-
+	Kiemtra kt = new Kiemtra();
+	
     public Supply() {
         this.LSP = "Supply";
     }
@@ -20,15 +21,14 @@ public class Supply extends SanPham {
     @Override
     public void tinhNang() {
     }
-
     @Override
     public void nhap() {
-        System.out.print("\nNhap vao ma san pham: ");
+    	System.out.print("\nNhap vao ma san pham: ");
         this.maSP = kt.kiemtraMaSanpham();
         System.out.print("\nNhap vao ten san pham: ");
         this.tenSP = sc.nextLine();
         System.out.print("\nNhap vao gia cua san pham: ");
-        this.donGia = kt.KiemTraNhapSoNguyen();
+        this.donGia = Integer.parseInt(sc.nextLine());
     }
 
     @Override

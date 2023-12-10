@@ -5,7 +5,7 @@ import MAIN.Kiemtra;
 
 public class Pen extends SanPham {
     Kiemtra kt = new Kiemtra();
-
+    private Kho kho = new Kho();
     public Pen() {
         this.LSP = "Pen";
     }
@@ -20,7 +20,6 @@ public class Pen extends SanPham {
     @Override
     public void tinhNang() {
     }
-
     @Override
     public void nhap() {
         System.out.print("\nNhap vao ma san pham: ");
