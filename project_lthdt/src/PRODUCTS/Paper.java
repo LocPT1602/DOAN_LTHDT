@@ -21,6 +21,7 @@ public class Paper extends SanPham {
     public void tinhNang() {
     }
 
+    
     @Override
     public void nhap() {
         System.out.print("\nNhap vao ma san pham: ");

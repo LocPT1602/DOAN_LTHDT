@@ -57,6 +57,7 @@ public abstract class SanPham {
     public abstract void xuat();
 
     public abstract void tinhNang();
+    
 
     @Override
     public String toString() {
