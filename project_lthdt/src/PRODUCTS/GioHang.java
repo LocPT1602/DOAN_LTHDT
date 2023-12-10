@@ -41,7 +41,9 @@ public class GioHang {
                 if (maSP.matches(sanPham.maSP)) {
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
-                } 
+                } else {
+                    System.out.println("Nhap sai vui long nhap lai Ma SP!!");
+                }
             }
         }
     }
@@ -54,11 +56,10 @@ public class GioHang {
                 if (maSP.matches(sanPham.maSP)) {
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
-                } 
-                    
-                
+                } else {
+                    System.out.println("Nhap sai vui long nhap lai Ma SP!!");
+                }
             }
-            System.out.println("Nhap sai vui long nhap lai Ma SP!!");
         }
     }
 

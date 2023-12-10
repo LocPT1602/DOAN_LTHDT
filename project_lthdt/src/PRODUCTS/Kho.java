@@ -25,8 +25,8 @@ public class Kho implements iReaderWriter {
             System.out.println("Chon san pham muon them: ");
             System.out.println(
                     "1. Paper.\n"
-                  + "2. Pen.\n"
-                  + "3. Supply.\n");
+                            + "2. Pen.\n"
+                            + "3. Supply.\n");
             lc = sc.nextInt();
             if (lc == 1) {
                 SanPham sp = new Paper();
