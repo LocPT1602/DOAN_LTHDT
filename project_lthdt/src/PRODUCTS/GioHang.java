@@ -41,7 +41,7 @@ public class GioHang {
                 if (maSP.matches(sanPham.maSP)) {
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
-                } 
+                }
             }
         }
     }
@@ -54,7 +54,7 @@ public class GioHang {
                 if (maSP.matches(sanPham.maSP)) {
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
-                } 
+                }
             }
             System.out.println("Nhap sai vui long nhap lai Ma SP!!");
         }
@@ -126,7 +126,7 @@ public class GioHang {
     }
 
     public void inGioHang() {
-        System.out.println("========== GIO HANG ==========" + " " + this.maGH);
+        System.out.println("===================== GIO HANG ====================");
         if (this.gioHang.isEmpty()) {
             System.out.println("Gio hang dang trong!");
             return;
@@ -136,7 +136,7 @@ public class GioHang {
             sanPham.xuat();
 
         }
-        System.out.println("==============================");
+        System.out.println("===================================================");
     }
 
     @Override
