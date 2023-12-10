@@ -303,16 +303,21 @@ public class Order {
 
         return totalValue;
     }
-    public void generateOrderCode() {
-     Random random = new Random();
-        int randomNumbers = random.nextInt(1000);
-        String formattedRandomNumbers = String.format("%03d", randomNumbers);
-        orderCode = "MDH" + formattedRandomNumbers;
-    }
+
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
-        generateOrderCode();
+        // System.out.print("Nhap ma don hang: ");
+        Random random = new Random();
+        int randomNumbers = random.nextInt(1000);
+        String formattedRandomNumbers = String.format("%03d", randomNumbers);
+        String orderCode = "MDH" + formattedRandomNumbers;
+
+        this.orderCode = orderCode;
+
+        // System.out.println("Nhập mã sản phẩm: ");
+        // this.productCode = scanner.nextLine();
+
         System.out.print("Nhap ma khach hang: ");
         this.customer = kt.kiemtraMakhachhang();
 
@@ -355,25 +360,24 @@ public class Order {
         String fileName = "ghiorder.txt";
 
         try {
-            FileWriter writer = new FileWriter(fileName);
-
+            FileWriter writer = new FileWriter(fileName,true);
+            
             StringBuilder sb = new StringBuilder();
             LocalDateTime orderDate = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
             String sourceFilePath = "danhsachspdadat.txt";
             sb.append("--------------------THONG TIN DON HANG------------------------\n");
-            generateOrderCode();
             sb.append("Ma don hang: ").append(orderCode).append("\n");
             sb.append("Ma khach hang: ").append(customer).append("\n");
             sb.append("Ma nhan vien phu trach: ").append(employee).append("\n");
             sb.append("Ngay tao don hang: ").append(orderDate.format(formatter)).append("\n");
             sb.append("Danh sach san pham: \n");
-            sb.append("\n");
+            sb.append("\n")
             gioHang.gioHangSize();
             List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
-
-            sb.append(String.join("\n", lines)).append("\n");
-            sb.append("\n");
+    
+            sb.append(String.join("\n", lines)).append("\n");   
+            sb.append("\n");          
             tinhSoLuongSanPham();
             tinhTongSoTien();
             sb.append("So luong san pham: ").append(quantity).append("\n");
@@ -382,12 +386,12 @@ public class Order {
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
             sb.append("--------------------------------------------------------------\n");
-
+            
             String orderInfo = sb.toString();
-
+            
             writer.write(orderInfo);
             writer.close();
-
+            
             System.out.println("Đã ghi thông tin đơn hàng vào file " + fileName);
         } catch (IOException e) {
             System.out.println("Đã xảy ra lỗi khi ghi file.");

@@ -1,14 +1,12 @@
 --------------------THONG TIN DON HANG------------------------
-Ma don hang: MDH254
-Ma khach hang: CUS0101
-Ma nhan vien phu trach: EMP011
-Ngay tao don hang: 10/12/2023   22:53:43
+Ma don hang: MDH744
+Ma khach hang: CUS0002
+Ma nhan vien: EMP002
+Ngay tao don hang: 10/12/2023   14:32:11
 Danh sach san pham: 
-
-Paper    |   1500
-
+Pen    |   4000
 So luong san pham: 1
-Tong gia tri don hang: 1500.0
+Tong gia tri don hang: 4000.0
 Xac nhan thanh toan: true
 Xac nhan don hang: true
 Trang thai don hang: Đã xác nhận
