@@ -47,7 +47,7 @@ public class BillDetail {
     public BillDetail(Order order) {
         this.billDetailCode = generateInvoiceDetailCode();
         this.billList = new ArrayList<>();
-        this.order = order;
+        // this.order = order;
     }
 
     public BillDetail(String billDetailCode, Order customer, Order employee, Payment paymentMethod,
@@ -62,9 +62,9 @@ public class BillDetail {
 
     // Getters and Setters
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+    // public void setOrder(Order order) {
+    //     this.order = order;
+    // }
 
     public String getBillDetailCode() {
         return billDetailCode;
@@ -175,6 +175,8 @@ public class BillDetail {
             sb.append("\n");
             sb.append("----------Chi tiết hóa đơn------------\n");
             sb.append("Mã chi tiết hóa đơn: ").append(this.billDetailCode).append("\n");
+            order.generateOrderCode();
+            sb.append("Ma don hang: ").append(order.getOrderCode()).append("\n");
             sb.append("Mã khách hàng: ").append(order.getCustomer()).append("\n");
             sb.append("Mã nhân viên phụ trách: ").append(order.getEmployee()).append("\n");
             sb.append("Danh sách Sản phẩm: \n");
@@ -190,7 +192,7 @@ public class BillDetail {
             sb.append("Tình trạng đơn hàng: ").append(order.getStatus()).append("\n");
             sb.append("Tổng giá trị đơn hàng: ").append(order.getTotalValue()).append("\n");
 
-            FileWriter writer = new FileWriter(fileName, true);
+            FileWriter writer = new FileWriter(fileName);
             writer.write(sb.toString());
             writer.close();
         } catch (IOException e) {
@@ -231,6 +233,6 @@ public class BillDetail {
         order.displayOrderInfo();
         billDetail.getBillDetail();
         billDetail.writeToFile();
-        billDetail.readProductData();
+        // billDetail.readProductData();
     }
 }
