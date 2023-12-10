@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import PRODUCTS.SanPham;
 import MAIN.Kiemtra;
@@ -22,7 +22,7 @@ public class Order {
     private String customer; // Mã khách hàng
     private String employee; // Mã nhân viên
     private String productCode; // Mã sản phẩm
-    private LocalDate orderDate; // Ngày đặt hàng
+    private LocalDateTime orderDate; // Ngày đặt hàng
     private List<SanPham> sanPhamList; // Danh sách sản phẩm
     private int quantity; // Số lượng sản phẩm
     private double totalValue; // Tổng giá trị đơn hàng
@@ -33,12 +33,12 @@ public class Order {
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
 
-    public Order(String orderCode, String customer, String employee, LocalDate orderDate, List<SanPham> sanPhamList,
+    public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
             int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
         this.customer = customer;
         this.employee = employee;
-        this.orderDate = LocalDate.now();
+        this.orderDate = LocalDateTime.now();
         this.sanPhamList = sanPhamList;
         this.quantity = quantity;
         this.totalValue = totalValue;
@@ -48,7 +48,7 @@ public class Order {
     }
 
     public Order() {
-        this.orderDate = LocalDate.now();
+        this.orderDate = LocalDateTime.now();
         this.sanPhamList = new ArrayList<>();
         this.quantity = 0;
         this.totalValue = 0;
@@ -96,11 +96,11 @@ public class Order {
         this.employee = employee;
     }
 
-    public LocalDate getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -336,12 +336,12 @@ public class Order {
 
     // Phương thức xuất thông tin đơn hàng
     public void displayOrderInfo() {
-        LocalDate orderDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime orderDate = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
         System.out.println("--------------------THONG TIN DON HANG------------------------");
         System.out.println("Ma don hang: " + orderCode);
         System.out.println("Ma khach hang: " + customer);
-        System.out.println("Ma nhan vien: " + employee);
+        System.out.println("Ma nhan vien phu trach: " + employee);
         System.out.println("Ngay tao don hang: " + orderDate.format(formatter));
         System.out.println("Danh sach san pham: ");
         gioHang.gioHangSize();
@@ -356,8 +356,51 @@ public class Order {
         System.out.println("--------------------------------------------------------------");
     }
 
+    public void ghiFileOrder() {
+        String fileName = "ghiorder.txt";
+
+        try {
+            FileWriter writer = new FileWriter(fileName,true);
+            
+            StringBuilder sb = new StringBuilder();
+            LocalDateTime orderDate = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
+            String sourceFilePath = "danhsachspdadat.txt";
+            sb.append("--------------------THONG TIN DON HANG------------------------\n");
+            sb.append("Ma don hang: ").append(orderCode).append("\n");
+            sb.append("Ma khach hang: ").append(customer).append("\n");
+            sb.append("Ma nhan vien phu trach: ").append(employee).append("\n");
+            sb.append("Ngay tao don hang: ").append(orderDate.format(formatter)).append("\n");
+            sb.append("Danh sach san pham: \n");
+            sb.append("\n")
+            gioHang.gioHangSize();
+            List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
+    
+            sb.append(String.join("\n", lines)).append("\n");   
+            sb.append("\n");          
+            tinhSoLuongSanPham();
+            tinhTongSoTien();
+            sb.append("So luong san pham: ").append(quantity).append("\n");
+            sb.append("Tong gia tri don hang: ").append(totalValue).append("\n");
+            sb.append("Xac nhan thanh toan: ").append(paymentConfirmed).append("\n");
+            sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
+            sb.append("Trang thai don hang: ").append(status).append("\n");
+            sb.append("--------------------------------------------------------------\n");
+            
+            String orderInfo = sb.toString();
+            
+            writer.write(orderInfo);
+            writer.close();
+            
+            System.out.println("Đã ghi thông tin đơn hàng vào file " + fileName);
+        } catch (IOException e) {
+            System.out.println("Đã xảy ra lỗi khi ghi file.");
+            e.printStackTrace();
+        }
+    }
+
     public void addOrderInfoList() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
         String formattedDate = orderDate.format(formatter);
         String[] orderInfo = { orderCode, employee, productCode, formattedDate };
         List<String[]> orderInfoList = new ArrayList<>();
@@ -430,5 +473,6 @@ public class Order {
         Order order = new Order();
         order.inputOrderInfo();
         order.displayOrderInfo();
+        order.ghiFileOrder();
     }
 }
