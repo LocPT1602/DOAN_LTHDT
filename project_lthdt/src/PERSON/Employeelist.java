@@ -54,28 +54,28 @@ public class Employeelist implements Iterable<Employee> {
             while ((line = reader.readLine()) != null) {
                 fileIsEmpty = false;
                 String[] employeeData = line.split(",");
-                if(employeeData.length>=13){
-                String fullname = employeeData[0];
-                String birthday = employeeData[1];
-                String phone = employeeData[2];
-                String email = employeeData[3];
-                String gender = employeeData[4];
+                if (employeeData.length >= 13) {
+                    String fullname = employeeData[0];
+                    String birthday = employeeData[1];
+                    String phone = employeeData[2];
+                    String email = employeeData[3];
+                    String gender = employeeData[4];
 
-                // String [] addressinfor=employeeData[5].split(",");
+                    // String [] addressinfor=employeeData[5].split(",");
 
-                String so = employeeData[5];
-                String duong = employeeData[6];
-                String quan = employeeData[7];
-                String thanhpho = employeeData[8];
-                Address address = new Address(so, duong, quan, thanhpho);
+                    String so = employeeData[5];
+                    String duong = employeeData[6];
+                    String quan = employeeData[7];
+                    String thanhpho = employeeData[8];
+                    Address address = new Address(so, duong, quan, thanhpho);
 
-                String employeeid = employeeData[9];
-                String position = employeeData[10];
-                Double salary = Double.parseDouble(employeeData[11]);
-                String date = employeeData[12];
-                Employee employee = new Employee(fullname, birthday, phone, email, gender, address, employeeid,
-                        position, salary, date);
-                employees.add(employee);
+                    String employeeid = employeeData[9];
+                    String position = employeeData[10];
+                    Double salary = Double.parseDouble(employeeData[11]);
+                    String date = employeeData[12];
+                    Employee employee = new Employee(fullname, birthday, phone, email, gender, address, employeeid,
+                            position, salary, date);
+                    employees.add(employee);
                 }
             }
             if (fileIsEmpty) {
