@@ -5,7 +5,7 @@ import MAIN.Kiemtra;
 
 public class Paper extends SanPham {
     Kiemtra kt = new Kiemtra();
-
+    private Kho kho = new Kho();
     public Paper() {
         this.LSP = "Paper";
     }
@@ -22,14 +22,32 @@ public class Paper extends SanPham {
     }
 
     
+    public boolean ktmasp(String maxp) {
+    	kho.docDataTuFile();
+            for (SanPham sp : kho.khoHang) 
+            {
+                if (sp.getMaSP().equals(maxp)) {
+                	return false;
+                }
+            }
+            return true;
+    	}
+    
     @Override
     public void nhap() {
-        System.out.print("\nNhap vao ma san pham: ");
-        this.maSP = kt.kiemtraMaSanpham();
+    	System.out.print("Nhap vao ma san pham: ");
+        String maxp = kt.kiemtraMaSanpham();
+        if(ktmasp(maxp) == true) {
+        	this.maSP = maxp;
+        }
+        else {
+        	System.out.print("Ma san pham nhap sai!!");
+        	this.nhap();
+        }
         System.out.print("\nNhap vao ten san pham: ");
         this.tenSP = sc.nextLine();
         System.out.print("\nNhap vao gia cua san pham: ");
-        this.donGia = kt.KiemTraNhapSoNguyen();
+        this.donGia = Integer.parseInt(sc.nextLine());
     }
 
     @Override

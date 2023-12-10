@@ -13,7 +13,7 @@ public class MainHoaDon {
             System.out.println("MENU-------------------------------");
             System.out.println(
                     "1. In danh sach don hang.\n"
-                +   "2. Them don hang.\n"
+                
                 +   "3. Xoa don hang.\n"
                 +   "4. Doc du lieu tu file.\n"
                 +   "5. Ghi du lieu xuong file.\n"
@@ -25,10 +25,6 @@ public class MainHoaDon {
         {
             dsHD.xuat();
             break;
-        }
-        case 2:
-        {
-        	
         }
         case 3:
         {

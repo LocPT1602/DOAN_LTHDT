@@ -27,7 +27,6 @@ public class Employee extends Account {
 
     public void CreateBill() {
         billdetail.getBillDetail();
-        billdetail.writeToFile();
     }
 
     public void InforCustomers() {

@@ -1,0 +1,4 @@
+Pen, SP000, Pen, 4000
+Paper, SP100, Paper, 1500
+Supply, SP200, Supply, 6000
+Paper, SP201, A4 khong tham nuoc, 5000

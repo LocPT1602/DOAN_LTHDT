@@ -55,8 +55,6 @@ public class GioHang {
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
                 } 
-                    
-                
             }
             System.out.println("Nhap sai vui long nhap lai Ma SP!!");
         }
