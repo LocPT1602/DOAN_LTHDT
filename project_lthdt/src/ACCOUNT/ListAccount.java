@@ -32,7 +32,7 @@ class ListAccount implements Iterable<Account> {
 
     public void readAccount() throws IOException {
 
-        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+        String filePath = "project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -51,9 +51,10 @@ class ListAccount implements Iterable<Account> {
     }
 
     public void printAcc() {
+        System.out.println("==============DANH SACH TAI KHOAN=============");
         for (Account account : accounts) {
-            System.out.println("tai khoan la : " + account.username);
-            System.out.println("mau khau la : " + account.password);
+            System.out.print("Tai khoan la : " + account.username);
+            System.out.print(" -- Mau khau la : " + account.password + "\n");
         }
     }
 
@@ -73,7 +74,7 @@ class ListAccount implements Iterable<Account> {
     }
 
     public void writeAccount() throws IOException {
-        String filePath = "D:\\Năm hai\\DoAnLTHDT\\project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+        String filePath = "project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
             for (Account account : accounts) {

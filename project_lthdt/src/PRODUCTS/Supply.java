@@ -1,8 +1,10 @@
 package PRODUCTS;
 
 import java.util.Scanner;
+import MAIN.Kiemtra;
 
 public class Supply extends SanPham {
+    Kiemtra kt = new Kiemtra();
 
     public Supply() {
         this.LSP = "Supply";
@@ -22,11 +24,11 @@ public class Supply extends SanPham {
     @Override
     public void nhap() {
         System.out.print("\nNhap vao ma san pham: ");
-        this.maSP = sc.nextLine();
+        this.maSP = kt.kiemtraMaSanpham();
         System.out.print("\nNhap vao ten san pham: ");
         this.tenSP = sc.nextLine();
         System.out.print("\nNhap vao gia cua san pham: ");
-        this.donGia = Integer.parseInt(sc.nextLine());
+        this.donGia = kt.KiemTraNhapSoNguyen();
     }
 
     @Override

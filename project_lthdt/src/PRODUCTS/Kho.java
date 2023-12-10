@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.Comparator;
+import MAIN.Kiemtra;
 
 public class Kho implements iReaderWriter {
     ArrayList<SanPham> khoHang;
     Scanner sc = new Scanner(System.in);
+    Kiemtra kt = new Kiemtra();
 
     public Kho() {
         khoHang = new ArrayList<>();
@@ -25,8 +27,10 @@ public class Kho implements iReaderWriter {
             System.out.println("Chon san pham muon them: ");
             System.out.println(
                     "1. Paper.\n"
-                  + "2. Pen.\n"
-                  + "3. Supply.\n");
+                            + "2. Pen.\n"
+                            + "3. Supply.\n"
+                            + "0. Thoát");
+            System.out.print("Nhap lua chon: ");
             lc = sc.nextInt();
             if (lc == 1) {
                 SanPham sp = new Paper();

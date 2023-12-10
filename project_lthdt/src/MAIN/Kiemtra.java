@@ -224,4 +224,18 @@ public class Kiemtra {
         return input.indexOf(' ') != -1;
     }
 
+    public String kiemtraTenTK() {
+        String dauvao;
+        while (true) {
+            dauvao = input.nextLine();
+            dauvao = dauvao.toUpperCase();
+            if (dauvao.matches("^ACCEMP[0-9]{3}$")) {
+                return dauvao;
+
+            } else {
+                System.out.println("Nhap khong chinh xac. Vi du: ACCEMPxxx");
+            }
+            System.out.print("Nhap lai: ");
+        }
+    }
 }

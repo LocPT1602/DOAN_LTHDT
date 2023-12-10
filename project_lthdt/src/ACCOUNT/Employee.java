@@ -2,7 +2,7 @@
 import java.util.Scanner;
 import PERSON.CustomerList;
 import PRODUCTS.MainSanPham;
-import PRODUCTS.Kho;
+// import PRODUCTS.Kho;
 import ORDER.BillDetail;
 import ORDER.Order;
 import PRODUCTS.MainGioHang;
@@ -12,7 +12,7 @@ public class Employee extends Account {
     Scanner sc = new Scanner(System.in);
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
-    BillDetail bildetail = new BillDetail();
+    BillDetail billdetail = new BillDetail(null);
     Order order = new Order();
     MainGioHang mainGh = new MainGioHang();
     MainTestMuahang mainMh = new MainTestMuahang();
@@ -26,7 +26,7 @@ public class Employee extends Account {
     }
 
     public void CreateBill() {
-        bildetail.getBillDetail();
+        billdetail.getBillDetail();
     }
 
     public void InforCustomers() {
@@ -74,8 +74,8 @@ public class Employee extends Account {
     public void createOrder() {
         // mainGh.menuGH();
         mainMh.menuMh();
-        order.inputOrderInfo();
-        order.displayOrderInfo();
+        // order.inputOrderInfo();
+        // order.displayOrderInfo();
     }
 
     public void EmployeeManeger() {
@@ -93,7 +93,7 @@ public class Employee extends Account {
             choose = sc.nextInt();
             switch (choose) {
                 case 1:
-
+                    CreateBill();
                     break;
                 case 2:
                     menuStorage();
