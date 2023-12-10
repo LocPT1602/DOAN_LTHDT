@@ -17,6 +17,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
+
 public class BillDetail {
     Scanner scanner = new Scanner(System.in);
 
@@ -46,7 +47,7 @@ public class BillDetail {
     public BillDetail(Order order) {
         this.billDetailCode = generateInvoiceDetailCode();
         this.billList = new ArrayList<>();
-        this.order=order;
+        this.order = order;
     }
 
     public BillDetail(String billDetailCode, Order customer, Order employee, Payment paymentMethod,
@@ -138,18 +139,18 @@ public class BillDetail {
             String line;
             boolean skipHeader = true;
             System.out.println("-----------------Thông tin chi tiết hóa đơn----------------------");
-                generateBillDetailCode();
-                System.out.println("Mã chi tiết hóa đơn: " + billDetailCode);
+            generateBillDetailCode();
+            System.out.println("Mã chi tiết hóa đơn: " + billDetailCode);
             while ((line = reader.readLine()) != null) {
                 if (skipHeader) {
                     skipHeader = false;
                     continue;
                 }
-                
+
                 System.out.println(line);
-                
+
             }
-            
+
         } catch (IOException e) {
             System.out.println("Đã xảy ra lỗi khi đọc file.");
             e.printStackTrace();
@@ -162,7 +163,6 @@ public class BillDetail {
         String formattedRandomNumbers = String.format("%03d", randomNumbers);
         billDetailCode = "MHD" + formattedRandomNumbers;
     }
-
 
     // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
     public void writeToFile() {
@@ -181,15 +181,15 @@ public class BillDetail {
             gh.gioHangSize();
             order.tinhSoLuongSanPham();
             order.tinhTongSoTien();
-            
+
             List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
-    
+
             sb.append(String.join("\n", lines)).append("\n");
             sb.append("Tổng số lượng sản phẩm: ").append(order.getQuantity()).append("\n");
             sb.append("Ngày hóa đơn: ").append(billDate.format(formatter)).append("\n");
             sb.append("Tình trạng đơn hàng: ").append(order.getStatus()).append("\n");
             sb.append("Tổng giá trị đơn hàng: ").append(order.getTotalValue()).append("\n");
-    
+
             FileWriter writer = new FileWriter(fileName, true);
             writer.write(sb.toString());
             writer.close();
