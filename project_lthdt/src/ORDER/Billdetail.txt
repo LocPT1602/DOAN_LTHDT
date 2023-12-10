@@ -1,10 +1,12 @@
 
 ----------Chi tiết hóa đơn------------
-Mã chi tiết hóa đơn: MHD894
-Mã khách hàng: CUS0001
-Mã nhân viên phụ trách: EMP001
+Mã chi tiết hóa đơn: MHD544
+Ma don hang: MDH065
+Mã khách hàng: null
+Mã nhân viên phụ trách: null
 Danh sách Sản phẩm: 
-Pen    |   4000
+Paper    |   1500
 Tổng số lượng sản phẩm: 1
-Ngày hóa đơn: 10/12/2023  11:27:54
-Tổng giá trị đơn hàng: 4000.0
+Ngày hóa đơn: 10/12/2023  22:56:02
+Tình trạng đơn hàng: 
+Tổng giá trị đơn hàng: 1500.0

@@ -1,4 +1,1 @@
-Giay A0    |   10000
-thu?c k?    |   4440
-Supply    |   6000
-Pen    |   4000
+Paper    |   1500
