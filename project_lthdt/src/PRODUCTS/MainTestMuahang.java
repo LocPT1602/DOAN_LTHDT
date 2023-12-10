@@ -41,6 +41,7 @@ public class MainTestMuahang {
             } else if (choice == 6) {
                 gioHang.ghiTenSPvaDonGiaVaoFile();
                 order.inputOrderInfo();
+                order.ghiFileOrder();
                 order.displayOrderInfo();
                 // dsGH.themVaoDanhSachGH(gioHang);
 

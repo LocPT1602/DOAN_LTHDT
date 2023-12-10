@@ -360,8 +360,8 @@ public class Order {
         String fileName = "ghiorder.txt";
 
         try {
-            FileWriter writer = new FileWriter(fileName,true);
-            
+            FileWriter writer = new FileWriter(fileName, true);
+
             StringBuilder sb = new StringBuilder();
             LocalDateTime orderDate = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
@@ -372,12 +372,12 @@ public class Order {
             sb.append("Ma nhan vien phu trach: ").append(employee).append("\n");
             sb.append("Ngay tao don hang: ").append(orderDate.format(formatter)).append("\n");
             sb.append("Danh sach san pham: \n");
-            sb.append("\n")
+            sb.append("\n");
             gioHang.gioHangSize();
             List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
-    
-            sb.append(String.join("\n", lines)).append("\n");   
-            sb.append("\n");          
+
+            sb.append(String.join("\n", lines)).append("\n");
+            sb.append("\n");
             tinhSoLuongSanPham();
             tinhTongSoTien();
             sb.append("So luong san pham: ").append(quantity).append("\n");
@@ -386,12 +386,12 @@ public class Order {
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
             sb.append("--------------------------------------------------------------\n");
-            
+
             String orderInfo = sb.toString();
-            
+
             writer.write(orderInfo);
             writer.close();
-            
+
             System.out.println("Đã ghi thông tin đơn hàng vào file " + fileName);
         } catch (IOException e) {
             System.out.println("Đã xảy ra lỗi khi ghi file.");
