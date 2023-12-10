@@ -17,7 +17,7 @@ public class Admin extends Account {
     CustomerList cusList = new CustomerList();
     Employeelist empList = new Employeelist();
     billdetailList billList = new billdetailList();
-    BillDetail billdetail = new BillDetail();
+    BillDetail billdetail = new BillDetail(null);
     MainSanPham mainSP = new MainSanPham();
     Kho khoHang = new Kho();
     Kiemtra kt = new Kiemtra();
@@ -31,34 +31,30 @@ public class Admin extends Account {
     }
 
     public void AddEmplAccount() {
-        System.out.print("Nhap ten tai khoan : ");
-        setUsername();
-        while (kt.ktraSpace(username)) {
-            System.out.println("ten tai khoan khong duoc chua khoang trang");
-            setUsername();
-        }
-        System.out.print("Nhap mat khau : ");
+        System.out.print("Nhap ten tai khoan: ");
+        username = kt.kiemtraTenTK();
+        do {
+            System.out.println("Ten tai khoan da ton tai !");
+            System.out.print("Nhap lai ten dang nhap: ");
+            username = kt.kiemtraTenTK();
+        } while (list.containsAccount(username) == true);
+
+        System.out.print("Nhap mat khau: ");
         setPassword();
         while (kt.ktraSpace(password)) {
             System.out.println("Mat khau khong duoc chua khoang trang");
+            System.out.print("Nhap lai: ");
             setPassword();
         }
         Account newAccount = new Account(password, username, "");
-
-        if (list.containsAccount(username) != true) {
-            try {
-                list.addAccount(newAccount);
-                list.printAcc();
-                list.writeAccount();
-                System.out.println("Da ghi vao file thanh cong !");
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Xử lý ngoại lệ tại đây nếu cần thiết
-            }
-        } else {
-            System.out.println("Ten tai khoan da ton tai !");
+        try {
+            list.addAccount(newAccount);
+            // list.printAcc();
+            list.writeAccount();
+            System.out.println("Da ghi vao file thanh cong !");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
 
     public void DeleteEmplAccount() {
@@ -70,7 +66,7 @@ public class Admin extends Account {
         if (list.containsAccount(usernameToDelete)) {
             try {
                 list.deleteAccount(usernameToDelete);
-                list.printAcc();
+                // list.printAcc();
             } catch (IOException e) {
                 e.printStackTrace();
                 // Xử lý ngoại lệ tại đây nếu cần thiết
@@ -78,6 +74,10 @@ public class Admin extends Account {
         } else {
             System.out.println("Tài khoản không tồn tại. Vui lòng kiểm tra lại.");
         }
+    }
+
+    public void allAccount() {
+        list.printAcc();
     }
 
     public void DeteteProduct() {
@@ -96,7 +96,7 @@ public class Admin extends Account {
     public void InforEmployee() {
         int exit;
         do {
-            System.out.println("-----------------------------+");
+            System.out.println("-----------InforEmp----------+");
             System.out.println("1 : Xem thong tin Employee   |");
             System.out.println("2 : xoa thong tin Employee   |");
             System.out.println("3 : Them thong tin Employe   |");
@@ -129,7 +129,7 @@ public class Admin extends Account {
     public void InforCustomers() {
         int exit;
         do {
-            System.out.println("-----------------------------+");
+            System.out.println("-----------InforCus----------+");
             System.out.println("1 : Xem thong tin Customers  |");
             System.out.println("2 : xoa thong tin Customers  |");
             System.out.println("3 : Them thong tin Customers |");
@@ -174,15 +174,14 @@ public class Admin extends Account {
         int exit;
         do {
             System.out.println("---------------ADMIN-------------+");
-            System.out.println("1 : Xoa san Pham                 |");
-            System.out.println("2 : Them san pham                |");
-            System.out.println("3 : Tao hoa don                  |");
-            System.out.println("4 : Thong tin nhan vien          |");
-            System.out.println("5 : Thong tin khach hang         |");
-            System.out.println("6 : Hoa don                      |");
-            System.out.println("7 : Kho - storage                |");
-            System.out.println("8 : Them tai khoan nhan vien     |");
-            System.out.println("9 : Xoa tai khoan nhan vien      |");
+            System.out.println("1 : Tao hoa don                  |");
+            System.out.println("2 : Thong tin nhan vien          |");
+            System.out.println("3 : Thong tin khach hang         |");
+            System.out.println("4 : Xem hoa don                  |");
+            System.out.println("5 : Kho - storage                |");
+            System.out.println("6 : Them tai khoan nhan vien     |");
+            System.out.println("7 : Xoa tai khoan nhan vien      |");
+            System.out.println("8 : Xem Account                  |");
             System.out.println("0 : Thoat                        |");
             System.out.println("---------------------------------+");
             System.out.print("Nhap lua chon: ");
@@ -194,31 +193,27 @@ public class Admin extends Account {
 
             switch (choose) {
                 case 1:
-
+                    CreateBill();
                     break;
                 case 2:
-
-                    break;
-                case 3:
-
-                    break;
-                case 4:
                     InforEmployee();
                     break;
-                case 5:
+                case 3:
                     InforCustomers();
                     break;
-                case 6:
-
+                case 4:
                     break;
-                case 7:
+                case 5:
                     menuStorage();
                     break;
-                case 8:
+                case 6:
                     AddEmplAccount();
                     break;
-                case 9:
+                case 7:
                     DeleteEmplAccount();
+                    break;
+                case 8:
+                    allAccount();
                     break;
                 case 0:
                     break;

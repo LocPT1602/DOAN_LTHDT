@@ -132,31 +132,37 @@ public class BillDetail {
 
     // Phương thức lấy thông tin hóa đơn chi tiết
     public void getBillDetail() {
+        String fileName = "ghiorder.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            boolean skipHeader = true;
+            System.out.println("-----------------Thông tin chi tiết hóa đơn----------------------");
+                generateBillDetailCode();
+                System.out.println("Mã chi tiết hóa đơn: " + billDetailCode);
+            while ((line = reader.readLine()) != null) {
+                if (skipHeader) {
+                    skipHeader = false;
+                    continue;
+                }
+                
+                System.out.println(line);
+                
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Đã xảy ra lỗi khi đọc file.");
+            e.printStackTrace();
+        }
+    }
+
+    public void generateBillDetailCode() {
         Random random = new Random();
         int randomNumbers = random.nextInt(1000);
         String formattedRandomNumbers = String.format("%03d", randomNumbers);
-        String billDetailCode = "MHD" + formattedRandomNumbers;
-
-        this.billDetailCode = billDetailCode;
-        LocalDateTime billDate = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
-        System.out.println("----------Chi tiết hóa đơn:------------");
-        System.out.println("Mã chi tiết hóa đơn: " + this.billDetailCode);
-        System.out.println("Mã khách hàng: " + order.getCustomer());
-        System.out.println("Mã nhân viên: " + order.getEmployee());
-        System.out.println("Mã hóa đơn: " + hoaDon.getMaHD());
-        System.out.println("Danh sách Sản phẩm: ");
-        gh.gioHangSize();
-        order.docFileDanhsachspdadat();
-        order.tinhSoLuongSanPham();
-        order.tinhTongSoTien();
-        System.out.println("Tổng số lượng sản phẩm: " +order.getQuantity());
-        // System.out.println("Phương thức thanh toán: " +
-        // paymentMethod.getPhuongthuc());
-        System.out.println("Ngày hóa đơn: " + billDate.format(formatter));
-        System.out.println("Tổng giá trị đơn hàng: "+ order.getTotalValue());
-
+        billDetailCode = "MHD" + formattedRandomNumbers;
     }
+
 
     // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
     public void writeToFile() {

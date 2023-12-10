@@ -23,7 +23,7 @@ public class CustomerList implements Iterable<Customer> {
 
     // đọc file C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\
     public void readFile() {
-        String fileName = "C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
+        String fileName = "project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             boolean fileIsEmpty = true;
@@ -163,7 +163,7 @@ public class CustomerList implements Iterable<Customer> {
         }
     }
     public void writeFile()
-    {   String fileName="C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
+    {   String fileName="project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
         try(BufferedWriter writer=new BufferedWriter(new FileWriter(fileName,true))) {
             for(Customer customer:Customers) {
                 writer.write(customer.getFullname()+","+customer.getBirthday()+","+customer.getPhonenumber()+","+

@@ -47,7 +47,7 @@ public class Employeelist implements Iterable<Employee> {
     }
 
     public void readEmployeeFile() {
-        String fileName = "C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachNV.txt";
+        String fileName = "project_lthdt\\src\\PERSON\\danhsachNV.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             boolean fileIsEmpty = true;
@@ -125,7 +125,7 @@ public class Employeelist implements Iterable<Employee> {
     }
 
     public void writeEmployeeFile() {
-        String fileName = "C:\\Users\\admin\\OneDrive\\Tài liệu\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PERSON\\danhsachNV.txt";
+        String fileName = "project_lthdt\\src\\PERSON\\danhsachNV.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             for (Employee employee : employees) {
                 writer.write(employee.getFullname() + "," + employee.getBirthday() + "," + employee.getPhonenumber()
