@@ -2,21 +2,19 @@ package ORDER;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.List;
 import PAYMENTMETHOD.*;
 // import PERSON.*;
 import PRODUCTS.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+
 public class BillDetail {
     Scanner scanner = new Scanner(System.in);
 
@@ -26,7 +24,7 @@ public class BillDetail {
     private ArrayList<SanPham> billList;
     private Payment paymentMethod; // Phương thức thanh toán
     private int quantityBill; // Số lượng
-    private LocalDateTime billDate; // Ngày trên hóa đơn
+    private LocalDate billDate; // Ngày trên hóa đơn
     private int counter = 1;
     HoaDon hoaDon = new HoaDon();
     GioHang gh = new GioHang();
@@ -43,28 +41,23 @@ public class BillDetail {
 
     // Constructors
 
-    public BillDetail(Order order) {
+    public BillDetail() {
         this.billDetailCode = generateInvoiceDetailCode();
         this.billList = new ArrayList<>();
-        this.order=order;
     }
 
     public BillDetail(String billDetailCode, Order customer, Order employee, Payment paymentMethod,
-            int quantityBill, LocalDateTime billDate) {
+            int quantityBill, LocalDate billDate) {
         this.billDetailCode = billDetailCode;
         this.customer = customer;
         this.employee = employee;
         this.billDate = billDate;
         this.paymentMethod = paymentMethod;
-        this.quantityBill = quantityBill;
+        this.quantityBill = billList.size();
+        this.billDate = LocalDate.now();
     }
 
     // Getters and Setters
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     public String getBillDetailCode() {
         return billDetailCode;
     }
@@ -113,11 +106,11 @@ public class BillDetail {
         this.quantityBill = quantityBill;
     }
 
-    public LocalDateTime getBillDate() {
+    public LocalDate getBillDate() {
         return billDate;
     }
 
-    public void setBillDate(LocalDateTime billDate) {
+    public void setBillDate(LocalDate billDate) {
         this.billDate = billDate;
     }
 
@@ -138,60 +131,53 @@ public class BillDetail {
         String billDetailCode = "MHD" + formattedRandomNumbers;
 
         this.billDetailCode = billDetailCode;
-        LocalDateTime billDate = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
+        LocalDate billDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println("----------Chi tiết hóa đơn:------------");
         System.out.println("Mã chi tiết hóa đơn: " + this.billDetailCode);
         System.out.println("Mã khách hàng: " + order.getCustomer());
         System.out.println("Mã nhân viên: " + order.getEmployee());
         System.out.println("Mã hóa đơn: " + hoaDon.getMaHD());
         System.out.println("Danh sách Sản phẩm: ");
-        gh.gioHangSize();
-        order.docFileDanhsachspdadat();
-        order.tinhSoLuongSanPham();
-        order.tinhTongSoTien();
-        System.out.println("Tổng số lượng sản phẩm: " +order.getQuantity());
+        gh.inTenSPvaDonGia();
         // System.out.println("Phương thức thanh toán: " +
         // paymentMethod.getPhuongthuc());
         System.out.println("Ngày hóa đơn: " + billDate.format(formatter));
-        System.out.println("Tổng giá trị đơn hàng: "+ order.getTotalValue());
+        System.out.println("Tổng giá trị: " + calculateTotalAmount());
 
     }
 
     // Phương thức ghi thông tin hóa đơn vào tập tin văn bản
     public void writeToFile() {
-        LocalDateTime billDate = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy  HH:mm:ss");
+        LocalDate billDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String fileName = "project_lthdt/src/ORDER/Billdetail.txt";
-        String sourceFilePath = "danhsachspdadat.txt";
         try {
             StringBuilder sb = new StringBuilder();
-            sb.append("\n");
-            sb.append("----------Chi tiết hóa đơn------------\n");
+            sb.append("----------Chi tiết hóa đơn:------------\n");
             sb.append("Mã chi tiết hóa đơn: ").append(this.billDetailCode).append("\n");
             sb.append("Mã khách hàng: ").append(order.getCustomer()).append("\n");
-            sb.append("Mã nhân viên phụ trách: ").append(order.getEmployee()).append("\n");
+            sb.append("Mã nhân viên: ").append(order.getEmployee()).append("\n");
+            sb.append("Mã hóa đơn: ").append(hoaDon.getMaHD()).append("\n");
             sb.append("Danh sách Sản phẩm: \n");
-            gh.gioHangSize();
-            order.tinhSoLuongSanPham();
-            order.tinhTongSoTien();
-            
-            List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
-    
-            sb.append(String.join("\n", lines)).append("\n");
-            sb.append("Tổng số lượng sản phẩm: ").append(order.getQuantity()).append("\n");
+            for (SanPham sanPham : billList) {
+                sb.append(sanPham.getTenSP()).append(" | ").append(sanPham.getDonGia()).append("\n");
+            }
+            // sb.append("Phương thức thanh toán:
+            // ").append(paymentMethod.getPhuongthuc()).append("\n");
             sb.append("Ngày hóa đơn: ").append(billDate.format(formatter)).append("\n");
-            sb.append("Tình trạng đơn hàng: ").append(order.getStatus()).append("\n");
-            sb.append("Tổng giá trị đơn hàng: ").append(order.getTotalValue()).append("\n");
-    
-            FileWriter writer = new FileWriter(fileName, true);
+            sb.append("Tổng giá trị: ").append(calculateTotalAmount()).append("\n");
+
+            FileWriter writer = new FileWriter(fileName);
             writer.write(sb.toString());
             writer.close();
+            System.out.println("Thông tin hóa đơn đã được ghi vào tập tin: " + fileName);
         } catch (IOException e) {
             System.out.println("Đã xảy ra lỗi khi ghi vào tập tin: " + fileName);
             e.printStackTrace();
         }
     }
+
     // public void getinformation() {
 
     // }
@@ -206,7 +192,6 @@ public class BillDetail {
                 double price = Double.parseDouble(data[3]);
 
                 // In thông tin sản phẩm
-                System.out.println("\n");
                 System.out.println("Tên sản phẩm: " + productName);
                 System.out.println("Mã sản phẩm: " + productCode);
                 System.out.println("Giá: " + price);
@@ -219,8 +204,8 @@ public class BillDetail {
     }
 
     public static void main(String[] args) {
+        BillDetail billDetail = new BillDetail();
         Order order = new Order();
-        BillDetail billDetail = new BillDetail(order);
         order.inputOrderInfo();
         order.displayOrderInfo();
         billDetail.getBillDetail();
