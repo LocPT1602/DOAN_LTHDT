@@ -13,7 +13,7 @@ public class MainGioHang {
             System.out.println(
                     "1. In danh sach gio hang.\n"
                             + "2. In Gio hang theo ma.\n"
-                            + "3. Them gio hang.\n"
+                            
                             + "4. Lay so gio hang .\n"
                             + "5. Xoa gio hang.\n"
                             + "6. Doc du lieu tu file.\n"
@@ -30,10 +30,7 @@ public class MainGioHang {
                     dsGioHang.layGHtheoMa(sc.nextLine());
                     break;
                 }
-                case 3: {
-
-                    break;
-                }
+               
                 case 4: {
                     dsGioHang.laySize();
                     break;
