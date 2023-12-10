@@ -32,15 +32,20 @@ public class MainTestMuahang {
             } else if (choice == 2) {
                 choice2();
             } else if (choice == 3) {
-            	int sl;
-            	do
-            	{
-            		gioHang.themVaoGion();
-            		System.out.println("Ban co muon mua tiep? An so 1 de tiep tuc:");
-            		sl = sc.nextInt();
-            	}while(sl == 1);
-            } 
-            else if (choice == 4) {
+                int sl;
+                do {
+                    gioHang.themVaoGion();
+                    System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc: ");
+                    sl = 0; // initialize to a default value
+                    try {
+                        sl = Integer.parseInt(sc.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Nhap khong hop le. Vui long nhap so.");
+                        // Handle the exception or take appropriate action
+                    }
+                } while (sl == 1);
+
+            } else if (choice == 4) {
                 gioHang.inGioHang();
             } else if (choice == 5) {
                 choice5();
