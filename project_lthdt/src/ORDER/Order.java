@@ -303,21 +303,16 @@ public class Order {
 
         return totalValue;
     }
-
+    public void generateOrderCode() {
+     Random random = new Random();
+        int randomNumbers = random.nextInt(1000);
+        String formattedRandomNumbers = String.format("%03d", randomNumbers);
+        orderCode = "MDH" + formattedRandomNumbers;
+    }
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
-        // System.out.print("Nhap ma don hang: ");
-        Random random = new Random();
-        int randomNumbers = random.nextInt(1000);
-        String formattedRandomNumbers = String.format("%03d", randomNumbers);
-        String orderCode = "MDH" + formattedRandomNumbers;
-
-        this.orderCode = orderCode;
-
-        // System.out.println("Nhập mã sản phẩm: ");
-        // this.productCode = scanner.nextLine();
-
+        generateOrderCode();
         System.out.print("Nhap ma khach hang: ");
         this.customer = kt.kiemtraMakhachhang();
 
@@ -360,13 +355,14 @@ public class Order {
         String fileName = "ghiorder.txt";
 
         try {
-            FileWriter writer = new FileWriter(fileName, true);
+            FileWriter writer = new FileWriter(fileName);
 
             StringBuilder sb = new StringBuilder();
             LocalDateTime orderDate = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
             String sourceFilePath = "danhsachspdadat.txt";
             sb.append("--------------------THONG TIN DON HANG------------------------\n");
+            generateOrderCode();
             sb.append("Ma don hang: ").append(orderCode).append("\n");
             sb.append("Ma khach hang: ").append(customer).append("\n");
             sb.append("Ma nhan vien phu trach: ").append(employee).append("\n");
