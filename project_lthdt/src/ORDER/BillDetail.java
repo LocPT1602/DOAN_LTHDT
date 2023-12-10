@@ -24,6 +24,7 @@ public class BillDetail {
     private String billDetailCode; // Mã chi tiết hóa đơn
     private Order customer; // Mã khách hàng
     private Order employee; // Mã nhân viên
+    private Order orderCode; // Ma hoa don
     private ArrayList<SanPham> billList;
     private Payment paymentMethod; // Phương thức thanh toán
     private int quantityBill; // Số lượng
@@ -47,10 +48,10 @@ public class BillDetail {
     public BillDetail(Order order) {
         this.billDetailCode = generateInvoiceDetailCode();
         this.billList = new ArrayList<>();
-        // this.order = order;
+        this.order = order;
     }
 
-    public BillDetail(String billDetailCode, Order customer, Order employee, Payment paymentMethod,
+    public BillDetail(String billDetailCode, Order customer, Order employee,Order orderCode, Payment paymentMethod,
             int quantityBill, LocalDateTime billDate) {
         this.billDetailCode = billDetailCode;
         this.customer = customer;
@@ -58,13 +59,18 @@ public class BillDetail {
         this.billDate = billDate;
         this.paymentMethod = paymentMethod;
         this.quantityBill = quantityBill;
+        this.orderCode = orderCode;
     }
 
     // Getters and Setters
 
-    // public void setOrder(Order order) {
-    // this.order = order;
-    // }
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Order getOrder() {
+        return this.order;
+    }
 
     public String getBillDetailCode() {
         return billDetailCode;
@@ -79,7 +85,7 @@ public class BillDetail {
     }
 
     public void setCustomer(Order customer) {
-        this.customer = customer;
+        this.customer = order;
     }
 
     public Order getEmployee() {
@@ -88,6 +94,14 @@ public class BillDetail {
 
     public void setEmployee(Order employee) {
         this.employee = employee;
+    }
+
+    public Order getOrderCode(){
+        return orderCode;
+    }
+
+    public void setOrderCode(Order orderCode) {
+        this.orderCode = orderCode;
     }
 
     public ArrayList<SanPham> getBillList() {
@@ -169,31 +183,26 @@ public class BillDetail {
         LocalDateTime billDate = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy  HH:mm:ss");
         String fileName = "project_lthdt/src/ORDER/Billdetail.txt";
-        String sourceFilePath = "danhsachspdadat.txt";
+        String sourceFilePath = "ghiorder.txt";
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
             sb.append("----------Chi tiết hóa đơn------------\n");
             sb.append("Mã chi tiết hóa đơn: ").append(this.billDetailCode).append("\n");
-            sb.append("Ma don hang: ").append(order.getOrderCode()).append("\n");
-            sb.append("Mã khách hàng: ").append(order.getCustomer()).append("\n");
-            sb.append("Mã nhân viên phụ trách: ").append(order.getEmployee()).append("\n");
-            sb.append("Danh sách Sản phẩm: \n");
-            gh.gioHangSize();
-            order.tinhSoLuongSanPham();
-            order.tinhTongSoTien();
-
+    
             List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
-
-            sb.append(String.join("\n", lines)).append("\n");
-            sb.append("Tổng số lượng sản phẩm: ").append(order.getQuantity()).append("\n");
-            sb.append("Ngày hóa đơn: ").append(billDate.format(formatter)).append("\n");
-            sb.append("Tình trạng đơn hàng: ").append(order.getStatus()).append("\n");
-            sb.append("Tổng giá trị đơn hàng: ").append(order.getTotalValue()).append("\n");
-
+    
+            // Bỏ dòng "--------------------THONG TIN DON HANG------------------------"
+            for (String line : lines) {
+                if (!line.contains("THONG TIN DON HANG")) {
+                    sb.append(line).append("\n");
+                }
+            }
+    
             FileWriter writer = new FileWriter(fileName);
             writer.write(sb.toString());
             writer.close();
+            System.out.println("Hóa đơn đã được tạo và lưu vào tập tin Billdetail.txt");
         } catch (IOException e) {
             System.out.println("Đã xảy ra lỗi khi ghi vào tập tin: " + fileName);
             e.printStackTrace();
@@ -224,12 +233,12 @@ public class BillDetail {
             e.printStackTrace();
         }
     }
-
+    
     public static void main(String[] args) {
         Order order = new Order();
         BillDetail billDetail = new BillDetail(order);
         order.inputOrderInfo();
-        order.displayOrderInfo();
+        // order.displayOrderInfo();
         billDetail.getBillDetail();
         billDetail.writeToFile();
         // billDetail.readProductData();

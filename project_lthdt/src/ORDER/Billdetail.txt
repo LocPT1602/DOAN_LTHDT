@@ -1,14 +1,19 @@
 
 ----------Chi tiết hóa đơn------------
-Mã chi tiết hóa đơn: MHD234
-Ma don hang: MDH807
-Mã khách hàng: null
-Mã nhân viên phụ trách: null
-Danh sách Sản phẩm: 
+Mã chi tiết hóa đơn: MHD896
+Ma don hang: MDH373
+Ma khach hang: CUS0222
+Ma nhan vien phu trach: EMP222
+Ngay tao don hang: 11/12/2023   02:42:19
+Danh sach san pham: 
+
 Pen    |   4000
 Supply    |   6000
-A4 khong tham nuoc    |   5000
-Tổng số lượng sản phẩm: 3
-Ngày hóa đơn: 11/12/2023  01:27:36
-Tình trạng đơn hàng: 
-Tổng giá trị đơn hàng: 15000.0
+Giay A0    |   10000
+
+So luong san pham: 3
+Tong gia tri don hang: 20000.0
+Xac nhan thanh toan: true
+Xac nhan don hang: true
+Trang thai don hang: Đã xác nhận
+--------------------------------------------------------------

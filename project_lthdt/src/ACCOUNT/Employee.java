@@ -12,8 +12,8 @@ public class Employee extends Account {
     Scanner sc = new Scanner(System.in);
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
-    BillDetail billdetail = new BillDetail(null);
     Order order = new Order();
+    BillDetail billdetail = new BillDetail(order);
     MainGioHang mainGh = new MainGioHang();
     MainTestMuahang mainMh = new MainTestMuahang();
 
@@ -25,8 +25,9 @@ public class Employee extends Account {
 
     }
 
+    
     public void CreateBill() {
-        order.generateOrderCode();
+
         billdetail.getBillDetail();
         billdetail.writeToFile();
     }
