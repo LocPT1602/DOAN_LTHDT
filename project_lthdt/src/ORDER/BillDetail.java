@@ -63,7 +63,7 @@ public class BillDetail {
     // Getters and Setters
 
     // public void setOrder(Order order) {
-    //     this.order = order;
+    // this.order = order;
     // }
 
     public String getBillDetailCode() {
@@ -175,7 +175,6 @@ public class BillDetail {
             sb.append("\n");
             sb.append("----------Chi tiết hóa đơn------------\n");
             sb.append("Mã chi tiết hóa đơn: ").append(this.billDetailCode).append("\n");
-            order.generateOrderCode();
             sb.append("Ma don hang: ").append(order.getOrderCode()).append("\n");
             sb.append("Mã khách hàng: ").append(order.getCustomer()).append("\n");
             sb.append("Mã nhân viên phụ trách: ").append(order.getEmployee()).append("\n");

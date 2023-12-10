@@ -303,12 +303,14 @@ public class Order {
 
         return totalValue;
     }
+
     public void generateOrderCode() {
-     Random random = new Random();
+        Random random = new Random();
         int randomNumbers = random.nextInt(1000);
         String formattedRandomNumbers = String.format("%03d", randomNumbers);
-        orderCode = "MDH" + formattedRandomNumbers;
+        this.orderCode = "MDH" + formattedRandomNumbers;
     }
+
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
