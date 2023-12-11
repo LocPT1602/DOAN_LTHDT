@@ -37,6 +37,7 @@ public class Supply extends SanPham {
     public void nhap() {
         System.out.print("Nhap vao ma san pham: ");
         String maxp = kt.kiemtraMaSanpham();
+        if(ktmasp(maxp) != true)
         do {
             System.out.print("Ma san pham da bi trung !!");
             System.out.print("Nhap lai ma san pham: ");

@@ -1,14 +1,16 @@
+
 package PAYMENTMETHOD;
 
 import java.util.Scanner;
 
 public class PaymentMenu {
 	private Payment[] mangtt;
+	
 	Scanner sc = new Scanner(System.in);
 
-	public PaymentMenu() {
-		this.mangtt = null;
-	}
+	// public PaymentMenu() {
+	// 	this.mangtt = null;
+	// }
 
 	public PaymentMenu(int size) {
 		this.mangtt = new Payment[size];
@@ -52,9 +54,6 @@ public class PaymentMenu {
 			System.out.println("Nhan phim so 1 de tiep tuc, nhan phim so khac bat ky de thoat");
 			cnt = sc.nextInt();
 		} while (cnt == 1);
-		if (cnt != 1) {
-			System.out.println("Cam on quy khach da mua sam!");
-		}
 	}
 
 	public static void main(String[] args) {

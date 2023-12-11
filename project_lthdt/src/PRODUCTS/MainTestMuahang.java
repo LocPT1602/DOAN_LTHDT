@@ -58,6 +58,7 @@ public class MainTestMuahang {
                     order.ghiFileOrder();
                     order.displayOrderInfo();
                     gioHang.xoaTatCa();
+                    khoHang.CapNhatsl();
                 }
 
                 // dsGH.themVaoDanhSachGH(gioHang);
@@ -214,6 +215,7 @@ public class MainTestMuahang {
                             + "3. Xoa toan bo gio hang.\n"
                             + "0. Quay lai Menu.\n");
             System.out.println("-----------------------------------------------------");
+            System.out.println("Moi ban nhap lua chon: ");
             checkLC();
             sc.nextLine();
             switch (lc) {

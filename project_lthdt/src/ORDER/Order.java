@@ -292,7 +292,7 @@ public class Order {
                 if (parts.length == 3) {
                     double donGia = Double.parseDouble(parts[1].trim());
                     
-                    double Soluong = Double.parseDouble(parts[2].trim());
+                    int Soluong = Integer.parseInt(parts[2].trim());
 
                     totalValue += donGia*Soluong;
                     

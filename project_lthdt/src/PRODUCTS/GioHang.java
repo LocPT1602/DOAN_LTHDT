@@ -95,6 +95,7 @@ public class GioHang {
             if (sanPham.getMaSP().equals(maSP)) {
                 this.gioHang.remove(sanPham);
                 System.out.println("Da xoa san pham co ma | " + maSP + " | trong gio.");
+                return;
             }
         }
     }

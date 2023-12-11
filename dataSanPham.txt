@@ -2,7 +2,7 @@ Pen, SP000, Pen, 4000,100
 Paper, SP100, Paper, 1500,100
 Supply, SP200, Supply, 6000,100
 Paper, SP201, A4 khong tham nuoc, 5000,100
-Pen, SP004, c?c g�m, 410,100
+Pen, SP004, c?c g�m, 4100,100
 Supply, SP888, thu?c k?, 4440,100
 Paper, SP333, Giay A0, 10000,100
 Supply, SP000, k�o, 54545,100
