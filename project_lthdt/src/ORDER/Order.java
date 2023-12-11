@@ -16,6 +16,7 @@ import PRODUCTS.GioHang;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import PAYMENTMETHOD.*;
 
 public class Order {
     private String orderCode; // Mã đơn hàng
@@ -29,9 +30,12 @@ public class Order {
     private boolean paymentConfirmed; // Xác nhận thanh toán
     private boolean orderConfirmed; // Xác nhận đơn hàng
     private String status; // Trạng thái đơn hàng
+    PaymentMenu paymenu = new PaymentMenu(2);
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
+
+    // cashPayment cash = new cashPayment();
 
     public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
             int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
@@ -215,6 +219,10 @@ public class Order {
         }
     }
 
+    public void ThanhToan(){
+        paymenu.selectPaymentmethod();
+    }
+
     public void checkStatus() {
         System.out.println("Xác nhận thanh toán (true/false): ");
         checkpaymentConfirmed();
@@ -289,13 +297,9 @@ public class Order {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 3) {
+                if (parts.length == 2) {
                     double donGia = Double.parseDouble(parts[1].trim());
-                    
-                    int Soluong = Integer.parseInt(parts[2].trim());
-
-                    totalValue += donGia*Soluong;
-                    
+                    totalValue += donGia;
                 }
             }
 
@@ -385,6 +389,9 @@ public class Order {
             sb.append("Xac nhan thanh toan: ").append(paymentConfirmed).append("\n");
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
+            // sb.append("Phuong thuc thanh toan: ").append(cash.getPhuongthuc()).append("\n");
+            // sb.append("Da Nhan: ").append(cash.getSotien()).append("\n");
+            // sb.append("Tien thua: ").append(cash.getTienthua()).append("\n");
             sb.append("--------------------------------------------------------------\n");
 
             String orderInfo = sb.toString();
