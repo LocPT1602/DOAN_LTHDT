@@ -1,3 +1,4 @@
 Pen    |   4000
+A4 khong tham nuoc    |   5000
 Supply    |   6000
-Giay A0    |   10000
+kim    |   4455

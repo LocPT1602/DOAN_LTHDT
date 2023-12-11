@@ -50,10 +50,16 @@ public class MainTestMuahang {
             } else if (choice == 5) {
                 choice5();
             } else if (choice == 6) {
-                gioHang.ghiTenSPvaDonGiaVaoFile();
-                order.inputOrderInfo();
-                order.ghiFileOrder();
-                order.displayOrderInfo();
+                if (gioHang.KtraGH() == true) {
+                    System.out.println("Gio hang dang trong vui long them truoc thi thanh toan !!!");
+                } else {
+                    gioHang.ghiTenSPvaDonGiaVaoFile();
+                    order.inputOrderInfo();
+                    order.ghiFileOrder();
+                    order.displayOrderInfo();
+                    gioHang.xoaTatCa();
+                }
+
                 // dsGH.themVaoDanhSachGH(gioHang);
 
                 // HoaDon hd = new HoaDon(gioHang);
@@ -87,12 +93,12 @@ public class MainTestMuahang {
     }
 
     public static void hienThiMenu() {
-        System.out.println("======================= Menu =======================");
+        System.out.println("=====================Don Hang=======================");
         System.out.println(
                 "1. Xem san pham trong cua shop.\n"
                         + "2. Tim kiem san pham.\n"
                         + "3. Tien hanh mua hang.\n"
-                        + "4. Kiem tra gio hang.\n"
+                        + "4. Xem gio hang.\n"
                         + "5. Chinh sua gio hang.\n"
                         + "6. Thanh toan.\n"
                         + "0. Roi cua hang.");
@@ -162,7 +168,7 @@ public class MainTestMuahang {
                             + "4. Tim kiem san pham co donGia tu cao den thap.\n"
                             + "0. Quay lai menu.\n");
             System.out.println("----------------------------------------------------");
-            System.out.println("Nhap vao lua chon: ");
+            System.out.print("Nhap vao lua chon: ");
 
             checkLC();
             switch (lc) {

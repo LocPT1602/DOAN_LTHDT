@@ -126,7 +126,7 @@ public class GioHang {
     }
 
     public void inGioHang() {
-        System.out.println("===================== GIO HANG ====================");
+        System.out.println("===================== GIO HANG =====================");
         if (this.gioHang.isEmpty()) {
             System.out.println("Gio hang dang trong!");
             return;
@@ -136,7 +136,14 @@ public class GioHang {
             sanPham.xuat();
 
         }
-        System.out.println("===================================================");
+        System.out.println("====================================================");
+    }
+
+    public boolean KtraGH() {
+        if (this.gioHang.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     @Override

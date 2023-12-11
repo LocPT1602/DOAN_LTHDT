@@ -51,7 +51,7 @@ public class BillDetail {
         this.order = order;
     }
 
-    public BillDetail(String billDetailCode, Order customer, Order employee,Order orderCode, Payment paymentMethod,
+    public BillDetail(String billDetailCode, Order customer, Order employee, Order orderCode, Payment paymentMethod,
             int quantityBill, LocalDateTime billDate) {
         this.billDetailCode = billDetailCode;
         this.customer = customer;
@@ -96,7 +96,7 @@ public class BillDetail {
         this.employee = employee;
     }
 
-    public Order getOrderCode(){
+    public Order getOrderCode() {
         return orderCode;
     }
 
@@ -187,18 +187,18 @@ public class BillDetail {
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
-            sb.append("----------Chi tiết hóa đơn------------\n");
+            sb.append("--------------------Chi tiết hóa đơn-----------------------\n");
             sb.append("Mã chi tiết hóa đơn: ").append(this.billDetailCode).append("\n");
-    
+
             List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
-    
+
             // Bỏ dòng "--------------------THONG TIN DON HANG------------------------"
             for (String line : lines) {
                 if (!line.contains("THONG TIN DON HANG")) {
                     sb.append(line).append("\n");
                 }
             }
-    
+
             FileWriter writer = new FileWriter(fileName);
             writer.write(sb.toString());
             writer.close();
@@ -233,7 +233,7 @@ public class BillDetail {
             e.printStackTrace();
         }
     }
-    
+
     public static void main(String[] args) {
         Order order = new Order();
         BillDetail billDetail = new BillDetail(order);
