@@ -25,6 +25,7 @@ public class MainSanPham {
             choice = sc.nextInt();
             sc.nextLine();
             if (choice == 1) {
+                khoHang.docDataTuFile();
                 khoHang.themVaoKho();
                 khoHang.ghiDataXuongFile();
             } else if (choice == 2) {

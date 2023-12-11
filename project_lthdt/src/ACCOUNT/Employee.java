@@ -12,8 +12,8 @@ public class Employee extends Account {
     Scanner sc = new Scanner(System.in);
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
-    BillDetail billdetail = new BillDetail(null);
     Order order = new Order();
+    BillDetail billdetail = new BillDetail(order);
     MainGioHang mainGh = new MainGioHang();
     MainTestMuahang mainMh = new MainTestMuahang();
 
@@ -26,7 +26,9 @@ public class Employee extends Account {
     }
 
     public void CreateBill() {
+
         billdetail.getBillDetail();
+        billdetail.writeToFile();
     }
 
     public void InforCustomers() {
@@ -67,10 +69,6 @@ public class Employee extends Account {
         mainSP.menuProduct();
     }
 
-    public void AddSupplier() {
-        mainSP.menuProduct();
-    }
-
     public void createOrder() {
         // mainGh.menuGH();
         mainMh.menuMh();
@@ -86,7 +84,6 @@ public class Employee extends Account {
             System.out.println("2 : Kho - Storage            |");
             System.out.println("3 : Thong tin khach hang     |");
             System.out.println("4 : Tao don hang             |");
-            System.out.println("5 : Them nha cung cap        |");
             System.out.println("0 : Thoat                    |");
             System.out.println("+----------------------------+");
             System.out.print("Nhap lua chon : ");
@@ -103,9 +100,6 @@ public class Employee extends Account {
                     break;
                 case 4:
                     createOrder();
-                    break;
-                case 5:
-                    AddSupplier();
                     break;
                 case 0:
                     break;
