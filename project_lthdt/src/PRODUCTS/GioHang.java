@@ -6,6 +6,10 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 import MAIN.Kiemtra;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+
 public class GioHang {
     public ArrayList<SanPham> gioHang;
     private String maGH;
@@ -157,7 +161,6 @@ public class GioHang {
         }
         return false;
     }
-
     @Override
     public int hashCode() {
         final int prime = 31;
