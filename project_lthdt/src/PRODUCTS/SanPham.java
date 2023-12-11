@@ -3,6 +3,7 @@ package PRODUCTS;
 public abstract class SanPham {
     public String LSP, maSP, tenSP;
     public int donGia;
+    public int SoLuong;
 
     public SanPham() {
     }
@@ -12,6 +13,12 @@ public abstract class SanPham {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
+    }
+    public int getSoLuong(){
+        return this.SoLuong;
+    }
+    public void setSoLuong(int SoLuong){
+        this.SoLuong = SoLuong;
     }
 
     public SanPham(String maSP, String tenSP, int donGia) {
@@ -51,6 +58,7 @@ public abstract class SanPham {
     public void setDonGia(int donGia) {
         this.donGia = donGia;
     }
+    
 
     public abstract void nhap();
 
@@ -61,6 +69,6 @@ public abstract class SanPham {
 
     @Override
     public String toString() {
-        return this.LSP + ", " + this.maSP + ", " + this.tenSP + ", " + donGia;
+        return this.LSP + ", " + this.maSP + ", " + this.tenSP + ", " + donGia + "," + this.SoLuong;
     }
 }

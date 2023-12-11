@@ -52,6 +52,8 @@ public class GioHang {
             String maSP = sc.nextLine();
             for (SanPham sanPham : kho.khoHang) {
                 if (maSP.matches(sanPham.maSP)) {
+                    System.out.print("Nhap vao so luong san pham: ");
+                    sanPham.SoLuong = sc.nextInt();
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
                 }
@@ -64,7 +66,7 @@ public class GioHang {
         try {
             FileWriter writer = new FileWriter("danhsachspdadat.txt");
             for (SanPham sanPham : this.gioHang) {
-                String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia();
+                String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia()+ "    |   " +sanPham.getSoLuong();
                 writer.write(line + "\n");
             }
             writer.close();
@@ -76,7 +78,7 @@ public class GioHang {
 
     public void inTenSPvaDonGia() {
         for (SanPham sanPham : this.gioHang) {
-            System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia());
+            System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia()+ "    |   " +sanPham.getSoLuong());
         }
     }
 
@@ -104,7 +106,7 @@ public class GioHang {
     public int tinhTien() {
         int tong = 0;
         for (SanPham sanPham : gioHang) {
-            tong += sanPham.getDonGia();
+            tong += sanPham.getDonGia()*sanPham.getSoLuong();
         }
         return tong;
     }
@@ -131,6 +133,7 @@ public class GioHang {
             System.out.println("Gio hang dang trong!");
             return;
         }
+        System.out.println("LSP:        | maSP:        | tenSP:           | donGia:       | So Luong:   ");
 
         for (SanPham sanPham : this.gioHang) {
             sanPham.xuat();

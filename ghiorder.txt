@@ -1,4 +1,5 @@
 --------------------THONG TIN DON HANG------------------------
+<<<<<<< HEAD
 Ma don hang: MDH879
 Ma khach hang: CUS1111
 Ma nhan vien phu trach: EMP454
@@ -10,6 +11,18 @@ Supply    |   6000
 
 So luong san pham: 2
 Tong gia tri don hang: 10000.0
+=======
+Ma don hang: MDH686
+Ma khach hang: CUS0001
+Ma nhan vien phu trach: EMP001
+Ngay tao don hang: 11/12/2023   14:22:01
+Danh sach san pham: 
+
+Supply    |   6000    |   3
+
+So luong san pham: 1
+Tong gia tri don hang: 18000.0
+>>>>>>> 54a925cc1f494556b09a27ea1871303bebec76bb
 Xac nhan thanh toan: true
 Xac nhan don hang: true
 Trang thai don hang: Đã xác nhận

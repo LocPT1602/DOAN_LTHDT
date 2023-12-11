@@ -46,13 +46,15 @@ public class Paper extends SanPham {
         this.tenSP = sc.nextLine();
         System.out.print("Nhap vao gia cua san pham: ");
         this.donGia = Integer.parseInt(sc.nextLine());
+        System.out.print("Nhap vao so luong cua san pham: ");
+        this.SoLuong = Integer.parseInt(sc.nextLine());
     }
 
     @Override
     public void xuat() {
         System.out.println(
-                "LSP: " + this.LSP + " | maSP: " + this.maSP + " | tenSP: " + this.tenSP + " | donGia: " + this.donGia
-                        + "\n");
+                "     " + this.LSP + "          " + this.maSP + "           " + this.tenSP + "             " + this.donGia + "            " + this.SoLuong
+                        + " \n");
     }
 
 }
