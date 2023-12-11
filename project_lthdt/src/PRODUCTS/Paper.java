@@ -11,8 +11,8 @@ public class Paper extends SanPham {
         this.LSP = "Paper";
     }
 
-    public Paper(String maSP, String tenSP, int donGia) {
-        super(maSP, tenSP, donGia);
+    public Paper(String maSP, String tenSP, int donGia,int SoLuong) {
+        super(maSP, tenSP, donGia,SoLuong);
         this.LSP = "Paper";
     }
 
@@ -53,7 +53,7 @@ public class Paper extends SanPham {
     @Override
     public void xuat() {
         System.out.println(
-                "     " + this.LSP + "          " + this.maSP + "           " + this.tenSP + "             " + this.donGia + "            " + this.SoLuong
+                "     " + this.LSP + "           " + this.maSP + "           " + this.tenSP + "              " + this.donGia + "            " + this.SoLuong
                         + " \n");
     }
 

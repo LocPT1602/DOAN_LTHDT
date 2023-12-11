@@ -11,8 +11,8 @@ public class Pen extends SanPham {
         this.LSP = "Pen";
     }
 
-    public Pen(String maSP, String tenSP, int donGia) {
-        super(maSP, tenSP, donGia);
+    public Pen(String maSP, String tenSP, int donGia,int SoLuong) {
+        super(maSP, tenSP, donGia,SoLuong);
         this.LSP = "Pen";
     }
 
@@ -53,7 +53,7 @@ public class Pen extends SanPham {
     @Override
     public void xuat() {
         System.out.println(
-                "     " + this.LSP + "          " + this.maSP + "           " + this.tenSP + "             " + this.donGia + "            " + this.SoLuong
+                "     " + this.LSP + "             " + this.maSP + "           " + this.tenSP + "                 " + this.donGia + "            " + this.SoLuong
                         + " \n");
     }
 }

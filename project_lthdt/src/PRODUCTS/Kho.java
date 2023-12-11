@@ -188,13 +188,15 @@ public class Kho implements iReaderWriter {
                 String LSP = parts[0].trim();
                 String maSP = parts[1].trim();
                 String tenSP = parts[2].trim();
+                
                 int donGia = Integer.parseInt(parts[3].trim());
+                int Soluong = Integer.parseInt(parts[4].trim());
                 if (LSP.equals("Paper")) {
-                    this.khoHang.add(new Paper(maSP, tenSP, donGia));
+                    this.khoHang.add(new Paper(maSP, tenSP, donGia,Soluong));
                 } else if (LSP.equals("Pen")) {
-                    this.khoHang.add(new Pen(maSP, tenSP, donGia));
+                    this.khoHang.add(new Pen(maSP, tenSP, donGia,Soluong));
                 } else if (LSP.equals("Supply")) {
-                    this.khoHang.add(new Supply(maSP, tenSP, donGia));
+                    this.khoHang.add(new Supply(maSP, tenSP, donGia,Soluong));
                 }
             }
             br.close();

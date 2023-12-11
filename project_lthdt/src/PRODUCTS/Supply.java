@@ -12,8 +12,8 @@ public class Supply extends SanPham {
         this.LSP = "Supply";
     }
 
-    public Supply(String maSP, String tenSP, int donGia) {
-        super(maSP, tenSP, donGia);
+    public Supply(String maSP, String tenSP, int donGia,int SoLuong) {
+        super(maSP, tenSP, donGia,SoLuong);
         this.LSP = "Supply";
     }
 
