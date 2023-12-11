@@ -50,6 +50,13 @@ public class GioHang {
         while (true) {
             System.out.print("Nhap vao ma san pham: ");
             String maSP = sc.nextLine();
+            for(SanPham sanPham : gioHang){
+                if (maSP.matches(sanPham.maSP)) {
+                    System.out.print("Nhap vao so luong san pham: ");
+                    sanPham.SoLuong = sanPham.getSoLuong() + kt.KiemTraNhapSoTuNhien();
+                    return;
+                }
+            }
             for (SanPham sanPham : kho.khoHang) {
                 if (maSP.matches(sanPham.maSP)) {
                     System.out.print("Nhap vao so luong san pham: ");
@@ -57,6 +64,7 @@ public class GioHang {
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
                 }
+                
             }
             System.out.println("Nhap sai vui long nhap lai Ma SP!!");
         }
