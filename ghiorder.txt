@@ -1,4 +1,5 @@
 --------------------THONG TIN DON HANG------------------------
+<<<<<<< HEAD
 Ma don hang: MDH870
 Ma khach hang: CUS1220
 Ma nhan vien phu trach: EMP454
@@ -6,6 +7,15 @@ Ngay tao don hang: 11/12/2023   21:59:34
 Danh sach san pham: 
 
 Pen    |   4000    |   5
+=======
+Ma don hang: MDH479
+Ma khach hang: CUS0000
+Ma nhan vien phu trach: EMP000
+Ngay tao don hang: 11/12/2023   20:37:30
+Danh sach san pham: 
+
+Pen    |   4000    |   2
+>>>>>>> cd5f974e3116be2f4d1a0f333bfa34435c8d03a7
 
 So luong san pham: 1
 Tong gia tri don hang: 0.0
