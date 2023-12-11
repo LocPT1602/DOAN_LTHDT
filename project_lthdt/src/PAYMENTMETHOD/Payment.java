@@ -1,30 +1,38 @@
 package PAYMENTMETHOD;
-
+import ORDER.*;
 public class Payment {
-	private int sotien;
+	private double sotien;
+	protected double tongtien;
 	private String phuongthuc;
 	private String trangthai = "Pending";
-
+	Order o = new Order();
 	public Payment() {
 		this.sotien = 0;
 		this.phuongthuc = null;
 		this.trangthai = "Pending";
+		// this.o = null;
 	}
 
-	public Payment(int sotien, String phuongthuc, String trangthai) {
+	public Payment(int sotien, String phuongthuc, String trangthai, Order o) {
 		this.sotien = sotien;
 		this.phuongthuc = phuongthuc;
 		this.trangthai = trangthai;
+		this.o = o;
 	}
 
-	public int getSotien() {
+	public double getSotien() {
 		return sotien;
 	}
 
 	public void setSotien(int sotien) {
 		this.sotien = sotien;
 	}
-
+	public double getTongtien(){
+		return o.tinhTongSoTien();
+	}
+	public void setTongtien(double tongtien){
+		this.tongtien = tongtien;
+	}
 	public String getPhuongthuc() {
 		return phuongthuc;
 	}
@@ -51,4 +59,8 @@ public class Payment {
 		return"\nPhuong thuc: " + phuongthuc ;
 				
 	}
+
+    public void setTienthua(double tienthua) {
+
+    }
 }

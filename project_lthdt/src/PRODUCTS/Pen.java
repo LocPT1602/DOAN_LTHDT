@@ -11,8 +11,8 @@ public class Pen extends SanPham {
         this.LSP = "Pen";
     }
 
-    public Pen(String maSP, String tenSP, int donGia) {
-        super(maSP, tenSP, donGia);
+    public Pen(String maSP, String tenSP, int donGia,int SoLuong) {
+        super(maSP, tenSP, donGia,SoLuong);
         this.LSP = "Pen";
     }
 
@@ -36,6 +36,7 @@ public class Pen extends SanPham {
     public void nhap() {
         System.out.print("Nhap vao ma san pham: ");
         String maxp = kt.kiemtraMaSanpham();
+        if(ktmasp(maxp) != true)
         do {
             System.out.print("Ma san pham da bi trung !!");
             System.out.print("Nhap lai ma san pham: ");
@@ -53,7 +54,7 @@ public class Pen extends SanPham {
     @Override
     public void xuat() {
         System.out.println(
-                "     " + this.LSP + "          " + this.maSP + "           " + this.tenSP + "             " + this.donGia + "            " + this.SoLuong
+                "     " + this.LSP + "             " + this.maSP + "           " + this.tenSP + "                 " + this.donGia + "            " + this.SoLuong
                         + " \n");
     }
 }

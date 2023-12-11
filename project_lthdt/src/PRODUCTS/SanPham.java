@@ -8,11 +8,12 @@ public abstract class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String LSP, String maSP, String tenSP, int donGia) {
+    public SanPham(String LSP, String maSP, String tenSP, int donGia,int Soluong) {
         this.LSP = LSP;
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
+        this.SoLuong = Soluong;
     }
     public int getSoLuong(){
         return this.SoLuong;
@@ -21,10 +22,11 @@ public abstract class SanPham {
         this.SoLuong = SoLuong;
     }
 
-    public SanPham(String maSP, String tenSP, int donGia) {
+    public SanPham(String maSP, String tenSP, int donGia,int SoLuong) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
+        this.SoLuong= SoLuong;
     }
 
     public String getMaSP() {

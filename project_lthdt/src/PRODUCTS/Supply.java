@@ -12,8 +12,8 @@ public class Supply extends SanPham {
         this.LSP = "Supply";
     }
 
-    public Supply(String maSP, String tenSP, int donGia) {
-        super(maSP, tenSP, donGia);
+    public Supply(String maSP, String tenSP, int donGia,int SoLuong) {
+        super(maSP, tenSP, donGia,SoLuong);
         this.LSP = "Supply";
     }
 
@@ -37,6 +37,7 @@ public class Supply extends SanPham {
     public void nhap() {
         System.out.print("Nhap vao ma san pham: ");
         String maxp = kt.kiemtraMaSanpham();
+        if(ktmasp(maxp) != true)
         do {
             System.out.print("Ma san pham da bi trung !!");
             System.out.print("Nhap lai ma san pham: ");

@@ -188,13 +188,15 @@ public class Kho implements iReaderWriter {
                 String LSP = parts[0].trim();
                 String maSP = parts[1].trim();
                 String tenSP = parts[2].trim();
+                
                 int donGia = Integer.parseInt(parts[3].trim());
+                int Soluong = Integer.parseInt(parts[4].trim());
                 if (LSP.equals("Paper")) {
-                    this.khoHang.add(new Paper(maSP, tenSP, donGia));
+                    this.khoHang.add(new Paper(maSP, tenSP, donGia,Soluong));
                 } else if (LSP.equals("Pen")) {
-                    this.khoHang.add(new Pen(maSP, tenSP, donGia));
+                    this.khoHang.add(new Pen(maSP, tenSP, donGia,Soluong));
                 } else if (LSP.equals("Supply")) {
-                    this.khoHang.add(new Supply(maSP, tenSP, donGia));
+                    this.khoHang.add(new Supply(maSP, tenSP, donGia,Soluong));
                 }
             }
             br.close();
@@ -202,5 +204,34 @@ public class Kho implements iReaderWriter {
             // TODO: handle exception
             e.printStackTrace();
         }
+    }
+    public void CapNhatsl(){
+        int Soluong;
+        String tenSP;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("danhsachspdadat.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                
+               
+                String[] parts = line.split("\\|");
+                    tenSP = parts[1].trim();
+                    Soluong = Integer.parseInt(parts[2].trim()); 
+                
+                for(SanPham sp : khoHang){
+                    if(tenSP.equalsIgnoreCase(sp.getTenSP())){
+                        sp.SoLuong = sp.getSoLuong() - Soluong;
+                        return;
+
+                    }
+
+                }
+            }
+            br.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        this.ghiDataXuongFile();
     }
 }

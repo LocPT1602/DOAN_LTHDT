@@ -192,14 +192,13 @@ public class BillDetail {
 
             List<String> lines = Files.readAllLines(Path.of(sourceFilePath));
 
-            // Bỏ dòng "--------------------THONG TIN DON HANG------------------------"
             for (String line : lines) {
                 if (!line.contains("THONG TIN DON HANG")) {
                     sb.append(line).append("\n");
                 }
             }
 
-            FileWriter writer = new FileWriter(fileName);
+            FileWriter writer = new FileWriter(fileName, true);
             writer.write(sb.toString());
             writer.close();
             System.out.println("Hóa đơn đã được tạo và lưu vào tập tin Billdetail.txt");
@@ -208,9 +207,119 @@ public class BillDetail {
             e.printStackTrace();
         }
     }
-    // public void getinformation() {
+    
+    public void deleteBillDetail() {
+        String fileName = "project_lthdt/src/ORDER/Billdetail.txt";
+        boolean foundBillDetail = false;
 
-    // }
+    do {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Nhập mã chi tiết hóa đơn cần xoá (nhập 'x' để thoát): \n");
+            billDetailCode = scanner.nextLine();
+            if (billDetailCode.equalsIgnoreCase("x")) {
+                System.out.println("Thoát khỏi chương trình xoá chi tiết hóa đơn.");
+                return;
+            }
+
+            List<String> lines = Files.readAllLines(Path.of(fileName));
+            List<String> updatedLines = new ArrayList<>();
+
+            boolean isDeleting = false;
+            boolean foundStartLine = false;
+
+            for (String line : lines) {
+                if (line.contains("--------------------Chi tiết hóa đơn-----------------------")) {
+                    foundStartLine = true;
+                    updatedLines.add(line);
+                    continue;
+                }
+
+                if (foundStartLine) {
+                    if (!isDeleting && line.contains("Mã chi tiết hóa đơn: " + billDetailCode)) {
+                        isDeleting = true;
+                        foundBillDetail = true;
+                        continue;
+                    }
+
+                    if (isDeleting && line.contains("--------------------------------------------------------------")) {
+                        isDeleting = false;
+                        continue;
+                    }
+                }
+
+                updatedLines.add(line);
+            }
+            
+
+            if (foundBillDetail) {
+                Files.write(Path.of(fileName), updatedLines, StandardOpenOption.TRUNCATE_EXISTING);
+                System.out.println("Chi tiết hóa đơn đã được xoá thành công!\n");
+            } else {
+                System.out.println("Mã chi tiết hóa đơn không tồn tại! Vui lòng nhập lại!\n");
+                // billDetailCode = scanner.nextLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Đã xảy ra lỗi khi xoá chi tiết hóa đơn.\n");
+            e.printStackTrace();
+        }
+    } while (!foundBillDetail);
+}
+public void searchBillByBillDetailCode() {
+    String fileName = "project_lthdt/src/ORDER/Billdetail.txt";
+    boolean foundBill = false;
+
+    do {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Nhập mã chi tiết hóa đơn cần tìm kiếm (nhập 'x' để thoát): \n");
+            String billDetailCode = scanner.nextLine();
+
+            if (billDetailCode.equalsIgnoreCase("x")) {
+                System.out.println("Thoát khỏi chương trình tìm kiếm hóa đơn.\n");
+                return;
+            }
+
+            List<String> lines = Files.readAllLines(Path.of(fileName));
+
+            boolean isSearching = false;
+            StringBuilder billInfo = new StringBuilder();
+
+            for (String line : lines) {
+                if (line.contains("--------------------Chi tiết hóa đơn-----------------------")) {
+                    isSearching = true;
+                    billInfo = new StringBuilder();
+                    billInfo.append(line).append("\n");
+                    continue;
+                }
+
+                if (isSearching) {
+                    billInfo.append(line).append("\n");
+
+                    if (line.contains("Mã chi tiết hóa đơn: " + billDetailCode)) {
+                        foundBill = true;
+                    }
+
+                    if (line.contains("--------------------------------------------------------------")) {
+                        isSearching = false;
+                        if (foundBill) {
+                            System.out.println("Đây là chi tiết hóa đơn có mã " + billDetailCode+":");
+                            System.out.println(billInfo);
+                        }
+                    }
+                }
+            }
+
+            if (!foundBill) {
+                System.out.println("Mã chi tiết hóa đơn không tồn tại! Vui lòng nhập lại!\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Đã xảy ra lỗi khi tìm kiếm hóa đơn!\n");
+            e.printStackTrace();
+        }
+    } while (!foundBill);
+}
+
     public void readProductData() {
         String fileName = "datasanpham.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -237,10 +346,12 @@ public class BillDetail {
     public static void main(String[] args) {
         Order order = new Order();
         BillDetail billDetail = new BillDetail(order);
-        order.inputOrderInfo();
+        // order.inputOrderInfo();
         // order.displayOrderInfo();
-        billDetail.getBillDetail();
-        billDetail.writeToFile();
+        // billDetail.getBillDetail();
+        // billDetail.writeToFile();
+        // billDetail.searchBillByBillDetailCode();
+        billDetail.deleteBillDetail();
         // billDetail.readProductData();
     }
 }
