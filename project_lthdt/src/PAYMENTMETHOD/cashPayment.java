@@ -3,21 +3,24 @@ package PAYMENTMETHOD;
 import java.util.Scanner;
 
 public class cashPayment extends Payment {
-	private String tenthungan;
 	private int sotien;
-	private int tienthua;
+	private double tienthua;
+
 
 	Scanner sc = new Scanner(System.in);
+	public cashPayment(){
+		this.sotien = 0;
+		this.tienthua = 0;
+	
+	}
+	public cashPayment(int sotien, double tienthua){
+		this.sotien = sotien;
+		this.tienthua = tienthua;
 
-	public String getTenthungan() {
-		return tenthungan;
 	}
 
-	public void setTenthungan(String tenthungan) {
-		this.tenthungan = tenthungan;
-	}
 
-	public int getSotien() {
+	public double getSotien() {
 		return sotien;
 	}
 
@@ -25,30 +28,27 @@ public class cashPayment extends Payment {
 		this.sotien = sotien;
 	}
 
-	public int getTienthua() {
+	public double getTienthua() {
 		return tienthua;
 	}
 
-	public void setTienthua(int tienthua) {
-		this.tienthua = tienthua;
+	public void setTienthua(double sotien) {
+		this.tienthua = sotien - getTongtien() ;
 	}
 
 	@Override
 	public void Nhap() {
 		super.Nhap();
-		System.out.println("Nhap ten thu ngan: ");
-		this.tenthungan = sc.nextLine();
 		System.out.println("Nhap so tien thanh toan bang tien mat: ");
 		this.sotien = sc.nextInt();
-		System.out.println("Nhap so tien thua: ");
-		this.tienthua = sc.nextInt();
+		setTienthua(sotien);
 	}
 
 	@Override
 	public String toString() {
 		setTrangthai("Completed");
-		return "Ten thu ngan: " + getTenthungan() + 
-				"\nSo tien: " + getSotien() + 
+		return 
+				"\nDa nhan: " + getSotien() + 
 				"\nTien thua: " + getTienthua() +
 				"\nTrang thai: " + getTrangthai();
 	}
