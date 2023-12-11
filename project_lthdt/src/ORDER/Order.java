@@ -289,9 +289,13 @@ public class Order {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 2) {
+                if (parts.length == 3) {
                     double donGia = Double.parseDouble(parts[1].trim());
-                    totalValue += donGia;
+                    
+                    double Soluong = Double.parseDouble(parts[2].trim());
+
+                    totalValue += donGia*Soluong;
+                    
                 }
             }
 
