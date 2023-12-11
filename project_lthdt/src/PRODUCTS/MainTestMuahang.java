@@ -212,10 +212,11 @@ public class MainTestMuahang {
                     "1. Xoa san pham trong gio theo maSP.\n"
                             + "2. Xoa san pham trong gio theo vi tri trong gio.\n"
                             + "3. Xoa toan bo gio hang.\n"
-                            + "0. Quay lai Menu.\n");
+                            + "0. Quay lai Menu.");
+
             System.out.println("-----------------------------------------------------");
+            System.out.print("Nhap lua chon: ");
             checkLC();
-            sc.nextLine();
             switch (lc) {
                 case 1:
                     System.out.print("Nhap vao maSP: ");

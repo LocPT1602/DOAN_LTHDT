@@ -33,12 +33,14 @@ public class Admin extends Account {
     public void AddEmplAccount() {
         System.out.print("Nhap ten tai khoan: ");
         username = kt.kiemtraTenTK();
-        do {
-            System.out.println("Ten tai khoan da ton tai !");
-            System.out.print("Nhap lai ten dang nhap: ");
-            username = kt.kiemtraTenTK();
-        } while (list.containsAccount(username) == true);
 
+        if (list.containsAccount(username) == true) {
+            do {
+                System.out.println("Ten tai khoan da ton tai !");
+                System.out.print("Nhap lai ten dang nhap: ");
+                username = kt.kiemtraTenTK();
+            } while (list.containsAccount(username) == true);
+        }
         System.out.print("Nhap mat khau: ");
         setPassword();
         while (kt.ktraSpace(password)) {
