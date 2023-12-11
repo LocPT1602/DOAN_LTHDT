@@ -229,11 +229,11 @@ public class Kiemtra {
         while (true) {
             dauvao = input.nextLine();
             dauvao = dauvao.toUpperCase();
-            if (dauvao.matches("^ACCEMP[0-9]{3}$")) {
+            if (dauvao.matches("^EMP[0-9]{3}$")) {
                 return dauvao;
 
             } else {
-                System.out.println("Nhap khong chinh xac. Vi du: ACCEMPxxx");
+                System.out.println("Nhap khong chinh xac. Vi du: EMPxxx");
             }
             System.out.print("Nhap lai: ");
         }
