@@ -35,14 +35,10 @@ public class MainTestMuahang {
                 int sl;
                 do {
                     gioHang.themVaoGion();
-                    System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc: ");
+                    System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc/Chon phim khac bat ki de ngung: ");
                     sl = 0; // initialize to a default value
-                    try {
-                        sl = Integer.parseInt(sc.nextLine());
-                    } catch (NumberFormatException e) {
-                        System.out.println("Nhap khong hop le. Vui long nhap so.");
-                        // Handle the exception or take appropriate action
-                    }
+                    sl = Integer.parseInt(sc.nextLine());
+                    
                 } while (sl == 1);
 
             } else if (choice == 4) {
@@ -216,11 +212,7 @@ public class MainTestMuahang {
                             + "0. Quay lai Menu.");
 
             System.out.println("-----------------------------------------------------");
-<<<<<<< HEAD
             System.out.print("Nhap lua chon: ");
-=======
-            System.out.println("Moi ban nhap lua chon: ");
->>>>>>> 6e2692fb43d18c9a76756e363fbd33437dbe51cf
             checkLC();
             switch (lc) {
                 case 1:
