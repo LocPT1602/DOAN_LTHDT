@@ -2,51 +2,62 @@ package PERSON;
 
 // import java.util.Scanner;
 
+import java.util.Scanner;
 import MAIN.Kiemtra;
 public class Address {
     private String so;
     private String duong;
     private String quan;
     private String thanhpho;
+    Scanner input =new Scanner(System.in);
     Kiemtra kt =new Kiemtra();
-    
-public Address(String so, String duong, String quan, String thanhpho) {
+ public Address(String so, String duong, String quan, String thanhpho) {
         this.so = so;
         this.duong = duong;
         this.quan = quan;
         this.thanhpho = thanhpho;
+        
     }
-public Address(){
-    this.so="";
-    this.duong="";
-    this.quan="";
-    this.thanhpho="";
-}
-public String getSo() {
-    return so;
-}
-public void setSo(String so) {
-    this.so = so;
-}
-public String getDuong() {
-    return duong;
-}
-public void setDuong(String duong) {
-    this.duong = duong;
-}
-public String getQuan() {
-    return quan;
-}
-public void setQuan(String quan) {
-    this.quan = quan;
-}
-public String getThanhpho() {
-    return thanhpho;
-}
-public void setThanhpho(String thanhpho) {
-    this.thanhpho = thanhpho;
-}
-public void Nhap()
+ public Address()
+ {
+     so=null;
+     duong= null;
+     quan=null;
+     thanhpho=null;
+ }
+    public String getSo() {
+        return so;
+    }
+
+    public void setSo(String so) {
+        this.so = so;
+    }
+
+    public String getDuong() {
+        return duong;
+    }
+
+    public void setDuong(String duong) {
+        this.duong = duong;
+    }
+
+    public String getQuan() {
+        return quan;
+    }
+
+    public void setQuan(String quan) {
+        this.quan = quan;
+    }
+
+    public String getThanhpho() {
+        return thanhpho;
+    }
+
+    public void setThanhpho(String thanhpho) {
+        this.thanhpho = thanhpho;
+    }
+
+    public void Nhap()
     {
         System.out.println("Nhap so nha");
         this.so=kt.nhapChuoi();
@@ -56,10 +67,14 @@ public void Nhap()
         this.quan=kt.nhapChuoi();
         System.out.println("Nhap thanh pho");
         this.thanhpho=kt.nhapChuoi();
-        
     }
-    public static void main(String[] args) {
-        Address ad =new Address();
-        ad.Nhap();
+    
+    
+    @Override
+    public String toString() {
+        return "Address{" + "so=" + so + ", duong=" + duong + ", quan=" + quan + ", thanhpho=" + thanhpho + '}';
     }
+
+   
+    
 }

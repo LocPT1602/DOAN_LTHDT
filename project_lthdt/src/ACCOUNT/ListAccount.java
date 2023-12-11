@@ -1,12 +1,14 @@
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
+import MAIN.Kiemtra;
 
 class ListAccount implements Iterable<Account> {
     private ArrayList<Account> accounts;
     private int n;
+    Scanner sc = new Scanner(System.in);
 
     public ListAccount() {
         accounts = new ArrayList<>();
@@ -18,41 +20,66 @@ class ListAccount implements Iterable<Account> {
         n++;
     }
 
-    public void readAccount(String filePath) throws IOException {
+    // Thêm phương thức kiểm tra xem một tài khoản có tồn tại trong danh sách không
+    public boolean containsAccount(String username) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void readAccount() throws IOException {
+
+        String filePath = "project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Xử lý dòng đọc từ file và tạo đối tượng Account
-                // Thêm tài khoản vào danh sách
-                // ...
+                String[] parts = line.split(" ");
+                if (parts.length >= 2) {
+                    String username = parts[1];
+                    String password = parts[0];
+                    Account account = new Account(username, password, "");
+                    addAccount(account);
+                } else {
+                    // Xử lý trường hợp dòng không hợp lệ, nếu cần thiết
+                }
             }
         }
     }
 
     public void printAcc() {
+        System.out.println("==============DANH SACH TAI KHOAN=============");
         for (Account account : accounts) {
-            // In thông tin tài khoản ra màn hình
-            // ...
+            System.out.print("Tai khoan la : " + account.username);
+            System.out.print(" -- Mau khau la : " + account.password + "\n");
         }
     }
 
-    public void deleteAccount(String username) {
+    public void deleteAccount(String username) throws IOException {
         Iterator<Account> iterator = accounts.iterator();
+
         while (iterator.hasNext()) {
             Account account = iterator.next();
             if (account.getUsername().equals(username)) {
                 iterator.remove();
-                n--;
-                break;
+                break; // Break once the account is found and removed
             }
         }
+
+        writeAccount();
+        System.out.println("Đã xóa tài khoản thành công.");
     }
 
-    public void writeAccount(String filePath) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+    public void writeAccount() throws IOException {
+        String filePath = "project_lthdt\\src\\ACCOUNT\\ListAccount.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
             for (Account account : accounts) {
-                // Ghi thông tin tài khoản vào file
-                // ...
+                writer.write(account.getUsername() + " " + account.getPassword());
+                writer.newLine();
             }
         }
     }
@@ -62,22 +89,19 @@ class ListAccount implements Iterable<Account> {
         return accounts.iterator();
     }
 
-    // Đoạn mã kiểm thử trong hàm main
     public static void main(String[] args) {
         ListAccount listAccount = new ListAccount();
 
         try {
-            // Đọc danh sách tài khoản từ file
-            listAccount.readAccount("path/to/accounts.txt");
 
-            // In danh sách tài khoản ra màn hình
+            // listAccount.readAccount();
             listAccount.printAcc();
 
-            // Xóa một tài khoản
-            listAccount.deleteAccount("usernameToDelete");
+            // listAccount.printAcc();
 
-            // Ghi danh sách tài khoản vào file
-            listAccount.writeAccount("path/to/accounts_updated.txt");
+            // listAccount.deleteAccount("usernameToDelete");
+
+            listAccount.writeAccount();
         } catch (IOException e) {
             e.printStackTrace();
         }

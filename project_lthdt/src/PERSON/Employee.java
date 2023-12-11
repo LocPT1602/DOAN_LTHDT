@@ -1,12 +1,13 @@
 package PERSON;
 import MAIN.Kiemtra;
 public class Employee extends person {
+    public static int employeeIDcount = 1;
     public String employeeid;
     public String position;
     public double salary;
     public String date;
     public Employee(String fullname, String birthday, String phonenumber, String email, String gender, Address address,
-            String employeeid, String position, int salary, String date) {
+            String employeeid, String position, double salary, String date) {
         super(fullname, birthday, phonenumber, email, gender, address);
         this.employeeid = employeeid;
         this.position = position;
@@ -20,12 +21,14 @@ public class Employee extends person {
         this.date = date;
     }
     public Employee(){
+        super();
         this.employeeid=null;
         this.position=null;
         this.salary=0;
         this.date=null;
 
     }
+   
     public String getEmployeeid() {
         return employeeid;
     }
@@ -53,13 +56,14 @@ public class Employee extends person {
     @Override
     public void Nhap() {
         super.Nhap();
-        System.out.println("Nhap vao employeeid:");
-        this.employeeid=kt.kiemtraManhanvien();
-        System.out.println("Nhap vao  chuc vu :");
+        String addemid = String.format("%03d", (employeeIDcount));
+        this.setEmployeeid("EMP"+ addemid);
+        employeeIDcount++;
+        System.out.print("Nhap chuc vu: ");
         this.position=kt.nhapChuoi();
-        System.out.println("Nhap vao luong");
+        System.out.print("Nhap luong: ");
         this.salary=kt.nhapDoubleDuong();
-        System.out.println("Nhap vao ngay vao lam (d/m/y): ");
+        System.out.print("Nhap ngay vao lam (dd/mm/yyyy): ");
         this.date=kt.nhapNgay();
     }
     public String getInfor()
@@ -79,5 +83,13 @@ public class Employee extends person {
         int namvao=Integer.parseInt(date.substring(0,4));
         int namhientai=java.time.Year.now().getValue();
         return namhientai-namvao;
+    }
+    public static void main(String[] args) {
+        Employeelist empl =new Employeelist();
+        Employee emp= new Employee();
+        emp.Nhap();
+        empl.add(emp);
+        empl.readEmployeeFile();
+        empl.writeEmployeeFile();
     }
 }

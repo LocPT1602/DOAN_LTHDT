@@ -2,37 +2,60 @@ package PRODUCTS;
 
 import java.util.Scanner;
 
-public class Supply extends SanPham{
+import MAIN.Kiemtra;
+
+public class Supply extends SanPham {
+    Kiemtra kt = new Kiemtra();
+    Kho kho = new Kho();
 
     public Supply() {
         this.LSP = "Supply";
-    }  
-    
+    }
 
-    public Supply(String maSP, String tenSP, int donGia) {
-        super(maSP, tenSP,donGia);
+    public Supply(String maSP, String tenSP, int donGia,int SoLuong) {
+        super(maSP, tenSP, donGia,SoLuong);
         this.LSP = "Supply";
     }
 
     Scanner sc = new Scanner(System.in);
 
     @Override
-    public void tinhNang(){
+    public void tinhNang() {
     }
+
+    public boolean ktmasp(String maxp) {
+        kho.docDataTuFile();
+        for (SanPham sp : kho.khoHang) {
+            if (sp.getMaSP().equals(maxp)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public void nhap() {
-        System.out.print("\nNhap vao ma san pham: ");
-        this.maSP = sc.nextLine();
-        System.out.print("\nNhap vao ten san pham: ");
+        System.out.print("Nhap vao ma san pham: ");
+        String maxp = kt.kiemtraMaSanpham();
+        if(ktmasp(maxp) != true)
+        do {
+            System.out.print("Ma san pham da bi trung !!");
+            System.out.print("Nhap lai ma san pham: ");
+            maxp = kt.kiemtraMaSanpham();
+        } while (ktmasp(maxp) != true);
+        this.maSP = maxp;
+        System.out.print("Nhap vao ten san pham: ");
         this.tenSP = sc.nextLine();
-        System.out.print("\nNhap vao gia cua san pham: ");
+        System.out.print("Nhap vao gia cua san pham: ");
         this.donGia = Integer.parseInt(sc.nextLine());
+        System.out.print("Nhap vao so luong cua san pham: ");
+        this.SoLuong = Integer.parseInt(sc.nextLine());
     }
+
     @Override
     public void xuat() {
         System.out.println(
-            "LSP: "+ this.LSP+ " | maSP: "+ this.maSP+ " | tenSP: "+ this.tenSP+ " | donGia: "+ this.donGia+ "\n"
-
-        );
+                "     " + this.LSP + "          " + this.maSP + "           " + this.tenSP + "             " + this.donGia + "            " + this.SoLuong
+                        + " \n");
     }
 }

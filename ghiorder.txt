@@ -1,0 +1,15 @@
+--------------------THONG TIN DON HANG------------------------
+Ma don hang: MDH225
+Ma khach hang: CUS0003
+Ma nhan vien phu trach: EMP001
+Ngay tao don hang: 11/12/2023   15:21:47
+Danh sach san pham: 
+
+Supply    |   6000    |   3
+
+So luong san pham: 1
+Tong gia tri don hang: 18000.0
+Xac nhan thanh toan: true
+Xac nhan don hang: true
+Trang thai don hang: Đã xác nhận
+--------------------------------------------------------------
