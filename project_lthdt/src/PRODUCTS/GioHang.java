@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
+import MAIN.Kiemtra;
 public class GioHang {
     public ArrayList<SanPham> gioHang;
     private String maGH;
     private Kho kho = new Kho();
-
+    private Kiemtra kt = new Kiemtra();
     Scanner sc = new Scanner(System.in);
 
     public GioHang() {
@@ -53,7 +53,7 @@ public class GioHang {
             for (SanPham sanPham : kho.khoHang) {
                 if (maSP.matches(sanPham.maSP)) {
                     System.out.print("Nhap vao so luong san pham: ");
-                    sanPham.SoLuong = sc.nextInt();
+                    sanPham.SoLuong = kt.KiemTraNhapSoTuNhien();;
                     this.gioHang.add(kho.laySPtheoMa(maSP));
                     return;
                 }

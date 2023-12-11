@@ -216,11 +216,7 @@ public class MainTestMuahang {
                             + "0. Quay lai Menu.");
 
             System.out.println("-----------------------------------------------------");
-<<<<<<< HEAD
             System.out.print("Nhap lua chon: ");
-=======
-            System.out.println("Moi ban nhap lua chon: ");
->>>>>>> 6e2692fb43d18c9a76756e363fbd33437dbe51cf
             checkLC();
             switch (lc) {
                 case 1:
