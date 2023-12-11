@@ -96,7 +96,7 @@ public class Admin extends Account {
     }
 
     public void InforEmployee() {
-        int exit;
+        int chon;
         do {
             System.out.println("-----------InforEmp----------+");
             System.out.println("1 : Xem thong tin Employee   |");
@@ -104,8 +104,8 @@ public class Admin extends Account {
             System.out.println("3 : Them thong tin Employe   |");
             System.out.println("0 : Thoat                    |");
             System.out.println("-----------------------------+");
-            int chon = sc.nextInt();
-            System.out.println();
+            System.out.print("Nhap lua chon: ");
+            chon = sc.nextInt();
             switch (chon) {
                 case 1:
                     empList.displayInfo();
@@ -117,19 +117,19 @@ public class Admin extends Account {
                     empList.Nhap();
                     break;
                 case 0:
-
+                    chon = 0;
                     break;
 
                 default:
                     break;
             }
-            System.out.println("Press : 0 to exit || 1 to continue (empl_Infor) ");
-            exit = sc.nextInt();
-        } while (exit != 0 || exit == 1);
+
+        } while (chon != 0);
     }
 
     public void InforCustomers() {
-        int exit;
+        // int exit;
+        int chon;
         do {
             System.out.println("-----------InforCus----------+");
             System.out.println("1 : Xem thong tin Customers  |");
@@ -137,8 +137,8 @@ public class Admin extends Account {
             System.out.println("3 : Them thong tin Customers |");
             System.out.println("0 : Thoat                    |");
             System.out.println("-----------------------------+");
-            int chon = sc.nextInt();
-            System.out.println();
+            System.out.print("Nhap lua chon: ");
+            chon = sc.nextInt();
             switch (chon) {
                 case 1:
                     cusList.readFile();
@@ -153,15 +153,13 @@ public class Admin extends Account {
                 // cusList.Nhap();
                 // break;
                 case 0:
-
+                    chon = 0;
                     break;
 
                 default:
                     break;
             }
-            System.out.println("Press : 0 to exit || 1 to continue  (cus_Infor) ");
-            exit = sc.nextInt();
-        } while (exit == 1);
+        } while (chon != 0);
     }
 
     public void menuStorage() {

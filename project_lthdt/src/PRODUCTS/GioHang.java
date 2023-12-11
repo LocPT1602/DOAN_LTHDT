@@ -58,7 +58,7 @@ public class GioHang {
                     return;
                 }
             }
-            System.out.println("Nhap sai vui long nhap lai Ma SP!!");
+            System.out.println("Ma san pham khong ton tai");
         }
     }
 
@@ -66,7 +66,7 @@ public class GioHang {
         try {
             FileWriter writer = new FileWriter("danhsachspdadat.txt");
             for (SanPham sanPham : this.gioHang) {
-                String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia()+ "    |   " +sanPham.getSoLuong();
+                String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia() + "    |   " + sanPham.getSoLuong();
                 writer.write(line + "\n");
             }
             writer.close();
@@ -78,7 +78,7 @@ public class GioHang {
 
     public void inTenSPvaDonGia() {
         for (SanPham sanPham : this.gioHang) {
-            System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia()+ "    |   " +sanPham.getSoLuong());
+            System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia() + "    |   " + sanPham.getSoLuong());
         }
     }
 
@@ -107,7 +107,7 @@ public class GioHang {
     public int tinhTien() {
         int tong = 0;
         for (SanPham sanPham : gioHang) {
-            tong += sanPham.getDonGia()*sanPham.getSoLuong();
+            tong += sanPham.getDonGia() * sanPham.getSoLuong();
         }
         return tong;
     }

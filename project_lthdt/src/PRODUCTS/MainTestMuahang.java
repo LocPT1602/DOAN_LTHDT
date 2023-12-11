@@ -2,9 +2,12 @@ package PRODUCTS;
 
 import ORDER.Order;
 import java.util.Scanner;
+import PAYMENTMETHOD.PaymentMenu;
 
 public class MainTestMuahang {
     Order order = new Order();
+    PaymentMenu paymenu = new PaymentMenu(2);
+
     static int choice, lc;
     static Kho khoHang = new Kho();
 
@@ -57,6 +60,7 @@ public class MainTestMuahang {
                     order.inputOrderInfo();
                     order.ghiFileOrder();
                     order.displayOrderInfo();
+                    paymenu.selectPaymentmethod();
                     gioHang.xoaTatCa();
                     khoHang.CapNhatsl();
                 }
@@ -216,11 +220,7 @@ public class MainTestMuahang {
                             + "0. Quay lai Menu.");
 
             System.out.println("-----------------------------------------------------");
-<<<<<<< HEAD
-            System.out.print("Nhap lua chon: ");
-=======
             System.out.println("Moi ban nhap lua chon: ");
->>>>>>> 6e2692fb43d18c9a76756e363fbd33437dbe51cf
             checkLC();
             switch (lc) {
                 case 1:
