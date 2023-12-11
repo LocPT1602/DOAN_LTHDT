@@ -52,9 +52,11 @@ public class Employeelist implements Iterable<Employee> {
             String line;
             boolean fileIsEmpty = true;
             while ((line = reader.readLine()) != null) {
+                Employee.employeeIDcount++;
                 fileIsEmpty = false;
                 String[] employeeData = line.split(",");
                 if (employeeData.length >= 13) {
+                    
                     String fullname = employeeData[0];
                     String birthday = employeeData[1];
                     String phone = employeeData[2];
@@ -189,21 +191,23 @@ public class Employeelist implements Iterable<Employee> {
 
     public void displayInfo() {
         for (Employee employee : employees) {
-            System.out.print("Employee ID: " + employee.getEmployeeid());
-            System.out.print("Name: " + employee.getFullname());
-            System.out.print("Birthdate: " + employee.getBirthday());
-            System.out.print("Phone number: " + employee.getPhonenumber());
-            System.out.print("Email: " + employee.getEmail());
-            System.out.print("Gender: " + employee.getGender());
-            System.out.print("Address: " + employee.getAddress().toString());
-            System.out.print("Position: " + employee.getPosition());
-            System.out.print("Salary: " + employee.getSalary());
-            System.out.print("---------------------------------");
+            System.out.println("Employee ID: " + employee.getEmployeeid());
+            System.out.println("Name: " + employee.getFullname());
+            System.out.println("Birthdate: " + employee.getBirthday());
+            System.out.println("Phone number: " + employee.getPhonenumber());
+            System.out.println("Email: " + employee.getEmail());
+            System.out.println("Gender: " + employee.getGender());
+            System.out.println("Address: " + employee.getAddress().toString());
+            System.out.println("Position: " + employee.getPosition());
+            System.out.println("Salary: " + employee.getSalary());
+            System.out.println(employee.employeeIDcount);
+            System.out.println("---------------------------------");
         }
     }
     public static void main(String[] args) {
         Employeelist le=new Employeelist();
-        le.readEmployeeFile();
-        le.writeEmployeeFile();
+       
+        
+        le.displayInfo();
     }
 }
