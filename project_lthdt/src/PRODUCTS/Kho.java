@@ -205,4 +205,33 @@ public class Kho implements iReaderWriter {
             e.printStackTrace();
         }
     }
+    public void CapNhatsl(){
+        int Soluong;
+        String tenSP;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("danhsachspdadat.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                
+               
+                String[] parts = line.split("\\|");
+                    tenSP = parts[1].trim();
+                    Soluong = Integer.parseInt(parts[2].trim()); 
+                
+                for(SanPham sp : khoHang){
+                    if(tenSP.equalsIgnoreCase(sp.getTenSP())){
+                        sp.SoLuong = sp.getSoLuong() - Soluong;
+                        return;
+
+                    }
+
+                }
+            }
+            br.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        this.ghiDataXuongFile();
+    }
 }

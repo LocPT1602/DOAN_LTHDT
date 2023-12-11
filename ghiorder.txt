@@ -1,8 +1,8 @@
 --------------------THONG TIN DON HANG------------------------
-Ma don hang: MDH686
-Ma khach hang: CUS0001
+Ma don hang: MDH225
+Ma khach hang: CUS0003
 Ma nhan vien phu trach: EMP001
-Ngay tao don hang: 11/12/2023   14:22:01
+Ngay tao don hang: 11/12/2023   15:21:47
 Danh sach san pham: 
 
 Supply    |   6000    |   3
