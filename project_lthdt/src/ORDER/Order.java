@@ -351,13 +351,6 @@ public class Order {
         System.out.print("Nhap ma nhan vien phu trach: ");
         this.employee = kt.kiemtraManhanvien();
 
-        // System.out.println("Danh sach san pham: ");
-        // gh.inTenSPvaDonGia();
-        // System.out.println("Nhập số lượng sản phẩm: ");
-        // this.quantity = kt.KiemTraNhapSoTuNhien();
-
-        // System.out.println("Nhập tổng giá trị đơn hàng: ");
-        // this.totalValue = kt.KiemTraNhapSoNguyen();
         checkStatus();
     }
 
@@ -380,7 +373,6 @@ public class Order {
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
         System.out.println("Trang thai don hang: " + status);
-        docFileInBill();
         System.out.println("--------------------------------------------------------------");
     }
 

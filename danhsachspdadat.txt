@@ -1,5 +1,2 @@
-<<<<<<< HEAD
 Ten SP                  Don gia                 So Luong                
-Pen|                    4000|                   4                       
-=======
->>>>>>> 923765043557089f0f3edaa12589ca2c38bcdc37
+kim|                    4455|                   5                       
