@@ -1,22 +1,15 @@
 --------------------THONG TIN DON HANG------------------------
-<<<<<<< HEAD
-Ma don hang: MDH453
+Ma don hang: MDH177
 Ma khach hang: CUS4545
 Ma nhan vien phu trach: EMP000
-Ngay tao don hang: 12/12/2023   15:38:12
-=======
-Ma don hang: MDH535
-Ma khach hang: CUS0001
-Ma nhan vien phu trach: EMP001
-Ngay tao don hang: 12/12/2023   14:03:49
->>>>>>> c2b8e40c9d092d22ef8f221d3cf1841f990f192d
+Ngay tao don hang: 12/12/2023   18:13:25
 Danh sach san pham: 
 
 Ten SP                  Don gia                 So Luong                
-A4 khong tham nuoc|     5000|                   3                       
+Pen|                    4000|                   1                       
 
-So luong san pham: 3
-Tong gia tri don hang: 15000.0
+So luong san pham: 1
+Tong gia tri don hang: 4000.0
 Xac nhan thanh toan: true
 Xac nhan don hang: true
 Trang thai don hang: Đã xác nhận

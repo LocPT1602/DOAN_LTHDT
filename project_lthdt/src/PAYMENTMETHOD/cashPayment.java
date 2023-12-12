@@ -36,13 +36,24 @@ public class cashPayment extends Payment {
 	public void setTienthua(double sotien) {
 		this.tienthua = sotien - getTongtien() ;
 	}
-
+	public boolean checkSotien(){
+		if(this.sotien > getTongtien()){
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void Nhap() {
 		super.Nhap();
 		System.out.println("Nhap so tien thanh toan bang tien mat: ");
 		this.sotien = sc.nextInt();
-		setTienthua(sotien);
+		if(checkSotien()){
+			setTienthua(sotien);
+		} else {
+			System.out.println("So tien khong du. Vui long nhap lai.");
+			Nhap();
+		}
+		
 	}
 
 	@Override
