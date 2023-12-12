@@ -1,16 +1,20 @@
 --------------------THONG TIN DON HANG------------------------
-Ma don hang: MDH887
-Ma khach hang: CUS2222
-Ma nhan vien phu trach: EMP222
-Ngay tao don hang: 12/12/2023   07:26:49
+Ma don hang: MDH553
+Ma khach hang: CUS0000
+Ma nhan vien phu trach: EMP000
+Ngay tao don hang: 12/12/2023   16:20:42
 Danh sach san pham: 
 
-Pen    |   4000    |   5
-kim    |   4455    |   1
+Ten SP                  Don gia                 So Luong                
+A4 khong tham nuoc|     5000|                   3                       
 
-So luong san pham: 6
-Tong gia tri don hang: 24455.0
+So luong san pham: 3
+Tong gia tri don hang: 15000.0
 Xac nhan thanh toan: true
 Xac nhan don hang: true
 Trang thai don hang: Đã xác nhận
+Phuong thuc thanh toan: Tien mat
+Da nhan: 115000.0
+Tien thua: 100000.0
+
 --------------------------------------------------------------

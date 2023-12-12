@@ -77,9 +77,12 @@ public class GioHang {
     public void ghiTenSPvaDonGiaVaoFile() {
         try {
             FileWriter writer = new FileWriter("danhsachspdadat.txt");
+            String line1 =(String.format("%-24s%-24s%-24s\n","Ten SP","Don gia","So Luong"));
+            writer.write(line1);
             for (SanPham sanPham : this.gioHang) {
-                String line = sanPham.getTenSP() + "    |   " + sanPham.getDonGia() + "    |   " + sanPham.getSoLuong();
-                writer.write(line + "\n");
+                String line = (String.format("%-24s%-24s%-24d\n",sanPham.getTenSP()+"|",sanPham.getDonGia()+"|",sanPham.getSoLuong()));
+                writer.write(line);
+
             }
             writer.close();
         } catch (IOException e) {
@@ -89,8 +92,9 @@ public class GioHang {
     }
 
     public void inTenSPvaDonGia() {
+
         for (SanPham sanPham : this.gioHang) {
-            System.out.println(sanPham.getTenSP() + " | " + sanPham.getDonGia() + "    |   " + sanPham.getSoLuong());
+            sanPham.xuat();
         }
     }
 
@@ -146,7 +150,7 @@ public class GioHang {
             System.out.println("Gio hang dang trong!");
             return;
         }
-        System.out.println("LSP:        | maSP:        | tenSP:           | donGia:       | So Luong:   ");
+        System.out.printf("%-12s%-20s%-12s%-25s%-12s\n","|LSP|","|maSP|","|tenSP|","|donGia|","|So Luong|");
 
         for (SanPham sanPham : this.gioHang) {
             sanPham.xuat();

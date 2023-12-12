@@ -2,15 +2,13 @@
 package PAYMENTMETHOD;
 
 import java.util.Scanner;
-
+import MAIN.Kiemtra;
 public class PaymentMenu {
 	private Payment[] mangtt;
 	
 	Scanner sc = new Scanner(System.in);
-
-	// public PaymentMenu() {
-	// 	this.mangtt = null;
-	// }
+	Kiemtra kt = new Kiemtra();
+	
 
 	public PaymentMenu(int size) {
 		this.mangtt = new Payment[size];
@@ -25,6 +23,7 @@ public class PaymentMenu {
 				mangtt[0] = new cashPayment();
 				mangtt[0].Nhap();
 				System.out.println(mangtt[0].toString());
+				mangtt[0].ghiXuongFile();
 				break;
 			case 2:
 				mangtt[1] = new Payment();
@@ -33,6 +32,7 @@ public class PaymentMenu {
 				mangtt[1] = new creditcardPayment();
 				mangtt[1].Nhap();
 				System.out.println(mangtt[1].toString());
+				mangtt[1].ghiXuongFile();
 				break;
 			default:
 				System.out.println("Yeu cau khong hop le. Vui long nhap lai");
@@ -40,20 +40,16 @@ public class PaymentMenu {
 	}
 
 	public void selectPaymentmethod() {
-		int cnt;
-		do {
 			System.out.println("Chon phuong thuc thanh toan: ");
 			System.out.println("So 1: Thanh toan bang tien mat");
 			System.out.println("So 2: Thanh toan bang the");
-			int c = sc.nextInt();
+			int c = kt.KiemTraNhapSoTuNhien();
 			if (c == 1 || c == 2) {
 				Menu(c);
 			} else {
 				System.out.println("Phuong thuc khong ton tai.");
 			}
-			System.out.println("Nhan phim so 1 de tiep tuc, nhan phim so khac bat ky de thoat");
-			cnt = sc.nextInt();
-		} while (cnt == 1);
+			
 	}
 
 	public static void main(String[] args) {
