@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --------------------THONG TIN DON HANG------------------------
 Ma don hang: MDH177
 Ma khach hang: CUS4545
@@ -14,3 +15,5 @@ Xac nhan thanh toan: true
 Xac nhan don hang: true
 Trang thai don hang: Đã xác nhận
 --------------------------------------------------------------
+=======
+>>>>>>> b4454b104f32361e35581620a04403509c46e705

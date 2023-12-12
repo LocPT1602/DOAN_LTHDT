@@ -57,6 +57,7 @@ public class MainTestMuahang {
                     order.ghiFileOrder();
                     order.displayOrderInfo();
                     paymenu.selectPaymentmethod();
+                    order.giamSoLuongSanPham();
                     gioHang.xoaTatCa();
                     khoHang.CapNhatsl();
                 }
@@ -95,7 +96,6 @@ public class MainTestMuahang {
 
     public static void hienThiMenu() {
 
-        
         System.out.println("=====================Don Hang=======================");
         System.out.println(
                 "1. Xem san pham trong cua shop.\n"

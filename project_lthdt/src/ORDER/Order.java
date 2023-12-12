@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import PRODUCTS.GioHang;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import PAYMENTMETHOD.*;
@@ -34,8 +35,6 @@ public class Order {
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
-    
-
     public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
             int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
@@ -268,6 +267,20 @@ public class Order {
         }
     }
 
+    public void docFileInBill() {
+        String fileName = "project_lthdt/src/PAYMENTMETHOD/inbill.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public int tinhSoLuongSanPham() {
         quantity = 0;
     try {
@@ -343,6 +356,7 @@ public double tinhTongSoTien() {
         // System.out.println("Nhập tổng giá trị đơn hàng: ");
         // this.totalValue = kt.KiemTraNhapSoNguyen();
         checkStatus();
+        paymenu.selectPaymentmethod();
     }
 
     // Phương thức xuất thông tin đơn hàng
@@ -364,7 +378,7 @@ public double tinhTongSoTien() {
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
         System.out.println("Trang thai don hang: " + status);
-       
+        docFileInBill();
         System.out.println("--------------------------------------------------------------");
     }
 
@@ -378,6 +392,7 @@ public double tinhTongSoTien() {
             LocalDateTime orderDate = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
             String sourceFilePath = "danhsachspdadat.txt";
+            String sourceFilePath2 = "project_lthdt/src/PAYMENTMETHOD/inbill.txt";
             sb.append("--------------------THONG TIN DON HANG------------------------\n");
             generateOrderCode();
             sb.append("Ma don hang: ").append(orderCode).append("\n");
@@ -398,7 +413,10 @@ public double tinhTongSoTien() {
             sb.append("Xac nhan thanh toan: ").append(paymentConfirmed).append("\n");
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
-            
+            List<String> lines2 = Files.readAllLines(Path.of(sourceFilePath2));
+
+            sb.append(String.join("\n", lines2)).append("\n");
+            sb.append("\n");
             sb.append("--------------------------------------------------------------\n");
 
             String orderInfo = sb.toString();
@@ -465,6 +483,62 @@ public double tinhTongSoTien() {
             System.out.println("Lỗi khi ghi tệp tin.");
         }
     }
+    
+    public void giamSoLuongSanPham() {
+        String dataSanPhamFile = "dataSanPham.txt";
+        String danhSachSpDaDatFile = "danhsachspdadat.txt";
+    
+        try {
+            // Đọc nội dung từ file dataSanPham.txt
+            BufferedReader brDataSanPham = new BufferedReader(new FileReader(dataSanPhamFile));
+            StringBuilder sbDataSanPham = new StringBuilder();
+            String lineDataSanPham;
+            while ((lineDataSanPham = brDataSanPham.readLine()) != null) {
+                sbDataSanPham.append(lineDataSanPham);
+                sbDataSanPham.append(System.lineSeparator());
+            }
+            brDataSanPham.close();
+            String dataSanPhamContent = sbDataSanPham.toString();
+    
+            // Đọc nội dung từ file danhsachspdadat.txt
+            BufferedReader brDanhSachSpDaDat = new BufferedReader(new FileReader(danhSachSpDaDatFile));
+            String lineDanhSachSpDaDat;
+            while ((lineDanhSachSpDaDat = brDanhSachSpDaDat.readLine()) != null) {
+                // Phân tích cú pháp của dòng trong file danhSachSpDaDat.txt
+                String[] spDaDatInfo = lineDanhSachSpDaDat.split("\\|");
+                if (spDaDatInfo.length >= 3) {
+                    String tenSpDaDat = spDaDatInfo[0].trim();
+                    int soLuongSpDaDat = Integer.parseInt(spDaDatInfo[2].trim());
+    
+                    // Tìm kiếm tên sản phẩm trong dataSanPhamContent
+                    int index = dataSanPhamContent.indexOf(tenSpDaDat);
+    
+                    if (index != -1) {
+                        // Giảm số lượng sản phẩm
+                        int start = dataSanPhamContent.lastIndexOf("\n", index) + 1;
+                        int end = dataSanPhamContent.indexOf("\n", index);
+                        String spInfo = dataSanPhamContent.substring(start, end);
+                        String[] spInfoParts = spInfo.split(",");
+                        int soLuongSpTrongDataSanPham = Integer.parseInt(spInfoParts[4].trim());
+                        int soLuongMoi = soLuongSpTrongDataSanPham - soLuongSpDaDat;
+                        spInfoParts[4] = Integer.toString(soLuongMoi);
+                        String newSpInfo = String.join(", ", spInfoParts);
+                        dataSanPhamContent = dataSanPhamContent.replace(spInfo, newSpInfo);
+                    }
+                }
+            }
+            brDanhSachSpDaDat.close();
+    
+            // Ghi lại nội dung đã thay đổi vào file dataSanPham.txt
+            BufferedWriter bwDataSanPham = new BufferedWriter(new FileWriter(dataSanPhamFile));
+            bwDataSanPham.write(dataSanPhamContent);
+            bwDataSanPham.close();
+    
+            System.out.println("Đã cập nhật số lượng sản phẩm thành công!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Phương thức ghi đè toString()
     @Override
@@ -488,5 +562,6 @@ public double tinhTongSoTien() {
         order.inputOrderInfo();
         order.displayOrderInfo();
         order.ghiFileOrder();
+        // order.giamSoLuongSanPham();
     }
 }

@@ -1,3 +1,3 @@
 Phuong thuc thanh toan: Tien mat
-Da nhan: 10000.0
-Tien thua: 6000.0
+Da nhan: 115000.0
+Tien thua: 100000.0

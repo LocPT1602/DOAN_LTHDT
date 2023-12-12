@@ -16,6 +16,7 @@ public class Employee extends Account {
     BillDetail billdetail = new BillDetail(order);
     MainGioHang mainGh = new MainGioHang();
     MainTestMuahang mainMh = new MainTestMuahang();
+    ListAccount listacc = new ListAccount();
 
     public Employee() {
         super();
@@ -91,7 +92,15 @@ public class Employee extends Account {
             choose = sc.nextInt();
             switch (choose) {
                 case 1:
-                    CreateBill();
+                    try {
+                        if (listacc.isFileEmpty()) {
+                            System.out.println("Don hang trong. Moi ban tao don hang truoc khi tao hoa don!");
+                        } else {
+                            CreateBill();
+                        }
+                        listacc.deleteFileghiorder();
+                    } catch (Exception e) {
+                    }
                     break;
                 case 2:
                     menuStorage();
