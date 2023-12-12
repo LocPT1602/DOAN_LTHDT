@@ -352,7 +352,7 @@ public class BillDetail {
         // billDetail.getBillDetail();
         // billDetail.writeToFile();
         // billDetail.searchBillByBillDetailCode();
-        billDetail.deleteBillDetail();
+        // billDetail.deleteBillDetail();
         // billDetail.readProductData();
     }
 }

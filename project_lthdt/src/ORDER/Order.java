@@ -34,7 +34,7 @@ public class Order {
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
-
+    // cashPayment cpm = new cashPayment();
     // cashPayment cash = new cashPayment();
 
     public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
@@ -271,46 +271,53 @@ public class Order {
 
     public int tinhSoLuongSanPham() {
         quantity = 0;
-        try {
-            FileReader fileReader = new FileReader("danhsachspdadat.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+    try {
+        FileReader fileReader = new FileReader("danhsachspdadat.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            while (bufferedReader.readLine() != null) {
-                quantity++;
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] parts = line.split("\\|");
+            if (parts.length >= 3) {
+                int quantityperSP = Integer.parseInt(parts[2].trim());
+                quantity += quantityperSP;
             }
-
-            bufferedReader.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file.");
-            e.printStackTrace();
         }
 
-        return quantity;
+        bufferedReader.close();
+    } catch (IOException e) {
+        System.out.println("Lỗi khi đọc file.");
+        e.printStackTrace();
     }
 
-    public double tinhTongSoTien() {
-        totalValue = 0;
-        try {
-            FileReader fileReader = new FileReader("danhsachspdadat.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+    return quantity;
+}
 
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                if (parts.length == 2) {
-                    double donGia = Double.parseDouble(parts[1].trim());
-                    totalValue += donGia;
-                }
+public double tinhTongSoTien() {
+    totalValue = 0;
+    try {
+        FileReader fileReader = new FileReader("danhsachspdadat.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] parts = line.split("\\|");
+            if (parts.length >= 3) {
+                double donGia = Double.parseDouble(parts[1].trim());
+                int soLuong = Integer.parseInt(parts[2].trim());
+                double giaTri = donGia * soLuong;
+                totalValue += giaTri;
             }
-
-            bufferedReader.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file.");
-            e.printStackTrace();
         }
 
-        return totalValue;
+        bufferedReader.close();
+    } catch (IOException e) {
+        System.out.println("Lỗi khi đọc file.");
+        e.printStackTrace();
     }
+
+    return totalValue;
+}
     public void generateOrderCode() {
      Random random = new Random();
         int randomNumbers = random.nextInt(1000);
@@ -356,6 +363,9 @@ public class Order {
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
         System.out.println("Trang thai don hang: " + status);
+        // System.out.println("Phuong thuc da chon: " + cpm.getPhuongthuc());
+        // System.out.println("So tien khach tra: " + cpm.getSotien());
+        // System.out.println("So tien thua tra khach: " + cpm.getTienthua());
         System.out.println("--------------------------------------------------------------");
     }
 
@@ -389,9 +399,9 @@ public class Order {
             sb.append("Xac nhan thanh toan: ").append(paymentConfirmed).append("\n");
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
-            // sb.append("Phuong thuc thanh toan: ").append(cash.getPhuongthuc()).append("\n");
-            // sb.append("Da Nhan: ").append(cash.getSotien()).append("\n");
-            // sb.append("Tien thua: ").append(cash.getTienthua()).append("\n");
+            // sb.append("Phuong thuc thanh toan: ").append(cpm.getPhuongthuc()).append("\n");
+            // sb.append("Da Nhan: ").append(cpm.getSotien()).append("\n");
+            // sb.append("Tien thua: ").append(cpm.getTienthua()).append("\n");
             sb.append("--------------------------------------------------------------\n");
 
             String orderInfo = sb.toString();
