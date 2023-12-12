@@ -35,7 +35,7 @@ public class Employeelist implements Iterable<Employee> {
     public void Xoa() {
         System.out.println("Nhap vao ma nhan vien muon xoa!");
         String idDelete = kt.kiemtraManhanvien();
-        Iterator<Employee> iterator = employees.iterator();
+        
 
         for (Employee employee : employees) {
             if (employee.getEmployeeid().equals(idDelete)) {
@@ -56,7 +56,7 @@ public class Employeelist implements Iterable<Employee> {
                 fileIsEmpty = false;
                 String[] employeeData = line.split(",");
                 if (employeeData.length >= 13) {
-                    
+                    Employee.employeeIDcount++;
                     String fullname = employeeData[0];
                     String birthday = employeeData[1];
                     String phone = employeeData[2];
@@ -148,23 +148,23 @@ public class Employeelist implements Iterable<Employee> {
 
         Address address1 = new Address("1", "Duong 1", "Quan 1", "TP HCM");
         Employee employee1 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
-                address1, "EMP0001", "Quan ly", 1000, "02/02/2004");
+                address1, "EMP001", "Quan ly", 1000, "02/02/2004");
         employees.add(employee1);
         Address address2 = new Address("2", "Duong 2", "Quan 2", "TP HCM");
         Employee employee2 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
-                address2, "EMP0001", "Quan ly", 1000, "02/02/2004");
+                address2,"EMP002", "Quan ly", 1000, "02/02/2004");
         employees.add(employee2);
         Address address3 = new Address("3", "Duong 3", "Quan 3", "TP HCM");
         Employee employee3 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
-                address3, "EMP0001", "Quan ly", 1000, "02/02/2004");
+                address3, "EMP003", "Quan ly", 1000, "02/02/2004");
         employees.add(employee3);
         Address address4 = new Address("4", "Duong 4", "Quan 4", "TP HCM");
         Employee employee4 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
-                address4, "EMP0001", "Quan ly", 1000, "02/02/2004");
+                address4, "EMP004", "Quan ly", 1000, "02/02/2004");
         employees.add(employee4);
         Address address5 = new Address("5", "Duong 5", "Quan 5", "TP HCM");
         Employee employee5 = new Employee("Nguyen Van Anh", "01/01/1990", "0123456789", "nvA@example.com", "nam",
-                address5, "EMP0001", "Quan ly", 1000, "02/02/2004");
+                address5, "EMP005", "Quan ly", 1000, "02/02/2004");
         employees.add(employee5);
     }
 
@@ -200,14 +200,13 @@ public class Employeelist implements Iterable<Employee> {
             System.out.println("Address: " + employee.getAddress().toString());
             System.out.println("Position: " + employee.getPosition());
             System.out.println("Salary: " + employee.getSalary());
-            System.out.println(employee.employeeIDcount);
             System.out.println("---------------------------------");
         }
     }
     public static void main(String[] args) {
         Employeelist le=new Employeelist();
-       
+       le.readEmployeeFile();
+       le.writeEmployeeFile();
         
-        le.displayInfo();
     }
 }

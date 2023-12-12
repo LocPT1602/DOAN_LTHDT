@@ -114,7 +114,8 @@ public class Admin extends Account {
                     empList.Xoa();
                     break;
                 case 3:
-                    empList.Nhap();
+                    Employee emp =new Employee();
+                    emp.Nhap();
                     break;
                 case 0:
                     chon = 0;

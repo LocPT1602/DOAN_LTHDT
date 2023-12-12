@@ -28,6 +28,7 @@ public class CustomerList implements Iterable<Customer> {
             String line;
             boolean fileIsEmpty = true;
             while ((line = reader.readLine()) != null) {
+                Customer.countCus++;
                 fileIsEmpty = false;
 
                 String[] customerData = line.split(" ");
@@ -76,8 +77,6 @@ public class CustomerList implements Iterable<Customer> {
             System.out.println("Email: " + customer.getEmail());
             System.out.println("Gender: " + customer.getGender());
             System.out.println("Address: " + customer.getAddress().toString());
-            System.out.println("Membership: " + customer.getMembership());
-            System.out.println("Loyalty Points: " + customer.getLoyalpoint());
             System.out.println("---------------------------------\n");
         }
     }
@@ -137,8 +136,7 @@ public class CustomerList implements Iterable<Customer> {
                 System.out.println("Email: " + cus.getEmail());
                 System.out.println("Gender: " + cus.getGender());
                 System.out.println("Address: " + cus.getAddress().toString());
-                System.out.println("Membership: " + cus.getMembership());
-                System.out.println("Loyalty Points: " + cus.getLoyalpoint());
+                
                 System.out.println("---------------------------------\n");
             }
         }
@@ -156,8 +154,7 @@ public class CustomerList implements Iterable<Customer> {
                 System.out.println("Email: " + cus.getEmail());
                 System.out.println("Gender: " + cus.getGender());
                 System.out.println("Address: " + cus.getAddress().toString());
-                System.out.println("Membership: " + cus.getMembership());
-                System.out.println("Loyalty Points: " + cus.getLoyalpoint());
+              
                 System.out.println("---------------------------------\n");
             }
         }
@@ -168,8 +165,7 @@ public class CustomerList implements Iterable<Customer> {
             for(Customer customer:Customers) {
                 writer.write(customer.getFullname()+","+customer.getBirthday()+","+customer.getPhonenumber()+","+
                 customer.getEmail()+","+customer.getGender()+","+customer.getAddress().getSo()+","+customer.getAddress().getDuong()
-                +","+customer.getAddress().getQuan()+","+customer.getAddress().getThanhpho()+","+customer.Customerid+","+
-                customer.getMembership()+","+customer.getLoyalpoint());
+                +","+customer.getAddress().getQuan()+","+customer.getAddress().getThanhpho()+","+customer.Customerid);
                 writer.newLine();
         }
         }catch(IOException e)
