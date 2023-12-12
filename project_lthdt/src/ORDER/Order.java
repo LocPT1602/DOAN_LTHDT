@@ -273,8 +273,8 @@ public class Order {
     try {
         FileReader fileReader = new FileReader("danhsachspdadat.txt");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        String line;
+        bufferedReader.readLine();   
+        String line = null;
         while ((line = bufferedReader.readLine()) != null) {
             String[] parts = line.split("\\|");
             if (parts.length >= 3) {
@@ -299,6 +299,8 @@ public double tinhTongSoTien() {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         String line;
+        bufferedReader.readLine();   
+        line = null;
         while ((line = bufferedReader.readLine()) != null) {
             String[] parts = line.split("\\|");
             if (parts.length >= 3) {

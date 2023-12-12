@@ -38,14 +38,14 @@ public class MainTestMuahang {
                 int sl;
                 do {
                     gioHang.themVaoGion();
-                    System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc/Chon phim khac bat ki de ngung: ");
-                    sl = 0; // initialize to a default value
-                    sl = Integer.parseInt(sc.nextLine());
-                    
+                    System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc/Nhap so khac bat ki de ngung: ");
+                    // initialize to a default value
+                    sl = sc.nextInt();
                 } while (sl == 1);
 
             } else if (choice == 4) {
                 gioHang.inGioHang();
+
             } else if (choice == 5) {
                 choice5();
             } else if (choice == 6) {
@@ -94,6 +94,8 @@ public class MainTestMuahang {
     }
 
     public static void hienThiMenu() {
+
+        
         System.out.println("=====================Don Hang=======================");
         System.out.println(
                 "1. Xem san pham trong cua shop.\n"
