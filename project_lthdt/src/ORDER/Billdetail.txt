@@ -14,3 +14,21 @@ Tong gia tri don hang: 30000.0
 Xac nhan thanh toan: true
 Xac nhan don hang: true
 Trang thai don hang: Đã xác nhận
+
+--------------------Chi tiết hóa đơn-----------------------
+Mã chi tiết hóa đơn: MHD399
+Ma don hang: MDH962
+Ma khach hang: CUS0001
+Ma nhan vien phu trach: EMP001
+Ngay tao don hang: 12/12/2023   12:47:57
+Danh sach san pham: 
+
+     Ten sp               |     Don gia     |   So luong   
+A4 khong tham nuoc               |          5000   |   3
+
+So luong san pham: 3
+Tong gia tri don hang: 15000.0
+Xac nhan thanh toan: true
+Xac nhan don hang: true
+Trang thai don hang: Đã xác nhận
+--------------------------------------------------------------

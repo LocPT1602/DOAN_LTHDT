@@ -53,8 +53,6 @@ public class Pen extends SanPham {
 
     @Override
     public void xuat() {
-        System.out.println(
-                "     " + this.LSP + "             " + this.maSP + "           " + this.tenSP + "                 " + this.donGia + "            " + this.SoLuong
-                        + " \n");
+        System.out.printf("%-13s%-13s%-21s%-26d%-13d\n",this.LSP,this.maSP,this.tenSP,this.donGia,this.SoLuong);
     }
 }
