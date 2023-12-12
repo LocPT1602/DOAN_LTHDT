@@ -8,7 +8,7 @@ import ORDER.Order;
 import PRODUCTS.MainGioHang;
 import PRODUCTS.MainTestMuahang;
 
-public class Employee extends Account {
+public class Employeerights extends Account {
     Scanner sc = new Scanner(System.in);
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
@@ -18,11 +18,11 @@ public class Employee extends Account {
     MainTestMuahang mainMh = new MainTestMuahang();
     ListAccount listacc = new ListAccount();
 
-    public Employee() {
+    public Employeerights() {
         super();
     }
 
-    public Employee(String password, String username, String confirm) {
+    public Employeerights(String password, String username, String confirm) {
 
     }
 
@@ -122,7 +122,7 @@ public class Employee extends Account {
     }
 
     public static void main(String[] args) {
-        Employee empl = new Employee();
+        Employeerights empl = new Employeerights();
         empl.EmployeeManeger();
     }
 }

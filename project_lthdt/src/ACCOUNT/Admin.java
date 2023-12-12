@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.Scanner;
+import PERSON.*;
 import PERSON.CustomerList;
 import PERSON.Employeelist;
 import ORDER.billdetailList;
@@ -116,6 +117,8 @@ public class Admin extends Account {
                 case 3:
                     Employee emp =new Employee();
                     emp.Nhap();
+                    empList.add(emp);
+                    empList.writeEmployeeFile();
                     break;
                 case 0:
                     chon = 0;
