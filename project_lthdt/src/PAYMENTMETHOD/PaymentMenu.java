@@ -8,9 +8,7 @@ public class PaymentMenu {
 	
 	Scanner sc = new Scanner(System.in);
 
-	// public PaymentMenu() {
-	// 	this.mangtt = null;
-	// }
+	
 
 	public PaymentMenu(int size) {
 		this.mangtt = new Payment[size];

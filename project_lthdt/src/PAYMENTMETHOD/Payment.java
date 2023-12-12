@@ -10,7 +10,7 @@ public class Payment {
 		this.sotien = 0;
 		this.phuongthuc = null;
 		this.trangthai = "Pending";
-		// this.o = null;
+		
 	}
 
 	public Payment(int sotien, String phuongthuc, String trangthai, Order o) {

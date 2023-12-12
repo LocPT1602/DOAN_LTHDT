@@ -34,8 +34,7 @@ public class Order {
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
-    // cashPayment cpm = new cashPayment();
-    // cashPayment cash = new cashPayment();
+    
 
     public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
             int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
@@ -363,9 +362,7 @@ public double tinhTongSoTien() {
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
         System.out.println("Trang thai don hang: " + status);
-        // System.out.println("Phuong thuc da chon: " + cpm.getPhuongthuc());
-        // System.out.println("So tien khach tra: " + cpm.getSotien());
-        // System.out.println("So tien thua tra khach: " + cpm.getTienthua());
+       
         System.out.println("--------------------------------------------------------------");
     }
 
@@ -399,9 +396,7 @@ public double tinhTongSoTien() {
             sb.append("Xac nhan thanh toan: ").append(paymentConfirmed).append("\n");
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
-            // sb.append("Phuong thuc thanh toan: ").append(cpm.getPhuongthuc()).append("\n");
-            // sb.append("Da Nhan: ").append(cpm.getSotien()).append("\n");
-            // sb.append("Tien thua: ").append(cpm.getTienthua()).append("\n");
+            
             sb.append("--------------------------------------------------------------\n");
 
             String orderInfo = sb.toString();
