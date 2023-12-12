@@ -41,7 +41,7 @@ public class MainTestMuahang {
                     System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc/Chon phim khac bat ki de ngung: ");
                     sl = 0; // initialize to a default value
                     sl = Integer.parseInt(sc.nextLine());
-                    
+
                 } while (sl == 1);
 
             } else if (choice == 4) {
@@ -216,11 +216,7 @@ public class MainTestMuahang {
                             + "0. Quay lai Menu.");
 
             System.out.println("-----------------------------------------------------");
-<<<<<<< HEAD
-            System.out.println("Moi ban nhap lua chon: ");
-=======
             System.out.print("Nhap lua chon: ");
->>>>>>> cd5f974e3116be2f4d1a0f333bfa34435c8d03a7
             checkLC();
             switch (lc) {
                 case 1:
