@@ -69,7 +69,8 @@ public class creditcardPayment extends Payment {
 				"\nTen the: " + tenthe + 
 				"\nTen chu the: " + tenchuthe;
 	}
-	public void writeToFile(String filename) {
+	public void writeMoneyToFile() {
+		String filename = "project_lthdt/src/PAYMENTMETHOD/inbill.txt";
 		try (FileWriter fw = new FileWriter(filename)){
 			fw.write(getcreditcardPaymentDetail());
 			System.out.println("Thong tin da duoc ghi.");
@@ -80,7 +81,6 @@ public class creditcardPayment extends Payment {
 	}
 	@Override
 	public void ghiXuongFile() {
-		String filename = "C:\\Users\\mrcan\\OneDrive\\Documents\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PAYMENTMETHOD\\inbill.txt";
-		writeToFile(filename);
+		writeMoneyToFile();
 	}
 }

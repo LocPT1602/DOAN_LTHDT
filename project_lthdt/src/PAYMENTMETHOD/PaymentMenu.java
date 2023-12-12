@@ -2,12 +2,12 @@
 package PAYMENTMETHOD;
 
 import java.util.Scanner;
-
+import MAIN.Kiemtra;
 public class PaymentMenu {
 	private Payment[] mangtt;
 	
 	Scanner sc = new Scanner(System.in);
-
+	Kiemtra kt = new Kiemtra();
 	
 
 	public PaymentMenu(int size) {
@@ -40,20 +40,16 @@ public class PaymentMenu {
 	}
 
 	public void selectPaymentmethod() {
-		int cnt;
-		do {
 			System.out.println("Chon phuong thuc thanh toan: ");
 			System.out.println("So 1: Thanh toan bang tien mat");
 			System.out.println("So 2: Thanh toan bang the");
-			int c = sc.nextInt();
+			int c = kt.KiemTraNhapSoTuNhien();
 			if (c == 1 || c == 2) {
 				Menu(c);
 			} else {
 				System.out.println("Phuong thuc khong ton tai.");
 			}
-			System.out.println("Nhan phim so 1 de tiep tuc, nhan phim so khac bat ky de thoat");
-			cnt = sc.nextInt();
-		} while (cnt == 1);
+			
 	}
 
 	public static void main(String[] args) {

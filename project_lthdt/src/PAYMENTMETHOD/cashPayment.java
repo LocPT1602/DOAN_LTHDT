@@ -59,7 +59,8 @@ public class cashPayment extends Payment {
 				"\nDa nhan: " + getSotien() + 
 				"\nTien thua: " + getTienthua();
 	}
-	public void writeToFile(String filename) {
+	public void writeCashToFile() {
+		String filename = "project_lthdt/src/PAYMENTMETHOD/inbill.txt";
 		try (FileWriter fw = new FileWriter(filename)){
 			fw.write(getcashPaymentDetail());
 			System.out.println("Thong tin da duoc ghi.");
@@ -70,7 +71,6 @@ public class cashPayment extends Payment {
 	}
 	@Override
 	public void ghiXuongFile() {
-		String filename = "C:\\Users\\mrcan\\OneDrive\\Documents\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PAYMENTMETHOD\\inbill.txt";
-		writeToFile(filename);
+		writeCashToFile();
 	}
 }

@@ -35,8 +35,6 @@ public class Order {
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
-    
-
     public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
             int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
@@ -269,6 +267,20 @@ public class Order {
         }
     }
 
+    public void docFileInBill() {
+        String fileName = "project_lthdt/src/PAYMENTMETHOD/inbill.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public int tinhSoLuongSanPham() {
         quantity = 0;
     try {
@@ -344,6 +356,7 @@ public double tinhTongSoTien() {
         // System.out.println("Nhập tổng giá trị đơn hàng: ");
         // this.totalValue = kt.KiemTraNhapSoNguyen();
         checkStatus();
+        paymenu.selectPaymentmethod();
     }
 
     // Phương thức xuất thông tin đơn hàng
@@ -365,7 +378,7 @@ public double tinhTongSoTien() {
         System.out.println("Xac nhan thanh toan: " + paymentConfirmed);
         System.out.println("Xac nhan don hang: " + orderConfirmed);
         System.out.println("Trang thai don hang: " + status);
-       
+        docFileInBill();
         System.out.println("--------------------------------------------------------------");
     }
 
@@ -379,6 +392,7 @@ public double tinhTongSoTien() {
             LocalDateTime orderDate = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy   HH:mm:ss");
             String sourceFilePath = "danhsachspdadat.txt";
+            String sourceFilePath2 = "project_lthdt/src/PAYMENTMETHOD/inbill.txt";
             sb.append("--------------------THONG TIN DON HANG------------------------\n");
             generateOrderCode();
             sb.append("Ma don hang: ").append(orderCode).append("\n");
@@ -399,7 +413,10 @@ public double tinhTongSoTien() {
             sb.append("Xac nhan thanh toan: ").append(paymentConfirmed).append("\n");
             sb.append("Xac nhan don hang: ").append(orderConfirmed).append("\n");
             sb.append("Trang thai don hang: ").append(status).append("\n");
-            
+            List<String> lines2 = Files.readAllLines(Path.of(sourceFilePath2));
+
+            sb.append(String.join("\n", lines2)).append("\n");
+            sb.append("\n");
             sb.append("--------------------------------------------------------------\n");
 
             String orderInfo = sb.toString();
@@ -545,6 +562,6 @@ public double tinhTongSoTien() {
         order.inputOrderInfo();
         order.displayOrderInfo();
         order.ghiFileOrder();
-        order.giamSoLuongSanPham();
+        // order.giamSoLuongSanPham();
     }
 }
