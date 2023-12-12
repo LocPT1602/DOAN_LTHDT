@@ -193,7 +193,15 @@ public class Admin extends Account {
 
             switch (choose) {
                 case 1:
-                    CreateBill();
+                    try {
+                        if (list.isFileEmpty()) {
+                            System.out.println("Don hang trong. Moi ban tao don hang truoc khi tao hoa don!");
+                        } else {
+                            CreateBill();
+                        }
+                        list.deleteFileghiorder();
+                    } catch (Exception e) {
+                    }
                     break;
                 case 2:
                     InforEmployee();
@@ -202,6 +210,7 @@ public class Admin extends Account {
                     InforCustomers();
                     break;
                 case 4:
+                    billdetail.searchBillByBillDetailCode();
                     break;
                 case 5:
                     menuStorage();
