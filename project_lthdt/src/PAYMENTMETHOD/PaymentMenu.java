@@ -23,6 +23,7 @@ public class PaymentMenu {
 				mangtt[0] = new cashPayment();
 				mangtt[0].Nhap();
 				System.out.println(mangtt[0].toString());
+				mangtt[0].ghiXuongFile();
 				break;
 			case 2:
 				mangtt[1] = new Payment();
@@ -31,6 +32,7 @@ public class PaymentMenu {
 				mangtt[1] = new creditcardPayment();
 				mangtt[1].Nhap();
 				System.out.println(mangtt[1].toString());
+				mangtt[1].ghiXuongFile();
 				break;
 			default:
 				System.out.println("Yeu cau khong hop le. Vui long nhap lai");

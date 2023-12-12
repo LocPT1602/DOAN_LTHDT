@@ -1,8 +1,8 @@
 --------------------THONG TIN DON HANG------------------------
-Ma don hang: MDH286
+Ma don hang: MDH453
 Ma khach hang: CUS4545
 Ma nhan vien phu trach: EMP000
-Ngay tao don hang: 12/12/2023   09:54:08
+Ngay tao don hang: 12/12/2023   15:38:12
 Danh sach san pham: 
 
 Pen    |   4000    |   1
