@@ -1,3 +1,8 @@
 Phuong thuc thanh toan: Tien mat
+<<<<<<< HEAD
 Da nhan: 60000.0
 Tien thua: 44000.0
+=======
+Da nhan: 31224.0
+Tien thua: 31224.0
+>>>>>>> 923765043557089f0f3edaa12589ca2c38bcdc37
