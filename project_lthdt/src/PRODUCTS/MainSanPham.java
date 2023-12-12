@@ -37,7 +37,11 @@ public class MainSanPham {
                 System.out.println("Nhap vao maSP muon tim: ");
                 khoHang.timkiemSanPham(sc.nextLine());
             } else if (choice == 4) {
-                khoHang.clearKho();
+                System.out.print("Ban co chac chan khong(true/false): ");
+                Boolean confirm = sc.nextBoolean();
+                if (confirm == true) {
+                    khoHang.clearKho();
+                }
             } else if (choice == 5) {
                 khoHang.docDataTuFile();
                 khoHang.inKho();
