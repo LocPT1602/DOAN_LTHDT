@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import PRODUCTS.GioHang;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import PAYMENTMETHOD.*;
@@ -465,6 +466,62 @@ public double tinhTongSoTien() {
             System.out.println("Lỗi khi ghi tệp tin.");
         }
     }
+    
+    public void giamSoLuongSanPham() {
+        String dataSanPhamFile = "dataSanPham.txt";
+        String danhSachSpDaDatFile = "danhsachspdadat.txt";
+    
+        try {
+            // Đọc nội dung từ file dataSanPham.txt
+            BufferedReader brDataSanPham = new BufferedReader(new FileReader(dataSanPhamFile));
+            StringBuilder sbDataSanPham = new StringBuilder();
+            String lineDataSanPham;
+            while ((lineDataSanPham = brDataSanPham.readLine()) != null) {
+                sbDataSanPham.append(lineDataSanPham);
+                sbDataSanPham.append(System.lineSeparator());
+            }
+            brDataSanPham.close();
+            String dataSanPhamContent = sbDataSanPham.toString();
+    
+            // Đọc nội dung từ file danhsachspdadat.txt
+            BufferedReader brDanhSachSpDaDat = new BufferedReader(new FileReader(danhSachSpDaDatFile));
+            String lineDanhSachSpDaDat;
+            while ((lineDanhSachSpDaDat = brDanhSachSpDaDat.readLine()) != null) {
+                // Phân tích cú pháp của dòng trong file danhSachSpDaDat.txt
+                String[] spDaDatInfo = lineDanhSachSpDaDat.split("\\|");
+                if (spDaDatInfo.length >= 3) {
+                    String tenSpDaDat = spDaDatInfo[0].trim();
+                    int soLuongSpDaDat = Integer.parseInt(spDaDatInfo[2].trim());
+    
+                    // Tìm kiếm tên sản phẩm trong dataSanPhamContent
+                    int index = dataSanPhamContent.indexOf(tenSpDaDat);
+    
+                    if (index != -1) {
+                        // Giảm số lượng sản phẩm
+                        int start = dataSanPhamContent.lastIndexOf("\n", index) + 1;
+                        int end = dataSanPhamContent.indexOf("\n", index);
+                        String spInfo = dataSanPhamContent.substring(start, end);
+                        String[] spInfoParts = spInfo.split(",");
+                        int soLuongSpTrongDataSanPham = Integer.parseInt(spInfoParts[4].trim());
+                        int soLuongMoi = soLuongSpTrongDataSanPham - soLuongSpDaDat;
+                        spInfoParts[4] = Integer.toString(soLuongMoi);
+                        String newSpInfo = String.join(", ", spInfoParts);
+                        dataSanPhamContent = dataSanPhamContent.replace(spInfo, newSpInfo);
+                    }
+                }
+            }
+            brDanhSachSpDaDat.close();
+    
+            // Ghi lại nội dung đã thay đổi vào file dataSanPham.txt
+            BufferedWriter bwDataSanPham = new BufferedWriter(new FileWriter(dataSanPhamFile));
+            bwDataSanPham.write(dataSanPhamContent);
+            bwDataSanPham.close();
+    
+            System.out.println("Đã cập nhật số lượng sản phẩm thành công!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Phương thức ghi đè toString()
     @Override
@@ -488,5 +545,6 @@ public double tinhTongSoTien() {
         order.inputOrderInfo();
         order.displayOrderInfo();
         order.ghiFileOrder();
+        order.giamSoLuongSanPham();
     }
 }

@@ -57,6 +57,7 @@ public class MainTestMuahang {
                     order.ghiFileOrder();
                     order.displayOrderInfo();
                     paymenu.selectPaymentmethod();
+                    order.giamSoLuongSanPham();
                     gioHang.xoaTatCa();
                     khoHang.CapNhatsl();
                 }
