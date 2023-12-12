@@ -84,6 +84,20 @@ class ListAccount implements Iterable<Account> {
         }
     }
 
+    public void deleteFileghiorder() throws IOException {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("ghiorder.txt"))) {
+            writer.write("");
+        }
+    }
+
+    public boolean isFileEmpty() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader("ghiorder.txt"))) {
+            // Đọc một dòng từ file, nếu không có dòng nào thì file là rỗng
+            return reader.readLine() == null;
+        }
+    }
+
     @Override
     public Iterator<Account> iterator() {
         return accounts.iterator();

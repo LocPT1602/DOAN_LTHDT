@@ -38,16 +38,9 @@ public class MainTestMuahang {
                 int sl;
                 do {
                     gioHang.themVaoGion();
-<<<<<<< HEAD
-                    System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc/Chon phim khac bat ki de ngung: ");
-                    sl = 0; // initialize to a default value
-                    sl = Integer.parseInt(sc.nextLine());
-
-=======
                     System.out.print("Ban co muon mua tiep? An so 1 de tiep tuc/Nhap so khac bat ki de ngung: ");
                     // initialize to a default value
                     sl = sc.nextInt();
->>>>>>> 05a504165ed005eec5a63e78e1add7e061cc49d8
                 } while (sl == 1);
 
             } else if (choice == 4) {
@@ -103,7 +96,6 @@ public class MainTestMuahang {
 
     public static void hienThiMenu() {
 
-        
         System.out.println("=====================Don Hang=======================");
         System.out.println(
                 "1. Xem san pham trong cua shop.\n"
@@ -226,11 +218,7 @@ public class MainTestMuahang {
                             + "0. Quay lai Menu.");
 
             System.out.println("-----------------------------------------------------");
-<<<<<<< HEAD
-            System.out.print("Nhap lua chon: ");
-=======
             System.out.println("Moi ban nhap lua chon: ");
->>>>>>> 05a504165ed005eec5a63e78e1add7e061cc49d8
             checkLC();
             switch (lc) {
                 case 1:
