@@ -60,7 +60,8 @@ public class Payment {
 				
 	}
 
-    public void setTienthua(double tienthua) {
-
-    }
+	public void ghiXuongFile() {
+		
+		
+	}
 }

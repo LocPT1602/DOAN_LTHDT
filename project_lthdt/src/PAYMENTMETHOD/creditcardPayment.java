@@ -1,5 +1,7 @@
 package PAYMENTMETHOD;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class creditcardPayment extends Payment {
@@ -59,5 +61,26 @@ public class creditcardPayment extends Payment {
 				"\nTen the: " + tenthe + 
 				"\nTen chu the: " + tenchuthe +
 				"\nTrangthai: " + getTrangthai() ;
+	}
+	public String getcreditcardPaymentDetail() {
+		setPhuongthuc("Credit card");
+		return  "Phuong thuc thanh toan: " + getPhuongthuc() +
+				"\nSo the: " + sothe + 
+				"\nTen the: " + tenthe + 
+				"\nTen chu the: " + tenchuthe;
+	}
+	public void writeToFile(String filename) {
+		try (FileWriter fw = new FileWriter(filename)){
+			fw.write(getcreditcardPaymentDetail());
+			System.out.println("Thong tin da duoc ghi.");
+		} catch (IOException e) {
+			System.out.println("Thong tin chua duoc ghi do loi.");
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void ghiXuongFile() {
+		String filename = "C:\\Users\\mrcan\\OneDrive\\Documents\\GitHub\\DOAN_LTHDT\\project_lthdt\\src\\PAYMENTMETHOD\\inbill.txt";
+		writeToFile(filename);
 	}
 }
