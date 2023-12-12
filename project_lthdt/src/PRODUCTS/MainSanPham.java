@@ -19,7 +19,7 @@ public class MainSanPham {
             System.out.println("5. In toan bo kho.                   |");
             System.out.println("6. Ghi du lieu xuong file.           |");
             System.out.println("7. Doc du lieu tu file.              |");
-            System.out.println("8. Cap nhat so luong kho.              |");
+            System.out.println("8. Cap nhat so luong kho.            |");
             System.out.println("0. Thoat                             |");
             System.out.println("-------------------------------------+");
             System.out.print("Nhap lua chon : ");
@@ -45,7 +45,7 @@ public class MainSanPham {
                 khoHang.ghiDataXuongFile();
             } else if (choice == 7) {
                 khoHang.docDataTuFile();
-            } else if (choice == 8){
+            } else if (choice == 8) {
                 khoHang.CapNhatsl();
             }
         } while (choice != 0);
