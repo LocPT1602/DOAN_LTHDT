@@ -54,9 +54,9 @@ public class MainTestMuahang {
                 } else {
                     gioHang.ghiTenSPvaDonGiaVaoFile();
                     order.inputOrderInfo();
-                    order.ghiFileOrder();
                     order.displayOrderInfo();
                     paymenu.selectPaymentmethod();
+                    order.ghiFileOrder();
                     order.giamSoLuongSanPham();
                     gioHang.xoaTatCa();
                     khoHang.CapNhatsl();

@@ -35,6 +35,7 @@ public class Order {
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
     Scanner scanner = new Scanner(System.in);
+
     public Order(String orderCode, String customer, String employee, LocalDateTime orderDate, List<SanPham> sanPhamList,
             int quantity, double totalValue, boolean paymentConfirmed, boolean orderConfirmed, String status) {
         this.orderCode = orderCode;
@@ -217,7 +218,7 @@ public class Order {
         }
     }
 
-    public void ThanhToan(){
+    public void ThanhToan() {
         paymenu.selectPaymentmethod();
     }
 
@@ -283,61 +284,63 @@ public class Order {
 
     public int tinhSoLuongSanPham() {
         quantity = 0;
-    try {
-        FileReader fileReader = new FileReader("danhsachspdadat.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        bufferedReader.readLine();   
-        String line = null;
-        while ((line = bufferedReader.readLine()) != null) {
-            String[] parts = line.split("\\|");
-            if (parts.length >= 3) {
-                int quantityperSP = Integer.parseInt(parts[2].trim());
-                quantity += quantityperSP;
+        try {
+            FileReader fileReader = new FileReader("danhsachspdadat.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            bufferedReader.readLine();
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length >= 3) {
+                    int quantityperSP = Integer.parseInt(parts[2].trim());
+                    quantity += quantityperSP;
+                }
             }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file.");
+            e.printStackTrace();
         }
 
-        bufferedReader.close();
-    } catch (IOException e) {
-        System.out.println("Lỗi khi đọc file.");
-        e.printStackTrace();
+        return quantity;
     }
 
-    return quantity;
-}
+    public double tinhTongSoTien() {
+        totalValue = 0;
+        try {
+            FileReader fileReader = new FileReader("danhsachspdadat.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-public double tinhTongSoTien() {
-    totalValue = 0;
-    try {
-        FileReader fileReader = new FileReader("danhsachspdadat.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        String line;
-        bufferedReader.readLine();   
-        line = null;
-        while ((line = bufferedReader.readLine()) != null) {
-            String[] parts = line.split("\\|");
-            if (parts.length >= 3) {
-                double donGia = Double.parseDouble(parts[1].trim());
-                int soLuong = Integer.parseInt(parts[2].trim());
-                double giaTri = donGia * soLuong;
-                totalValue += giaTri;
+            String line;
+            bufferedReader.readLine();
+            line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length >= 3) {
+                    double donGia = Double.parseDouble(parts[1].trim());
+                    int soLuong = Integer.parseInt(parts[2].trim());
+                    double giaTri = donGia * soLuong;
+                    totalValue += giaTri;
+                }
             }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file.");
+            e.printStackTrace();
         }
 
-        bufferedReader.close();
-    } catch (IOException e) {
-        System.out.println("Lỗi khi đọc file.");
-        e.printStackTrace();
+        return totalValue;
     }
 
-    return totalValue;
-}
     public void generateOrderCode() {
-     Random random = new Random();
+        Random random = new Random();
         int randomNumbers = random.nextInt(1000);
         String formattedRandomNumbers = String.format("%03d", randomNumbers);
         this.orderCode = "MDH" + formattedRandomNumbers;
     }
+
     // Phương thức nhập thông tin đơn hàng
     public void inputOrderInfo() {
         Scanner scanner = new Scanner(System.in);
@@ -356,7 +359,6 @@ public double tinhTongSoTien() {
         // System.out.println("Nhập tổng giá trị đơn hàng: ");
         // this.totalValue = kt.KiemTraNhapSoNguyen();
         checkStatus();
-        paymenu.selectPaymentmethod();
     }
 
     // Phương thức xuất thông tin đơn hàng
@@ -483,11 +485,11 @@ public double tinhTongSoTien() {
             System.out.println("Lỗi khi ghi tệp tin.");
         }
     }
-    
+
     public void giamSoLuongSanPham() {
         String dataSanPhamFile = "dataSanPham.txt";
         String danhSachSpDaDatFile = "danhsachspdadat.txt";
-    
+
         try {
             // Đọc nội dung từ file dataSanPham.txt
             BufferedReader brDataSanPham = new BufferedReader(new FileReader(dataSanPhamFile));
@@ -499,7 +501,7 @@ public double tinhTongSoTien() {
             }
             brDataSanPham.close();
             String dataSanPhamContent = sbDataSanPham.toString();
-    
+
             // Đọc nội dung từ file danhsachspdadat.txt
             BufferedReader brDanhSachSpDaDat = new BufferedReader(new FileReader(danhSachSpDaDatFile));
             String lineDanhSachSpDaDat;
@@ -509,10 +511,10 @@ public double tinhTongSoTien() {
                 if (spDaDatInfo.length >= 3) {
                     String tenSpDaDat = spDaDatInfo[0].trim();
                     int soLuongSpDaDat = Integer.parseInt(spDaDatInfo[2].trim());
-    
+
                     // Tìm kiếm tên sản phẩm trong dataSanPhamContent
                     int index = dataSanPhamContent.indexOf(tenSpDaDat);
-    
+
                     if (index != -1) {
                         // Giảm số lượng sản phẩm
                         int start = dataSanPhamContent.lastIndexOf("\n", index) + 1;
@@ -528,12 +530,12 @@ public double tinhTongSoTien() {
                 }
             }
             brDanhSachSpDaDat.close();
-    
+
             // Ghi lại nội dung đã thay đổi vào file dataSanPham.txt
             BufferedWriter bwDataSanPham = new BufferedWriter(new FileWriter(dataSanPhamFile));
             bwDataSanPham.write(dataSanPhamContent);
             bwDataSanPham.close();
-    
+
             System.out.println("Đã cập nhật số lượng sản phẩm thành công!");
         } catch (IOException e) {
             e.printStackTrace();
