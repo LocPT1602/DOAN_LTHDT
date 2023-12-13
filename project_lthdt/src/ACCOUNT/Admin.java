@@ -8,6 +8,7 @@ import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
 import MAIN.Kiemtra;
 import ORDER.BillDetail;
+import PRODUCTS.MainTestMuahang;
 
 public class Admin extends Account {
     Scanner sc = new Scanner(System.in);
@@ -20,6 +21,7 @@ public class Admin extends Account {
     BillDetail billdetail = new BillDetail(null);
     MainSanPham mainSP = new MainSanPham();
     Kho khoHang = new Kho();
+    MainTestMuahang mainMH = new MainTestMuahang();
     Kiemtra kt = new Kiemtra();
 
     public Admin() {
@@ -166,8 +168,33 @@ public class Admin extends Account {
         mainSP.menuProduct();
     }
 
-    public void Bill() {
-        billList.displayBillDetails();
+    public void editBill() {
+        do {
+            System.out.println("--------------EditBill------------+");
+            System.out.println("1. Xem All Bill                   |");
+            System.out.println("2. Search Bill                    |");
+            System.out.println("3. Detele Bill                    |");
+            System.out.println("0. Thoat                          |");
+            System.out.println("----------------------------------+");
+            System.out.print("Nhap lua chon: ");
+            int chon = sc.nextInt();
+            switch (chon) {
+                case 1:
+                    billdetail.xuatAllBillDetail();
+                    break;
+                case 2:
+                    billdetail.searchBillByBillDetailCode();
+                    break;
+                case 3:
+                    billdetail.deleteBillDetail();
+                    break;
+                case 0:
+                    chon = 0;
+                    break;
+                default:
+                    break;
+            }
+        } while (choose != 0);
     }
 
     public void AdminManeger() {
@@ -175,13 +202,14 @@ public class Admin extends Account {
         do {
             System.out.println("---------------ADMIN-------------+");
             System.out.println("1 : Tao hoa don                  |");
-            System.out.println("2 : Thong tin nhan vien          |");
-            System.out.println("3 : Thong tin khach hang         |");
-            System.out.println("4 : Xem hoa don                  |");
-            System.out.println("5 : Kho - storage                |");
-            System.out.println("6 : Them tai khoan nhan vien     |");
-            System.out.println("7 : Xoa tai khoan nhan vien      |");
-            System.out.println("8 : Xem Account                  |");
+            System.out.println("2 : Tao don hang                 |");
+            System.out.println("3 : Thong tin nhan vien          |");
+            System.out.println("4 : Thong tin khach hang         |");
+            System.out.println("5 : Edit BIll                    |");
+            System.out.println("6 : Kho - storage                |");
+            System.out.println("7 : Them tai khoan nhan vien     |");
+            System.out.println("8 : Xoa tai khoan nhan vien      |");
+            System.out.println("9 : Xem Account                  |");
             System.out.println("0 : Thoat                        |");
             System.out.println("---------------------------------+");
             System.out.print("Nhap lua chon: ");
@@ -204,24 +232,27 @@ public class Admin extends Account {
                     }
                     break;
                 case 2:
-                    InforEmployee();
+                    mainMH.menuMh();
                     break;
                 case 3:
-                    InforCustomers();
+                    InforEmployee();
                     break;
                 case 4:
-                    billdetail.searchBillByBillDetailCode();
+                    InforCustomers();
                     break;
                 case 5:
-                    menuStorage();
+                    editBill();
                     break;
                 case 6:
-                    AddEmplAccount();
+                    menuStorage();
                     break;
                 case 7:
-                    DeleteEmplAccount();
+                    AddEmplAccount();
                     break;
                 case 8:
+                    DeleteEmplAccount();
+                    break;
+                case 9:
                     allAccount();
                     break;
                 case 0:
