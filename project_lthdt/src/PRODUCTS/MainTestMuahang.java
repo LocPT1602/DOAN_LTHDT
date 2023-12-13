@@ -59,7 +59,7 @@ public class MainTestMuahang {
                     order.ghiFileOrder();
                     order.giamSoLuongSanPham();
                     gioHang.xoaTatCa();
-                    khoHang.CapNhatsl();
+                    // khoHang.CapNhatsl();
                 }
 
                 // dsGH.themVaoDanhSachGH(gioHang);
