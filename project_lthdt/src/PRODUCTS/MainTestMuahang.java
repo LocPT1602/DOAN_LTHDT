@@ -13,7 +13,6 @@ public class MainTestMuahang {
 
     static DanhSachGioHang dsGH = new DanhSachGioHang();
 
-    static DanhSachHoaDon dsHD = new DanhSachHoaDon();
     static Scanner sc = new Scanner(System.in);
 
     static GioHang gioHang = new GioHang();
@@ -85,13 +84,11 @@ public class MainTestMuahang {
 
         khoHang.docDataTuFile();
 
-        dsHD.docDataTuFile();
     }
 
     public static void luuData() {
 
         dsGH.ghiDataXuongFile();
-        dsHD.ghiDataXuongFile();
     }
 
     public static void hienThiMenu() {
