@@ -3,3 +3,5 @@ phan thanh loc,02/02/2004,1234567890,loc@gmail.com,Nam,2,Duong 2,Quan 2,TP HCM,C
 3,03/03/2003,0123456789,3@gmail.com,Nam,3,Duong 3,Quan 3,TP HCM,CUS003,gold,200
 3,03/03/2003,0123456789,3@gmail.com,Nam,4,Duong 4,Quan 4,TP HCM,CUS003,gold,200
 3,03/03/2003,0123456789,3@gmail.com,Nam,5,Duong 5,Quan 5,TP HCM,CUS003,gold,200
+Nguyen Thi Huong, 29/02/2000, 0908070605, hg@gmail.com, Nu,6, Duong 6, Quan 6, TP HCM, CUS006, bronze, 50
+Bui Thai Tien Khanh, 04/04/2004, 0906090201, bttk@gmail.com, Nam,7,Duong so 7, Quan Binh Tan, TP HCM, CUS999, silver,100

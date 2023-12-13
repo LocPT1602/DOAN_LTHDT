@@ -1,1 +1,7 @@
 EMP001 huynhgiavi
+EMP002 buithaitienkhanh
+EMP003 phanthanhloc
+EMP004 voanhtuan
+EMP005 dunguyendangkhoa
+EMP006 nguyenvana
+EMP007 tranvanb
