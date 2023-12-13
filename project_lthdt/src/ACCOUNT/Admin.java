@@ -2,8 +2,6 @@
 import java.io.IOException;
 import java.util.Scanner;
 import PERSON.*;
-import PERSON.CustomerList;
-import PERSON.Employeelist;
 import ORDER.billdetailList;
 import PRODUCTS.MainSanPham;
 import PRODUCTS.Kho;
@@ -36,7 +34,6 @@ public class Admin extends Account {
     public void AddEmplAccount() {
         System.out.print("Nhap ten tai khoan: ");
         username = kt.kiemtraTenTK();
-
         if (list.containsAccount(username) == true) {
             do {
                 System.out.println("Ten tai khoan da ton tai !");
@@ -114,10 +111,12 @@ public class Admin extends Account {
                     empList.displayInfo();
                     break;
                 case 2:
+                    empList.readEmployeeFile();
                     empList.Xoa();
+                    empList.writeEmployeeFile();
                     break;
                 case 3:
-                    Employee emp =new Employee();
+                    Employee emp = new Employee();
                     emp.Nhap();
                     empList.add(emp);
                     empList.writeEmployeeFile();

@@ -98,6 +98,15 @@ class ListAccount implements Iterable<Account> {
         }
     }
 
+    public boolean TKandMK(String username, String password) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+                return true; // Match found
+            }
+        }
+        return false; // No match found
+    }
+
     @Override
     public Iterator<Account> iterator() {
         return accounts.iterator();
