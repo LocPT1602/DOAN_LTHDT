@@ -101,6 +101,7 @@ public class MainTestMuahang {
                 "1. Xem san pham trong cua shop.\n"
                         + "2. Tim kiem san pham.\n"
                         + "3. Tien hanh mua hang.\n"
+                        + "4.Xem gio hang.\n"
                         + "5. Chinh sua gio hang.\n"
                         + "6. Thanh toan.\n"
                         + "0. Roi cua hang.");
