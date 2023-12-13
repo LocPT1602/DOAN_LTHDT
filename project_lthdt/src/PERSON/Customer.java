@@ -1,42 +1,30 @@
 package PERSON;
+
+import MAIN.Kiemtra;
+
 public class Customer extends person {
+    public static int countCus=1;
     public String Customerid;
     public String membership;
     public int loyalpoint;
-    public Customer(String fullname, String birthday, String string, String email, String gender, Address address1,
-            String customerid, String membership, int i) {
-        super(fullname, birthday, string, email, gender, address1);
-        Customerid = customerid;
-        this.membership = membership;
-        this.loyalpoint = i;
+    Kiemtra kt = new Kiemtra();
+    public Customer(String fullname, String birthday, String string, String email, String gender, Address address,
+            String customerid, String membership, int loyalpoint) {
+        super(fullname, birthday, string, email, gender, address);
+        this.Customerid = customerid;
+        
     }
-    public Customer(String customerid, String membership, int loyalpoint) {
-        Customerid = customerid;
-        this.membership = membership;
-        this.loyalpoint = loyalpoint;
-    }
+    
     public Customer(){
+        super();
         this.Customerid=null;
-        this.membership=null;
-        this.loyalpoint=0;
+      
     }
     public String getCustomerid() {
         return Customerid;
     }
     public void setCustomerid(String customerid) {
         Customerid = customerid;
-    }
-    public String getMembership() {
-        return membership;
-    }
-    public void setMembership(String membership) {
-        this.membership = membership;
-    }
-    public int getLoyalpoint() {
-        return loyalpoint;
-    }
-    public void setLoyalpoint(int loyalpoint) {
-        this.loyalpoint = loyalpoint;
     }
     public String getInfor(){
         return  "Customer Id: "+this.Customerid+
@@ -45,24 +33,40 @@ public class Customer extends person {
                 "\nPhone: "+this.getPhonenumber()+
                 "\nEmail: "+this.getEmail()+
                 "\nGender: "+this.getGender()+
-                "\nAddress: "+this.getAddress().toString()+
-                "\nMembership:"+this.getMembership()+
-                "\nLoyalty point: "+this.getLoyalpoint();
+                "\nAddress: "+this.getAddress().toString();
     }
     public void addLoyaltyPoint(int points)
     {
         this.loyalpoint+=points;
     }
+    
     @Override
-    public void Nhap()
+    public void Nhap() {
+        System.out.println("Nhap ten:");
+        this.fullname=kt.NhapTen();
+        System.out.println("Nhap ngay sinh dang d/m/y:");
+        this.birthday=kt.nhapNgay();
+        System.out.println("Nhap sdt:");
+        this.phonenumber=kt.kiemtraNhapsdt();
+        System.out.println("Nhap email:");
+        this.email=kt.nhapEmail();
+        System.out.println("Nhap gioi tinh:");
+        this.gender=kt.ktNhapGioiTinh();
+        address.Nhap();
+        String createcus = String.format("%03d", (countCus));
+        this.setCustomerid("CUS"+ createcus);
+        countCus++;
+    }
+    @Override
+    public void Xuat()
     {
-        super.Nhap();
-        System.out.println("Nhap ma khach hang:");
-        this.Customerid=kt.kiemtraMakhachhang(); 
-        System.out.println("Nhap Membership:");
-        this.membership=kt.nhapChuoi();
-        System.out.println("Nhap diem loyalpoint:");
-        this.loyalpoint=kt.KiemTraNhapSoTuNhien();
+    System.out.println("Ten:"+this.fullname);
+    System.out.println("Ngay sinh :"+this.birthday);
+    System.out.println("Sdt:"+this.phonenumber);
+    System.out.println("Email:"+this.email);
+    System.out.println("Gioi tinh: "+this.gender);
+    System.out.println("Dia chi: "+this.address.toString());
+
     }
     public static void main(String[] args) {
         Customer ps=new Customer();
