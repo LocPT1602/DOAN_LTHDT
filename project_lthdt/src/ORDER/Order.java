@@ -20,17 +20,17 @@ import java.io.IOException;
 import PAYMENTMETHOD.*;
 
 public class Order {
-    private String orderCode; // Mã đơn hàng
-    private String customer; // Mã khách hàng
-    private String employee; // Mã nhân viên
-    private String productCode; // Mã sản phẩm
-    private LocalDateTime orderDate; // Ngày đặt hàng
-    private List<SanPham> sanPhamList; // Danh sách sản phẩm
-    private int quantity; // Số lượng sản phẩm
-    private double totalValue; // Tổng giá trị đơn hàng
-    private boolean paymentConfirmed; // Xác nhận thanh toán
-    private boolean orderConfirmed; // Xác nhận đơn hàng
-    private String status; // Trạng thái đơn hàng
+    public String orderCode; // Mã đơn hàng
+    public String customer; // Mã khách hàng
+    public String employee; // Mã nhân viên
+    public String productCode; // Mã sản phẩm
+    public LocalDateTime orderDate; // Ngày đặt hàng
+    public List<SanPham> sanPhamList; // Danh sách sản phẩm
+    public int quantity; // Số lượng sản phẩm
+    public double totalValue; // Tổng giá trị đơn hàng
+    public boolean paymentConfirmed; // Xác nhận thanh toán
+    public boolean orderConfirmed; // Xác nhận đơn hàng
+    public String status; // Trạng thái đơn hàng
     PaymentMenu paymenu = new PaymentMenu(2);
     Kiemtra kt = new Kiemtra();
     GioHang gioHang = new GioHang();
