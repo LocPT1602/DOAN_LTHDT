@@ -154,9 +154,12 @@ public class Admin extends Account {
                     idToDelete = sc.nextLine();
                     // cusList.removeCustomerById(idToDelete);
                     break;
-                // case 3:
-                // cusList.Nhap();
-                // break;
+                case 3:
+                    Customer cus = new Customer();
+                    cus.Nhap();
+                    cusList.add(cus);
+                    cusList.writeFile();
+                    break;
                 case 0:
                     chon = 0;
                     break;

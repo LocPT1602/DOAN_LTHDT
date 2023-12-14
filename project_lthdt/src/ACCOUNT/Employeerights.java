@@ -5,10 +5,12 @@ import PRODUCTS.MainSanPham;
 // import PRODUCTS.Kho;
 import ORDER.BillDetail;
 import ORDER.Order;
+import PRODUCTS.Kho;
 import PRODUCTS.MainGioHang;
 import PRODUCTS.MainTestMuahang;
 
 public class Employeerights extends Account {
+    Kho KhoHang = new Kho();
     Scanner sc = new Scanner(System.in);
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
@@ -68,7 +70,8 @@ public class Employeerights extends Account {
     }
 
     public void menuStorage() {
-        mainSP.menuProduct();
+        KhoHang.docDataTuFile();
+        KhoHang.inKho();
     }
 
     public void createOrder() {
