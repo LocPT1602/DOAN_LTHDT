@@ -5,7 +5,7 @@ import java.util.Scanner;
 import PRODUCTS.*;
 
 public class Bill {
-    protected HoaDon maHD; // Mã hóa đơn
+    // protected HoaDon maHD; // Mã hóa đơn
     protected SanPham maSP; // Mã sản phẩm
     protected SanPham tenSP; // Tên sản phẩm
     protected SanPham donGia; // Giá sản phẩm
@@ -34,13 +34,13 @@ public class Bill {
         this.maSP = maSP;
     }
 
-    public HoaDon getmaHD() {
-        return maHD;
-    }
+    // public HoaDon getmaHD() {
+    //     return maHD;
+    // }
 
-    public void setmaHD(HoaDon maHD) {
-        this.maHD = maHD;
-    }
+    // public void setmaHD(HoaDon maHD) {
+    //     this.maHD = maHD;
+    // }
 
     public SanPham getTenSP() {
         return tenSP;
