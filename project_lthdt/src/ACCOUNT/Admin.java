@@ -108,6 +108,7 @@ public class Admin extends Account {
             chon = sc.nextInt();
             switch (chon) {
                 case 1:
+                    empList.readEmployeeFile();
                     empList.displayInfo();
                     break;
                 case 2:

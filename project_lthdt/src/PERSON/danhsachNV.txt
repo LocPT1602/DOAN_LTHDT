@@ -1,2 +1,0 @@
-Huynh Gia Vi,01/04/2004,0982207154,vhu@gmail.com,nam,10/5/2020Address{so=8, duong=5, quan=6, thanhpho=hcm},EMP002,nhan vien,100000.0
-Huynh Gia Vii,02/04/2004,0956565652,fdf@gmail.com,nam,20/5/2021Address{so=54, duong=5, quan=5, thanhpho=HCm},EMP003,nhan vien,300000.0

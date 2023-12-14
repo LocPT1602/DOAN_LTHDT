@@ -30,7 +30,7 @@ public class BillDetail {
     private int quantityBill; // Số lượng
     private LocalDateTime billDate; // Ngày trên hóa đơn
     private int counter = 1;
-    HoaDon hoaDon = new HoaDon();
+    // HoaDon hoaDon = new HoaDon();
     GioHang gh = new GioHang();
     Order order = new Order();
 
@@ -155,7 +155,7 @@ public class BillDetail {
             System.out.println("-----------------Thông tin chi tiết hóa đơn----------------------");
             generateBillDetailCode();
             System.out.println("Mã chi tiết hóa đơn: " + billDetailCode);
-            System.out.println("Mã hóa đơn: " + hoaDon.getMaHD());
+            // System.out.println("Mã hóa đơn: " + hoaDon.getMaHD());
             while ((line = reader.readLine()) != null) {
                 if (skipHeader) {
                     skipHeader = false;

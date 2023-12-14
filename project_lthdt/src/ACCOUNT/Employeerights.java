@@ -8,7 +8,7 @@ import ORDER.Order;
 import PRODUCTS.MainGioHang;
 import PRODUCTS.MainTestMuahang;
 
-public class Employeerights extends Account {
+public class Employeerights {
     Scanner sc = new Scanner(System.in);
     CustomerList cusList = new CustomerList();
     MainSanPham mainSP = new MainSanPham();
@@ -18,13 +18,13 @@ public class Employeerights extends Account {
     MainTestMuahang mainMh = new MainTestMuahang();
     ListAccount listacc = new ListAccount();
 
-    public Employeerights() {
-        super();
-    }
+    // public Employeerights() {
+    // super();
+    // }
 
-    public Employeerights(String password, String username, String confirm) {
+    // public Employeerights(String password, String username, String confirm) {
 
-    }
+    // }
 
     public void CreateBill() {
 
@@ -47,7 +47,7 @@ public class Employeerights extends Account {
             switch (chon) {
                 case 1:
                     cusList.readFile();
-                    cusList.getListCustomer();
+                    cusList.displayInfo();
                     break;
                 // case 2:
                 // cusList.Xoa();

@@ -20,3 +20,25 @@ Da nhan: 40000.0
 Tien thua: 17725.0
 
 --------------------------------------------------------------
+
+--------------------Chi tiết hóa đơn-----------------------
+Mã chi tiết hóa đơn: MHD626
+Ma don hang: MDH004
+Ma khach hang: CUS5454
+Ma nhan vien phu trach: EMP784
+Ngay tao don hang: 12/12/2023   22:15:49
+Danh sach san pham: 
+
+Ten SP                  Don gia                 So Luong                
+Pen|                    4000|                   4                       
+
+So luong san pham: 4
+Tong gia tri don hang: 16000.0
+Xac nhan thanh toan: true
+Xac nhan don hang: true
+Trang thai don hang: Đã xác nhận
+Phuong thuc thanh toan: Tien mat
+Da nhan: 30000.0
+Tien thua: 14000.0
+
+--------------------------------------------------------------
