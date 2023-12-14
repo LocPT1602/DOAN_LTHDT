@@ -8,14 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
-
-
 import MAIN.Kiemtra;
 
 public class CustomerList implements Iterable<Customer> {
     private ArrayList<Customer> Customers;
-    Kiemtra kt= new Kiemtra();
+    Kiemtra kt = new Kiemtra();
+
     public CustomerList() {
 
         this.Customers = new ArrayList<>();
@@ -32,33 +30,30 @@ public class CustomerList implements Iterable<Customer> {
                 fileIsEmpty = false;
 
                 String[] customerData = line.split(" ");
-                if(customerData.length>=12){
-                String fullname = customerData[0];
-                String birthday = customerData[1];
-                String phone = customerData[2];
-                String email = customerData[3];
-                String gender = customerData[4];
-                
+                if (customerData.length >= 12) {
+                    String fullname = customerData[0];
+                    String birthday = customerData[1];
+                    String phone = customerData[2];
+                    String email = customerData[3];
+                    String gender = customerData[4];
 
-                String so = customerData[5];
-                String duong = customerData[6];
-                String quan = customerData[7];
-                String thanhpho = customerData[8];
-                Address address = new Address(so, duong, quan, thanhpho);
-                String Customerid = customerData[9];
-                String membership = customerData[10];
-                int loyalpoint = Integer.parseInt(customerData[11]);
-                Customer Customer = new Customer(fullname, birthday, phone, email, gender, address, Customerid,
-                        membership, loyalpoint);
-                        
-                Customers.add(Customer);
+                    String so = customerData[5];
+                    String duong = customerData[6];
+                    String quan = customerData[7];
+                    String thanhpho = customerData[8];
+                    Address address = new Address(so, duong, quan, thanhpho);
+                    String Customerid = customerData[9];
+                    String membership = customerData[10];
+                    int loyalpoint = Integer.parseInt(customerData[11]);
+                    Customer Customer = new Customer(fullname, birthday, phone, email, gender, address, Customerid,
+                            membership, loyalpoint);
+
+                    Customers.add(Customer);
                 }
             }
             if (fileIsEmpty) {
                 this.defaultCustomers();
             }
-            
-            
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,9 +63,10 @@ public class CustomerList implements Iterable<Customer> {
     public void add(Customer customer) {
         Customers.add(customer);
     }
+
     public void displayInfo() {
         for (Customer customer : Customers) {
-            System.out.println("Customer ID: " + customer.Customerid);
+            System.out.println("Customer ID: " + customer.getCustomerid()); // Sử dụng phương thức getter
             System.out.println("Name: " + customer.getFullname());
             System.out.println("Birthdate: " + customer.getBirthday());
             System.out.println("Phone number: " + customer.getPhonenumber());
@@ -82,20 +78,20 @@ public class CustomerList implements Iterable<Customer> {
     }
 
     // public void removeCustomerById(String customerId) {
-    //     Customer customerToRemove = null;
-    //     for (Customer customer : Customers) {
-    //         if (customer.getCustomerid().equals(customerId)) {
-    //             customerToRemove = customer;
-    //             break;
-    //         }
-    //     }
+    // Customer customerToRemove = null;
+    // for (Customer customer : Customers) {
+    // if (customer.getCustomerid().equals(customerId)) {
+    // customerToRemove = customer;
+    // break;
+    // }
+    // }
 
-    //     if (customerToRemove != null) {
-    //         Customers.remove(customerToRemove);
-    //         writeFile(); // Cập nhật file sau khi xóa khách hàng
-    //     } else {
-    //         System.out.println("Khong tim thay khach hang voi ID : " + customerId);
-    //     }
+    // if (customerToRemove != null) {
+    // Customers.remove(customerToRemove);
+    // writeFile(); // Cập nhật file sau khi xóa khách hàng
+    // } else {
+    // System.out.println("Khong tim thay khach hang voi ID : " + customerId);
+    // }
     // }
 
     public void defaultCustomers() {
@@ -124,11 +120,12 @@ public class CustomerList implements Iterable<Customer> {
                 "gold", 200);
         Customers.add(customer5);
     }
-    public void findCustomerID(){
+
+    public void findCustomerID() {
         System.out.println("Nhap vao ma khach hang:");
         String makh = kt.kiemtraMakhachhang();
-        for(Customer cus:Customers){
-            if(cus.getCustomerid().equals(makh)){
+        for (Customer cus : Customers) {
+            if (cus.getCustomerid().equals(makh)) {
                 System.out.println("Customer ID: " + cus.Customerid);
                 System.out.println("Name: " + cus.getFullname());
                 System.out.println("Birthdate: " + cus.getBirthday());
@@ -136,17 +133,17 @@ public class CustomerList implements Iterable<Customer> {
                 System.out.println("Email: " + cus.getEmail());
                 System.out.println("Gender: " + cus.getGender());
                 System.out.println("Address: " + cus.getAddress().toString());
-                
+
                 System.out.println("---------------------------------\n");
             }
         }
     }
 
-    public void findCusomerName(){
+    public void findCusomerName() {
         System.out.println("Nhap vao ten khach hang:");
         String tenkh = kt.NhapTen();
-        for(Customer cus: Customers){
-            if(cus.getFullname().equals(tenkh)){
+        for (Customer cus : Customers) {
+            if (cus.getFullname().equals(tenkh)) {
                 System.out.println("Customer ID: " + cus.Customerid);
                 System.out.println("Name: " + cus.getFullname());
                 System.out.println("Birthdate: " + cus.getBirthday());
@@ -154,22 +151,25 @@ public class CustomerList implements Iterable<Customer> {
                 System.out.println("Email: " + cus.getEmail());
                 System.out.println("Gender: " + cus.getGender());
                 System.out.println("Address: " + cus.getAddress().toString());
-              
+
                 System.out.println("---------------------------------\n");
             }
         }
     }
-    public void writeFile()
-    {   String fileName="project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
-        try(BufferedWriter writer=new BufferedWriter(new FileWriter(fileName,true))) {
-            for(Customer customer:Customers) {
-                writer.write(customer.getFullname()+","+customer.getBirthday()+","+customer.getPhonenumber()+","+
-                customer.getEmail()+","+customer.getGender()+","+customer.getAddress().getSo()+","+customer.getAddress().getDuong()
-                +","+customer.getAddress().getQuan()+","+customer.getAddress().getThanhpho()+","+customer.Customerid);
+
+    public void writeFile() {
+        String fileName = "project_lthdt\\src\\PERSON\\danhsachkhachhang.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            for (Customer customer : Customers) {
+                writer.write(
+                        customer.getFullname() + "," + customer.getBirthday() + "," + customer.getPhonenumber() + "," +
+                                customer.getEmail() + "," + customer.getGender() + "," + customer.getAddress().getSo()
+                                + "," + customer.getAddress().getDuong()
+                                + "," + customer.getAddress().getQuan() + "," + customer.getAddress().getThanhpho()
+                                + "," + customer.Customerid);
                 writer.newLine();
-        }
-        }catch(IOException e)
-        {
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -177,6 +177,7 @@ public class CustomerList implements Iterable<Customer> {
     public ArrayList<Customer> getListCustomer() {
         return Customers;
     }
+
     @Override
     public Iterator<Customer> iterator() {
         return new Iterator<Customer>() {
@@ -193,8 +194,9 @@ public class CustomerList implements Iterable<Customer> {
             }
         };
     }
+
     public static void main(String[] args) {
-        CustomerList CL=new CustomerList();
+        CustomerList CL = new CustomerList();
         CL.readFile();
         CL.writeFile();
     }

@@ -148,7 +148,7 @@ public class Admin extends Account {
             switch (chon) {
                 case 1:
                     cusList.readFile();
-                    cusList.getListCustomer();
+                    cusList.displayInfo();
                     break;
                 case 2:
                     System.out.print("Nhap Id can xoa : ");
@@ -272,8 +272,10 @@ public class Admin extends Account {
     public void readFile() {
         try {
             list.readAccount();
-            empList.readEmployeeFile();
-            cusList.defaultCustomers();
+            empList.initializeEmployees();
+            empList.writeEmployeeFile();
+            // cusList.defaultCustomers();
+            // cusList.writeFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
