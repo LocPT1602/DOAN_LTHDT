@@ -128,7 +128,7 @@ public class Employeelist implements Iterable<Employee> {
 
     public void writeEmployeeFile() {
         String fileName = "project_lthdt\\src\\PERSON\\danhsachNV.txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false))) {
             for (Employee employee : employees) {
                 writer.write(employee.getFullname() + "," + employee.getBirthday() + "," + employee.getPhonenumber()
                         + "," + employee.getEmail() + "," + employee.getGender() + "," + employee.getDate()
@@ -207,6 +207,6 @@ public class Employeelist implements Iterable<Employee> {
         Employeelist le=new Employeelist();
        le.readEmployeeFile();
        le.writeEmployeeFile();
-        
+        le.displayInfo();
     }
 }
