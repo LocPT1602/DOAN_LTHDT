@@ -21,14 +21,14 @@ import java.io.FileReader;
 public class BillDetail {
     Scanner scanner = new Scanner(System.in);
 
-    private String billDetailCode; // Mã chi tiết hóa đơn
-    private Order customer; // Mã khách hàng
-    private Order employee; // Mã nhân viên
-    private Order orderCode; // Ma hoa don
-    private ArrayList<SanPham> billList;
-    private Payment paymentMethod; // Phương thức thanh toán
-    private int quantityBill; // Số lượng
-    private LocalDateTime billDate; // Ngày trên hóa đơn
+    public String billDetailCode; // Mã chi tiết hóa đơn
+    public Order customer; // Mã khách hàng
+    public Order employee; // Mã nhân viên
+    public Order orderCode; // Ma hoa don
+    public ArrayList<SanPham> billList;
+    public Payment paymentMethod; // Phương thức thanh toán
+    public int quantityBill; // Số lượng
+    public LocalDateTime billDate; // Ngày trên hóa đơn
     private int counter = 1;
     // HoaDon hoaDon = new HoaDon();
     GioHang gh = new GioHang();

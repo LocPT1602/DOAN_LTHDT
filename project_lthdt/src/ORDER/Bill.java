@@ -35,11 +35,11 @@ public class Bill {
     }
 
     // public HoaDon getmaHD() {
-    // return maHD;
+    //     return maHD;
     // }
 
     // public void setmaHD(HoaDon maHD) {
-    // this.maHD = maHD;
+    //     this.maHD = maHD;
     // }
 
     public SanPham getTenSP() {

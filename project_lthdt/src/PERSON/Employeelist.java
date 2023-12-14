@@ -35,6 +35,7 @@ public class Employeelist implements Iterable<Employee> {
     public void Xoa() {
         System.out.println("Nhap vao ma nhan vien muon xoa!");
         String idDelete = kt.kiemtraManhanvien();
+        
 
         for (Employee employee : employees) {
             if (employee.getEmployeeid().equals(idDelete)) {
@@ -87,12 +88,11 @@ public class Employeelist implements Iterable<Employee> {
             e.printStackTrace();
         }
     }
-
-    public void findEmployeeID() {
+    public void findEmployeeID(){
         System.out.println("Nhap vao ma nhan vien:");
         String manv = kt.kiemtraManhanvien();
-        for (Employee nv : employees) {
-            if (nv.getEmployeeid().equals(manv)) {
+        for(Employee nv:employees){
+            if(nv.getEmployeeid().equals(manv)){
                 System.out.println("Employee ID: " + nv.getEmployeeid());
                 System.out.println("Name: " + nv.getFullname());
                 System.out.println("Birthdate: " + nv.getBirthday());
@@ -107,11 +107,11 @@ public class Employeelist implements Iterable<Employee> {
         }
     }
 
-    public void findEmpplyeeName() {
+    public void findEmpplyeeName(){
         System.out.println("Nhap vao ten nhan vien can tim: ");
         String tennv = kt.NhapTen();
-        for (Employee nv : employees) {
-            if (nv.getFullname().equals(tennv)) {
+        for(Employee nv:employees){
+            if(nv.getFullname().equals(tennv)){
                 System.out.println("Employee ID: " + nv.getEmployeeid());
                 System.out.println("Name: " + nv.getFullname());
                 System.out.println("Birthdate: " + nv.getBirthday());
@@ -203,11 +203,10 @@ public class Employeelist implements Iterable<Employee> {
             System.out.println("---------------------------------");
         }
     }
-
     public static void main(String[] args) {
-        Employeelist le = new Employeelist();
-        le.readEmployeeFile();
-        le.writeEmployeeFile();
-
+        Employeelist le=new Employeelist();
+       le.readEmployeeFile();
+       le.writeEmployeeFile();
+        
     }
 }

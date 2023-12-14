@@ -22,11 +22,11 @@ Tien thua: 17725.0
 --------------------------------------------------------------
 
 --------------------Chi tiết hóa đơn-----------------------
-Mã chi tiết hóa đơn: MHD626
-Ma don hang: MDH004
-Ma khach hang: CUS5454
-Ma nhan vien phu trach: EMP784
-Ngay tao don hang: 12/12/2023   22:15:49
+Mã chi tiết hóa đơn: MHD710
+Ma don hang: MDH827
+Ma khach hang: CUS0001
+Ma nhan vien phu trach: EMP000
+Ngay tao don hang: 14/12/2023   10:16:30
 Danh sach san pham: 
 
 Ten SP                  Don gia                 So Luong                
@@ -42,3 +42,6 @@ Da nhan: 30000.0
 Tien thua: 14000.0
 
 --------------------------------------------------------------
+
+--------------------Chi tiết hóa đơn-----------------------
+Mã chi tiết hóa đơn: 0001
